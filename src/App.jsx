@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles.css";
+import "./style.css";
 import UserProfile from "./UserProfile.jsx";
 import Quests from "./Quests.jsx";
 
