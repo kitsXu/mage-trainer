@@ -1,7 +1,7 @@
 export const user = {
   name: 'Solah',
   id: crypto.randomUUID(),
-  level:'1',
+  level:0,
   questsCompleted:0,
   abandonedQuests:0,
   dailyQuestsCompleted:0,
