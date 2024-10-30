@@ -1,15 +1,6 @@
-import { useState } from "react";
-
-//what do users have?
-//name?
-//level
-//daily quests completed
-//total quests completed
-//total quests abandoned
-//
-
 export const user = {
   name: 'Solah',
+  id: crypto.randomUUID(),
   level:'1',
   questsCompleted:0,
   abandonedQuests:0,
@@ -18,6 +9,8 @@ export const user = {
   totalQuestsCompleted:0,
   totalQuestsAbandoned:0,
 };
+
+console.log({user})
 
 export default function userProfile() {
 
