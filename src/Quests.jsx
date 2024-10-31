@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { user } from "./UserProfile";
 
-export default function Quests() {
+export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [newDaily, setNewDaily] = useState("");
   const [tasks, setTasks] = useState([]);
   const [dailies, setDailies] = useState([]);
+
+  console.log("Quests -- props.user: ", props.user)
 
   //FUNCTIONS FOR ONE TIME QUESTS(TASKS)//
   function handleSubmit(e) {
@@ -63,7 +64,7 @@ export default function Quests() {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
-    completed ? user.dailyQuestsCompleted++ : null;
+    completed ? props.user.dailyQuestsCompleted++ : null;
   };
 
   const resetAllDailies = (id, completed) => {
@@ -81,7 +82,7 @@ export default function Quests() {
 
   return (
     <div className="bodywrapper">
-      <h1 className="questHeader">{user.name}'s Quest Log</h1>
+      <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
       <form onSubmit={handleSubmit} className="new-quest-form">
         <div className="form-row">
           <label htmlFor="quest">Add A New One Time Quest Here!</label>
@@ -94,7 +95,7 @@ export default function Quests() {
         </div>
         <button className="btn">ACCEPT</button>
       </form>
-      <div id="completeQuest">Completed- {user.questsCompleted} </div>
+      <div id="completeQuest">Completed- {props.user.questsCompleted} </div>
       <ul className="list">
         {tasks.length === 0 && "All Quests Completed!"}
         {tasks.map((task) => {
@@ -104,7 +105,7 @@ export default function Quests() {
               <button
                 onClick={() => {
                   completeTask(task.id);
-                  user.questsCompleted++;
+                  props.user.questsCompleted++;
                 }}
                 className="btn btn-yay"
               >
@@ -113,7 +114,7 @@ export default function Quests() {
               <button
                 onClick={() => {
                   deleteTask(task.id);
-                  user.abandonedQuests++;
+                  props.user.abandonedQuests++;
                 }}
                 className="btn btn-danger"
               >
@@ -137,7 +138,7 @@ export default function Quests() {
         <button className="btn dailyBtn">ACCEPT</button>
       </form>
       <div id="completeDaily">
-        Completed Daily- {user.dailyQuestsCompleted}{" "}
+        Completed Daily- {props.user.dailyQuestsCompleted}{" "}
       </div>
       <ul className="dailyList">
         {dailies.length === 0 && "No Set Daily Quests."}
@@ -157,7 +158,7 @@ export default function Quests() {
               <button
                 onClick={() => {
                   deleteDaily(daily.id);
-                  user.abaondonedDailyQuests++;
+                  props.user.abaondonedDailyQuests++;
                 }}
                 className="btn btn-danger"
               >

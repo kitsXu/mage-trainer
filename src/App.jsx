@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 import UserProfile from "./UserProfile.jsx";
 import Quests from "./Quests.jsx";
@@ -27,12 +27,51 @@ import Quests from "./Quests.jsx";
 
 export default function App() {
   const [view, setView] = useState("quests");
+  const [user, setUser] = useState(null);
 
   const viewChange = (newView) => {
     setView(newView);
     console.log("viewchange");
   };
 
+  //-- TODO: 
+  //  - [x] check if a user object exists within local storage
+  //  - [x] if a user does _not_ exist, create a new one and store it
+  //  - [x] if a user _does_ exist, use the object that is returned for our current user
+  //  - [] pass new user object into relevent components
+  
+  useEffect(() => {
+    const userExists = localStorage.getItem("user");
+
+    if (!userExists) {
+      const newUserObject = {
+        id: crypto.randomUUID(),
+        name: "",
+        level: 0,
+        questsCompleted: 0,
+        abandonedQuests: 0,
+        dailyQuestsCompleted: 0,
+        abaondonedDailyQuests: 0,
+        totalQuestsCompleted: 0,
+        totalQuestsAbandoned: 0,
+      }
+
+      localStorage.setItem("user", JSON.stringify(newUserObject));
+
+      setUser(localStorage.getItem("user"));
+
+      return;
+    }
+
+    setUser(localStorage.getItem("user"));
+
+    return;
+  }, [])
+
+  useEffect(() => {
+    console.log("useEffect -- user: ", user)
+  }, [user])
+  
   return (
     <div className="bodywrapper">
       <header>battle-cat-quests</header>
@@ -45,8 +84,8 @@ export default function App() {
         </button>
       </div>
       <div>
-        {view === "user" && <UserProfile />}
-        {view === "quests" && <Quests />}
+        {view === "user" && !!user && <UserProfile user={user} />}
+        {view === "quests" && !!user && <Quests user={user} />}
       </div>
     </div>
   );
