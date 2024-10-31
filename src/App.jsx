@@ -69,7 +69,7 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    console.log("useEffect -- user: ", user)
+    console.log("useEffect -- user: ", JSON.parse(user))
   }, [user])
   
   return (
@@ -84,8 +84,8 @@ export default function App() {
         </button>
       </div>
       <div>
-        {view === "user" && !!user && <UserProfile user={user} />}
-        {view === "quests" && !!user && <Quests user={user} />}
+        {view === "user" && !!user && <UserProfile user={JSON.parse(user)} />}
+        {view === "quests" && !!user && <Quests user={JSON.parse(user)} />}
       </div>
     </div>
   );
