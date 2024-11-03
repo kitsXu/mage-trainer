@@ -38,7 +38,7 @@ export default function App() {
   //  - [x] check if a user object exists within local storage
   //  - [x] if a user does _not_ exist, create a new one and store it
   //  - [x] if a user _does_ exist, use the object that is returned for our current user
-  //  - [] pass new user object into relevent components
+  //  - [X] pass new user object into relevent components
   
   useEffect(() => {
     const userExists = localStorage.getItem("user");
