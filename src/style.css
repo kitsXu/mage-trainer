@@ -380,3 +380,19 @@
   .dailyList li:has(input:checked) label:hover::before {
     background: hsl(56, 76%, 23%);
   }
+
+  .nameInput {
+    background: #e6e3cc;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: .5rem;
+  }
+
+  .nameInputBar {
+    background: hsl(56, 76%, 23%);
+    color:#b9b591;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }

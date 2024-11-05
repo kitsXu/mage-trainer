@@ -38,7 +38,13 @@ export default function App() {
   //  - [x] check if a user object exists within local storage
   //  - [x] if a user does _not_ exist, create a new one and store it
   //  - [x] if a user _does_ exist, use the object that is returned for our current user
-  //  - [X] pass new user object into relevent components
+  //  - [x] pass new user object into relevent components
+  //  - [ ] save other user object data to local storage lke quests completed
+  //  - [ ] prompt for user to select their own name 
+  //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
+  //  - [ ] timer for completing daily quests
+  //  - [ ]  
+
   
   useEffect(() => {
     const userExists = localStorage.getItem("user");
@@ -63,18 +69,28 @@ export default function App() {
       return;
     }
 
-    setUser(localStorage.getItem("user"));
+    setUser(JSON.parse(localStorage.getItem("user")));
 
     return;
   }, [])
+  
 
-  useEffect(() => {
-    console.log("useEffect -- user: ", JSON.parse(user))
-  }, [user])
+  const nameChange = (newName) => {
+    setUser(prevUser => ({ ...prevUser, name: newName}))
+  };
+
+  const nameSubmit = () => {
+    localStorage.setItem("name", Json.stringify(newUserObject))
+  }
+
   
   return (
     <div className="bodywrapper">
       <header>battle-cat-quests</header>
+      <form className="nameInput"  onSubmit={nameSubmit}>
+        <input className="nameInputBar" type="text" onChange={(e) => nameChange(e.target.value)}/>
+        <button className="nameInput">submit</button>
+      </form>
       <div className="userBtn">
         <button className="menuBtn" onClick={() => viewChange("quests")}>
           Quests
@@ -84,8 +100,8 @@ export default function App() {
         </button>
       </div>
       <div>
-        {view === "user" && !!user && <UserProfile user={JSON.parse(user)} />}
-        {view === "quests" && !!user && <Quests user={JSON.parse(user)} />}
+        {view === "user" && !!user && <UserProfile user={(user)} />}
+        {view === "quests" && !!user && <Quests user={(user)} />}
       </div>
     </div>
   );
