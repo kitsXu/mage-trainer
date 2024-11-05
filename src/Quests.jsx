@@ -48,18 +48,6 @@ export default function Quests(props) {
     setNewDaily("");
   }
 
-  // function countDailies() {
-  //   setDailies((currentDailies) => {
-  //     return currentDailies.map((daily) => {
-  //       if (daily.completed === true) {
-  //         setDcount(() => dcount + 1);
-  //       }
-  //       return daily;
-  //     });
-  //   });
-  //   console.log("dailies");
-  // }
-
   const toggleDaily = (id, completed) => {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
