@@ -389,7 +389,7 @@
     margin-bottom: .5rem;
   }
 
-  .nameInputBar {
+  #nameInputBar {
     background: hsl(56, 76%, 23%);
     color:#b9b591;
     display: flex;

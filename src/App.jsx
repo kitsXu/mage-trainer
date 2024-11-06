@@ -28,24 +28,24 @@ import Quests from "./Quests.jsx";
 export default function App() {
   const [view, setView] = useState("quests");
   const [user, setUser] = useState(null);
+  const [newName, setNewName] = useState("");
 
   const viewChange = (newView) => {
     setView(newView);
     console.log("viewchange");
   };
 
-  //-- TODO: 
+  //-- TODO:
   //  - [x] check if a user object exists within local storage
   //  - [x] if a user does _not_ exist, create a new one and store it
   //  - [x] if a user _does_ exist, use the object that is returned for our current user
   //  - [x] pass new user object into relevent components
   //  - [ ] save other user object data to local storage lke quests completed
-  //  - [ ] prompt for user to select their own name 
+  //  - [ ] prompt for user to select their own name
   //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
   //  - [ ] timer for completing daily quests
-  //  - [ ]  
+  //  - [ ]
 
-  
   useEffect(() => {
     const userExists = localStorage.getItem("user");
 
@@ -60,7 +60,7 @@ export default function App() {
         abaondonedDailyQuests: 0,
         totalQuestsCompleted: 0,
         totalQuestsAbandoned: 0,
-      }
+      };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
 
@@ -72,23 +72,29 @@ export default function App() {
     setUser(JSON.parse(localStorage.getItem("user")));
 
     return;
-  }, [])
-  
+  }, []);
 
-  const nameChange = (newName) => {
-    setUser(prevUser => ({ ...prevUser, name: newName}))
-  };
 
-  const nameSubmit = () => {
-    localStorage.setItem("name", Json.stringify(newUserObject))
-  }
+  function handleNameChange (newName) {
+    setUser((prevUser) => ({ ...prevUser, name: newName }));
+    setNewName("");
+  ;}
 
-  
+
+  //-- set newName to local storage?
+  //-- 
+
+
   return (
     <div className="bodywrapper">
       <header>battle-cat-quests</header>
-      <form className="nameInput"  onSubmit={nameSubmit}>
-        <input className="nameInputBar" type="text" onChange={(e) => nameChange(e.target.value)}/>
+      <form className="nameInput" onSubmit={handleNameChange}>
+        <input
+          value= {newName}
+          type="text"
+          onChange={(e) => handleNameChange(e.target.value)}
+          id= "nameInputBar"
+        />
         <button className="nameInput">submit</button>
       </form>
       <div className="userBtn">
@@ -100,8 +106,8 @@ export default function App() {
         </button>
       </div>
       <div>
-        {view === "user" && !!user && <UserProfile user={(user)} />}
-        {view === "quests" && !!user && <Quests user={(user)} />}
+        {view === "user" && !!user && <UserProfile user={user} />}
+        {view === "quests" && !!user && <Quests user={user} />}
       </div>
     </div>
   );
