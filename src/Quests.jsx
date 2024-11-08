@@ -52,7 +52,7 @@ export default function Quests(props) {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
-    completed ? props.user.dailyQuestsCompleted++ : null;
+    completed ? props.setNewDailyQuestsCompletedCount(prev => prev + 1) : null;
   };
 
   const resetAllDailies = (id, completed) => {
@@ -126,7 +126,7 @@ export default function Quests(props) {
         <button className="btn dailyBtn">ACCEPT</button>
       </form>
       <div id="completeDaily">
-        Completed Daily- {props.user.dailyQuestsCompleted}{" "}
+        Completed Daily- {props.newDailyQuestsCompletedCount}{" "}
       </div>
       <ul className="dailyList">
         {dailies.length === 0 && "No Set Daily Quests."}
