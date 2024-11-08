@@ -92,24 +92,6 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
 
-    //-- const user = localStorage.getItem("user");
-    //-- user.dailyQuestsCompleted = newDailyQuestsCompletedCount
-    //-- user.questsCompleted = newQuestsCompletedCount
-    //-- localStorage.setItem("user", user);
-
-    /*
-     prisma.user.update({
-      where: {
-        id: user.id,
-      },
-
-      data: {
-        dailyQuestsCompleted: newDailyQuestsCompletedCount,
-        questsCompleted: newQuestsCompletedCount,
-      }
-     })
-    */
-
     localStorage.setItem(
       "user",
       JSON.stringify({
