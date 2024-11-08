@@ -30,6 +30,8 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [newName, setNewName] = useState("");
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
+  const [newAbandonedDailyQuests, setNewAbandonedDailyQuests] = useState();
+  const [newAbandonedQuests, setNewAbandonedQuests] = useState();
   const [refreshKey, setRefreshKey] = useState(0);
 
   const viewChange = (newView) => {
@@ -40,15 +42,15 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
 
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted)
-  }, [user])
+    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+  }, [user]);
 
   //-- TODO:
   //  - [x] check if a user object exists within local storage
   //  - [x] if a user does _not_ exist, create a new one and store it
   //  - [x] if a user _does_ exist, use the object that is returned for our current user
   //  - [x] pass new user object into relevent components
-  
+
   //  - [ ] prompt for user to select their own name
   //  - [ ] stores quest and abandon counts locally?
   //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
@@ -67,8 +69,6 @@ export default function App() {
         abandonedQuests: 0,
         dailyQuestsCompleted: 0,
         abaondonedDailyQuests: 0,
-        totalQuestsCompleted: 0,
-        totalQuestsAbandoned: 0,
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
@@ -110,46 +110,56 @@ export default function App() {
      })
     */
 
-    localStorage.setItem("user", JSON.stringify({
-      ...user, //-- spread over our existing user object so we retain any unchanged values...
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user, //-- spread over our existing user object so we retain any unchanged values...
 
-      //-- ...conditionally update values if they've changed.
-      ...(
-        user.dailyQuestsCompleted !== newDailyQuestsCompletedCount ? { dailyQuestsCompleted: newDailyQuestsCompletedCount } : 
-        {}
-      )
-    }))
-  }, [newDailyQuestsCompletedCount])
+        //-- ...conditionally update values if they've changed.
+        ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
+          ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
+          : {},
+        user.abandonedDailyQuests !== newAbandonedDailyQuests
+          ? { abandonedDailyQuests: newAbandonedDailyQuests }
+          : {},
+        user.abandonedQuests !== newAbandonedQuests
+          ? { abandonedQuests: newAbandonedQuests }
+          : {},
+        {}),
+      })
+    );
+  }, [newDailyQuestsCompletedCount],[newAbandonedDailyQuests],[newAbandonedQuests]);
 
-  function handleOnChange (value) {
+  function handleOnChange(value) {
     setNewName(value);
-  ;}
+  }
 
   const handleSubmit = (value) => {
     localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
 
-    setRefreshKey(prev => prev + 1);
+    setRefreshKey((prev) => prev + 1);
 
-    console.log("User information updated!")
-  }
-
+    console.log("User information updated!");
+  };
 
   return (
     <div className="bodywrapper">
       <header>battle-cat-quests</header>
-      <form className="nameInput" onSubmit={(e) => {
-        //-- prevent default behavior of the event. in this case, stop the form submission
-        //-- from refreshing the page.
-        e.preventDefault(); 
+      <form
+        className="nameInput"
+        onSubmit={(e) => {
+          //-- prevent default behavior of the event. in this case, stop the form submission
+          //-- from refreshing the page.
+          e.preventDefault();
 
-        handleSubmit(newName);
-      }}>
-      
+          handleSubmit(newName);
+        }}
+      >
         <input
-          value= {newName}
+          value={newName}
           type="text"
           onChange={(event) => handleOnChange(event.target.value)}
-          id= "nameInputBar"
+          id="nameInputBar"
         />
         <button className="nameInput">submit</button>
       </form>
@@ -163,7 +173,17 @@ export default function App() {
       </div>
       <div>
         {view === "user" && !!user && <UserProfile user={user} />}
-        {view === "quests" && !!user && <Quests user={user} newDailyQuestsCompletedCount={newDailyQuestsCompletedCount} setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount} />}
+        {view === "quests" && !!user && (
+          <Quests
+            user={user}
+            newDailyQuestsCompletedCount={newDailyQuestsCompletedCount}
+            setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
+            newAbandonedDailyQuests={newAbandonedDailyQuests}
+            setNewAbandonedDailyQuests={setNewAbandonedDailyQuests}
+            newAbandonedQuests={newAbandonedQuests}
+            setNewAbandonedQuests={setNewAbandonedQuests}
+          />
+        )}
       </div>
     </div>
   );
