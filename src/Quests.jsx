@@ -1,195 +1,170 @@
-import { useEffect, useState } from "react";
-import "./style.css";
-import UserProfile from "./UserProfile.jsx";
-import Quests from "./Quests.jsx";
+import { useState } from "react";
 
-//MISC NOTES*************************************
-// Dragon Quests (or kittens dressed as dragons :D)
-// User completes quests to earn XP
-// After so much XP, user gets to pick a dragon egg (lvl up?)
-// Notification that explains the dragon egg/paths
-// User picks the dragon egg
-// Profile for each of the dragon eggs
-// What dragons they become (name)
-// How much food to feed them (how big they get)
-// What their power is (how much food they get)
-// What their speed is (based on size/age)
-// As user gets xp, dragon ages.  As dragon ages
-// They get bigger- require more food- power goes up
-// These change % wise based on species
-// HP is age + stats
-// Battles
-// Permadeath
+export default function Quests(props) {
+  const [newQuest, setNewQuest] = useState("");
+  const [newDaily, setNewDaily] = useState("");
+  const [tasks, setTasks] = useState([]);
+  const [dailies, setDailies] = useState([]);
 
-//TO-DO*******************************************8
-//Add User Profile button below quest log
-//Add to User Profile- User Name, Log in Info, Quest info (complete/daily/abandoned), User XP, User Level
+  console.log("Quests -- props.user: ", props.user);
 
-export default function App() {
-  const [view, setView] = useState("quests");
-  const [user, setUser] = useState(null);
-  const [newName, setNewName] = useState("");
-  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
-  const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
-  const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
-  const [refreshKey, setRefreshKey] = useState(0);
+  //FUNCTIONS FOR ONE TIME QUESTS(TASKS)//
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  const viewChange = (newView) => {
-    setView(newView);
-    console.log("viewchange");
-  };
+    setTasks((currentTasks) => {
+      return [
+        ...currentTasks,
+        { id: crypto.randomUUID(), title: newQuest, completed: false },
+      ];
+    });
 
-  useEffect(() => {
-    if (!user) return;
-    
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
-  }, [user]);
-
-
-  //-- TODO:
-  //  - [x] check if a user object exists within local storage
-  //  - [x] if a user does _not_ exist, create a new one and store it
-  //  - [x] if a user _does_ exist, use the object that is returned for our current user
-  //  - [x] pass new user object into relevent components
-
-  //  - [ ] prompt for user to select their own name
-  //  - [ ] stores quest and abandon counts locally?
-  //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-  //  - [ ] timer for completing daily quests
-  //  - [ ]
-
-  useEffect(() => {
-    const userExists = localStorage.getItem("user");
-
-    if (!userExists) {
-      const newUserObject = {
-        id: crypto.randomUUID(),
-        name: "",
-        level: 0,
-        questCompleted: 0,
-        abandonedQuests: 0,
-        dailyQuestsCompleted: 0,
-        abandonedDailyQuests: 0,
-      };
-
-      localStorage.setItem("user", JSON.stringify(newUserObject));
-
-      setUser(localStorage.getItem("user"));
-
-      return;
-    }
-
-    setUser(JSON.parse(localStorage.getItem("user")));
-
-    return;
-  }, [refreshKey]);
-
-  /*
-    if (myVar && (myVar2.type === "shoot" || myVar2.type === "shoot location")) {
-      ...
-    }
-  */
-
-  useEffect(() => {
-    if (!user) return;
-
-    //-- const user = localStorage.getItem("user");
-    //-- user.dailyQuestsCompleted = newDailyQuestsCompletedCount
-    //-- user.questsCompleted = newQuestsCompletedCount
-    //-- localStorage.setItem("user", user);
-
-    /*
-     prisma.user.update({
-      where: {
-        id: user.id,
-      },
-
-      data: {
-        dailyQuestsCompleted: newDailyQuestsCompletedCount,
-        questsCompleted: newQuestsCompletedCount,
-      }
-     })
-    */
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user, //-- spread over our existing user object so we retain any unchanged values...
-
-        //-- ...conditionally update values if they've changed.
-        ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
-          ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
-          : {}),
-          ...(user.questCompleted !== newQuestCompletedCount
-            ? { questCompleted: newQuestCompletedCount }
-            : {}
-          ),
-          ...(user.abandonedQuests !== newAbandonedQuestCount
-            ? { abandonedQuests: newAbandonedQuestCount }
-            : {}
-          ),
-      })
-    );
-  }, [newDailyQuestsCompletedCount], [newQuestCompletedCount], [newAbandonedQuestCount]);
-
-
-  function handleOnChange(value) {
-    setNewName(value);
+    setNewQuest("");
   }
 
-  const handleSubmit = (value) => {
-    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
+  function deleteTask(id) {
+    setTasks((currentTasks) => {
+      return currentTasks.filter((task) => task.id !== id);
+    });
+    return props.setNewAbandonedQuestCount((prev) => prev + 1);
+  }
 
-    setRefreshKey((prev) => prev + 1);
+  function completeTask(id) {
+    setTasks((currentTasks) => {
+      return currentTasks.filter((task) => task.id !== id);
+    });
+    return props.setNewQuestCompletedCount((prev) => prev + 1);
+  }
 
-    console.log("User information updated!");
+  //FUNCTIONS FOR DAILY QUESTS//
+  function handleDailySubmit(e) {
+    e.preventDefault();
+
+    setDailies((currentDailies) => {
+      return [
+        ...currentDailies,
+        { id: crypto.randomUUID(), title: newDaily, completed: false },
+      ];
+    });
+
+    setNewDaily("");
+  }
+
+  const toggleDaily = (id, completed) => {
+    setDailies((prev) =>
+      prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
+    );
+    completed
+      ? props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
+      : null;
   };
+
+  const resetAllDailies = (id, completed) => {
+    const resetDailies = dailies.map((d) =>
+      d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
+    );
+    setDailies(resetDailies);
+  };
+
+  function deleteDaily(id) {
+    setDailies((currentDailies) => {
+      return currentDailies.filter((daily) => daily.id !== id);
+    });
+  }
 
   return (
     <div className="bodywrapper">
-      <header>battle-cat-quests</header>
-      <form
-        className="nameInput"
-        onSubmit={(e) => {
-          //-- prevent default behavior of the event. in this case, stop the form submission
-          //-- from refreshing the page.
-          e.preventDefault();
-
-          handleSubmit(newName);
-        }}
-      >
-        <input
-          value={newName}
-          type="text"
-          onChange={(event) => handleOnChange(event.target.value)}
-          id="nameInputBar"
-        />
-        <button className="nameInput">submit</button>
+      <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
+      <form onSubmit={handleSubmit} className="new-quest-form">
+        <div className="form-row">
+          <label htmlFor="quest">Add A New One Time Quest Here!</label>
+          <input
+            value={newQuest}
+            onChange={(e) => setNewQuest(e.target.value)}
+            type="text"
+            id="quest"
+          ></input>
+        </div>
+        <button className="btn">ACCEPT</button>
       </form>
-      <div className="userBtn">
-        <button className="menuBtn" onClick={() => viewChange("quests")}>
-          Quests
-        </button>
-        <button className="menuBtn" onClick={() => viewChange("user")}>
-          User Profile
-        </button>
+      <div id="completeQuest">
+        Completed- {props.newQuestCompletedCount}{" "}
       </div>
-      <div>
-        {view === "user" && !!user && <UserProfile user={user} />}
-        {view === "quests" && !!user && (
-          <Quests
-            user={user}
-            newDailyQuestsCompletedCount={newDailyQuestsCompletedCount}
-            setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
-            newQuestCompletedCount={newQuestCompletedCount}
-            setNewQuestCompletedCount={setNewQuestCompletedCount}
-            newAbandonedQuestCount={newAbandonedQuestCount}
-            setNewAbandonedQuestCount={setNewAbandonedQuestCount}
-          />
-        )}
+      <ul className="list">
+        {tasks.length === 0 && "All Quests Completed!"}
+        {tasks.map((task) => {
+          return (
+            <li key={task.id}>
+              <label>{task.title}</label>
+              <button
+                onClick={() => {
+                  completeTask(task.id);
+                  props.user.questCompleted++;
+                }}
+                className="btn btn-yay"
+              >
+                Complete
+              </button>
+              <button
+                onClick={() => {
+                  deleteTask(task.id);
+                  props.user.abandonedQuests++;
+                }}
+                className="btn btn-danger"
+              >
+                Abandon
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="divider">__________</div>
+      <form onSubmit={handleDailySubmit} className="new-daily-form">
+        <div className="daily-form-row">
+          <label htmlFor="daily">Add A New Daily Quest Here!</label>
+          <input
+            value={newDaily}
+            onChange={(e) => setNewDaily(e.target.value)}
+            type="text"
+            id="daily"
+          ></input>
+        </div>
+        <button className="btn dailyBtn">ACCEPT</button>
+      </form>
+      <div id="completeDaily">
+        Completed Daily- {props.newDailyQuestsCompletedCount}{" "}
       </div>
+      <ul className="dailyList">
+        {dailies.length === 0 && "No Set Daily Quests."}
+        {dailies.map((daily) => {
+          console.log("daily id: ", daily.id);
+          return (
+            <li key={daily.id}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={daily.completed}
+                  onChange={(e) => toggleDaily(daily.id, e.target.checked)}
+                />
+                {daily.title}
+              </label>
+
+              <button
+                onClick={() => {
+                  deleteDaily(daily.id);
+                  props.user.abandonedDailyQuests++;
+                }}
+                className="btn btn-danger"
+              >
+                Abandon
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <button onClick={resetAllDailies} className="foot" id="clearBtn">
+        CLEAR COMPLETED
+      </button>
     </div>
   );
 }
