@@ -10,8 +10,8 @@ export default function UserProfile(props) {
       <div className= "profileInfo">
         <div className="profile">Username: {props.user.name}</div>
         <div className="profile">Level: {props.user.level}</div>
-        <div className="profile">Total Quests Completed: {props.user.questsCompleted + props.user.dailyQuestsCompleted}</div>
-        <div className="profile">Total Quests Abandoned: {props.user.abandonedQuests + props.user.abaondonedDailyQuests}</div>
+        <div className="profile">Total Quests Completed: {props.user.questCompleted + props.user.dailyQuestsCompleted}</div>
+        <div className="profile">Total Quests Abandoned: {props.user.abandonedQuests + props.user.abandonedDailyQuests}</div>
         </div>
     </div>
   );

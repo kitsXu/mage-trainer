@@ -26,6 +26,7 @@ export default function Quests(props) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
     });
+    return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
 
   function completeTask(id) {
@@ -151,7 +152,7 @@ export default function Quests(props) {
               <button
                 onClick={() => {
                   deleteDaily(daily.id);
-                  props.user.abaondonedDailyQuests++;
+                  props.user.abandonedDailyQuests++;
                 }}
                 className="btn btn-danger"
               >

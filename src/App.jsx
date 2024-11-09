@@ -31,6 +31,7 @@ export default function App() {
   const [newName, setNewName] = useState("");
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
+  const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
   const [refreshKey, setRefreshKey] = useState(0);
 
   const viewChange = (newView) => {
@@ -43,6 +44,7 @@ export default function App() {
     
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
+    setNewAbandonedQuestCount(user.abandonedQuests);
   }, [user]);
 
 
@@ -69,7 +71,7 @@ export default function App() {
         questCompleted: 0,
         abandonedQuests: 0,
         dailyQuestsCompleted: 0,
-        abaondonedDailyQuests: 0,
+        abandonedDailyQuests: 0,
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
@@ -123,24 +125,14 @@ export default function App() {
           ...(user.questCompleted !== newQuestCompletedCount
             ? { questCompleted: newQuestCompletedCount }
             : {}
-          )
+          ),
+          ...(user.abandonedQuests !== newAbandonedQuestCount
+            ? { abandonedQuests: newAbandonedQuestCount }
+            : {}
+          ),
       })
     );
-  }, [newDailyQuestsCompletedCount] [newQuestCompletedCount]);
-
-
-//   useEffect(() => {
-//     if (!user) return;
-//   localStorage.setItem(
-//     "user",
-//     JSON.stringify({
-//       ...user, 
-//       ...(user.questsCompleted !== newQuestCompletedCount
-//         ? { questsCompleted: newQuestCompletedCount }
-//         : {}),
-//     })
-//   );
-// }, [newQuestCompletedCount]);
+  }, [newDailyQuestsCompletedCount], [newQuestCompletedCount], [newAbandonedQuestCount]);
 
 
   function handleOnChange(value) {
@@ -193,6 +185,8 @@ export default function App() {
             setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
             newQuestCompletedCount={newQuestCompletedCount}
             setNewQuestCompletedCount={setNewQuestCompletedCount}
+            newAbandonedQuestCount={newAbandonedQuestCount}
+            setNewAbandonedQuestCount={setNewAbandonedQuestCount}
           />
         )}
       </div>
