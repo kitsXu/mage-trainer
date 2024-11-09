@@ -31,7 +31,6 @@ export default function App() {
   const [newName, setNewName] = useState("");
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
-  const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
   const [refreshKey, setRefreshKey] = useState(0);
 
   const viewChange = (newView) => {
@@ -44,7 +43,6 @@ export default function App() {
     
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
   }, [user]);
 
 
@@ -126,13 +124,9 @@ export default function App() {
             ? { questCompleted: newQuestCompletedCount }
             : {}
           ),
-          ...(user.abandonedQuests !== newAbandonedQuestCount
-            ? { abandonedQuests: newAbandonedQuestCount }
-            : {}
-          ),
       })
     );
-  }, [newDailyQuestsCompletedCount], [newQuestCompletedCount], [newAbandonedQuestCount]);
+  }, [newDailyQuestsCompletedCount] [newQuestCompletedCount]);
 
 
   function handleOnChange(value) {
@@ -185,8 +179,8 @@ export default function App() {
             setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
             newQuestCompletedCount={newQuestCompletedCount}
             setNewQuestCompletedCount={setNewQuestCompletedCount}
-            newAbandonedQuestCount={newAbandonedQuestCount}
-            setNewAbandonedQuestCount={setNewAbandonedQuestCount}
+            // newAbandonedQuestCount={newAbandonedQuestCount}
+            // setNewAbandonedQuestCount={setNewAbandonedQuestCount}
           />
         )}
       </div>

@@ -26,7 +26,6 @@ export default function Quests(props) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
     });
-    return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
 
   function completeTask(id) {
