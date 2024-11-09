@@ -22,17 +22,18 @@ export default function Quests(props) {
     setNewQuest("");
   }
 
-  function deleteTask(id) {
-    setTasks((currentTasks) => {
-      return currentTasks.filter((task) => task.id !== id);
-    });
-  }
-
   function completeTask(id) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
     });
     return props.setNewQuestCompletedCount((prev) => prev + 1);
+  }
+
+  function deleteTask(id) {
+    setTasks((currentTasks) => {
+      return currentTasks.filter((task) => task.id !== id);
+    });
+    return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
 
   //FUNCTIONS FOR DAILY QUESTS//
@@ -58,18 +59,20 @@ export default function Quests(props) {
       : null;
   };
 
+  function deleteDaily(id) {
+    setDailies((currentDailies) => {
+      return currentDailies.filter((daily) => daily.id !== id);
+    });
+    return props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
+
+  }
+
   const resetAllDailies = (id, completed) => {
     const resetDailies = dailies.map((d) =>
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
     setDailies(resetDailies);
   };
-
-  function deleteDaily(id) {
-    setDailies((currentDailies) => {
-      return currentDailies.filter((daily) => daily.id !== id);
-    });
-  }
 
   return (
     <div className="bodywrapper">
