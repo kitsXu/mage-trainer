@@ -6,7 +6,7 @@ export default function Quests(props) {
   const [tasks, setTasks] = useState([]);
   const [dailies, setDailies] = useState([]);
 
-  console.log("Quests -- props.user: ", props.user)
+  console.log("Quests -- props.user: ", props.user);
 
   //FUNCTIONS FOR ONE TIME QUESTS(TASKS)//
   function handleSubmit(e) {
@@ -26,12 +26,14 @@ export default function Quests(props) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
     });
+    return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
 
   function completeTask(id) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
     });
+    return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
   //FUNCTIONS FOR DAILY QUESTS//
@@ -52,7 +54,9 @@ export default function Quests(props) {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
-    completed ? props.setNewDailyQuestsCompletedCount(prev => prev + 1) : null;
+    completed
+      ? props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
+      : null;
   };
 
   const resetAllDailies = (id, completed) => {
@@ -83,7 +87,9 @@ export default function Quests(props) {
         </div>
         <button className="btn">ACCEPT</button>
       </form>
-      <div id="completeQuest">Completed- {props.user.questsCompleted} </div>
+      <div id="completeQuest">
+        Completed- {props.newQuestCompletedCount}{" "}
+      </div>
       <ul className="list">
         {tasks.length === 0 && "All Quests Completed!"}
         {tasks.map((task) => {
@@ -93,7 +99,7 @@ export default function Quests(props) {
               <button
                 onClick={() => {
                   completeTask(task.id);
-                  props.user.questsCompleted++;
+                  props.user.questCompleted++;
                 }}
                 className="btn btn-yay"
               >
@@ -146,7 +152,7 @@ export default function Quests(props) {
               <button
                 onClick={() => {
                   deleteDaily(daily.id);
-                  props.user.abaondonedDailyQuests++;
+                  props.user.abandonedDailyQuests++;
                 }}
                 className="btn btn-danger"
               >

@@ -30,8 +30,8 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [newName, setNewName] = useState("");
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
-  const [newAbandonedDailyQuests, setNewAbandonedDailyQuests] = useState();
-  const [newAbandonedQuests, setNewAbandonedQuests] = useState();
+  const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
+  const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
   const [refreshKey, setRefreshKey] = useState(0);
 
   const viewChange = (newView) => {
@@ -41,9 +41,12 @@ export default function App() {
 
   useEffect(() => {
     if (!user) return;
-
+    
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+    setNewQuestCompletedCount(user.questCompleted);
+    setNewAbandonedQuestCount(user.abandonedQuests);
   }, [user]);
+
 
   //-- TODO:
   //  - [x] check if a user object exists within local storage
@@ -65,10 +68,10 @@ export default function App() {
         id: crypto.randomUUID(),
         name: "",
         level: 0,
-        questsCompleted: 0,
+        questCompleted: 0,
         abandonedQuests: 0,
         dailyQuestsCompleted: 0,
-        abaondonedDailyQuests: 0,
+        abandonedDailyQuests: 0,
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
@@ -92,6 +95,24 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
 
+    //-- const user = localStorage.getItem("user");
+    //-- user.dailyQuestsCompleted = newDailyQuestsCompletedCount
+    //-- user.questsCompleted = newQuestsCompletedCount
+    //-- localStorage.setItem("user", user);
+
+    /*
+     prisma.user.update({
+      where: {
+        id: user.id,
+      },
+
+      data: {
+        dailyQuestsCompleted: newDailyQuestsCompletedCount,
+        questsCompleted: newQuestsCompletedCount,
+      }
+     })
+    */
+
     localStorage.setItem(
       "user",
       JSON.stringify({
@@ -100,17 +121,19 @@ export default function App() {
         //-- ...conditionally update values if they've changed.
         ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
           ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
-          : {},
-        user.abandonedDailyQuests !== newAbandonedDailyQuests
-          ? { abandonedDailyQuests: newAbandonedDailyQuests }
-          : {},
-        user.abandonedQuests !== newAbandonedQuests
-          ? { abandonedQuests: newAbandonedQuests }
-          : {},
-        {}),
+          : {}),
+          ...(user.questCompleted !== newQuestCompletedCount
+            ? { questCompleted: newQuestCompletedCount }
+            : {}
+          ),
+          ...(user.abandonedQuests !== newAbandonedQuestCount
+            ? { abandonedQuests: newAbandonedQuestCount }
+            : {}
+          ),
       })
     );
-  }, [newDailyQuestsCompletedCount],[newAbandonedDailyQuests],[newAbandonedQuests]);
+  }, [newDailyQuestsCompletedCount], [newQuestCompletedCount], [newAbandonedQuestCount]);
+
 
   function handleOnChange(value) {
     setNewName(value);
@@ -160,13 +183,14 @@ export default function App() {
             user={user}
             newDailyQuestsCompletedCount={newDailyQuestsCompletedCount}
             setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
-            newAbandonedDailyQuests={newAbandonedDailyQuests}
-            setNewAbandonedDailyQuests={setNewAbandonedDailyQuests}
-            newAbandonedQuests={newAbandonedQuests}
-            setNewAbandonedQuests={setNewAbandonedQuests}
+            newQuestCompletedCount={newQuestCompletedCount}
+            setNewQuestCompletedCount={setNewQuestCompletedCount}
+            newAbandonedQuestCount={newAbandonedQuestCount}
+            setNewAbandonedQuestCount={setNewAbandonedQuestCount}
           />
         )}
       </div>
     </div>
   );
 }
+
