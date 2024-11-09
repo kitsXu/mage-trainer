@@ -134,8 +134,7 @@ export default function App() {
       })
     );
   }, [newAbandonedDailyQuestCount]);
-
-
+  
 
   function handleOnChange(value) {
     setNewName(value);
