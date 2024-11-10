@@ -3,28 +3,6 @@ import "./style.css";
 import UserProfile from "./UserProfile.jsx";
 import Quests from "./Quests.jsx";
 
-//MISC NOTES*************************************
-// Dragon Quests (or kittens dressed as dragons :D)
-// User completes quests to earn XP
-// After so much XP, user gets to pick a dragon egg (lvl up?)
-// Notification that explains the dragon egg/paths
-// User picks the dragon egg
-// Profile for each of the dragon eggs
-// What dragons they become (name)
-// How much food to feed them (how big they get)
-// What their power is (how much food they get)
-// What their speed is (based on size/age)
-// As user gets xp, dragon ages.  As dragon ages
-// They get bigger- require more food- power goes up
-// These change % wise based on species
-// HP is age + stats
-// Battles
-// Permadeath
-
-//TO-DO*******************************************8
-//Add User Profile button below quest log
-//Add to User Profile- User Name, Log in Info, Quest info (complete/daily/abandoned), User XP, User Level
-
 export default function App() {
   const [view, setView] = useState("quests");
   const [user, setUser] = useState(null);
@@ -32,6 +10,7 @@ export default function App() {
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
+  const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] = useState();
   const [refreshKey, setRefreshKey] = useState(0);
 
   const viewChange = (newView) => {
@@ -41,12 +20,12 @@ export default function App() {
 
   useEffect(() => {
     if (!user) return;
-    
+
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
+    setNewAbandonedDailyQuestCount(user.abandonedQuests);
   }, [user]);
-
 
   //-- TODO:
   //  - [x] check if a user object exists within local storage
@@ -122,18 +101,40 @@ export default function App() {
         ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
           ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
           : {}),
-          ...(user.questCompleted !== newQuestCompletedCount
-            ? { questCompleted: newQuestCompletedCount }
-            : {}
-          ),
-          ...(user.abandonedQuests !== newAbandonedQuestCount
-            ? { abandonedQuests: newAbandonedQuestCount }
-            : {}
-          ),
+        ...(user.questCompleted !== newQuestCompletedCount
+          ? { questCompleted: newQuestCompletedCount }
+          : {}),
       })
     );
-  }, [newDailyQuestsCompletedCount], [newQuestCompletedCount], [newAbandonedQuestCount]);
+  }, [newDailyQuestsCompletedCount][newQuestCompletedCount]);
 
+
+  useEffect(() => {
+    if (!user) return;
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user, 
+        ...(user.abandonedQuests !== newAbandonedQuestCount
+          ? { abandonedQuests: newAbandonedQuestCount }
+          : {})
+      })
+    );
+  }, [newAbandonedQuestCount]);
+
+  useEffect(() => {
+    if (!user) return;
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user, 
+        ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
+          ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
+          : {})
+      })
+    );
+  }, [newAbandonedDailyQuestCount]);
+  
 
   function handleOnChange(value) {
     setNewName(value);
@@ -187,10 +188,11 @@ export default function App() {
             setNewQuestCompletedCount={setNewQuestCompletedCount}
             newAbandonedQuestCount={newAbandonedQuestCount}
             setNewAbandonedQuestCount={setNewAbandonedQuestCount}
+            newAbandonedDailyQuestCount={newAbandonedDailyQuestCount}
+            setNewAbandonedDailyQuestCount={setNewAbandonedDailyQuestCount}
           />
         )}
       </div>
     </div>
   );
 }
-
