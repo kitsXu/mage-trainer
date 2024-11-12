@@ -1,396 +1,398 @@
 * {
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 200;
-    font-style: normal;
-    box-sizing: border-box;
-    background-image: url("images/background15.jpg");
-  }
-  
-  .bodywrapper {
-    background: #e6e3cc;
-  }
-  
-  body {
-    background: #e6e3cc;
-    color: hsl(41, 39%, 23%);
-    max-width: 600px;
-    border: 10px;
-    border-style: double ridge;
-    border-color: hsl(41, 39%, 23%);
-    padding: 1rem;
-    margin: 3rem auto;
-    box-shadow: 10px 10px 8px black;
-  }
-  
-  header {
-    background: #e6e3cc;
-    text-align: center;
-    text-decoration:overline;
-    font-size: 2rem;
-    margin: 10px 0 20px 0;
-  }
-  
-  .divider {
-    background: #e6e3cc;
-    color:#b9b591;
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 4rem;
-  }
-  
-  .questHeader {
-    background: #e6e3cc;
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 4rem 0 2rem 0;
-  }
-  
-  .userHeader {
-    background: #e6e3cc;
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 4rem 0 2rem 0;
-  }
-  
-  .userBtn {
-    background: #e6e3cc;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 0.3rem;
-    margin-bottom: 3rem;
-  }
-  
-  .profileInfo {
-    background: #e6e3cc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 60px;
-    row-gap: 40px;
-  }
-  
-  .profile {
-    background: #e6e3cc;
-  }
-  
-  .menuBtn {
-    display:flex;
-    align-items: center;
-    height: 20px;
-    color: #e6e3cc;
-    background: hsla(61, 35%, 39%, 0.781);
-    font-size: 10px;
-    padding:8px;
-  }
-  
-  #completeQuest {
-    background: #e6e3cc;
-    text-align: right;
-    font-size: 10px;
-    margin: 20px 0px 40px 0px;
-  }
-  
-  #completeDaily {
-    background: #e6e3cc;
-    text-align: right;
-    font-size: 10px;
-    margin: 20px 0px 40px 0px;
-  
-  }
-  
-  .new-quest-form {
-    background: #e6e3cc;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .form-row {
-    background: #e6e3cc;
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-  
-  .daily-form-row {
-    background: #e6e3cc;
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-  
-  form.new-daily-form {
-    background: #e6e3cc;
-  }
-  
-  label {
-    background: #e6e3cc;
-    font-size: 10px;
-    margin-top: 20px;
-  }
-  
-  .btn {
-    background: hsl(51, 23%, 61%);
-    border: 2px ridge hsl(40, 21%, 61%);
-    color: hsl(29, 44%, 22%);
-    padding: 0.25em 0.5em;
-    border-radius: 0.25em;
-    cursor: pointer;
-    font-size: 14px;
-    height: 40px;
-    box-shadow: 2px 1px 2px hsla(54, 85%, 13%, 0.678);
-  }
-  
-  .btn:hover,
-  .btn:focus-visible {
-    background: hsla(64, 84%, 34%, 0.39);
-  }
-  
-  .btn:active {
-    background: #e5e5e5;
-    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
-    outline: none;
-  }
-  
-  .btn.dailyBtn {
-    border: 2px ridge hsl(40, 21%, 61%);
-    color: hsl(29, 44%, 22%);
-    padding: 0.25em 0.5em;
-    width: 100%;
-    margin-top: 0.5rem;
-    border-radius: 0.25em;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .btn.dailyBtn:hover,
-  .btn:focus-visible {
-    background: hsla(64, 84%, 34%, 0.39);
-  }
-  
-  .btn.btn-danger {
-    background: hsla(27, 100%, 40%, 0.192);
-    border: 1px dotted hsl(24, 99%, 36%);
-    color: hsl(24, 99%, 36%);
-    height: 20px;
-    font-size: 8px;
-    margin-top: 15px;
-  }
-  
-  .btn.btn-danger:hover,
-  .btn.btn-danger:focus-visible {
-    background: hsl(0, 100%, 40%, 0.2);
-  }
-  
-  .btn.btn-yay {
-    background: hsla(177, 100%, 40%, 0.192);
-    border: 1px dotted hsl(157, 99%, 36%);
-    color: hsl(182, 98%, 23%);
-    height: 20px;
-    font-size: 8px;
-    margin-top: 15px;
-  }
-  
-  .btn.btn-yay:hover,
-  .btn.btn-yay:focus-visible {
-    background: hsla(209, 100%, 40%, 0.2);
-  }
-  
-  .new-quest-form input {
-    outline: none;
-    border: 4px double hsl(41, 39%, 23%);
-    background: hsla(61, 35%, 39%, 0.781);
-    border-radius: 0.25em;
-    padding: 0.25em 1em;
-    color: hsl(60, 59%, 85%);
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
-    height: 35px;
-  }
-  
-  .new-quest-form input:focus {
-    border: 4px ridge hsl(54, 86%, 31%);
-  }
-  
-  .new-daily-form input {
-    outline: none;
-    border: 4px double hsl(41, 39%, 23%);
-    background: hsla(61, 35%, 39%, 0.781);
-    border-radius: 0.25em;
-    padding: 0.25em 1em;
-    color: hsl(60, 59%, 85%);
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
-    height: 35px;
-  }
-  
-  .new-daily-form input:focus {
-    border: 4px ridge hsl(54, 86%, 31%);
-  }
-  
-  .quest-header {
-    background: #e6e3cc;
-    font-size: 10px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    text-decoration: underline;
-  }
-  
-  .daily-header {
-    background: #e6e3cc;
-    font-size: 10px;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    gap: 10rem;
-    text-align: center;
-    text-decoration: underline;
-  }
-  
-  .foot {
-    display:flex;
-    margin:auto;
-    justify-content: center;
-    align-items: center;
-    background: #e6e3cc;
-    font-size: 10px;
-    text-align: center;
-  }
-  
-  #clearBtn {
-    height: 20px;
-    width: 80%;
-    margin-bottom: 2rem;
-    padding:10px;
-  }
-  
-  .list {
-    background: #e6e3cc;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 4rem;
-    list-style: none;
-    gap: 0.6rem;
-    font-size: 10px;
-  }
-  
-  .list li {
-    background: #e6e3cc;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .list li label {
-    background: #e6e3cc;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .list li:has(input:focus-visible) label {
-    background: #e6e3cc;
-    outline: 1px solid hsl(54, 98%, 21%);
-  }
-  
-  .list li label::before {
-    background: #e6e3cc;
-    content: "";
-    display: block;
-    width: 0.5rem;
-    height: 0.5rem;
-    margin-right: 10px;
-    background: hsl(58, 33%, 56%);
-    border-radius: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /*DAILY QUEST LISTS*/
-  .dailyList {
-    background: #e6e3cc;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5.5rem;
-    list-style: none;
-    gap: 0.6rem;
-    font-size: 10px;
-  }
-  
-  .dailyList li:has(input:checked) label {
-    color: hsl(51, 31%, 69%);
-  }
-  
-  .dailyList li {
-    background: #e6e3cc;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .dailyList li label {
-    background: #e6e3cc;
-    display: flex;
-    gap: 1rem;
-    cursor: pointer;
-    align-items: center;
-  }
-  
-  .dailyList li:has(input:focus-visible) label {
-    outline: 1px solid hsl(54, 98%, 21%);
-  }
-  
-  .dailyList li input {
-    outline: none;
-    width: 0;
-    height: 0;
-    appearance: none;
-    pointer-events: none;
-    position: absolute;
-  }
-  
-  .dailyList li label::before {
-    content: "";
-    display: block;
-    width: 0.9rem;
-    height: 0.9rem;
-    background: hsl(58, 33%, 56%);
-    border-radius: 0.25em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .dailyList li label:hover::before {
-    background: hsl(59, 58%, 68%);
-  }
-  
-  .dailyList li:has(input:checked) label::before {
-    content: "✔";
-    background: hsl(56, 76%, 35%);
-    color: hsl(66, 100%, 90%);
-    font-size: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .dailyList li:has(input:checked) label:hover::before {
-    background: hsl(56, 76%, 23%);
-  }
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-style: normal;
+  box-sizing: border-box;
+  background-image: url("images/background15.jpg");
+}
 
-  .nameInput {
-    background: #e6e3cc;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-bottom: .5rem;
-  }
+.bodywrapper {
+  background: #e6e3cc;
+}
 
-  #nameInputBar {
-    background: hsl(56, 76%, 23%);
-    color:#b9b591;
-    margin-bottom: 2rem;
-  }
+body {
+  background: #e6e3cc;
+  color: hsl(41, 39%, 23%);
+  max-width: 600px;
+  border: 10px;
+  border-style: double ridge;
+  border-color: hsl(41, 39%, 23%);
+  padding: 1rem;
+  margin: 3rem auto;
+  box-shadow: 10px 10px 8px black;
+}
+
+header {
+  background: #e6e3cc;
+  text-align: center;
+  text-decoration: overline;
+  font-size: 2rem;
+  margin: 10px 0 20px 0;
+}
+
+.divider {
+  background: #e6e3cc;
+  color: #b9b591;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+.questHeader {
+  background: #e6e3cc;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 4rem 0 2rem 0;
+}
+
+.userHeader {
+  background: #e6e3cc;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 4rem 0 2rem 0;
+}
+
+.userBtn {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 3rem;
+}
+
+.profileInfo {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 60px;
+  row-gap: 40px;
+}
+
+.profile {
+  background: #e6e3cc;
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  color: #e6e3cc;
+  background: hsla(61, 35%, 39%, 0.781);
+  font-size: 10px;
+  padding: 8px;
+}
+
+#completeQuest {
+  background: #e6e3cc;
+  text-align: right;
+  font-size: 10px;
+  margin: 20px 0px 40px 0px;
+}
+
+#completeDaily {
+  background: #e6e3cc;
+  text-align: right;
+  font-size: 10px;
+  margin: 20px 0px 40px 0px;
+}
+
+.new-quest-form {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-row {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.daily-form-row {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+form.new-daily-form {
+  background: #e6e3cc;
+}
+
+label {
+  background: #e6e3cc;
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  background: hsl(51, 23%, 61%);
+  border: 2px ridge hsl(40, 21%, 61%);
+  color: hsl(29, 44%, 22%);
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px;
+  box-shadow: 2px 1px 2px hsla(54, 85%, 13%, 0.678);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: hsla(64, 84%, 34%, 0.39);
+}
+
+.btn:active {
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
+
+.btn.dailyBtn {
+  border: 2px ridge hsl(40, 21%, 61%);
+  color: hsl(29, 44%, 22%);
+  padding: 0.25em 0.5em;
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 0.25em;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn.dailyBtn:hover,
+.btn:focus-visible {
+  background: hsla(64, 84%, 34%, 0.39);
+}
+
+.btn.btn-danger {
+  background: hsla(27, 100%, 40%, 0.192);
+  border: 1px dotted hsl(24, 99%, 36%);
+  color: hsl(24, 99%, 36%);
+  height: 20px;
+  font-size: 8px;
+  margin-top: 15px;
+}
+
+.btn.btn-danger:hover,
+.btn.btn-danger:focus-visible {
+  background: hsl(0, 100%, 40%, 0.2);
+}
+
+.btn.btn-yay {
+  background: hsla(177, 100%, 40%, 0.192);
+  border: 1px dotted hsl(157, 99%, 36%);
+  color: hsl(182, 98%, 23%);
+  height: 20px;
+  font-size: 8px;
+  margin-top: 15px;
+}
+
+.btn.btn-yay:hover,
+.btn.btn-yay:focus-visible {
+  background: hsla(209, 100%, 40%, 0.2);
+}
+
+.new-quest-form input {
+  outline: none;
+  border: 4px double hsl(41, 39%, 23%);
+  background: hsla(61, 35%, 39%, 0.781);
+  border-radius: 0.25em;
+  padding: 0.25em 1em;
+  color: hsl(60, 59%, 85%);
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  height: 35px;
+}
+
+.new-quest-form input:focus {
+  border: 4px ridge hsl(54, 86%, 31%);
+}
+
+.new-daily-form input {
+  outline: none;
+  border: 4px double hsl(41, 39%, 23%);
+  background: hsla(61, 35%, 39%, 0.781);
+  border-radius: 0.25em;
+  padding: 0.25em 1em;
+  color: hsl(60, 59%, 85%);
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  height: 35px;
+}
+
+.new-daily-form input:focus {
+  border: 4px ridge hsl(54, 86%, 31%);
+}
+
+.quest-header {
+  background: #e6e3cc;
+  font-size: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.daily-header {
+  background: #e6e3cc;
+  font-size: 10px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  gap: 10rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.foot {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  background: #e6e3cc;
+  font-size: 10px;
+  text-align: center;
+}
+
+#clearBtn {
+  height: 1rem;
+  width: 60%;
+  margin-bottom: 2rem;
+  padding: 10px;
+  font-size: .7rem;  
+}
+
+.list {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  list-style: none;
+  gap: 0.6rem;
+  font-size: 10px;
+}
+
+.list li {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.list li label {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.list li:has(input:focus-visible) label {
+  background: #e6e3cc;
+  outline: 1px solid hsl(54, 98%, 21%);
+}
+
+.list li label::before {
+  background: #e6e3cc;
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 10px;
+  background: hsl(58, 33%, 56%);
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*DAILY QUEST LISTS*/
+.dailyList {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5.5rem;
+  list-style: none;
+  gap: 0.6rem;
+  font-size: 10px;
+}
+
+.dailyList li:has(input:checked) label {
+  color: hsl(51, 31%, 69%);
+}
+
+.dailyList li {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dailyList li label {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+  align-items: center;
+}
+
+.dailyList li:has(input:focus-visible) label {
+  outline: 1px solid hsl(54, 98%, 21%);
+}
+
+.dailyList li input {
+  outline: none;
+  width: 0;
+  height: 0;
+  appearance: none;
+  pointer-events: none;
+  position: absolute;
+}
+
+.dailyList li label::before {
+  content: "";
+  display: block;
+  width: 0.9rem;
+  height: 0.9rem;
+  background: hsl(58, 33%, 56%);
+  border-radius: 0.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dailyList li label:hover::before {
+  background: hsl(59, 58%, 68%);
+}
+
+.dailyList li:has(input:checked) label::before {
+  content: "✔";
+  background: hsl(56, 76%, 35%);
+  color: hsl(66, 100%, 90%);
+  font-size: 0.5rem;
+  font-weight: bold;
+}
+
+.dailyList li:has(input:checked) label:hover::before {
+  background: hsl(56, 76%, 23%);
+}
+
+.nameInput {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+}
+
+#nameInputBar {
+  background: hsl(56, 76%, 23%);
+  color: #b9b591;
+  height: 25px;
+}

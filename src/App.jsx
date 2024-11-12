@@ -11,8 +11,16 @@ import UserName from "./UserName.jsx";
   //  - [x] pass new user object into relevent components
   //  - [x] prompt for user to select their own name
   //  - [x] stores quest and abandon counts locally?
+  //  - [ ] daily quests completed counted by 'clear completed'
+  //  - [ ] 'clear completed' cannot be pressed unless all daily quests are checked
+  //  - [ ] 'clear completed' only able to be pressed once every 24 hours?
   //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-  //  - [ ]
+  //  - [ ] instruction page... allow name change?
+  //  - [ ] storing the daily tasks created by user
+  //  - [ ] hook up experience
+  //  - [ ]    
+  //  - [ ]  
+
 
 export default function App() {
   const [view, setView] = useState("quests");
@@ -180,13 +188,16 @@ useEffect(() => {
 
   return (
     <div className="bodywrapper">
-      <header>battle-cat-quests</header>
+      <header>brood leader</header>
       {buttonVisibility && (<div className="userBtn">
         <button className="menuBtn" onClick={() => viewChange("quests")}>
-          Quests
+          Quest Log
         </button>
         <button className="menuBtn" onClick={() => viewChange("user")}>
-          User Profile
+          Quest Records
+        </button>
+        <button className="menuBtn" onClick={() => viewChange("brood")}>
+        The Brood
         </button>
       </div>)}
       <div>
