@@ -4,6 +4,16 @@ import UserProfile from "./UserProfile.jsx";
 import Quests from "./Quests.jsx";
 import UserName from "./UserName.jsx";
 
+  //-- TODO:
+  //  - [x] check if a user object exists within local storage
+  //  - [x] if a user does _not_ exist, create a new one and store it
+  //  - [x] if a user _does_ exist, use the object that is returned for our current user
+  //  - [x] pass new user object into relevent components
+  //  - [x] prompt for user to select their own name
+  //  - [x] stores quest and abandon counts locally?
+  //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
+  //  - [ ]
+
 export default function App() {
   const [view, setView] = useState("quests");
   const [user, setUser] = useState(null);
@@ -52,16 +62,6 @@ useEffect(() => {
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
   }, [user]);
 
-  //-- TODO:
-  //  - [x] check if a user object exists within local storage
-  //  - [x] if a user does _not_ exist, create a new one and store it
-  //  - [x] if a user _does_ exist, use the object that is returned for our current user
-  //  - [x] pass new user object into relevent components
-  //  - [x] prompt for user to select their own name
-  //  - [x] stores quest and abandon counts locally?
-  //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-  //  - [ ]
-
   useEffect(() => {
     const userExists = localStorage.getItem("user");
 
@@ -87,8 +87,7 @@ useEffect(() => {
   }, [refreshKey]);
 
   useEffect(() => {
-    if (!user) return;
-    if (!user.name) {
+    if (!user) {
         setView("userName") 
         return;
     }
