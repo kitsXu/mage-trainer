@@ -2,21 +2,46 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import UserProfile from "./UserProfile.jsx";
 import Quests from "./Quests.jsx";
+import UserName from "./UserName.jsx";
 
 export default function App() {
   const [view, setView] = useState("quests");
   const [user, setUser] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
+
   const [newName, setNewName] = useState("");
+  const [nameFormVisibility, setNameFormVisibility] = useState(true);
+
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] = useState();
-  const [refreshKey, setRefreshKey] = useState(0);
+
+  const [buttonVisibility, setButtonVisibility] = useState(true);
+
 
   const viewChange = (newView) => {
     setView(newView);
     console.log("viewchange");
   };
+
+  useEffect(() => {
+    if (view === "userName")
+      setNameFormVisibility(true);
+    if (view === "user")
+      setNameFormVisibility(false);
+    if (view === "quests")
+      setNameFormVisibility(false);
+  },[view]);
+    
+    
+useEffect(() => {
+  if (view === "userName")
+    setButtonVisibility(false);
+  if (view === "user")
+    setButtonVisibility(true);
+},[view]);
+
 
   useEffect(() => {
     if (!user) return;
@@ -32,11 +57,9 @@ export default function App() {
   //  - [x] if a user does _not_ exist, create a new one and store it
   //  - [x] if a user _does_ exist, use the object that is returned for our current user
   //  - [x] pass new user object into relevent components
-
-  //  - [ ] prompt for user to select their own name
-  //  - [ ] stores quest and abandon counts locally?
+  //  - [x] prompt for user to select their own name
+  //  - [x] stores quest and abandon counts locally?
   //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-  //  - [ ] timer for completing daily quests
   //  - [ ]
 
   useEffect(() => {
@@ -56,14 +79,22 @@ export default function App() {
       localStorage.setItem("user", JSON.stringify(newUserObject));
 
       setUser(localStorage.getItem("user"));
-
-      return;
+      return viewChange("userName");
     }
-
     setUser(JSON.parse(localStorage.getItem("user")));
 
     return;
   }, [refreshKey]);
+
+  useEffect(() => {
+    if (!user) return;
+    if (!user.name) {
+        setView("userName") 
+        return;
+    }
+
+    setView("quests") ;
+}, [user]);
 
   /*
     if (myVar && (myVar2.type === "shoot" || myVar2.type === "shoot location")) {
@@ -142,42 +173,24 @@ export default function App() {
 
   const handleSubmit = (value) => {
     localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
-
+    viewChange("user");
     setRefreshKey((prev) => prev + 1);
-
     console.log("User information updated!");
   };
 
   return (
     <div className="bodywrapper">
       <header>battle-cat-quests</header>
-      <form
-        className="nameInput"
-        onSubmit={(e) => {
-          //-- prevent default behavior of the event. in this case, stop the form submission
-          //-- from refreshing the page.
-          e.preventDefault();
-
-          handleSubmit(newName);
-        }}
-      >
-        <input
-          value={newName}
-          type="text"
-          onChange={(event) => handleOnChange(event.target.value)}
-          id="nameInputBar"
-        />
-        <button className="nameInput">submit</button>
-      </form>
-      <div className="userBtn">
+      {buttonVisibility && (<div className="userBtn">
         <button className="menuBtn" onClick={() => viewChange("quests")}>
           Quests
         </button>
         <button className="menuBtn" onClick={() => viewChange("user")}>
           User Profile
         </button>
-      </div>
+      </div>)}
       <div>
+        {view ==="userName" && !!user && <UserName user={user} />}
         {view === "user" && !!user && <UserProfile user={user} />}
         {view === "quests" && !!user && (
           <Quests
@@ -193,6 +206,25 @@ export default function App() {
           />
         )}
       </div>
+      {nameFormVisibility && (<form
+        className="nameInput"
+        onSubmit={(e) => {
+          //-- prevent default behavior of the event. in this case, stop the form submission
+          //-- from refreshing the page.
+          e.preventDefault();
+
+          handleSubmit(newName);
+        }}
+      >
+        <label htmlFor="nameInputBar">NAME</label>
+        <input
+          value={newName}
+          type="text"
+          onChange={(event) => handleOnChange(event.target.value)}
+          id="nameInputBar"
+        />
+        <button className="nameInput">submit</button>
+      </form>)}
     </div>
   );
 }
