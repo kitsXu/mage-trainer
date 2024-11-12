@@ -87,7 +87,8 @@ useEffect(() => {
   }, [refreshKey]);
 
   useEffect(() => {
-    if (!user) {
+    if (!user) return;
+    if (!user.name) {
         setView("userName") 
         return;
     }
