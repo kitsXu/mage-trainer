@@ -4,17 +4,19 @@
 
 .welcome {
     margin-top: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     background: #e6e3cc;
     text-align: center;
+    font-size: 20px;
 }
 
 .intro {
     background: #e6e3cc;
     margin-bottom: 2rem;
     text-align: center;
-    line-height: 1.2rem;
-    letter-spacing: 1px;
+    line-height: 1.5rem;
+    letter-spacing: .2px;
+
 
 }
 
