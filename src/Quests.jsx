@@ -54,9 +54,6 @@ export default function Quests(props) {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
-    completed
-      ? props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
-      : null;
   };
 
   function deleteDaily(id) {
@@ -72,11 +69,12 @@ export default function Quests(props) {
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
     setDailies(resetDailies);
+    return props.setNewDailyQuestsCompletedCount((prev) => prev + 1);
   };
 
   return (
     <div className="bodywrapper">
-      <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
+      <h1 className="questHeader">{props.user.name}'s Quests</h1>
       <form onSubmit={handleSubmit} className="new-quest-form">
         <div className="form-row">
           <label htmlFor="quest">Add A New One Time Quest Here!</label>
