@@ -7,18 +7,16 @@ import UserName from "./UserName.jsx";
 //-- TODO:
 //  - [x] check if a user object exists within local storage
 //  - [x] if a user does _not_ exist, create a new one and store it
-//  - [x] if a user _does_ exist, use the object that is returned for our current user
+//  - [x] if a user _does_ exist, use the object that is returned for our current unpmser
 //  - [x] pass new user object into relevent components
 //  - [x] prompt for user to select their own name
 //  - [x] stores quest and abandon counts locally?
-
-//  - [ ] daily quests completed counted by 'clear completed'
-//  - [ ] 'clear completed' cannot be pressed unless all daily quests are checked
+//  - [ ] daily quests completed counted by 'clear completed', still xp per daily
+//  - [ ] 'clear completed' cannot be pressed unless all daily quests are checked?
 //  - [ ] 'clear completed' only able to be pressed once every 24 hours?
 //  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-//  - [ ] instruction page... allow name change?
 //  - [ ] storing the daily tasks created by user
-//  - [ ] hook up experience
+//  - [ ] set experience up to work
 //  - [ ]
 //  - [ ]
 
@@ -36,8 +34,13 @@ export default function App() {
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
+  const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
-  const [buttonVisibility, setButtonVisibility] = useState(true);
+  // const [buttonVisibility, setButtonVisibility] = useState(true);
+
+  useEffect(() => {
+  }, [])
+
 
   const viewChange = (newView) => {
     setView(newView);
@@ -50,10 +53,11 @@ export default function App() {
     if (view === "quests") setNameFormVisibility(false);
   }, [view]);
 
-  useEffect(() => {
-    if (view === "userName") setButtonVisibility(false);
-    if (view === "user") setButtonVisibility(true);
-  }, [view]);
+  // useEffect(() => {
+  //   if (view === "userName") setButtonVisibility(false);
+  //   if (view === "user") setButtonVisibility(true);
+  // }, [view]);
+
 
   useEffect(() => {
     if (!user) return;
@@ -62,8 +66,11 @@ export default function App() {
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
+    setCurrentDailyQuests(user.currentDailyQuests);
   }, [user]);
 
+
+  //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
     const userExists = localStorage.getItem("user");
 
@@ -76,6 +83,7 @@ export default function App() {
         abandonedQuests: 0,
         dailyQuestsCompleted: 0,
         abandonedDailyQuests: 0,
+        currentDailyQuests: [],
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
@@ -104,6 +112,7 @@ export default function App() {
     }
   */
 
+  //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
     if (!user) return;
 
@@ -137,35 +146,44 @@ export default function App() {
         ...(user.questCompleted !== newQuestCompletedCount
           ? { questCompleted: newQuestCompletedCount }
           : {}),
-      })
-    );
-  }, [newDailyQuestsCompletedCount][newQuestCompletedCount]);
-
-  useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user,
         ...(user.abandonedQuests !== newAbandonedQuestCount
           ? { abandonedQuests: newAbandonedQuestCount }
           : {}),
-      })
-    );
-  }, [newAbandonedQuestCount]);
 
-  useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user,
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
       })
     );
-  }, [newAbandonedDailyQuestCount]);
+
+  }, [newDailyQuestsCompletedCount, newQuestCompletedCount, newAbandonedQuestCount, newAbandonedDailyQuestCount]);
+
+  // useEffect(() => {
+  //   if (!user) return;
+  //   localStorage.setItem(
+  //     "user",
+  //     JSON.stringify({
+  //       ...user,
+  //       ...(user.abandonedQuests !== newAbandonedQuestCount
+  //         ? { abandonedQuests: newAbandonedQuestCount }
+  //         : {}),
+  //     })
+  //   );
+  // }, [newAbandonedQuestCount]);
+
+  // useEffect(() => {
+  //   if (!user) return;
+  //   localStorage.setItem(
+  //     "user",
+  //     JSON.stringify({
+  //       ...user,
+  //       ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
+  //         ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
+  //         : {}),
+  //     })
+  //   );
+  // }, [newAbandonedDailyQuestCount]);
+
 
   function handleOnChange(value) {
     setNewName(value);
@@ -181,7 +199,7 @@ export default function App() {
   return (
     <div className="bodywrapper">
       <header>brood leader</header>
-      {buttonVisibility && (
+      {view !== "landing" && (
         <div className="userBtn">
           <button className="menuBtn" onClick={() => viewChange("quests")}>
             Quest Log
@@ -208,6 +226,7 @@ export default function App() {
             setNewAbandonedQuestCount={setNewAbandonedQuestCount}
             newAbandonedDailyQuestCount={newAbandonedDailyQuestCount}
             setNewAbandonedDailyQuestCount={setNewAbandonedDailyQuestCount}
+            currentDailyQuests={user.currentDailyQuests}
           />
         )}
       </div>
@@ -235,3 +254,4 @@ export default function App() {
     </div>
   );
 }
+
