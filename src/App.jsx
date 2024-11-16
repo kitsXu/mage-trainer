@@ -11,7 +11,6 @@ import UserName from "./UserName.jsx";
 //  - [x] pass new user object into relevent components
 //  - [x] prompt for user to select their own name
 //  - [x] stores quest and abandon counts locally?
-
 //  - [ ] daily quests completed counted by 'clear completed', still xp per daily
 //  - [ ] 'clear completed' cannot be pressed unless all daily quests are checked?
 //  - [ ] 'clear completed' only able to be pressed once every 24 hours?
@@ -37,9 +36,7 @@ export default function App() {
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
-  useEffect(() => {
-
-  }, [])
+  useEffect(() => {}, []);
 
   const viewChange = (newView) => {
     setView(newView);
@@ -52,7 +49,6 @@ export default function App() {
     if (view === "quests") setNameFormVisibility(false);
   }, [view]);
 
-
   useEffect(() => {
     if (!user) return;
 
@@ -62,7 +58,6 @@ export default function App() {
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
   }, [user]);
-
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
@@ -120,11 +115,15 @@ export default function App() {
           : {}),
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
-          : {})
+          : {}),
       })
     );
-  }, [newDailyQuestsCompletedCount, newQuestCompletedCount, newAbandonedQuestCount, newAbandonedDailyQuestCount]);
-
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
+  ]);
 
   function handleOnChange(value) {
     setNewName(value);
@@ -195,4 +194,3 @@ export default function App() {
     </div>
   );
 }
-
