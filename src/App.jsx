@@ -36,7 +36,12 @@ export default function App() {
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
+
   useEffect(() => {}, []);
+
+  // const [buttonVisibility, setButtonVisibility] = useState(true);
+
+
 
   const viewChange = (newView) => {
     setView(newView);
@@ -48,6 +53,8 @@ export default function App() {
     if (view === "user") setNameFormVisibility(false);
     if (view === "quests") setNameFormVisibility(false);
   }, [view]);
+
+
 
   useEffect(() => {
     if (!user) return;
@@ -113,6 +120,7 @@ export default function App() {
         ...(user.abandonedQuests !== newAbandonedQuestCount
           ? { abandonedQuests: newAbandonedQuestCount }
           : {}),
+
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
@@ -124,6 +132,11 @@ export default function App() {
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
   ]);
+
+
+  }, [newDailyQuestsCompletedCount, newQuestCompletedCount, newAbandonedQuestCount, newAbandonedDailyQuestCount]);
+
+
 
   function handleOnChange(value) {
     setNewName(value);

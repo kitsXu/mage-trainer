@@ -58,9 +58,6 @@ export default function Quests(props) {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
-    completed
-      ? props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
-      : null;
   };
 
   function deleteDaily(id) {
@@ -76,6 +73,7 @@ export default function Quests(props) {
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
     setDailies(resetDailies);
+    return props.setNewDailyQuestsCompletedCount((prev) => prev + 1);
   };
 
   return (
