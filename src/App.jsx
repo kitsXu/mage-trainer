@@ -36,10 +36,11 @@ export default function App() {
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
+
+  useEffect(() => {}, []);
+
   // const [buttonVisibility, setButtonVisibility] = useState(true);
 
-  useEffect(() => {
-  }, [])
 
 
   const viewChange = (newView) => {
@@ -53,10 +54,6 @@ export default function App() {
     if (view === "quests") setNameFormVisibility(false);
   }, [view]);
 
-  // useEffect(() => {
-  //   if (view === "userName") setButtonVisibility(false);
-  //   if (view === "user") setButtonVisibility(true);
-  // }, [view]);
 
 
   useEffect(() => {
@@ -68,7 +65,6 @@ export default function App() {
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
   }, [user]);
-
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
@@ -106,34 +102,9 @@ export default function App() {
     setView("quests");
   }, [user]);
 
-  /*
-    if (myVar && (myVar2.type === "shoot" || myVar2.type === "shoot location")) {
-      ...
-    }
-  */
-
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
     if (!user) return;
-
-    //-- const user = localStorage.getItem("user");
-    //-- user.dailyQuestsCompleted = newDailyQuestsCompletedCount
-    //-- user.questsCompleted = newQuestsCompletedCount
-    //-- localStorage.setItem("user", user);
-
-    /*
-     prisma.user.update({
-      where: {
-        id: user.id,
-      },
-
-      data: {
-        dailyQuestsCompleted: newDailyQuestsCompletedCount,
-        questsCompleted: newQuestsCompletedCount,
-      }
-     })
-    */
-
     localStorage.setItem(
       "user",
       JSON.stringify({
@@ -155,34 +126,16 @@ export default function App() {
           : {}),
       })
     );
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
+  ]);
+
 
   }, [newDailyQuestsCompletedCount, newQuestCompletedCount, newAbandonedQuestCount, newAbandonedDailyQuestCount]);
 
-  // useEffect(() => {
-  //   if (!user) return;
-  //   localStorage.setItem(
-  //     "user",
-  //     JSON.stringify({
-  //       ...user,
-  //       ...(user.abandonedQuests !== newAbandonedQuestCount
-  //         ? { abandonedQuests: newAbandonedQuestCount }
-  //         : {}),
-  //     })
-  //   );
-  // }, [newAbandonedQuestCount]);
-
-  // useEffect(() => {
-  //   if (!user) return;
-  //   localStorage.setItem(
-  //     "user",
-  //     JSON.stringify({
-  //       ...user,
-  //       ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
-  //         ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
-  //         : {}),
-  //     })
-  //   );
-  // }, [newAbandonedDailyQuestCount]);
 
 
   function handleOnChange(value) {
@@ -254,4 +207,3 @@ export default function App() {
     </div>
   );
 }
-
