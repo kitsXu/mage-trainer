@@ -79,7 +79,7 @@ export default function Quests(props) {
       <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
       <form onSubmit={handleSubmit} className="new-quest-form">
         <div className="form-row">
-          <label htmlFor="quest">Add A New One Time Quest Here!</label>
+          <label htmlFor="quest">Add a New Quest</label>
           <input
             value={newQuest}
             onChange={(e) => setNewQuest(e.target.value)}
@@ -93,7 +93,7 @@ export default function Quests(props) {
         Completed- {props.newQuestCompletedCount}{" "}
       </div>
       <ul className="list">
-        {tasks.length === 0 && "All Quests Completed!"}
+        {tasks.length === 0 && "No quests available!  Better find some work!"}
         {tasks.map((task) => {
           return (
             <li key={task.id}>
@@ -123,7 +123,7 @@ export default function Quests(props) {
       <div className="divider">__________</div>
       <form onSubmit={handleDailySubmit} className="new-daily-form">
         <div className="daily-form-row">
-          <label htmlFor="daily">Add A New Daily Quest Here!</label>
+          <label htmlFor="daily">Add a quest here to start building your daily routine!</label>
           <input
             value={newDaily}
             onChange={(e) => setNewDaily(e.target.value)}
@@ -137,7 +137,7 @@ export default function Quests(props) {
         Completed Daily- {props.newDailyQuestsCompletedCount}{" "}
       </div>
       <ul className="dailyList">
-        {dailies.length === 0 && "No Set Daily Quests."}
+        {dailies.length === 0 && "No set routine, add some quests!"}
         {dailies.map((daily) => {
           console.log("daily id: ", daily.id);
           return (
