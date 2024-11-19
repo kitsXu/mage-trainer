@@ -133,6 +133,8 @@ export default function App() {
   }
 
   const handleSubmit = (value) => {
+    console.log("user: ", user);
+    
     localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
     viewChange("user");
     setRefreshKey((prev) => prev + 1);
