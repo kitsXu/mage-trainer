@@ -127,10 +127,10 @@ export default function App() {
   }
 
   const handleSubmit = (value) => {
-    console.log("user: ", user);
+    console.log("handleSubmit -- user: ", user);
 
     const updatedUserObject = {
-      ...user,
+      // ...user,
       name: newName
     }
 
