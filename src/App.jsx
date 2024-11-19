@@ -39,15 +39,6 @@ export default function App() {
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
   useEffect(() => {
-
-  }, [])
-
-  const viewChange = (newView) => {
-    setView(newView);
-    console.log("viewchange");
-  };
-
-  useEffect(() => {
     if (view === "userName") setNameFormVisibility(true);
     if (view === "user") setNameFormVisibility(false);
     if (view === "quests") setNameFormVisibility(false);
@@ -84,8 +75,11 @@ export default function App() {
       localStorage.setItem("user", JSON.stringify(newUserObject));
 
       setUser(localStorage.getItem("user"));
-      return viewChange("userName");
+      setView("userName");
+
+      return;
     }
+
     setUser(JSON.parse(localStorage.getItem("user")));
 
     return;
@@ -134,10 +128,18 @@ export default function App() {
 
   const handleSubmit = (value) => {
     console.log("user: ", user);
-    
-    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
-    viewChange("user");
+
+    const updatedUserObject = {
+      ...user,
+      name: newName
+    }
+
+    localStorage.setItem("user", JSON.stringify(updatedUserObject));
+
+    setView("user");
+
     setRefreshKey((prev) => prev + 1);
+
     console.log("User information updated!");
   };
 
@@ -146,13 +148,13 @@ export default function App() {
       <header>brood leader</header>
       {view !== "userName" && (
         <div className="userBtn">
-          <button className="menuBtn" onClick={() => viewChange("quests")}>
+          <button className="menuBtn" onClick={() => setView("quests")}>
             Quest Log
           </button>
-          <button className="menuBtn" onClick={() => viewChange("user")}>
+          <button className="menuBtn" onClick={() => setView("user")}>
             Quest Records
           </button>
-          <button className="menuBtn" onClick={() => viewChange("brood")}>
+          <button className="menuBtn" onClick={() => setView("brood")}>
             Brood Records
           </button>
         </div>
