@@ -123,7 +123,7 @@ export default function Quests(props) {
       <div className="divider">__________</div>
       <form onSubmit={handleDailySubmit} className="new-daily-form">
         <div className="daily-form-row">
-          <label htmlFor="daily">Add a quest here to start building your daily routine!</label>
+          <label htmlFor="daily">Start building your daily routine!</label>
           <input
             value={newDaily}
             onChange={(e) => setNewDaily(e.target.value)}
