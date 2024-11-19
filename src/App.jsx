@@ -126,15 +126,17 @@ export default function App() {
     setNewName(value);
   }
 
-  const handleSubmit = (value) => {
+  const handleSubmit = () => {
     if (!user) return; //-- TODO: handle this better.
     if (typeof user !== "object") {
+      console.log("handleSubmit -- typeof user was not an object!")
+      
       setUser(JSON.parse(user));
     }
 
-    console.log("handleSubmit -- user: ", user);
+    console.log("handleSubmit -- user: ", JSON.parse(user));
 
-    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
+    localStorage.setItem("user", JSON.stringify({ ...(JSON.parse(user)), name: newName }));
 
     setView("user");
 
