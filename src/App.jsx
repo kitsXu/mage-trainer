@@ -126,13 +126,19 @@ export default function App() {
     setNewName(value);
   }
 
-  const handleSubmit = () => {
-    if (!user) return; //-- TODO: handle this better.
+  useEffect(() => {
     if (typeof user !== "object") {
       setUser(JSON.parse(user));
     }
+  }, [user])
 
-    localStorage.setItem("user", JSON.stringify({ ...(JSON.parse(user)), name: newName }));
+  const handleSubmit = () => {
+    if (!user) return; //-- TODO: handle this better.
+    // if (typeof user !== "object") {
+    //   setUser(JSON.parse(user));
+    // }
+
+    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
 
     setView("user");
     setRefreshKey((prev) => prev + 1);
