@@ -54,9 +54,9 @@ export default function Quests(props) {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
-    completed
-      ? props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
-      : null;
+    // completed
+    //   ? props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
+    //   : null;
   };
 
   function deleteDaily(id) {
@@ -64,13 +64,21 @@ export default function Quests(props) {
       return currentDailies.filter((daily) => daily.id !== id);
     });
     return props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
+  }
 
+  function countDailies(id, completed) {
+    setDailies(
+      d.id === id
+        ? { ...d, completed: completed }
+        : props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
+    );
   }
 
   const resetAllDailies = (id, completed) => {
     const resetDailies = dailies.map((d) =>
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
+    countDailies();
     setDailies(resetDailies);
   };
 
@@ -89,9 +97,7 @@ export default function Quests(props) {
         </div>
         <button className="btn">ACCEPT</button>
       </form>
-      <div id="completeQuest">
-        Completed- {props.newQuestCompletedCount}{" "}
-      </div>
+      <div id="completeQuest">Completed- {props.newQuestCompletedCount} </div>
       <ul className="list">
         {tasks.length === 0 && "No quests available!  Better find some work!"}
         {tasks.map((task) => {
