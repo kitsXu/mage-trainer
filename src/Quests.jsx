@@ -66,21 +66,20 @@ export default function Quests(props) {
     return props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
   }
 
-  function countDailies(id, completed) {
-    setDailies(
-      d.id === id
-        ? { ...d, completed: completed }
-        : props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
-    );
-  }
+  // function countDailies(id, completed) {
+  //   setDailies(
+  //     d.id === id
+  //       ? { ...d, completed: completed }
+  //       : props.setNewDailyQuestsCompletedCount((prev) => prev + 1)
+  //   );
+  // }
 
   const resetAllDailies = (id, completed) => {
     const resetDailies = dailies.map((d) =>
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
-    countDailies();
     setDailies(resetDailies);
-  };
+    };
 
   return (
     <div className="bodywrapper">
