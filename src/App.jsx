@@ -127,14 +127,14 @@ export default function App() {
   }
 
   const handleSubmit = (value) => {
-    console.log("handleSubmit -- user: ", user);
-
-    const updatedUserObject = {
-      // ...user,
-      name: newName
+    if (!user) return; //-- TODO: handle this better.
+    if (typeof user !== "object") {
+      setUser(JSON.parse(user));
     }
 
-    localStorage.setItem("user", JSON.stringify(updatedUserObject));
+    console.log("handleSubmit -- user: ", user);
+
+    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
 
     setView("user");
 
