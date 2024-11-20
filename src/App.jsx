@@ -28,7 +28,7 @@ export default function App() {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const [newName, setNewName] = useState("");
-  const [nameFormVisibility, setNameFormVisibility] = useState(true);
+  const [nameFormVisibility, setNameFormVisibility] = useState(false);
 
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
     useState();
@@ -38,12 +38,11 @@ export default function App() {
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
+
+
   useEffect(() => {
     if (view === "userName") setNameFormVisibility(true);
-    if (view === "user") setNameFormVisibility(false);
-    if (view === "quests") setNameFormVisibility(false);
   }, [view]);
-
 
   useEffect(() => {
     if (!user) return;
@@ -54,7 +53,6 @@ export default function App() {
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
   }, [user]);
-
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
@@ -85,20 +83,9 @@ export default function App() {
     return;
   }, [refreshKey]);
 
-  useEffect(() => {
-    if (!user) return;
-    if (!user.name) {
-      setView("userName");
-      return;
-    }
-
-    setView("quests");
-  }, [user]);
-
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
     if (!user) return;
-
     localStorage.setItem(
       "user",
       JSON.stringify({
@@ -116,35 +103,45 @@ export default function App() {
           : {}),
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
-          : {})
+          : {}),
       })
     );
-  }, [newDailyQuestsCompletedCount, newQuestCompletedCount, newAbandonedQuestCount, newAbandonedDailyQuestCount]);
-
-
-  function handleOnChange(value) {
-    setNewName(value);
-  }
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
+  ]);
 
   useEffect(() => {
     if (typeof user !== "object") {
       setUser(JSON.parse(user));
     }
-  }, [user])
+  }, [user]);
 
+  //-- set view to landing page if user name hasn't been set.
+  useEffect(() => {
+    if (!user) return;
+    if (!user.name) {
+      setView("userName");
+      return;
+    }
+
+    setView("quests");
+  }, [user]);
+
+  //-- submit for name form on landing page.
   const handleSubmit = () => {
     if (!user) return; //-- TODO: handle this better.
-    // if (typeof user !== "object") {
-    //   setUser(JSON.parse(user));
-    // }
-
     localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
-
     setView("user");
     setRefreshKey((prev) => prev + 1);
-
     console.log("User information updated!");
   };
+
+  function handleOnChange(value) {
+    setNewName(value);
+  }
 
   return (
     <div className="bodywrapper">
@@ -180,7 +177,6 @@ export default function App() {
           />
         )}
         {view === "brood" && !!user && <BroodRecord user={user} />}
-
       </div>
       {nameFormVisibility && (
         <form
