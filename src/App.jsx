@@ -12,13 +12,12 @@ import BroodRecord from "./BroodRecord.jsx";
 //  - [x] pass new user object into relevent components
 //  - [x] prompt for user to select their own name
 //  - [x] stores quest and abandon counts locally?
-
-//  - [ ] daily quests completed counted by 'clear completed', still xp per daily
-//  - [ ] 'clear completed' cannot be pressed unless all daily quests are checked?
-//  - [ ] 'clear completed' only able to be pressed once every 24 hours?
-//  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-//  - [ ] storing the daily tasks created by user
+//  - [x] daily quests completed counted by 'clear completed', still xp per daily
+//  - [x] 'clear completed' cannot be pressed unless all daily quests are checked?
+//  - [x] change empty quest board to appropriate message, if quests have been completed or not
+//  - [x] storing the daily tasks created by user
 //  - [ ] set experience up to work
+//  - [ ] 'clear completed' only able to be pressed once every 24 hours?
 //  - [ ]
 //  - [ ]
 
@@ -36,7 +35,6 @@ export default function App() {
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
-
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
@@ -67,6 +65,7 @@ export default function App() {
     return;
   }, [refreshKey]);
 
+  //-- set view to landing page if user.name doesn't exist, name form visibility set to just the landing page
   useEffect(() => {
     if (!user) return;
     if (!user.name) {
@@ -77,15 +76,33 @@ export default function App() {
     setView("quests");
   }, [user]);
 
+  //-- user sets their name
+  const handleSubmit = () => {
+    if (!user) return; //-- TODO: handle this better.
+    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
+    setView("user");
+    setRefreshKey((prev) => prev + 1);
+    console.log("User information updated!");
+  };
+
+  function handleOnChange(value) {
+    setNewName(value);
+  }
+
+//-- If user type is returned as string, parse
+  useEffect(() => {
+    if (typeof user !== "object") {
+      setUser(JSON.parse(user));
+    }
+  }, [user]);
+
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
     if (!user) return;
-
     localStorage.setItem(
       "user",
       JSON.stringify({
         ...user, //-- spread over our existing user object so we retain any unchanged values...
-
         //-- ...conditionally update values if they've changed.
         ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
           ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
@@ -98,32 +115,17 @@ export default function App() {
           : {}),
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
-          : {})
+          : {}),
       })
     );
-  }, [newDailyQuestsCompletedCount, newQuestCompletedCount, newAbandonedQuestCount, newAbandonedDailyQuestCount]);
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
+  ]);
 
 
-  function handleOnChange(value) {
-    setNewName(value);
-  }
-
-  useEffect(() => {
-    if (typeof user !== "object") {
-      setUser(JSON.parse(user));
-    }
-  }, [user])
-
-  const handleSubmit = () => {
-    if (!user) return; //-- TODO: handle this better.
-
-    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
-
-    setView("user");
-    setRefreshKey((prev) => prev + 1);
-
-    console.log("User information updated!");
-  };
 
   return (
     <div className="bodywrapper">
@@ -159,7 +161,6 @@ export default function App() {
           />
         )}
         {view === "brood" && !!user && <BroodRecord user={user} />}
-
       </div>
       {nameFormVisibility && (
         <form
