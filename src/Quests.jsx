@@ -100,7 +100,7 @@ export default function Quests(props) {
         </div>
         <button className="btn">ACCEPT</button>
       </form>
-      <div id="completeQuest">Completed- {props.newQuestCompletedCount} </div>
+      <div id="completeQuest">Completed- {props.user.questCompleted} </div>
       <ul className="list">
         {tasks.length === 0 && "No quests available!  Better find some work!"}
         {tasks.map((task) => {

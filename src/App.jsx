@@ -28,7 +28,7 @@ export default function App() {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const [newName, setNewName] = useState("");
-  const [nameFormVisibility, setNameFormVisibility] = useState(true);
+  const [nameFormVisibility, setNameFormVisibility] = useState(false);
 
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
     useState();
@@ -36,24 +36,6 @@ export default function App() {
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
-  const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
-
-  useEffect(() => {
-    if (view === "userName") setNameFormVisibility(true);
-    if (view === "user") setNameFormVisibility(false);
-    if (view === "quests") setNameFormVisibility(false);
-  }, [view]);
-
-
-  useEffect(() => {
-    if (!user) return;
-
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
-    setNewAbandonedDailyQuestCount(user.abandonedQuests);
-    setCurrentDailyQuests(user.currentDailyQuests);
-  }, [user]);
 
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
@@ -89,9 +71,9 @@ export default function App() {
     if (!user) return;
     if (!user.name) {
       setView("userName");
+      setNameFormVisibility(true);
       return;
     }
-
     setView("quests");
   }, [user]);
 
@@ -134,9 +116,6 @@ export default function App() {
 
   const handleSubmit = () => {
     if (!user) return; //-- TODO: handle this better.
-    // if (typeof user !== "object") {
-    //   setUser(JSON.parse(user));
-    // }
 
     localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
 
