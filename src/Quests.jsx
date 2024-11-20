@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [newDaily, setNewDaily] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [dailies, setDailies] = useState([]);
+  const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
 
   console.log("Quests -- props.user: ", props.user);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify({ ...props.user, currentDailyQuests: dailies }));
+  }, [dailies]);
 
   //FUNCTIONS FOR ONE TIME QUESTS(TASKS)//
   function handleSubmit(e) {
