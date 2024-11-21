@@ -17,10 +17,9 @@ import BroodRecord from "./BroodRecord.jsx";
 //  - [x] 'clear completed' cannot be pressed unless all daily quests are checked?
 //  - [x] change empty quest board to appropriate message, if quests have been completed or not
 //  - [x] storing the daily tasks created by user
-//  - [ ] 'clear completed' only able to be pressed once every 24 hours?
-//  - [ ] set experience up to work
+//  - [x] set experience up to work
 //  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
-//  - [ ]
+//  - [ ] 'clear completed' only able to be pressed once every 24 hours?
 
 export default function App() {
   const [view, setView] = useState("quests");
@@ -30,28 +29,23 @@ export default function App() {
   const [newName, setNewName] = useState("");
   const [nameFormVisibility, setNameFormVisibility] = useState(false);
 
-  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
-    useState();
+  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
-  const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
-    useState();
+  const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] = useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
 
   useEffect(() => {
-    if (!user) return;
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
-    setNewAbandonedDailyQuestCount(user.abandonedQuests);
-    setCurrentDailyQuests(user.currentDailyQuests);
+    if (typeof user !== "object") {
+      setUser(JSON.parse(user));
+    }
   }, [user]);
+
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
     const userExists = localStorage.getItem("user");
-
     if (!userExists) {
       const newUserObject = {
         id: crypto.randomUUID(),
@@ -64,16 +58,24 @@ export default function App() {
         abandonedDailyQuests: 0,
         currentDailyQuests: [],
       };
-
       localStorage.setItem("user", JSON.stringify(newUserObject));
       setUser(newUserObject);
       setView("userName");
-
       return;
     }
-
     setUser(JSON.parse(userExists));
   }, [refreshKey]);
+
+//-- if user exists, attach questing states for updating local storage to user object values
+  useEffect(() => {
+    if (!user) return;
+    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+    setNewQuestCompletedCount(user.questCompleted);
+    setNewAbandonedQuestCount(user.abandonedQuests);
+    setNewAbandonedDailyQuestCount(user.abandonedQuests);
+    setCurrentDailyQuests(user.currentDailyQuests);
+  }, [user]);
+
 
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
@@ -110,13 +112,8 @@ export default function App() {
     user,
   ]);
 
-  useEffect(() => {
-    if (typeof user !== "object") {
-      setUser(JSON.parse(user));
-    }
-  }, [user]);
 
-  //-- submit for name form on landing page.
+  //-- submit name form on landing page.
   const handleSubmit = () => {
     if (!user) return; //-- TODO: handle this better.
     localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
@@ -125,7 +122,7 @@ export default function App() {
     console.log("User information updated!");
   };
 
-  function handleOnChange(value) {
+  const handleOnChange = (value) => {
     setNewName(value);
   }
 
@@ -135,6 +132,7 @@ export default function App() {
       : setNameFormVisibility(false);
   }, [view]);
 
+
   //-- set view to landing page if user name hasn't been set.
   useEffect(() => {
     if (!user) return;
@@ -142,9 +140,9 @@ export default function App() {
       setView("userName");
       return;
     }
-
     setView("quests");
   }, [user]);
+
 
   return (
     <div className="bodywrapper">
