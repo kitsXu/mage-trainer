@@ -38,20 +38,15 @@ export default function App() {
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
-  const [experience, setExperience] = useState();
-
 
   useEffect(() => {
     if (!user) return;
-
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
   }, [user]);
-
-
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
@@ -61,7 +56,7 @@ export default function App() {
       const newUserObject = {
         id: crypto.randomUUID(),
         name: "",
-        level: 0,
+        level: 1,
         experience: 0,
         questCompleted: 0,
         abandonedQuests: 0,
@@ -71,81 +66,54 @@ export default function App() {
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
-
-      setUser(localStorage.getItem("user"));
+      setUser(newUserObject);
       setView("userName");
 
       return;
     }
 
-    setUser(JSON.parse(localStorage.getItem("user")));
-
-    return;
+    setUser(JSON.parse(userExists));
   }, [refreshKey]);
-
-
-  //--attempts to figure out adding experience...
-
-  // const setExp = {user.questCompleted + user.dailyQuestsCompleted};
-
-  useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user,
-        experience: (user.questCompleted + user.dailyQuestsCompleted) - (user.abandonedDailyQuests + user.abandonedQuests)
-      })
-    )
-  }, [user])
-
-
 
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
     if (!user) return;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user, //-- spread over our existing user object so we retain any unchanged values...
-
-        //-- ...conditionally update values if they've changed.
-        ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
-          ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
-          : {}),
-        ...(user.questCompleted !== newQuestCompletedCount
-          ? { questCompleted: newQuestCompletedCount }
-          : {}),
-        ...(user.abandonedQuests !== newAbandonedQuestCount
-          ? { abandonedQuests: newAbandonedQuestCount }
-          : {}),
-        ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
-          ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
-          : {}),
-      })
-    );
+    const updatedUser = {
+      ...user,
+      experience:
+        user.questCompleted +
+        user.dailyQuestsCompleted -
+        (user.abandonedDailyQuests + user.abandonedQuests),
+      dailyQuestsCompleted:
+        user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
+          ? newDailyQuestsCompletedCount
+          : user.dailyQuestsCompleted,
+      questCompleted:
+        user.questCompleted !== newQuestCompletedCount
+          ? newQuestCompletedCount
+          : user.questCompleted,
+      abandonedQuests:
+        user.abandonedQuests !== newAbandonedQuestCount
+          ? newAbandonedQuestCount
+          : user.abandonedQuests,
+      abandonedDailyQuests:
+        user.abandonedDailyQuests !== newAbandonedDailyQuestCount
+          ? newAbandonedDailyQuestCount
+          : user.abandonedDailyQuests,
+    };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
+    user,
   ]);
 
   useEffect(() => {
     if (typeof user !== "object") {
       setUser(JSON.parse(user));
     }
-  }, [user]);
-
-  //-- set view to landing page if user name hasn't been set.
-  useEffect(() => {
-    if (!user) return;
-    if (!user.name) {
-      setView("userName");
-      return;
-    }
-
-    setView("quests");
   }, [user]);
 
   //-- submit for name form on landing page.
@@ -162,8 +130,21 @@ export default function App() {
   }
 
   useEffect(() => {
-    if (view === "userName") setNameFormVisibility(true);
+    view === "userName"
+      ? setNameFormVisibility(true)
+      : setNameFormVisibility(false);
   }, [view]);
+
+  //-- set view to landing page if user name hasn't been set.
+  useEffect(() => {
+    if (!user) return;
+    if (!user.name) {
+      setView("userName");
+      return;
+    }
+
+    setView("quests");
+  }, [user]);
 
   return (
     <div className="bodywrapper">
