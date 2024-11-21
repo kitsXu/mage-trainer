@@ -13,13 +13,13 @@ import BroodRecord from "./BroodRecord.jsx";
 //  - [x] prompt for user to select their own name
 //  - [x] stores quest and abandon counts locally?
 
-//  - [ ] daily quests completed counted by 'clear completed', still xp per daily
-//  - [ ] 'clear completed' cannot be pressed unless all daily quests are checked?
+//  - [x] daily quests completed counted by 'clear completed', still xp per daily
+//  - [x] 'clear completed' cannot be pressed unless all daily quests are checked?
+//  - [x] change empty quest board to appropriate message, if quests have been completed or not
+//  - [x] storing the daily tasks created by user
 //  - [ ] 'clear completed' only able to be pressed once every 24 hours?
-//  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-//  - [ ] storing the daily tasks created by user
 //  - [ ] set experience up to work
-//  - [ ]
+//  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
 //  - [ ]
 
 export default function App() {
@@ -38,11 +38,8 @@ export default function App() {
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
+  const [experience, setExperience] = useState();
 
-
-  useEffect(() => {
-    if (view === "userName") setNameFormVisibility(true);
-  }, [view]);
 
   useEffect(() => {
     if (!user) return;
@@ -54,6 +51,8 @@ export default function App() {
     setCurrentDailyQuests(user.currentDailyQuests);
   }, [user]);
 
+
+
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
     const userExists = localStorage.getItem("user");
@@ -63,6 +62,7 @@ export default function App() {
         id: crypto.randomUUID(),
         name: "",
         level: 0,
+        experience: 0,
         questCompleted: 0,
         abandonedQuests: 0,
         dailyQuestsCompleted: 0,
@@ -82,6 +82,24 @@ export default function App() {
 
     return;
   }, [refreshKey]);
+
+
+  //--attempts to figure out adding experience...
+
+  // const setExp = {user.questCompleted + user.dailyQuestsCompleted};
+
+  useEffect(() => {
+    if (!user) return;
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user,
+        experience: (user.questCompleted + user.dailyQuestsCompleted) - (user.abandonedDailyQuests + user.abandonedQuests)
+      })
+    )
+  }, [user])
+
+
 
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
@@ -143,19 +161,23 @@ export default function App() {
     setNewName(value);
   }
 
+  useEffect(() => {
+    if (view === "userName") setNameFormVisibility(true);
+  }, [view]);
+
   return (
     <div className="bodywrapper">
       <header>brood leader</header>
       {view !== "userName" && (
         <div className="userBtn">
           <button className="menuBtn" onClick={() => setView("quests")}>
-            Quest Log
+            Quests
           </button>
           <button className="menuBtn" onClick={() => setView("user")}>
-            Quest Records
+            Records
           </button>
           <button className="menuBtn" onClick={() => setView("brood")}>
-            Brood Records
+            Brood
           </button>
         </div>
       )}
