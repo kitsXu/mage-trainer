@@ -13,14 +13,13 @@ import BroodRecord from "./BroodRecord.jsx";
 //  - [x] prompt for user to select their own name
 //  - [x] stores quest and abandon counts locally?
 
-//  - [ ] daily quests completed counted by 'clear completed', still xp per daily
-//  - [ ] 'clear completed' cannot be pressed unless all daily quests are checked?
+//  - [x] daily quests completed counted by 'clear completed', still xp per daily
+//  - [x] 'clear completed' cannot be pressed unless all daily quests are checked?
+//  - [x] change empty quest board to appropriate message, if quests have been completed or not
+//  - [x] storing the daily tasks created by user
+//  - [x] set experience up to work
+//  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
 //  - [ ] 'clear completed' only able to be pressed once every 24 hours?
-//  - [ ] change empty quest board to appropriate message, if quests have been completed or not
-//  - [ ] storing the daily tasks created by user
-//  - [ ] set experience up to work
-//  - [ ]
-//  - [ ]
 
 export default function App() {
   const [view, setView] = useState("quests");
@@ -30,88 +29,12 @@ export default function App() {
   const [newName, setNewName] = useState("");
   const [nameFormVisibility, setNameFormVisibility] = useState(false);
 
-  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
-    useState();
+  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
-  const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
-    useState();
+  const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] = useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
 
-
-
-  useEffect(() => {
-    if (view === "userName") setNameFormVisibility(true);
-  }, [view]);
-
-  useEffect(() => {
-    if (!user) return;
-
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
-    setNewAbandonedDailyQuestCount(user.abandonedQuests);
-    setCurrentDailyQuests(user.currentDailyQuests);
-  }, [user]);
-
-  //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
-  useEffect(() => {
-    const userExists = localStorage.getItem("user");
-
-    if (!userExists) {
-      const newUserObject = {
-        id: crypto.randomUUID(),
-        name: "",
-        level: 0,
-        questCompleted: 0,
-        abandonedQuests: 0,
-        dailyQuestsCompleted: 0,
-        abandonedDailyQuests: 0,
-        currentDailyQuests: [],
-      };
-
-      localStorage.setItem("user", JSON.stringify(newUserObject));
-
-      setUser(localStorage.getItem("user"));
-      setView("userName");
-
-      return;
-    }
-
-    setUser(JSON.parse(localStorage.getItem("user")));
-
-    return;
-  }, [refreshKey]);
-
-  //-- update user object in local storage whenever we change a local value.
-  useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user, //-- spread over our existing user object so we retain any unchanged values...
-
-        //-- ...conditionally update values if they've changed.
-        ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
-          ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
-          : {}),
-        ...(user.questCompleted !== newQuestCompletedCount
-          ? { questCompleted: newQuestCompletedCount }
-          : {}),
-        ...(user.abandonedQuests !== newAbandonedQuestCount
-          ? { abandonedQuests: newAbandonedQuestCount }
-          : {}),
-        ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
-          ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
-          : {}),
-      })
-    );
-  }, [
-    newDailyQuestsCompletedCount,
-    newQuestCompletedCount,
-    newAbandonedQuestCount,
-    newAbandonedDailyQuestCount,
-  ]);
 
   useEffect(() => {
     if (typeof user !== "object") {
@@ -119,18 +42,78 @@ export default function App() {
     }
   }, [user]);
 
-  //-- set view to landing page if user name hasn't been set.
+
+  //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
-    if (!user) return;
-    if (!user.name) {
+    const userExists = localStorage.getItem("user");
+    if (!userExists) {
+      const newUserObject = {
+        id: crypto.randomUUID(),
+        name: "",
+        level: 1,
+        experience: 0,
+        questCompleted: 0,
+        abandonedQuests: 0,
+        dailyQuestsCompleted: 0,
+        abandonedDailyQuests: 0,
+        currentDailyQuests: [],
+      };
+      localStorage.setItem("user", JSON.stringify(newUserObject));
+      setUser(newUserObject);
       setView("userName");
       return;
     }
+    setUser(JSON.parse(userExists));
+  }, [refreshKey]);
 
-    setView("quests");
+//-- if user exists, attach questing states for updating local storage to user object values
+  useEffect(() => {
+    if (!user) return;
+    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+    setNewQuestCompletedCount(user.questCompleted);
+    setNewAbandonedQuestCount(user.abandonedQuests);
+    setNewAbandonedDailyQuestCount(user.abandonedQuests);
+    setCurrentDailyQuests(user.currentDailyQuests);
   }, [user]);
 
-  //-- submit for name form on landing page.
+
+  //-- update user object in local storage whenever we change a local value.
+  useEffect(() => {
+    if (!user) return;
+    const updatedUser = {
+      ...user,
+      experience:
+        user.questCompleted +
+        user.dailyQuestsCompleted -
+        (user.abandonedDailyQuests + user.abandonedQuests),
+      dailyQuestsCompleted:
+        user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
+          ? newDailyQuestsCompletedCount
+          : user.dailyQuestsCompleted,
+      questCompleted:
+        user.questCompleted !== newQuestCompletedCount
+          ? newQuestCompletedCount
+          : user.questCompleted,
+      abandonedQuests:
+        user.abandonedQuests !== newAbandonedQuestCount
+          ? newAbandonedQuestCount
+          : user.abandonedQuests,
+      abandonedDailyQuests:
+        user.abandonedDailyQuests !== newAbandonedDailyQuestCount
+          ? newAbandonedDailyQuestCount
+          : user.abandonedDailyQuests,
+    };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
+    user,
+  ]);
+
+
+  //-- submit name form on landing page.
   const handleSubmit = () => {
     if (!user) return; //-- TODO: handle this better.
     localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
@@ -139,9 +122,27 @@ export default function App() {
     console.log("User information updated!");
   };
 
-  function handleOnChange(value) {
+  const handleOnChange = (value) => {
     setNewName(value);
   }
+
+  useEffect(() => {
+    view === "userName"
+      ? setNameFormVisibility(true)
+      : setNameFormVisibility(false);
+  }, [view]);
+
+
+  //-- set view to landing page if user name hasn't been set.
+  useEffect(() => {
+    if (!user) return;
+    if (!user.name) {
+      setView("userName");
+      return;
+    }
+    setView("quests");
+  }, [user]);
+
 
   return (
     <div className="bodywrapper">
@@ -149,13 +150,13 @@ export default function App() {
       {view !== "userName" && (
         <div className="userBtn">
           <button className="menuBtn" onClick={() => setView("quests")}>
-            Quest Log
+            Quests
           </button>
           <button className="menuBtn" onClick={() => setView("user")}>
-            Quest Records
+            Records
           </button>
           <button className="menuBtn" onClick={() => setView("brood")}>
-            Brood Records
+            Brood
           </button>
         </div>
       )}
