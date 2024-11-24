@@ -25,10 +25,8 @@ export default function App() {
   const [view, setView] = useState("quests");
   const [user, setUser] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
-
   const [newName, setNewName] = useState("");
   const [nameFormVisibility, setNameFormVisibility] = useState(false);
-
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
@@ -82,6 +80,10 @@ export default function App() {
     if (!user) return;
     const updatedUser = {
       ...user,
+      level:
+        user.experience !== +25
+        ? user.level + 1
+        : user.level,
       experience:
         user.questCompleted +
         user.dailyQuestsCompleted -
