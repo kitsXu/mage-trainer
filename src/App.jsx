@@ -34,6 +34,7 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+  // const [newLevel, setNewLevel] = useState(1);
 
   useEffect(() => {
     if (typeof user !== "object") {
@@ -64,6 +65,8 @@ export default function App() {
     setUser(JSON.parse(userExists));
   }, [refreshKey]);
 
+
+
   //-- if user exists, attach questing states for updating local storage to user object values
   useEffect(() => {
     if (!user) return;
@@ -72,7 +75,14 @@ export default function App() {
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
+    // setNewLevel(user.level);
   }, [user]);
+
+
+    //check local storage exp...
+    //if increased by X 
+    // setNewlevel prev + 1
+  
 
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
@@ -80,9 +90,7 @@ export default function App() {
     const updatedUser = {
       ...user,
       level: 
-        user.experience//...
-        ? user.level + 1 
-        : user.level,
+        user.experience,//...
       experience:
         user.questCompleted +
         user.dailyQuestsCompleted -
