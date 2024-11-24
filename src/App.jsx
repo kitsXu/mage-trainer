@@ -27,19 +27,20 @@ export default function App() {
   const [refreshKey, setRefreshKey] = useState(0);
   const [newName, setNewName] = useState("");
   const [nameFormVisibility, setNameFormVisibility] = useState(false);
-  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] = useState();
+  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
+    useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
-  const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] = useState();
+  const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
+    useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
-
+  // const [newLevel, setNewLevel] = useState(1);
 
   useEffect(() => {
     if (typeof user !== "object") {
       setUser(JSON.parse(user));
     }
   }, [user]);
-
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
@@ -64,7 +65,9 @@ export default function App() {
     setUser(JSON.parse(userExists));
   }, [refreshKey]);
 
-//-- if user exists, attach questing states for updating local storage to user object values
+
+
+  //-- if user exists, attach questing states for updating local storage to user object values
   useEffect(() => {
     if (!user) return;
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
@@ -72,18 +75,22 @@ export default function App() {
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
+    // setNewLevel(user.level);
   }, [user]);
 
+
+    //check local storage exp...
+    //if increased by X 
+    // setNewlevel prev + 1
+  
 
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
     if (!user) return;
     const updatedUser = {
       ...user,
-      level:
-        user.experience !== +25
-        ? user.level + 1
-        : user.level,
+      level: 
+        user.experience,//...
       experience:
         user.questCompleted +
         user.dailyQuestsCompleted -
@@ -114,7 +121,6 @@ export default function App() {
     user,
   ]);
 
-
   //-- submit name form on landing page.
   const handleSubmit = () => {
     if (!user) return; //-- TODO: handle this better.
@@ -126,14 +132,13 @@ export default function App() {
 
   const handleOnChange = (value) => {
     setNewName(value);
-  }
+  };
 
   useEffect(() => {
     view === "userName"
       ? setNameFormVisibility(true)
       : setNameFormVisibility(false);
   }, [view]);
-
 
   //-- set view to landing page if user name hasn't been set.
   useEffect(() => {
@@ -144,7 +149,6 @@ export default function App() {
     }
     setView("quests");
   }, [user]);
-
 
   return (
     <div className="bodywrapper">
