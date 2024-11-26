@@ -90,7 +90,9 @@ export default function App() {
     const updatedUser = {
       ...user,
       level: 
-        user.experience,//...
+        user.experience % 25 === 0 && user.experience !== 0
+        ? user.level = + 1
+        : user.level,
       experience:
         user.questCompleted +
         user.dailyQuestsCompleted -
