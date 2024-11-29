@@ -34,7 +34,7 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
-  // const [newLevel, setNewLevel] = useState(1);
+  const [updateEXP, setUpdateEXP] = useState();
 
   useEffect(() => {
     if (typeof user !== "object") {
@@ -75,14 +75,14 @@ export default function App() {
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
-    // setNewLevel(user.level);
+    setUpdateEXP(user.experience);
   }, [user]);
 
 
-    //check local storage exp...
-    //if increased by X 
-    // setNewlevel prev + 1
   
+  //every time experience increments by 10
+  //increase level by 1    
+
 
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
@@ -90,13 +90,17 @@ export default function App() {
     const updatedUser = {
       ...user,
       level: 
-        user.experience % 25 === 0 && user.experience !== 0
-        ? user.level = + 1
+
+      //works, doesn't do what I want
+        user.experience % 10 === 0 && user.experience !== 0 
+        ? user.level = user.level + 1
         : user.level,
+
       experience:
         user.questCompleted +
         user.dailyQuestsCompleted -
         (user.abandonedDailyQuests + user.abandonedQuests),
+        //..
       dailyQuestsCompleted:
         user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
           ? newDailyQuestsCompletedCount
