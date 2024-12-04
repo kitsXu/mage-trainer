@@ -92,7 +92,12 @@ export default function App() {
       level: 
 
       //works, doesn't do what I want
-        user.experience % 10 === 0 && user.experience !== 0 
+        user.experience  >= 10 && user.level === 1 
+        ? user.level = user.level + 1
+        : user.level,
+
+        level:
+        user.experience  >= 20 && user.level === 2 
         ? user.level = user.level + 1
         : user.level,
 
