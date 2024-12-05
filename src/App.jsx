@@ -5,6 +5,7 @@ import Quests from "./Quests.jsx";
 import UserName from "./UserName.jsx";
 import BroodRecord from "./BroodRecord.jsx";
 
+
 //-- TODO:
 //  - [x] check if a user object exists within local storage
 //  - [x] if a user does _not_ exist, create a new one and store it
@@ -19,7 +20,7 @@ import BroodRecord from "./BroodRecord.jsx";
 //  - [x] storing the daily tasks created by user
 //  - [x] set experience up to work
 //  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
-//  - [ ] 'clear completed' only able to be pressed once every 24 hours?
+
 
 export default function App() {
   const [view, setView] = useState("quests");
@@ -34,6 +35,8 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+  const [nextLevlExperience, setNextLevelExperience] = useState();
+
 
   useEffect(() => {
     if (typeof user !== "object") {
@@ -78,30 +81,31 @@ export default function App() {
   }, [user]);
 
 
-  
-  
+
   // const chkLevelUp = (user) => {
   //   if (user.experience > user.nextLevelExperience) {
   //     user.level++;
-  //     user.nextLevelExperience = user.nextLevelExperience * 1.25;
+  //     user.nextLevelExperience = setNextLevelExperience * 1.25;
   //   }
   // } 
 
+  
+  // setNextLevelExperience(user.nextLevelExperience * 1.25)
 
 
   //-- update user object in local storage whenever we change a local value.
   useEffect(() => {
     if (!user) return;
-    // user.nextLevelExperience = user.nextLevelExperience * 1.50
 
     const updatedUser = {
       ...user,
 
       level: 
-      user.experience > user.experience * 1.50
-      ? user.level++
+      // (chkLevelUp()),
+      user.experience > user.nextLevelExperience
+      // [user.nextLevelExperience = user.nextLevelExperience * 1.25]
+      ? user.level + 1
       : user.level,
-      
       experience:
         user.questCompleted +
         user.dailyQuestsCompleted -
@@ -132,6 +136,7 @@ export default function App() {
     newAbandonedDailyQuestCount,
     user,
   ]);
+
 
   //-- submit name form on landing page.
   const handleSubmit = () => {
