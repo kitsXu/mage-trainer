@@ -116,49 +116,54 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
 
-    console.log(`\nuseEffect -- [newQuestCompletedCount] triggered!`);
-    console.log("useEffect -- newQuestCompletedCount: ", newQuestCompletedCount)
-
     const updatedUser = {
       ...user,
-
       level:
-        // (chkLevelUp()),
         user.experience > user.nextLevelExperience
-          ? // [user.nextLevelExperience = user.nextLevelExperience * 1.25]
-            user.level + 1
+          ? user.level + 1
           : user.level,
 
       experience: user.questCompleted + user.dailyQuestsCompleted,
-      // -(user.abandonedDailyQuests + user.abandonedQuests)
-      //..
-
-      // ...(dailyQuestsCompleted !== newDailyQuestsCompletedCount ? { dailyQuestsCompleted: newDailyQuestsCompletedCount } : {}),
-
-      dailyQuestsCompleted:
-        user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
-          ? newDailyQuestsCompletedCount
-          : user.dailyQuestsCompleted,
-
-      questCompleted:
-        user.questCompleted !== newQuestCompletedCount
-          ? newQuestCompletedCount
-          : user.questCompleted,
-
-      abandonedQuests:
-        user.abandonedQuests !== newAbandonedQuestCount
-          ? newAbandonedQuestCount
-          : user.abandonedQuests,
-
-      abandonedDailyQuests:
-        user.abandonedDailyQuests !== newAbandonedDailyQuestCount
-          ? newAbandonedDailyQuestCount
-          : user.abandonedDailyQuests,
     };
 
     localStorage.setItem("user", JSON.stringify(updatedUser));
 
-    setUser(updatedUser)
+    setUser(updatedUser);
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
+  ]);
+
+  useEffect(() => {
+    if (!user) return;
+    console.log(`\nuseEffect -- [newQuestCompletedCount] triggered!`);
+    console.log(
+      "useEffect -- newQuestCompletedCount: ",
+      newQuestCompletedCount
+    );
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user, //-- spread over our existing user object so we retain any unchanged values...
+
+        //-- ...conditionally update values if they've changed.
+        ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
+          ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
+          : {}),
+        ...(user.questCompleted !== newQuestCompletedCount
+          ? { questCompleted: newQuestCompletedCount }
+          : {}),
+        ...(user.abandonedQuests !== newAbandonedQuestCount
+          ? { abandonedQuests: newAbandonedQuestCount }
+          : {}),
+        ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
+          ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
+          : {}),
+      })
+    );
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
