@@ -4,6 +4,7 @@ import UserProfile from "./UserProfile.jsx";
 import Quests from "./Quests.jsx";
 import UserName from "./UserName.jsx";
 import BroodRecord from "./BroodRecord.jsx";
+import { chkLevelUp } from "./funcs/chkLevelUp.js";
 
 //-- TODO:
 //  - [x] check if a user object exists within local storage
@@ -19,7 +20,6 @@ import BroodRecord from "./BroodRecord.jsx";
 //  - [x] storing the daily tasks created by user
 //  - [x] set experience up to work
 //  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
-//  - [ ] 'clear completed' only able to be pressed once every 24 hours?
 
 export default function App() {
   const [view, setView] = useState("quests");
@@ -34,6 +34,11 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+  // const [nextLevelExperience, setNextLevelExperience] = useState();
+
+  useEffect(() => {
+    console.log("useEffect -- refreshKey: ", refreshKey);
+  }, [refreshKey]);
 
   useEffect(() => {
     if (typeof user !== "object") {
@@ -44,6 +49,7 @@ export default function App() {
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
     const userExists = localStorage.getItem("user");
+
     if (!userExists) {
       const newUserObject = {
         id: crypto.randomUUID(),
@@ -57,80 +63,112 @@ export default function App() {
         abandonedDailyQuests: 0,
         currentDailyQuests: [],
       };
+
       localStorage.setItem("user", JSON.stringify(newUserObject));
+
       setUser(newUserObject);
       setView("userName");
+
       return;
     }
+
     setUser(JSON.parse(userExists));
-  }, [refreshKey]);
 
+    const user = JSON.parse(userExists);
 
-
-  //-- if user exists, attach questing states for updating local storage to user object values
-  useEffect(() => {
-    if (!user) return;
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
+  }, [refreshKey]);
+
+  useEffect(() => {
+    console.log(
+      "useEffect -- newQuestCompletedCount: ",
+      newQuestCompletedCount
+    );
+  }, [newQuestCompletedCount]);
+
+  // //-- if user exists, attach questing states for updating local storage to user object values
+  // useEffect(() => {
+  //   if (!user) return;
+
+  //   console.log(`\nuseEffect -- [user] (all state setter functions) triggered!`)
+  //   console.log("useEffect -- newQuestCompletedCount: ", newQuestCompletedCount)
+
+  //   setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+  //   setNewQuestCompletedCount(user.questCompleted);
+  //   setNewAbandonedQuestCount(user.abandonedQuests);
+  //   setNewAbandonedDailyQuestCount(user.abandonedQuests);
+  //   setCurrentDailyQuests(user.currentDailyQuests);
+
+  //   //-- TODO: hook up experience and level to local state so we can update front-end.
+  // }, [user]);
+
+  useEffect(() => {
+    if (!user || !user.experience) return;
+
+    chkLevelUp(user);
   }, [user]);
 
-
-  
-  
-  // const chkLevelUp = (user) => {
-  //   if (user.experience > user.nextLevelExperience) {
-  //     user.level++;
-  //     user.nextLevelExperience = user.nextLevelExperience * 1.25;
-  //   }
-  // } 
-
-
-
-  //-- update user object in local storage whenever we change a local value.
+  //-- create new updated user object to update both local storage user record and local user object state.
   useEffect(() => {
     if (!user) return;
-    // user.nextLevelExperience = user.nextLevelExperience * 1.50
 
     const updatedUser = {
       ...user,
+      level:
+        user.experience > user.nextLevelExperience
+          ? user.level + 1
+          : user.level,
 
-      level: 
-      user.experience > user.experience * 1.50
-      ? user.level++
-      : user.level,
-      
-      experience:
-        user.questCompleted +
-        user.dailyQuestsCompleted -
-        (user.abandonedDailyQuests + user.abandonedQuests),
-        //..
-      dailyQuestsCompleted:
-        user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
-          ? newDailyQuestsCompletedCount
-          : user.dailyQuestsCompleted,
-      questCompleted:
-        user.questCompleted !== newQuestCompletedCount
-          ? newQuestCompletedCount
-          : user.questCompleted,
-      abandonedQuests:
-        user.abandonedQuests !== newAbandonedQuestCount
-          ? newAbandonedQuestCount
-          : user.abandonedQuests,
-      abandonedDailyQuests:
-        user.abandonedDailyQuests !== newAbandonedDailyQuestCount
-          ? newAbandonedDailyQuestCount
-          : user.abandonedDailyQuests,
+      experience: user.questCompleted + user.dailyQuestsCompleted,
     };
+
     localStorage.setItem("user", JSON.stringify(updatedUser));
+
+    setUser(updatedUser);
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
-    user,
+  ]);
+
+  useEffect(() => {
+    if (!user) return;
+    console.log(`\nuseEffect -- [newQuestCompletedCount] triggered!`);
+    console.log(
+      "useEffect -- newQuestCompletedCount: ",
+      newQuestCompletedCount
+    );
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user, //-- spread over our existing user object so we retain any unchanged values...
+
+        //-- ...conditionally update values if they've changed.
+        ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
+          ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
+          : {}),
+        ...(user.questCompleted !== newQuestCompletedCount
+          ? { questCompleted: newQuestCompletedCount }
+          : {}),
+        ...(user.abandonedQuests !== newAbandonedQuestCount
+          ? { abandonedQuests: newAbandonedQuestCount }
+          : {}),
+        ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
+          ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
+          : {}),
+      })
+    );
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
   ]);
 
   //-- submit name form on landing page.
@@ -193,6 +231,7 @@ export default function App() {
             newAbandonedDailyQuestCount={newAbandonedDailyQuestCount}
             setNewAbandonedDailyQuestCount={setNewAbandonedDailyQuestCount}
             currentDailyQuests={user.currentDailyQuests}
+            setRefreshKey={setRefreshKey}
           />
         )}
         {view === "brood" && !!user && <BroodRecord user={user} />}

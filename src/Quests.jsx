@@ -30,6 +30,7 @@ export default function Quests(props) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
     });
+
     return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
