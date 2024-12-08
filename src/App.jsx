@@ -20,6 +20,14 @@ import { chkLevelUp } from "./funcs/chkLevelUp.js";
 //  - [x] storing the daily tasks created by user
 //  - [x] set experience up to work
 //  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
+//  - [ ]
+//  - [ ] 
+//  - [ ] 
+//  - [ ] 
+//  - [ ] 
+//  - [ ] 
+//  - [ ] 
+
 
 export default function App() {
   const [view, setView] = useState("quests");

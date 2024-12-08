@@ -9,20 +9,21 @@ export default function Quests(props) {
   console.log("Quests -- props.user: ", props.user);
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify({ ...props.user, currentDailyQuests: dailies }));
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, currentDailyQuests: dailies })
+    );
   }, [dailies]);
 
   //FUNCTIONS FOR ONE TIME QUESTS(TASKS)//
   function handleSubmit(e) {
     e.preventDefault();
-
     setTasks((currentTasks) => {
       return [
         ...currentTasks,
         { id: crypto.randomUUID(), title: newQuest, completed: false },
       ];
     });
-
     setNewQuest("");
   }
 
@@ -30,7 +31,6 @@ export default function Quests(props) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
     });
-
     return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
@@ -51,7 +51,6 @@ export default function Quests(props) {
         { id: crypto.randomUUID(), title: newDaily, completed: false },
       ];
     });
-
     setNewDaily("");
   }
 
@@ -65,21 +64,31 @@ export default function Quests(props) {
     setDailies((currentDailies) => {
       return currentDailies.filter((daily) => daily.id !== id);
     });
+    localStorage.removeItem(
+      "user",
+      JSON.stringify({
+        ...props.user,
+        dailyQuestsCompleted: (props.user.dailyQuestsCompleted +=
+          completedDailies.length),
+      })
+    )
     return props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
   }
 
   const resetAllDailies = (id, completed) => {
     const completedDailies = dailies.filter((d) => d.completed);
-
-    localStorage.setItem("user", JSON.stringify({
-      ...props.user,
-      dailyQuestsCompleted: props.user.dailyQuestsCompleted += completedDailies.length,
-    }));
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...props.user,
+        dailyQuestsCompleted: (props.user.dailyQuestsCompleted +=
+          completedDailies.length),
+      })
+    );
 
     const resetDailies = dailies.map((d) =>
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
-
     setDailies(resetDailies);
   };
 
@@ -141,7 +150,8 @@ export default function Quests(props) {
         <button className="btn dailyBtn">ACCEPT</button>
       </form>
       <div id="completeDaily">
-        Completed Daily- {props.user.dailyQuestsCompleted}{""}
+        Completed Daily- {props.user.dailyQuestsCompleted}
+        {""}
       </div>
       <ul className="dailyList">
         {dailies.length === 0 && "No set routine, add some quests!"}
