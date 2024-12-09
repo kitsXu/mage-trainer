@@ -1,0 +1,15 @@
+/*--RECORDS PAGE--*/
+.profileInfo {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 60px;
+  padding-bottom: 40px;
+  padding-left: 60px;
+  row-gap: 40px;
+}
+
+.profile {
+  background: #e6e3cc;
+}

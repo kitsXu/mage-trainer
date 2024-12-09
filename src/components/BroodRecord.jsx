@@ -5,6 +5,7 @@ export default function BroodRecord(props) {
     return (
       <div className="profile">
         <h1 className="userHeader">{props.user.name}'s Brood</h1>
+        <div className="divider">__________</div>
       </div>
     );
   }
