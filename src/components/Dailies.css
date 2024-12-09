@@ -1,0 +1,161 @@
+/*DAILY QUEST LISTS*/
+.daily-info {
+  background: #e6e3cc;
+  margin:auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 10px;
+  line-height: 25px;
+}
+
+.dailyList {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-top: 4rem;
+  padding-bottom: 5.5rem;
+  list-style: none;
+  gap: 0.6rem;
+  font-size: 10px;
+  text-align: center;
+}
+
+.dailyList li:has(input:checked) label {
+  color: hsl(51, 31%, 69%);
+}
+
+.dailyList li {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+}
+
+.dailyList li label {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.dailyList li:has(input:focus-visible) label {
+  outline: 1px solid hsl(54, 98%, 21%);
+}
+
+.dailyList li input {
+  outline: none;
+  width: 0;
+  height: 0;
+  appearance: none;
+  pointer-events: none;
+  position: absolute;
+}
+
+.dailyList li label::before {
+  content: "";
+  display: block;
+  width: 0.9rem;
+  height: 0.9rem;
+  background: hsl(58, 33%, 56%);
+  border-radius: 0.25em;
+}
+
+.dailyList li label:hover::before {
+  background: hsl(59, 58%, 68%);
+}
+
+.dailyList li:has(input:checked) label::before {
+  content: "x";
+  background: hsl(56, 76%, 35%);
+  color: hsl(66, 100%, 90%);
+  font-size: 0.5rem;
+  font-weight: bold;
+}
+
+.dailyList li:has(input:checked) label:hover::before {
+  background: hsl(56, 76%, 23%);
+}
+
+.nameInput {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+}
+
+#nameInputBar {
+  background: hsl(56, 76%, 23%);
+  color: #b9b591;
+  height: 25px;
+}
+
+#completeDaily {
+  background: #e6e3cc;
+  text-align: right;
+  font-size: 10px;
+  padding: 20px 0px 40px 0px;
+}
+
+.daily-form-row {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+form.new-daily-form {
+  background: #e6e3cc;
+}
+
+.btn.dailyBtn {
+  border: 2px ridge hsl(40, 21%, 61%);
+  color: hsl(29, 44%, 22%);
+  padding: 0.25em 0.5em;
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 0.25em;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn.dailyBtn:hover,
+.btn:focus-visible {
+  background: hsla(64, 84%, 34%, 0.39);
+}
+
+.daily-header {
+  background: #e6e3cc;
+  font-size: 10px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  gap: 10rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+#clearBtn {
+  margin: 0;
+  padding: 0.25em 0.5em;
+  width: 100%;
+  font-size: 10px;
+  cursor: pointer;
+  outline: none;
+  background-color: #b9b591;
+  color: hsl(54, 98%, 21%);
+  border-color: #b9b591;
+}
+
+.dailyHeader {
+  background: #e6e3cc;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem 0 1rem 0;
+  margin: 0;
+}

@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
+import "./Dailies.css";
 
-export default function Quests(props) {
-  const [newQuest, setNewQuest] = useState("");
+export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
-  const [tasks, setTasks] = useState([]);
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
-
-  console.log("Quests -- props.user: ", props.user);
 
   useEffect(() => {
     localStorage.setItem(
@@ -15,33 +12,6 @@ export default function Quests(props) {
     );
   }, [dailies]);
 
-  //FUNCTIONS FOR ONE TIME QUESTS(TASKS)//
-  function handleSubmit(e) {
-    e.preventDefault();
-    setTasks((currentTasks) => {
-      return [
-        ...currentTasks,
-        { id: crypto.randomUUID(), title: newQuest, completed: false },
-      ];
-    });
-    setNewQuest("");
-  }
-
-  function completeTask(id) {
-    setTasks((currentTasks) => {
-      return currentTasks.filter((task) => task.id !== id);
-    });
-    return props.setNewQuestCompletedCount((prev) => prev + 1);
-  }
-
-  function deleteTask(id) {
-    setTasks((currentTasks) => {
-      return currentTasks.filter((task) => task.id !== id);
-    });
-    return props.setNewAbandonedQuestCount((prev) => prev + 1);
-  }
-
-  //FUNCTIONS FOR DAILY QUESTS//
   function handleDailySubmit(e) {
     e.preventDefault();
 
@@ -68,10 +38,9 @@ export default function Quests(props) {
       "user",
       JSON.stringify({
         ...props.user,
-        dailyQuestsCompleted: (props.user.dailyQuestsCompleted +=
-          completedDailies.length),
+        dailyQuestsCompleted,
       })
-    )
+    );
     return props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
   }
 
@@ -85,7 +54,6 @@ export default function Quests(props) {
           completedDailies.length),
       })
     );
-
     const resetDailies = dailies.map((d) =>
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
@@ -93,53 +61,16 @@ export default function Quests(props) {
   };
 
   return (
-    <div className="bodywrapper">
-      <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
-      <form onSubmit={handleSubmit} className="new-quest-form">
-        <div className="form-row">
-          <label htmlFor="quest">Add a New Quest</label>
-          <input
-            value={newQuest}
-            onChange={(e) => setNewQuest(e.target.value)}
-            type="text"
-            id="quest"
-          ></input>
-        </div>
-        <button className="btn">ACCEPT</button>
-      </form>
-      <div id="completeQuest">Completed- {props.newQuestCompletedCount} </div>
-      <ul className="list">
-        {tasks.length === 0 && "No quests available!  Better find some work!"}
-        {tasks.map((task) => {
-          return (
-            <li key={task.id}>
-              <label>{task.title}</label>
-              <button
-                onClick={() => {
-                  completeTask(task.id);
-                  props.user.questCompleted++;
-                }}
-                className="btn btn-yay"
-              >
-                Complete
-              </button>
-              <button
-                onClick={() => {
-                  deleteTask(task.id);
-                  props.user.abandonedQuests++;
-                }}
-                className="btn btn-danger"
-              >
-                Abandon
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <div className="divider">__________</div>
+    <div className="bodyWrapper">
+      <h1 className="dailyHeader">{props.user.name}'s Daily Routine</h1>
+      <p className="daily-info">
+        &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Create
+        your daily routine by adding tasks into the log below. Check tasks off
+        your list as you complete them, and then hit the 'COMPLETE YOUR DAILY
+        ROUTINE' button at the end of the day to turn in and gain your experience (1xp per task)
+      </p>
       <form onSubmit={handleDailySubmit} className="new-daily-form">
         <div className="daily-form-row">
-          <label htmlFor="daily">Start building your daily routine!</label>
           <input
             value={newDaily}
             onChange={(e) => setNewDaily(e.target.value)}
@@ -149,10 +80,10 @@ export default function Quests(props) {
         </div>
         <button className="btn dailyBtn">ACCEPT</button>
       </form>
-      <div id="completeDaily">
+      {/* <div id="completeDaily">
         Completed Daily- {props.user.dailyQuestsCompleted}
         {""}
-      </div>
+      </div> */}
       <ul className="dailyList">
         {dailies.length === 0 && "No set routine, add some quests!"}
         {dailies.map((daily) => {
@@ -182,8 +113,9 @@ export default function Quests(props) {
         })}
       </ul>
       <button onClick={resetAllDailies} className="foot" id="clearBtn">
-        CLEAR COMPLETED
+        COMPLETE YOUR DAILY QUESTS!
       </button>
+      <div className="divider">__________</div>
     </div>
   );
 }
