@@ -1,0 +1,114 @@
+/*--QUEST PAGE--*/
+.questHeader {
+  background: #e6e3cc;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 4rem 0 1rem 0;
+}
+
+#completeQuest {
+  background: #e6e3cc;
+  text-align: right;
+  font-size: 10px;
+  margin: 20px 0px 40px 0px;
+}
+
+.new-quest-form {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-row {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.new-quest-form input {
+  outline: none;
+  border: 4px double hsl(41, 39%, 23%);
+  background: hsla(61, 35%, 39%, 0.781);
+  border-radius: 0.25em;
+  padding: 0.25em 1em;
+  color: hsl(60, 59%, 85%);
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  height: 35px;
+}
+
+.new-quest-form input:focus {
+  border: 4px ridge hsl(54, 86%, 31%);
+}
+
+.new-daily-form input {
+  outline: none;
+  border: 4px double hsl(41, 39%, 23%);
+  background: hsla(61, 35%, 39%, 0.781);
+  border-radius: 0.25em;
+  padding: 0.25em 1em;
+  color: hsl(60, 59%, 85%);
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  height: 35px;
+}
+
+.new-daily-form input:focus {
+  border: 4px ridge hsl(54, 86%, 31%);
+}
+
+.quest-header {
+  background: #e6e3cc;
+  font-size: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.list {
+  background: #e6e3cc;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  list-style: none;
+  gap: 0.6rem;
+  font-size: 10px;
+  text-align: center;
+  padding-top:50px;
+}
+
+.list li {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.list li label {
+  background: #e6e3cc;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.list li:has(input:focus-visible) label {
+  background: #e6e3cc;
+  outline: 1px solid hsl(54, 98%, 21%);
+}
+
+.list li label::before {
+  background: #e6e3cc;
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 10px;
+  background: hsl(58, 33%, 56%);
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

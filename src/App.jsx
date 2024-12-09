@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import UserProfile from "./UserProfile.jsx";
-import Quests from "./Quests.jsx";
-import UserName from "./UserName.jsx";
-import BroodRecord from "./BroodRecord.jsx";
+import UserProfile from "./components/UserProfile.jsx";
+import Quests from "./components/Quests.jsx";
+import UserName from "./components/UserName.jsx";
+import BroodRecord from "./components/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
+import Dailies from "./components/Dailies.jsx";
 
 //-- TODO:
 //  - [x] check if a user object exists within local storage
@@ -19,7 +20,11 @@ import { chkLevelUp } from "./funcs/chkLevelUp.js";
 //  - [x] change empty quest board to appropriate message, if quests have been completed or not
 //  - [x] storing the daily tasks created by user
 //  - [x] set experience up to work
-//  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
+//  - [X] BUG!  Quests reappear whenever you press abandon and refresh
+//  - [ ] levels update to local storage?  Right now you have to refresh to get your level updated
+//  - [ ] can only enter quests ONCE in quest area
+//  - [ ] make quests worth more!
+//  - [ ] make a maximum of daily quests??
 
 export default function App() {
   const [view, setView] = useState("quests");
@@ -123,7 +128,7 @@ export default function App() {
           ? user.level + 1
           : user.level,
 
-      experience: user.questCompleted + user.dailyQuestsCompleted,
+      experience: (user.questCompleted * 4) + user.dailyQuestsCompleted,
     };
 
     localStorage.setItem("user", JSON.stringify(updatedUser));
@@ -205,6 +210,9 @@ export default function App() {
       <header>brood leader</header>
       {view !== "userName" && (
         <div className="userBtn">
+          <button className="menuBtn" onClick={() => setView("dailies")}>
+            Daiy Routine
+          </button>
           <button className="menuBtn" onClick={() => setView("quests")}>
             Quests
           </button>
@@ -222,12 +230,18 @@ export default function App() {
         {view === "quests" && !!user && (
           <Quests
             user={user}
-            newDailyQuestsCompletedCount={newDailyQuestsCompletedCount}
-            setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
             newQuestCompletedCount={newQuestCompletedCount}
             setNewQuestCompletedCount={setNewQuestCompletedCount}
             newAbandonedQuestCount={newAbandonedQuestCount}
             setNewAbandonedQuestCount={setNewAbandonedQuestCount}
+            setRefreshKey={setRefreshKey}
+          />
+        )}
+        {view === "dailies" && !!user && (
+          <Dailies
+            user={user}
+            newDailyQuestsCompletedCount={newDailyQuestsCompletedCount}
+            setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
             newAbandonedDailyQuestCount={newAbandonedDailyQuestCount}
             setNewAbandonedDailyQuestCount={setNewAbandonedDailyQuestCount}
             currentDailyQuests={user.currentDailyQuests}
