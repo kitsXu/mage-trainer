@@ -70,6 +70,8 @@ export default function App() {
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
+      localStorage.setItem('view', view); //set view to local storage
+ 
 
       setUser(newUserObject);
       setView("LandingPage");
@@ -207,15 +209,18 @@ export default function App() {
       setView("LandingPage");
       return;
     }
-    setView(savedView);
-  }, [user]);
+    setView("dailies");
+  }, []);
+
+
 
   useEffect(() => {
     const savedView = localStorage.getItem('view');
-    if (user === true) {
+    if (user) {
       setView(savedView);  // Set the state to the saved view
     }
-  }, []);
+  }, [user]);
+
 
 
   return (
