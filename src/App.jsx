@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import UserProfile from "./components/UserProfile.jsx";
 import Quests from "./components/Quests.jsx";
-import UserName from "./components/UserName.jsx";
+import LandingPage from "./components/LandingPage.jsx";
 import BroodRecord from "./components/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies.jsx";
@@ -27,7 +27,7 @@ import Dailies from "./components/Dailies.jsx";
 //  - [ ] make a maximum of daily quests??
 
 export default function App() {
-  const [view, setView] = useState("quests");
+  const [view, setView] = useState("dailies");
   const [user, setUser] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
   const [newName, setNewName] = useState("");
@@ -72,7 +72,7 @@ export default function App() {
       localStorage.setItem("user", JSON.stringify(newUserObject));
 
       setUser(newUserObject);
-      setView("userName");
+      setView("LandingPage");
 
       return;
     }
@@ -116,6 +116,11 @@ export default function App() {
 
     chkLevelUp(user);
   }, [user]);
+
+    // Save the view to localStorage whenever it changes
+    useEffect(() => {
+      localStorage.setItem('view', view);
+    }, [view]);
 
   //-- create new updated user object to update both local storage user record and local user object state.
   useEffect(() => {
@@ -190,7 +195,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    view === "userName"
+    view === "LandingPage"
       ? setNameFormVisibility(true)
       : setNameFormVisibility(false);
   }, [view]);
@@ -199,16 +204,24 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
     if (!user.name) {
-      setView("userName");
+      setView("LandingPage");
       return;
     }
-    setView("quests");
+    setView(savedView);
   }, [user]);
+
+  useEffect(() => {
+    const savedView = localStorage.getItem('view');
+    if (user === true) {
+      setView(savedView);  // Set the state to the saved view
+    }
+  }, []);
+
 
   return (
     <div className="bodywrapper">
       <header>brood leader</header>
-      {view !== "userName" && (
+      {view !== "LandingPage" && (
         <div className="userBtn">
           <button className="menuBtn" onClick={() => setView("dailies")}>
             Daiy Routine
@@ -225,7 +238,7 @@ export default function App() {
         </div>
       )}
       <div>
-        {view === "userName" && !!user && <UserName user={user} />}
+        {view === "LandingPage" && !!user && <LandingPage user={user} />}
         {view === "user" && !!user && <UserProfile user={user} />}
         {view === "quests" && !!user && (
           <Quests
