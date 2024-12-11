@@ -1,6 +1,6 @@
 import "./UserName.css";
 
-export default function UserName(props) {
+export default function LandingPage(props) {
   return (
     <>
       <div className="bodyWrap">
