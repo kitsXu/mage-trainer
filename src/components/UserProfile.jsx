@@ -1,5 +1,9 @@
 import "./Records.css";
 
+// -- TO DO --
+// - [ ] calculate gold.. 100 per level?
+// - [ ] make div to display gold
+
 export default function UserProfile(props) {
   console.log("UserProfile -- props.user: ", props.user);
 

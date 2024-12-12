@@ -1,4 +1,4 @@
-import "./UserName.css";
+import "./LandingPage.css";
 
 export default function LandingPage(props) {
   return (

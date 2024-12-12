@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import "./Dailies.css";
 
+//-- TO DO --
+// - [ ] make the explanation div appear on hover of a little box/question mark icon
+
+
 export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
