@@ -24,8 +24,8 @@ import Dailies from "./components/Dailies.jsx";
 
 // --FIX BEFORE STARTING ON EGGS --
 //  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
-// -- [ ] set 'view' to local storage, when user refreshes return the page they were on
-//  - [ ] check daily lvls stored locally, have to refresh for update rn
+// -- [ ] set 'view' to local storage, when user refreshes so we return the page they were on
+//  - [ ] check that dailies are stored locally, have to refresh for update rn
 //  - [ ] store user made quests locally
 //  - [ ] check quests entered against local storage 'quests', if they are there you can't accept
 //  - [ ] make a maximum of daily quests??
@@ -48,10 +48,6 @@ export default function App() {
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
   // const [nextLevelExperience, setNextLevelExperience] = useState();
-
-  useEffect(() => {
-    console.log("useEffect -- refreshKey: ", refreshKey);
-  }, [refreshKey]);
 
   useEffect(() => {
     if (typeof user !== "object") {
@@ -78,7 +74,6 @@ export default function App() {
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
-      localStorage.setItem("view", view); //set view to local storage
 
       setUser(newUserObject);
       setView("LandingPage");
@@ -93,43 +88,16 @@ export default function App() {
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
-    setNewAbandonedDailyQuestCount(user.abandonedQuests);
+    setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
   }, [refreshKey]);
 
-  useEffect(() => {
-    console.log(
-      "useEffect -- newQuestCompletedCount: ",
-      newQuestCompletedCount
-    );
-  }, [newQuestCompletedCount]);
-
-  // //-- if user exists, attach questing states for updating local storage to user object values
-  // useEffect(() => {
-  //   if (!user) return;
-
-  //   console.log(`\nuseEffect -- [user] (all state setter functions) triggered!`)
-  //   console.log("useEffect -- newQuestCompletedCount: ", newQuestCompletedCount)
-
-  //   setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-  //   setNewQuestCompletedCount(user.questCompleted);
-  //   setNewAbandonedQuestCount(user.abandonedQuests);
-  //   setNewAbandonedDailyQuestCount(user.abandonedQuests);
-  //   setCurrentDailyQuests(user.currentDailyQuests);
-
-  //   //-- TODO: hook up experience and level to local state so we can update front-end.
-  // }, [user]);
 
   useEffect(() => {
     if (!user || !user.experience) return;
 
     chkLevelUp(user);
   }, [user]);
-
-  // Save the view to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("view", view);
-  }, [view]);
 
   //-- create new updated user object to update both local storage user record and local user object state.
   useEffect(() => {
@@ -151,8 +119,6 @@ export default function App() {
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
-    newAbandonedQuestCount,
-    newAbandonedDailyQuestCount,
   ]);
 
   useEffect(() => {
@@ -181,6 +147,8 @@ export default function App() {
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
+        //-- i.e., currentDailyQuests: currentDailyQuests,
+        currentDailyQuests,
       })
     );
   }, [
@@ -188,6 +156,7 @@ export default function App() {
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
+    currentDailyQuests,
   ]);
 
   //-- submit name form on landing page.
@@ -216,15 +185,23 @@ export default function App() {
       setView("LandingPage");
       return;
     }
-    setView("dailies");
+    setView(savedView);
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("view", view);
+  }, [view]);
+
+  useEffect(() => {
     const savedView = localStorage.getItem("view");
-    if (user) {
-      setView(savedView); // Set the state to the saved view
+    if (view !== savedView) {
+      setView(savedView);
     }
-  }, [user]);
+    console.log(
+      "useEffect -- savedView: ",
+      savedView
+    );
+  }, []);
 
   return (
     <div className="bodywrapper">
@@ -265,6 +242,7 @@ export default function App() {
             setNewDailyQuestsCompletedCount={setNewDailyQuestsCompletedCount}
             newAbandonedDailyQuestCount={newAbandonedDailyQuestCount}
             setNewAbandonedDailyQuestCount={setNewAbandonedDailyQuestCount}
+            setCurrentDailyQuests={setCurrentDailyQuests}
             currentDailyQuests={user.currentDailyQuests}
             setRefreshKey={setRefreshKey}
           />
