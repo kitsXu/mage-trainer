@@ -20,11 +20,19 @@ import Dailies from "./components/Dailies.jsx";
 //  - [x] change empty quest board to appropriate message, if quests have been completed or not
 //  - [x] storing the daily tasks created by user
 //  - [x] set experience up to work
-//  - [X] BUG!  Quests reappear whenever you press abandon and refresh
-//  - [ ] levels update to local storage?  Right now you have to refresh to get your level updated
-//  - [ ] can only enter quests ONCE in quest area
-//  - [ ] make quests worth more!
+//  - [X] make quests worth more!
+
+// --FIX BEFORE STARTING ON EGGS --
+//  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
+// -- [ ] set 'view' to local storage, when user refreshes return the page they were on
+//  - [ ] check daily lvls stored locally, have to refresh for update rn
+//  - [ ] store user made quests locally
+//  - [ ] check quests entered against local storage 'quests', if they are there you can't accept
 //  - [ ] make a maximum of daily quests??
+
+//  - [ ] create time stamp for daily quest turn in button stored locally? idk
+//  - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
+
 
 export default function App() {
   const [view, setView] = useState("dailies");
@@ -70,8 +78,7 @@ export default function App() {
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
-      localStorage.setItem('view', view); //set view to local storage
- 
+      localStorage.setItem("view", view); //set view to local storage
 
       setUser(newUserObject);
       setView("LandingPage");
@@ -119,10 +126,10 @@ export default function App() {
     chkLevelUp(user);
   }, [user]);
 
-    // Save the view to localStorage whenever it changes
-    useEffect(() => {
-      localStorage.setItem('view', view);
-    }, [view]);
+  // Save the view to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("view", view);
+  }, [view]);
 
   //-- create new updated user object to update both local storage user record and local user object state.
   useEffect(() => {
@@ -135,7 +142,7 @@ export default function App() {
           ? user.level + 1
           : user.level,
 
-      experience: (user.questCompleted * 4) + user.dailyQuestsCompleted,
+      experience: user.questCompleted * 4 + user.dailyQuestsCompleted,
     };
 
     localStorage.setItem("user", JSON.stringify(updatedUser));
@@ -212,16 +219,12 @@ export default function App() {
     setView("dailies");
   }, []);
 
-
-
   useEffect(() => {
-    const savedView = localStorage.getItem('view');
+    const savedView = localStorage.getItem("view");
     if (user) {
-      setView(savedView);  // Set the state to the saved view
+      setView(savedView); // Set the state to the saved view
     }
   }, [user]);
-
-
 
   return (
     <div className="bodywrapper">
