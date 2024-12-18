@@ -38,14 +38,32 @@ header {
   margin-bottom: 4rem;
 }
 
+.menuWrapper {
+  background: #e6e3cc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 3rem;
+}
+
 .menuBtn {
   display: flex;
   align-items: center;
-  height: 20px;
+  height: 28px;
   color: #e6e3cc;
   background: hsla(61, 35%, 39%, 0.781);
   font-size: 10px;
   padding: 8px;
+  box-shadow: 1px 1px 1px hsla(61, 35%, 30%, 0.822);
+}
+
+.menuBtn:active {
+  color: #e6e3cc;
+  -webkit-box-shadow: inset 0px 0px 5px hsla(61, 35%, 30%, 0.822);
+  -moz-box-shadow: inset 0px 0px 5px hsla(61, 35%, 30%, 0.822);
+  box-shadow: inset 0px 0px 5px hsla(61, 35%, 30%, 0.822);
+  outline: none;
 }
 
 label {
@@ -112,13 +130,4 @@ label {
   text-align: center;
   font-size: 1.2rem;
   margin: 4rem 0 2rem 0;
-}
-
-.userBtn {
-  background: #e6e3cc;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 0.3rem;
-  margin-bottom: 3rem;
 }
