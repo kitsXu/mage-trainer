@@ -1,6 +1,24 @@
 import "./LandingPage.css";
+import { useState } from "react";
+
 
 export default function LandingPage(props) {
+  const [newName, setNewName] = useState("");
+
+
+    //-- submit name form on landing page.
+    const handleSubmit = () => {
+      if (!props.user) return; //-- TODO: handle this better.
+      localStorage.setItem("user", JSON.stringify({ ...props.user, name: newName }));
+      // setView("user");
+      setRefreshKey((prev) => prev + 1);
+      console.log("User information updated!");
+    };
+  
+    const handleOnChange = (value) => {
+      setNewName(value);
+    };
+
   return (
     <>
       <div className="bodyWrap">
@@ -28,6 +46,25 @@ export default function LandingPage(props) {
           If you are ready to accept the risks, go ahead and enter your name
           below!
         </div>
+        <form
+          className="nameInput"
+          onSubmit={(e) => {
+            //-- prevent default behavior of the event. in this case, stop the form submission
+            //-- from refreshing the page.
+            e.preventDefault();
+
+            handleSubmit(newName);
+          }}
+        >
+          <label htmlFor="nameInputBar">NAME</label>
+          <input
+            value={newName}
+            type="text"
+            onChange={(event) => handleOnChange(event.target.value)}
+            id="nameInputBar"
+          />
+          <button className="nameInput">submit</button>
+        </form>
       </div>
     </>
   );

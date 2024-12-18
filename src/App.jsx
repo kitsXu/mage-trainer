@@ -39,8 +39,7 @@ export default function App() {
   );
   const [user, setUser] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
-  const [newName, setNewName] = useState("");
-  const [nameFormVisibility, setNameFormVisibility] = useState(false);
+  // const [nameFormVisibility, setNameFormVisibility] = useState(false);
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
     useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
@@ -157,24 +156,11 @@ export default function App() {
     currentDailyQuests,
   ]);
 
-  //-- submit name form on landing page.
-  const handleSubmit = () => {
-    if (!user) return; //-- TODO: handle this better.
-    localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
-    setView("user");
-    setRefreshKey((prev) => prev + 1);
-    console.log("User information updated!");
-  };
-
-  const handleOnChange = (value) => {
-    setNewName(value);
-  };
-
-  useEffect(() => {
-    view === "LandingPage"
-      ? setNameFormVisibility(true)
-      : setNameFormVisibility(false);
-  }, [view]);
+  // useEffect(() => {
+  //   view === "LandingPage"
+  //     ? setNameFormVisibility(true)
+  //     : setNameFormVisibility(false);
+  // }, [view]);
 
   useEffect(() => {
     localStorage.setItem("view", view);
@@ -183,7 +169,6 @@ export default function App() {
   return (
     <div className="bodywrapper">
       <header>brood leader</header>
-        {!user.name ? <LandingPage/> : <></>}
         <div className="userBtn">
           <button className="menuBtn" onClick={() => setView("dailies")}>
             Daiy Routine
@@ -198,8 +183,8 @@ export default function App() {
             Brood
           </button>
         </div>
+        {!user.name ? <LandingPage user={user} /> : <></>}
       <div>
-        {/* {view === "LandingPage" && <LandingPage user={user} />} */}
         {view === "user" && !!user && <UserProfile user={user} />}
         {view === "quests" && !!user && (
           <Quests
@@ -225,27 +210,6 @@ export default function App() {
         )}
         {view === "brood" && !!user && <BroodRecord user={user} />}
       </div>
-      {nameFormVisibility && (
-        <form
-          className="nameInput"
-          onSubmit={(e) => {
-            //-- prevent default behavior of the event. in this case, stop the form submission
-            //-- from refreshing the page.
-            e.preventDefault();
-
-            handleSubmit(newName);
-          }}
-        >
-          <label htmlFor="nameInputBar">NAME</label>
-          <input
-            value={newName}
-            type="text"
-            onChange={(event) => handleOnChange(event.target.value)}
-            id="nameInputBar"
-          />
-          <button className="nameInput">submit</button>
-        </form>
-      )}
     </div>
   );
 }
