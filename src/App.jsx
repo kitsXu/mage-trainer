@@ -23,8 +23,8 @@ import Dailies from "./components/Dailies.jsx";
 //  - [X] make quests worth more!
 
 // --FIX BEFORE STARTING ON EGGS --
-//  - [ ] BUG!  Quests reappear whenever you press abandon and refresh
-// -- [ ] set 'view' to local storage, when user refreshes so we return the page they were on
+//  - [X] BUG!  Quests reappear whenever you press abandon and refresh
+// -- [X] set 'view' to local storage, when user refreshes so we return the page they were on
 //  - [ ] check that dailies are stored locally, have to refresh for update rn
 //  - [ ] store user made quests locally
 //  - [ ] check quests entered against local storage 'quests', if they are there you can't accept
@@ -33,9 +33,10 @@ import Dailies from "./components/Dailies.jsx";
 //  - [ ] create time stamp for daily quest turn in button stored locally? idk
 //  - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
 
-
 export default function App() {
-  const [view, setView] = useState("dailies");
+  const [view, setView] = useState(
+    localStorage.getItem("view")
+  );
   const [user, setUser] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
   const [newName, setNewName] = useState("");
@@ -47,7 +48,6 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
-  // const [nextLevelExperience, setNextLevelExperience] = useState();
 
   useEffect(() => {
     if (typeof user !== "object") {
@@ -55,10 +55,11 @@ export default function App() {
     }
   }, [user]);
 
+
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
   useEffect(() => {
     const userExists = localStorage.getItem("user");
-
+    
     if (!userExists) {
       const newUserObject = {
         id: crypto.randomUUID(),
@@ -74,9 +75,7 @@ export default function App() {
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
-
       setUser(newUserObject);
-      setView("LandingPage");
 
       return;
     }
@@ -90,8 +89,10 @@ export default function App() {
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
-  }, [refreshKey]);
 
+    const savedView = localStorage.getItem("view");
+    setView(savedView ?? "quests");
+  }, [refreshKey]);
 
   useEffect(() => {
     if (!user || !user.experience) return;
@@ -116,10 +117,7 @@ export default function App() {
     localStorage.setItem("user", JSON.stringify(updatedUser));
 
     setUser(updatedUser);
-  }, [
-    newDailyQuestsCompletedCount,
-    newQuestCompletedCount,
-  ]);
+  }, [newDailyQuestsCompletedCount, newQuestCompletedCount]);
 
   useEffect(() => {
     if (!user) return;
@@ -178,35 +176,14 @@ export default function App() {
       : setNameFormVisibility(false);
   }, [view]);
 
-  //-- set view to landing page if user name hasn't been set.
-  useEffect(() => {
-    if (!user) return;
-    if (!user.name) {
-      setView("LandingPage");
-      return;
-    }
-    setView(savedView);
-  }, []);
-
   useEffect(() => {
     localStorage.setItem("view", view);
   }, [view]);
 
-  useEffect(() => {
-    const savedView = localStorage.getItem("view");
-    if (view !== savedView) {
-      setView(savedView);
-    }
-    console.log(
-      "useEffect -- savedView: ",
-      savedView
-    );
-  }, []);
-
   return (
     <div className="bodywrapper">
       <header>brood leader</header>
-      {view !== "LandingPage" && (
+        {!user.name ? <LandingPage/> : <></>}
         <div className="userBtn">
           <button className="menuBtn" onClick={() => setView("dailies")}>
             Daiy Routine
@@ -221,9 +198,8 @@ export default function App() {
             Brood
           </button>
         </div>
-      )}
       <div>
-        {view === "LandingPage" && !!user && <LandingPage user={user} />}
+        {/* {view === "LandingPage" && <LandingPage user={user} />} */}
         {view === "user" && !!user && <UserProfile user={user} />}
         {view === "quests" && !!user && (
           <Quests
