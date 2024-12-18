@@ -39,7 +39,6 @@ export default function App() {
   );
   const [user, setUser] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
-  // const [nameFormVisibility, setNameFormVisibility] = useState(false);
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
     useState();
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
@@ -156,6 +155,19 @@ export default function App() {
     currentDailyQuests,
   ]);
 
+  // //-- submit name form on landing page.
+  // const handleSubmit = () => {
+  //   if (!user) return; //-- TODO: handle this better.
+  //   localStorage.setItem("user", JSON.stringify({ ...user, name: newName }));
+  //   setView("user");
+  //   setRefreshKey((prev) => prev + 1);
+  //   console.log("User information updated!");
+  // };
+
+  // const handleOnChange = (value) => {
+  //   setNewName(value);
+  // };
+
   // useEffect(() => {
   //   view === "LandingPage"
   //     ? setNameFormVisibility(true)
@@ -168,6 +180,7 @@ export default function App() {
 
   return (
     <div className="bodywrapper">
+       {!user ? <LandingPage user={user} /> : <>
       <header>brood leader</header>
         <div className="userBtn">
           <button className="menuBtn" onClick={() => setView("dailies")}>
@@ -210,6 +223,26 @@ export default function App() {
         )}
         {view === "brood" && !!user && <BroodRecord user={user} />}
       </div>
-    </div>
+      
+        {/* <form
+          className="nameInput"
+          onSubmit={(e) => {
+            //-- prevent default behavior of the event. in this case, stop the form submission
+            //-- from refreshing the page.
+            e.preventDefault();
+
+            handleSubmit(newName);
+          }}
+        >
+          <label htmlFor="nameInputBar">NAME</label>
+          <input
+            value={newName}
+            type="text"
+            onChange={(event) => handleOnChange(event.target.value)}
+            id="nameInputBar"
+          />
+          <button className="nameInput">submit</button>
+        </form> */}
+    </>}</div>
   );
-}
+  }
