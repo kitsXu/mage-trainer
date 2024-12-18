@@ -6,6 +6,7 @@ import LandingPage from "./components/LandingPage.jsx";
 import BroodRecord from "./components/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies.jsx";
+import Market from "./components/Market.jsx";
 
 //-- TODO:
 //  - [x] check if a user object exists within local storage
@@ -195,10 +196,14 @@ export default function App() {
           <button className="menuBtn" onClick={() => setView("brood")}>
             Brood
           </button>
+          <button className="menuBtn" onClick={() => setView("market")}>
+            The Market
+          </button>
         </div>
         {!user.name ? <LandingPage user={user} /> : <></>}
       <div>
         {view === "user" && !!user && <UserProfile user={user} />}
+        {view === "market" && !!user && <Market user={user} />}
         {view === "quests" && !!user && (
           <Quests
             user={user}
