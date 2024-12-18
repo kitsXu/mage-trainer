@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "./Quests.css";
 
+//-- TO DO --
+// - [ ] make the explanation div appear on hover of a little box/question mark icon
+
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [tasks, setTasks] = useState([]);

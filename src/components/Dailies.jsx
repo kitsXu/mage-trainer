@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import "./Dailies.css";
 
+//-- TO DO --
+// - [ ] make the explanation div appear on hover of a little box/question mark icon
+
+
 export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
 
   useEffect(() => {
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ ...props.user, currentDailyQuests: dailies })
-    );
+    // localStorage.setItem(
+    //   "user",
+    //   JSON.stringify({ ...props.user, currentDailyQuests: dailies })
+    // );
+
+    props.setCurrentDailyQuests(dailies)
   }, [dailies]);
 
   function handleDailySubmit(e) {
@@ -34,14 +40,16 @@ export default function Dailies(props) {
     setDailies((currentDailies) => {
       return currentDailies.filter((daily) => daily.id !== id);
     });
-    localStorage.removeItem(
-      "user",
-      JSON.stringify({
-        ...props.user,
-        dailyQuestsCompleted,
-      })
-    );
-    return props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
+    // localStorage.removeItem(
+    //   "user",
+    //   JSON.stringify({
+    //     ...props.user,
+    //     dailyQuestsCompleted,
+    //   })
+    // );
+    props.setNewAbandonedDailyQuestCount((prev) => prev + 1)
+
+    return ;
   }
 
   const resetAllDailies = (id, completed) => {
@@ -102,7 +110,7 @@ export default function Dailies(props) {
               <button
                 onClick={() => {
                   deleteDaily(daily.id);
-                  props.user.abandonedDailyQuests++;
+                  // props.user.abandonedDailyQuests++;
                 }}
                 className="btn btn-danger"
               >
