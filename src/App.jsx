@@ -183,7 +183,7 @@ export default function App() {
     <div className="bodywrapper">
        {!user ? <LandingPage user={user} /> : <>
       <header>brood leader</header>
-        <div className="userBtn">
+        <div className="menuWrapper">
           <button className="menuBtn" onClick={() => setView("dailies")}>
             Daiy Routine
           </button>

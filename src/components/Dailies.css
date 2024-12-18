@@ -147,8 +147,9 @@ form.new-daily-form {
   font-size: 10px;
   cursor: pointer;
   outline: none;
+
   background-color: #b9b591;
-  color: hsl(54, 98%, 21%);
+  color: hsl(29, 44%, 22%);
   border-color: #b9b591;
 }
 
