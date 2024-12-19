@@ -27,3 +27,19 @@
   letter-spacing: 1px;
   font-size: medium;
 }
+
+.nameInput {
+  background: #ac9f3c;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+}
+
+#nameInputBar {
+  background:  hsl(56, 76%, 35%);
+  color: #807d64;
+  height: 25px;
+}
