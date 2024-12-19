@@ -26,6 +26,7 @@ export default function UserProfile(props) {
           Total Quests Abandoned:{" "}
           {props.user.abandonedQuests + props.user.abandonedDailyQuests}
         </div>
+        <div className="profile">Total Gold: {props.user.gold}</div>
       </div>
       <div className="divider">__________</div>
     </div>

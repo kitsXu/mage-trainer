@@ -52,18 +52,25 @@ header {
   align-items: center;
   height: 28px;
   color: #e6e3cc;
+  border: 2px ridge hsla(61, 34%, 50%, 0.781);
   background: hsla(61, 35%, 39%, 0.781);
   font-size: 10px;
   padding: 8px;
-  box-shadow: 1px 1px 1px hsla(61, 35%, 30%, 0.822);
+  cursor: pointer;
+  box-shadow: 1px 1px 1px hsl(29, 44%, 22%);;
 }
 
 .menuBtn:active {
   color: #e6e3cc;
-  -webkit-box-shadow: inset 0px 0px 5px hsla(61, 35%, 30%, 0.822);
-  -moz-box-shadow: inset 0px 0px 5px hsla(61, 35%, 30%, 0.822);
-  box-shadow: inset 0px 0px 5px hsla(61, 35%, 30%, 0.822);
+  -webkit-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);;
+  -moz-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);;
+  box-shadow: inset 0px 0px 5px hsl(29, 44%, 22%);;
   outline: none;
+}
+
+.menuBtn:hover,
+.menuBtn:focus-visible {
+  background: hsla(64, 32%, 53%, 0.842);
 }
 
 label {
@@ -77,7 +84,6 @@ label {
   border: 2px ridge hsl(40, 21%, 61%);
   color: hsl(29, 44%, 22%);
   padding: 0.25em 0.5em;
-  border-radius: 0.25em;
   cursor: pointer;
   font-size: 14px;
   height: 40px;
@@ -86,7 +92,7 @@ label {
 
 .btn:hover,
 .btn:focus-visible {
-  background: hsla(64, 84%, 34%, 0.39);
+  background: hsla(65, 37%, 42%, 0.39);
 }
 
 .btn:active {
@@ -99,7 +105,7 @@ label {
 
 .btn.btn-danger {
   background: hsla(27, 100%, 40%, 0.192);
-  border: 1px dotted hsl(24, 99%, 36%);
+  border: 1px ridge hsl(24, 98%, 46%);
   color: hsl(24, 99%, 36%);
   height: 20px;
   font-size: 8px;
@@ -113,7 +119,7 @@ label {
 
 .btn.btn-yay {
   background: hsla(177, 100%, 40%, 0.192);
-  border: 1px dotted hsl(157, 99%, 36%);
+  border: 1px ridge hsl(157, 99%, 36%);
   color: hsl(182, 98%, 23%);
   height: 20px;
   font-size: 8px;

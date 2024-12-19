@@ -1,29 +1,30 @@
 import "./LandingPage.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { LoadingIndicator } from "./LoadingIndicator";
 
 
 export default function LandingPage(props) {
   const [refreshKey, setRefreshKey] = useState(0);
   const [newName, setNewName] = useState("");
-  const [view, setView] = useState(
-    localStorage.getItem("view")
-  );
-  
 
-    //-- submit name form on landing page.
-    const handleSubmit = () => {
-      if (props.user === !props.user) return; //-- TODO: handle this better.
-      localStorage.setItem("user", JSON.stringify({ ...props.user, name: newName }));
-      setView("user");
-      setRefreshKey((prev) => prev + 1);
-      console.log("User information updated!");
-    };
-  
-    const handleOnChange = (value) => {
-      setNewName(value);
-    };
+  //-- submit name form on landing page.
+  const handleSubmit = () => {
+    if (props.user === !props.user) return;
+    
+    localStorage.setItem("user", JSON.stringify({ ...props.user, name: newName }));
 
+    props.setRefreshKey((prev) => prev + 1);
 
+    console.log("User information updated!");
+  };
+
+  const handleOnChange = (value) => {
+    setNewName(value);
+  };
+
+  //-- REMARK: do this better than i did. :)
+  if (props.isLoading || !props.user) return <LoadingIndicator />;
+  if (!!props.user.name) return null;
 
   return (
     <>
@@ -70,7 +71,7 @@ export default function LandingPage(props) {
             onChange={(event) => handleOnChange(event.target.value)}
             id="nameInputBar"
           />
-          <button className="nameInput">submit</button>
+          <button className="nameSubmitBtn">submit</button>
         </form>
       </div>
     </>

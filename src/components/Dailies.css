@@ -61,7 +61,6 @@
   width: 0.9rem;
   height: 0.9rem;
   background: hsl(58, 33%, 56%);
-  border-radius: 0.25em;
 }
 
 .dailyList li label:hover::before {
@@ -87,13 +86,29 @@
   justify-content: center;
   align-items: baseline;
   margin-bottom: 0.5rem;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #nameInputBar {
-  background: hsl(56, 76%, 23%);
-  color: #b9b591;
+  background: hsl(58, 33%, 56%);
+  color:#e6e3cc;
   height: 25px;
+}
+
+.nameSubmitBtn {
+  background:  #e6e3cc;
+}
+
+.nameSubmitBtn:hover {
+  background:  #f8f6e3;
+}
+
+.nameSubmitBtn:active {
+  background:  #e6e3cc;
+  -webkit-box-shadow: inset 0px 0px 5px #a8a8a8;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
 }
 
 #completeDaily {
@@ -120,15 +135,10 @@ form.new-daily-form {
   padding: 0.25em 0.5em;
   width: 100%;
   margin-top: 0.5rem;
-  border-radius: 0.25em;
   cursor: pointer;
   outline: none;
 }
 
-.btn.dailyBtn:hover,
-.btn:focus-visible {
-  background: hsla(64, 84%, 34%, 0.39);
-}
 
 .daily-header {
   background: #e6e3cc;
@@ -147,7 +157,6 @@ form.new-daily-form {
   font-size: 10px;
   cursor: pointer;
   outline: none;
-
   background-color: #b9b591;
   color: hsl(29, 44%, 22%);
   border-color: #b9b591;
@@ -159,4 +168,24 @@ form.new-daily-form {
   font-size: 1.2rem;
   padding: 1rem 0 1rem 0;
   margin: 0;
+}
+
+#clearBtn:hover,
+#clearBtn:focus-visible {
+  background: hsla(63, 53%, 80%, 0.842);
+}
+
+.new-daily-form input {
+  outline: none;
+  border: 3px double hsl(29, 44%, 22%);
+  background: hsla(61, 35%, 39%, 0.781);
+  padding: 0.25em 1em;
+  color: hsl(60, 59%, 85%);
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  height: 35px;
+}
+
+.new-daily-form input:focus {
+  border: 3px ridge hsla(61, 35%, 39%, 0.781);
 }
