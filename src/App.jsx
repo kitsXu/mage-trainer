@@ -8,7 +8,6 @@ import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies.jsx";
 import Market from "./components/Market.jsx";
 import Inventory from "./components/Inventory.jsx";
-import { goldIncrease } from "./funcs/goldIncrease.js";
 import { LoadingIndicator } from "./components/LoadingIndicator.jsx";
 
 //-- TODO:
@@ -64,7 +63,8 @@ export default function App() {
         abandonedDailyQuests: 0,
         currentDailyQuests: [],
         gold: 0,
-        goldIncrease: 0,
+        goldIncrease: 50,
+        nxtLvl: 1,
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
@@ -98,11 +98,6 @@ export default function App() {
     chkLevelUp(user);
   }, [user]);
 
-  useEffect(() => {
-    if (!user || !user.level) return;
-
-    goldIncrease(user);
-  }, [user]);
 
   //-- create new updated user object to update both local storage user record and local user object state.
   useEffect(() => {
@@ -115,7 +110,6 @@ export default function App() {
           : user.level,
 
       experience: user.questCompleted * 4 + user.dailyQuestsCompleted,
-      gold: user.gold + user.goldIncrease,
 
     };
     localStorage.setItem("user", JSON.stringify(updatedUser));
