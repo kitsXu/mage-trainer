@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import UserProfile from "./components/UserProfile.jsx";
-import Quests from "./components/Quests.jsx";
-import LandingPage from "./components/LandingPage.jsx";
-import BroodRecord from "./components/BroodRecord.jsx";
+import UserProfile from "./components/Records/UserProfile.jsx";
+import Quests from "./components/Quests/Quests.jsx";
+import LandingPage from "./components/LandingPage/LandingPage.jsx";
+import BroodRecord from "./components/Brood/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
-import Dailies from "./components/Dailies.jsx";
-import Market from "./components/Market.jsx";
-import Inventory from "./components/Inventory.jsx";
-import { LoadingIndicator } from "./components/LoadingIndicator.jsx";
+import Dailies from "./components/Dailies/Dailies.jsx";
+import Market from "./components/Market/Market.jsx"
+import Inventory from "./components/Inventory/Inventory.jsx";
+import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
 
 //-- TODO:
 //  - [X] BUG!  Quests reappear whenever you press abandon and refresh
