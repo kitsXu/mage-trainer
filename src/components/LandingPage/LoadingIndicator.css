@@ -1,0 +1,7 @@
+.loadingIndicator {
+    padding-top:35%;
+    height: 570px;
+    background: #e6e3cc;
+    display:flex;
+    justify-content: center;
+  }

@@ -1,4 +1,4 @@
-import "./LandingPage.css";
+import "./LandingPage.css"
 import { useState } from "react";
 import { LoadingIndicator } from "./LoadingIndicator";
 
