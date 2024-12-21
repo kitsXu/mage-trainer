@@ -9,6 +9,9 @@ export default function Market(props) {
       return (
         <div className="profile">
           <h1 className="userHeader">Scales Haven Marketplace</h1>
+          <div>
+            <image src="./images/earthEgg.png"></image>
+          </div>
           <div className="divider">__________</div>
         </div>
       );
