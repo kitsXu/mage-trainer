@@ -180,7 +180,7 @@ export default function App() {
           </div>
           <div>
             {view === "user" && !!user && <UserProfile user={user} />}
-            {view === "market" && !!user && <Market user={user} />}
+            {view === "market" && !!user && <LoadingIndicator user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
             {view === "quests" && !!user && (
               <Quests
