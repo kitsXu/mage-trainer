@@ -4,7 +4,6 @@ import "./Dailies.css";
 //-- TO DO --
 // - [ ] make the explanation div appear on hover of a little box/question mark icon
 
-
 export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
@@ -15,7 +14,7 @@ export default function Dailies(props) {
     //   JSON.stringify({ ...props.user, currentDailyQuests: dailies })
     // );
 
-    props.setCurrentDailyQuests(dailies)
+    props.setCurrentDailyQuests(dailies);
   }, [dailies]);
 
   function handleDailySubmit(e) {
@@ -47,9 +46,9 @@ export default function Dailies(props) {
     //     dailyQuestsCompleted,
     //   })
     // );
-    props.setNewAbandonedDailyQuestCount((prev) => prev + 1)
+    props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
 
-    return ;
+    return;
   }
 
   const resetAllDailies = (id, completed) => {
@@ -70,12 +69,14 @@ export default function Dailies(props) {
 
   return (
     <div className="bodyWrapper">
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="dailyHeader">{props.user.name}'s Daily Routine</h1>
       <p className="daily-info">
         &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Create
         your daily routine by adding tasks into the log below. Check tasks off
         your list as you complete them, and then hit the 'COMPLETE YOUR DAILY
-        ROUTINE' button at the end of the day to turn in and gain your experience (1xp per task)
+        ROUTINE' button at the end of the day to turn in and gain your
+        experience (1xp per task)
       </p>
       <form onSubmit={handleDailySubmit} className="new-daily-form">
         <div className="daily-form-row">
