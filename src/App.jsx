@@ -172,7 +172,7 @@ export default function App() {
               Brood
             </button>
             <button className="menuBtn" onClick={() => setView("market")}>
-              Market
+              Loading Indicator Test
             </button>
             <button className="menuBtn" onClick={() => setView("inventory")}>
               Inventory

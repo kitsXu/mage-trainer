@@ -578,8 +578,3 @@
   }
 }
 
-.loadingIndicator {
-  background: #e6e3cc;
-  display:flex;
-  justify-content: center;
-}
