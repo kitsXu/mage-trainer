@@ -38,13 +38,19 @@ header {
   margin-bottom: 4rem;
 }
 
+.headDivider {
+  background: #e6e3cc;
+  color: #b9b591;
+  text-align: center;
+}
+
 .menuWrapper {
   background: #e6e3cc;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .menuBtn {
@@ -135,5 +141,9 @@ label {
   background: #e6e3cc;
   text-align: center;
   font-size: 1.2rem;
-  margin: 4rem 0 2rem 0;
+  margin: 2.5rem 0 2rem 0;
+}
+
+.div.bodyWrapper {
+  background:#e6e3cc;
 }

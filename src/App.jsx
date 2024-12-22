@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage/LandingPage.jsx";
 import BroodRecord from "./components/Brood/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies/Dailies.jsx";
-import Market from "./components/Market/Market.jsx"
+import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
 import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
 
