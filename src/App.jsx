@@ -22,7 +22,7 @@ import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx"
 //  - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
 
 export default function App() {
-  const [view, setView] = useState(localStorage.getItem("view") ?? "user");
+  const [view, setView] = useState(localStorage.getItem("view") ?? "archives");
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -41,7 +41,7 @@ export default function App() {
   }, [user]);
 
   useEffect(() => {
-    localStorage.setItem("view", view ?? "user");
+    localStorage.setItem("view", view ?? "archives");
   }, [view]);
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
@@ -87,7 +87,7 @@ export default function App() {
 
     const savedView = localStorage.getItem("view");
 
-    setView(savedView ?? "user");
+    setView(savedView ?? "archives");
 
     setIsLoading(false);
   }, [refreshKey]);
@@ -160,16 +160,10 @@ export default function App() {
           <header>brood leader</header>
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("dailies")}>
-              Daiy Routine
+              Dailies
             </button>
             <button className="menuBtn" onClick={() => setView("quests")}>
               Quests
-            </button>
-            <button className="menuBtn" onClick={() => setView("user")}>
-              Records
-            </button>
-            <button className="menuBtn" onClick={() => setView("brood")}>
-              Brood
             </button>
             <button className="menuBtn" onClick={() => setView("market")}>
               Market
@@ -177,9 +171,15 @@ export default function App() {
             <button className="menuBtn" onClick={() => setView("inventory")}>
               Inventory
             </button>
+            <button className="menuBtn" onClick={() => setView("brood")}>
+              Brood
+            </button>
+            <button className="menuBtn" onClick={() => setView("archives")}>
+              Archives
+            </button>
           </div>
           <div>
-            {view === "user" && !!user && <UserProfile user={user} />}
+            {view === "archives" && !!user && <UserProfile user={user} />}
             {view === "market" && !!user && <Market user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
             {view === "quests" && !!user && (
