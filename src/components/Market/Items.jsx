@@ -11,7 +11,7 @@ export default function Items(props) {
           <button className="EggPurchase">Purchase?</button>
         </div>
       </label>
-      <div className="divider">__________</div>
+      <div className="divider">_________</div>
       <label>
         Mana Potion
         <div className="lavaDiv">
@@ -21,7 +21,7 @@ export default function Items(props) {
         </div>
         <hr />
       </label>
-      <div className="divider">__________</div>
+      <div className="divider">_________</div>
       <label>
         Speed X
         <div className="lavaDiv">
@@ -30,8 +30,8 @@ export default function Items(props) {
           <button className="EggPurchase">Purchase?</button>
         </div>
         <hr />
-        <div className="divider">__________</div>
-      </label>
+        <div className="divider">_________</div>
+        </label>
     </div>
   );
 }

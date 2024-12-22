@@ -32,6 +32,7 @@ header {
 
 .divider {
   background: #e6e3cc;
+  width:100%;
   color: #b9b591;
   text-align: center;
   font-size: 2rem;

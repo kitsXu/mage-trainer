@@ -1,17 +1,16 @@
-import "./Records.css";
+import "./Archives.css";
 
 // -- TO DO --
-// - [ ] calculate gold.. 100 per level?
-// - [ ] make div to display gold
+// - [ ] 
 
 export default function UserProfile(props) {
   console.log("UserProfile -- props.user: ", props.user);
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§</div>
       <h1 className="userHeader">Brood Leader {props.user.name}</h1>
-      <div className="divider">__________</div>
+      <div className="divider">_________</div>
       <div className="profileInfo">
         <div className="profile">Username: {props.user.name}</div>
         <div className="profile">Level: {props.user.level}</div>
@@ -29,7 +28,7 @@ export default function UserProfile(props) {
         </div>
         <div className="profile">Total Gold: {props.user.gold}</div>
       </div>
-      <div className="divider">__________</div>
+      <div className="divider">_________</div>
     </div>
   );
 }
