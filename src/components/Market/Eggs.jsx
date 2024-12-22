@@ -2,9 +2,6 @@ import earthEgg from "./images/earthEgg.png";
 import lavaEgg from "./images/lavaEgg.png";
 
 export default function Eggs(props) {
-  // -- [ ] create div to hold dragon eggs
-  // -- [ ] create div to display facts about dragon eggs obtained
-  //  - [ ] creeate div to hold items
 
   return (
     <div className="profile">
