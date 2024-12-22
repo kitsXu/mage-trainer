@@ -1,14 +1,37 @@
 export default function Items(props) {
 
-    // -- [ ] create div to hold dragon eggs
-    // -- [ ] create div to display facts about dragon eggs obtained
-    //  - [ ] creeate div to hold items
-  
-  
-    
-      return (
-        <div className="profile">
-          <div className="divider">__________</div>
+
+  return (
+    <div className="profile">
+      <label>
+        Health Potion
+        <div className="earthDiv">
+          <p className="cost">50G Per Item</p>
+          <input className="eggAmount" type="number" />
+          <button className="EggPurchase">Purchase?</button>
         </div>
-      );
-    }
+      </label>
+      <div className="divider">__________</div>
+      <label>
+        Mana Potion
+        <div className="lavaDiv">
+          <p className="cost">50G Per Item</p>
+          <input className="eggAmount" type="number" />
+          <button className="EggPurchase">Purchase?</button>
+        </div>
+        <hr />
+      </label>
+      <div className="divider">__________</div>
+      <label>
+        Speed X
+        <div className="lavaDiv">
+          <p className="cost">50G Per Item</p>
+          <input className="eggAmount" type="number" />
+          <button className="EggPurchase">Purchase?</button>
+        </div>
+        <hr />
+        <div className="divider">__________</div>
+      </label>
+    </div>
+  );
+}

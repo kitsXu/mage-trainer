@@ -9,6 +9,7 @@ export default function UserProfile(props) {
 
   return (
     <div className="profile">
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="userHeader">Brood Leader {props.user.name}</h1>
       <div className="divider">__________</div>
       <div className="profileInfo">

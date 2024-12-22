@@ -167,8 +167,10 @@ form.new-daily-form {
   text-align: center;
   font-size: 1.2rem;
   padding: 1rem 0 1rem 0;
-  margin: 0;
+  margin: 2.5rem 0 0rem 0;
 }
+
+
 
 #clearBtn:hover,
 #clearBtn:focus-visible {
@@ -188,4 +190,8 @@ form.new-daily-form {
 
 .new-daily-form input:focus {
   border: 3px ridge hsla(61, 35%, 39%, 0.781);
+}
+
+.bodyWrapper {
+  background:#e6e3cc;
 }
