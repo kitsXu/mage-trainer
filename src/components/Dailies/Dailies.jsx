@@ -69,7 +69,7 @@ export default function Dailies(props) {
 
   return (
     <div className="bodyWrapper">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§</div>
       <h1 className="dailyHeader">{props.user.name}'s Daily Routine</h1>
       <p className="daily-info">
         &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Create
@@ -124,7 +124,7 @@ export default function Dailies(props) {
       <button onClick={resetAllDailies} className="foot" id="clearBtn">
         COMPLETE YOUR DAILY QUESTS!
       </button>
-      <div className="divider">__________</div>
+      <div className="divider">_________</div>
     </div>
   );
 }

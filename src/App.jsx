@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import UserProfile from "./components/Records/UserProfile.jsx";
+import Archives from "./components/Archives/Archives.jsx"
 import Quests from "./components/Quests/Quests.jsx";
 import LandingPage from "./components/LandingPage/LandingPage.jsx";
 import BroodRecord from "./components/Brood/BroodRecord.jsx";
@@ -179,7 +179,7 @@ export default function App() {
             </button>
           </div>
           <div>
-            {view === "archives" && !!user && <UserProfile user={user} />}
+            {view === "archives" && !!user && <Archives user={user} />}
             {view === "market" && !!user && <Market user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
             {view === "quests" && !!user && (
