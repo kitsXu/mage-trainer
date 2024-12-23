@@ -213,7 +213,7 @@ export default function App() {
       )}
       <div className="logo">
         <img className="logo" src={kitXu2} ></img>
-        <a className="logo-tag" href="https://ko-fi.com/kitsxu">-kitsXu</a>
+        <a className="logo-tag" href="https://ko-fi.com/kitsxu">-kitsXu-kreations-</a>
       </div>
     </div>
   );
