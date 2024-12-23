@@ -9,6 +9,7 @@ import Dailies from "./components/Dailies/Dailies.jsx";
 import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
 import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
+import kitXu2 from "./images/kitXu2.png";
 
 //-- TODO:
 //  - [X] BUG!  Quests reappear whenever you press abandon and refresh
@@ -210,6 +211,10 @@ export default function App() {
           </div>
         </>
       )}
+      <div className="logo">
+        <img className="logo" src={kitXu2} ></img>
+        <a className="logo-tag" href="https://ko-fi.com/kitsxu">-kitsXu</a>
+      </div>
     </div>
   );
 }
