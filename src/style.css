@@ -149,12 +149,14 @@ label {
   background: #e6e3cc;
   margin:auto;
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   display:flex;
   flex-direction: column;
   justify-content: center;
-  height: 150px;
-  opacity: 60%;
+  align-items: center;
+  text-align: center;
+  height: 120px;
+  opacity: 65%;
 }
 
 .logo-tag {
@@ -163,7 +165,7 @@ label {
   margin-bottom: 2rem;
   display:flex;
   justify-content: center;
-  opacity: 60%;
+  text-align: center;
   text-decoration: none;
   color: hsl(41, 39%, 23%);
   cursor:default;
