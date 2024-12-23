@@ -36,7 +36,7 @@ header {
   color: #b9b591;
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 .headDivider {
@@ -143,4 +143,29 @@ label {
   text-align: center;
   font-size: 1.2rem;
   margin: 2.5rem 0 2rem 0;
+}
+
+.logo {
+  background: #e6e3cc;
+  margin:auto;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 150px;
+  opacity: 60%;
+}
+
+.logo-tag {
+  background: #e6e3cc;
+  margin:auto;
+  margin-bottom: 2rem;
+  display:flex;
+  justify-content: center;
+  opacity: 60%;
+  text-decoration: none;
+  color: hsl(41, 39%, 23%);
+  cursor:default;
+  font-size: 12px;
 }
