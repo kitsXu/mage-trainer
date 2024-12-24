@@ -148,21 +148,21 @@ label {
 .logo {
   background: #e6e3cc;
   margin:auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   margin-top: 3rem;
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 120px;
-  opacity: 65%;
+  height: 150px;
+  opacity: 45%;
 }
 
 .logo-tag {
   background: #e6e3cc;
   margin:auto;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   display:flex;
   justify-content: center;
   text-align: center;
