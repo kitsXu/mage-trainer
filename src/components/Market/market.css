@@ -1,3 +1,13 @@
+.eggProfile {
+    background: #e6e3cc;
+    justify-items: center;
+}
+
+.itemProfile {
+    background: #e6e3cc;
+    justify-items: center;
+}
+
 img.earthEgg {
     height: 100px;
     background: #e6e3cc;
@@ -8,10 +18,72 @@ img.lavaEgg {
     background: #e6e3cc;
 }
 
-.earthDiv {
+img.waterEgg {
+    height:100px;
     background: #e6e3cc;
 }
 
-.lavaDiv {
+img.poisonEgg {
+    height:100px;
     background: #e6e3cc;
 }
+
+.eggDiv {
+    background: #e6e3cc;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+label {
+    padding-left: 1rem;
+}
+
+.cost {
+    background: #e6e3cc;
+    display:flex;
+    align-items: center;
+    margin-left: .2rem;
+}
+
+.eggAmount {
+    background: hsla(61, 35%, 39%, 0.781);
+    width: 75px;
+    height:35px;
+    font-size: 16px;
+    color:#e6e3cc;
+    margin-left: 2rem;
+}
+
+.EggPurchase {
+    background: #e6e3cc;
+    width:150px;
+    text-align: center;
+    height:30px;
+    margin:10px;
+}
+
+.marketButtons {
+    background: #e6e3cc;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0px 30px 0;
+    gap: 30px;
+}
+
+.purchaseWrap {
+    background:#e6e3cc;
+}
+
+.logo-tag-market {
+    background: #e6e3cc;
+    text-decoration: none;
+    margin-top: 7.8vh;
+    color: hsl(41, 39%, 23%);
+    cursor:default;
+    font-size: 12px;
+  }

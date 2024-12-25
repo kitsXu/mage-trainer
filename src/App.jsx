@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import UserProfile from "./components/Records/UserProfile.jsx";
+import Archives from "./components/Archives/Archives.jsx"
 import Quests from "./components/Quests/Quests.jsx";
-import LandingPage from "./components/LandingPage/LandingPage.jsx";
 import BroodRecord from "./components/Brood/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies/Dailies.jsx";
-import Market from "./components/Market/Market.jsx"
+import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
 import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
+import Logo from "./components/LandingPage/Logo.jsx";
 
 //-- TODO:
 //  - [X] BUG!  Quests reappear whenever you press abandon and refresh
@@ -22,7 +22,7 @@ import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx"
 //  - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
 
 export default function App() {
-  const [view, setView] = useState(localStorage.getItem("view") ?? "user");
+  const [view, setView] = useState(localStorage.getItem("view") ?? "archives");
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -41,7 +41,7 @@ export default function App() {
   }, [user]);
 
   useEffect(() => {
-    localStorage.setItem("view", view ?? "user");
+    localStorage.setItem("view", view ?? "archives");
   }, [view]);
 
   //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
@@ -87,7 +87,7 @@ export default function App() {
 
     const savedView = localStorage.getItem("view");
 
-    setView(savedView ?? "user");
+    setView(savedView ?? "archives");
 
     setIsLoading(false);
   }, [refreshKey]);
@@ -148,25 +148,27 @@ export default function App() {
     currentDailyQuests,
   ]);
 
+
+
   if (isLoading) return <LoadingIndicator />;
 
   return (
     <div className="bodywrapper">
 
       {!user || !user.name && !isLoading ? (
-        <LandingPage user={user} isLoading={isLoading} setRefreshKey={setRefreshKey} />
+        <Logo user={user} isLoading={isLoading} setRefreshKey={setRefreshKey} />
       ) : (
         <>
           <header>brood leader</header>
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("dailies")}>
-              Daiy Routine
+              Dailies
             </button>
             <button className="menuBtn" onClick={() => setView("quests")}>
               Quests
             </button>
-            <button className="menuBtn" onClick={() => setView("user")}>
-              Records
+            <button className="menuBtn" onClick={() => setView("market")}>
+              Market
             </button>
             <button className="menuBtn" onClick={() => setView("brood")}>
               Brood
@@ -174,13 +176,17 @@ export default function App() {
             <button className="menuBtn" onClick={() => setView("market")}>
               Loading Indicator Test
             </button>
+
             <button className="menuBtn" onClick={() => setView("inventory")}>
               Inventory
             </button>
+            <button className="menuBtn" onClick={() => setView("archives")}>
+              Archives
+            </button>
           </div>
           <div>
-            {view === "user" && !!user && <UserProfile user={user} />}
-            {view === "market" && !!user && <LoadingIndicator user={user} />}
+            {view === "archives" && !!user && <Archives user={user} />}
+            {view === "market" && !!user && <Market user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
             {view === "quests" && !!user && (
               <Quests
