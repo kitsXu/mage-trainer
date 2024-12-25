@@ -37,7 +37,7 @@ export default function Quests(props) {
 
   return (
     <div className="questWrapper">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
       <p className="daily-info">
         &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add

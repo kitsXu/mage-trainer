@@ -7,7 +7,7 @@ export default function Inventory(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="userHeader">{props.user.name}'s Inventory</h1>
       <div className="divider">_________</div>
       <div className="logo">
