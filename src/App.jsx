@@ -173,10 +173,6 @@ export default function App() {
             <button className="menuBtn" onClick={() => setView("brood")}>
               Brood
             </button>
-            <button className="menuBtn" onClick={() => setView("market")}>
-              Loading Indicator Test
-            </button>
-
             <button className="menuBtn" onClick={() => setView("inventory")}>
               Inventory
             </button>
