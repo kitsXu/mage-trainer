@@ -1,8 +1,8 @@
 /* Config */
 
 :root {
-  --sk-size: 40px;
-  --sk-color: #333;
+  --sk-size: 60px;
+  --sk-color: hsl(41, 39%, 23%);
 }
 
 
@@ -44,12 +44,11 @@
       </div>
  */
 .sk-chase {
-  width: var(--sk-size);
-  height: var(--sk-size);
+  width: 25%;
+  height: 25%;
   position: relative;
   animation: sk-chase 2.5s infinite linear both; 
   background: #e6e3cc;
-
 }
 
 .sk-chase-dot {
@@ -66,9 +65,9 @@
   content: '';
   display: block;
   width: 25%;
-  height: 25%;
+  height: 35%;
   background-color: var(--sk-color);
-  border-radius: 100%;
+  border-radius: 150%;
   animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
 }
 
