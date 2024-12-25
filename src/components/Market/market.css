@@ -1,3 +1,8 @@
+.eggProfile {
+    background: #e6e3cc;
+    justify-items: center;
+}
+
 img.earthEgg {
     height: 100px;
     background: #e6e3cc;
@@ -8,20 +13,28 @@ img.lavaEgg {
     background: #e6e3cc;
 }
 
-.earthDiv {
+img.waterEgg {
+    height:100px;
     background: #e6e3cc;
-    display: flex;
-    flex-wrap: wrap;
-    gap:15px;
-    align-items: center;
 }
 
-.lavaDiv {
+img.poisonEgg {
+    height:100px;
     background: #e6e3cc;
+}
+
+.eggDiv {
+    background: #e6e3cc;
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     gap:15px;
     align-items: center;
+    padding-left: 2rem;
+}
+
+label {
+    padding-left: 1rem;
 }
 
 .cost {
