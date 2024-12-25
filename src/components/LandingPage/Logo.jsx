@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import LandingPage from "./LandingPage.jsx";
 import dragon from "./images/dragon4.png";
+import kit from "./images/kit1.png"
 import "./Logo.css";
 import { LoadingIndicator } from "./LoadingIndicator";
 
@@ -38,7 +39,7 @@ export default function Logo(props) {
 
         {logoVisibility && (
           <div className="logo">
-            <img className="logo-image" src={kitsXu2}></img>
+            <img className="logo-image" src={kit}></img>
             <a className="logo-tag-logo" href="https://ko-fi.com/kitsxu">
               -kitsXu apps-
             </a>
