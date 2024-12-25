@@ -29,6 +29,9 @@ export default function UserProfile(props) {
         <div className="profile">Total Gold: {props.user.gold}</div>
       </div>
       <div className="divider">_________</div>
+      <div className="logo">
+        <a className="logo-tag-archive" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+      </div>
     </div>
   );
 }

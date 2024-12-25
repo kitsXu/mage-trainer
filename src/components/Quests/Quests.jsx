@@ -36,7 +36,7 @@ export default function Quests(props) {
   }
 
   return (
-    <div className="bodywrapper">
+    <div className="questWrapper">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§</div>
       <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
       <p className="daily-info">
@@ -87,6 +87,9 @@ export default function Quests(props) {
         })}
       </ul>
       <div className="divider">_________</div>
+      <div className="logo">
+        <a className="logo-tag-quest" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+      </div>
     </div>
   );
 }

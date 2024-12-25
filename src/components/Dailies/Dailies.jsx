@@ -125,6 +125,9 @@ export default function Dailies(props) {
         COMPLETE YOUR DAILY QUESTS!
       </button>
       <div className="divider">_________</div>
+      <div className="logo">
+        <a className="logo-tag" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+      </div>
     </div>
   );
 }

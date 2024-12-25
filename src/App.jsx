@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import Archives from "./components/Archives/Archives.jsx"
 import Quests from "./components/Quests/Quests.jsx";
-import LandingPage from "./components/LandingPage/LandingPage.jsx";
 import BroodRecord from "./components/Brood/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies/Dailies.jsx";
 import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
 import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
-import kitXu2 from "./images/kitsXu2.png";
+import Logo from "./components/LandingPage/Logo.jsx";
 
 //-- TODO:
 //  - [X] BUG!  Quests reappear whenever you press abandon and refresh
@@ -149,13 +148,15 @@ export default function App() {
     currentDailyQuests,
   ]);
 
+
+
   if (isLoading) return <LoadingIndicator />;
 
   return (
     <div className="bodywrapper">
 
       {!user || !user.name && !isLoading ? (
-        <LandingPage user={user} isLoading={isLoading} setRefreshKey={setRefreshKey} />
+        <Logo user={user} isLoading={isLoading} setRefreshKey={setRefreshKey} />
       ) : (
         <>
           <header>brood leader</header>
@@ -169,11 +170,11 @@ export default function App() {
             <button className="menuBtn" onClick={() => setView("market")}>
               Market
             </button>
-            <button className="menuBtn" onClick={() => setView("inventory")}>
-              Inventory
-            </button>
             <button className="menuBtn" onClick={() => setView("brood")}>
               Brood
+            </button>
+            <button className="menuBtn" onClick={() => setView("inventory")}>
+              Inventory
             </button>
             <button className="menuBtn" onClick={() => setView("archives")}>
               Archives
@@ -211,10 +212,6 @@ export default function App() {
           </div>
         </>
       )}
-      <div className="logo">
-        <img className="logo" src={kitXu2} ></img>
-        <a className="logo-tag" href="https://ko-fi.com/kitsxu">-kitsXu-kreations-</a>
-      </div>
     </div>
   );
 }

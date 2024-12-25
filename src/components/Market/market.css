@@ -60,3 +60,12 @@ img.lavaEgg {
 .purchaseWrap {
     background:#e6e3cc;
 }
+
+.logo-tag-market {
+    background: #e6e3cc;
+    text-decoration: none;
+    margin-top: 5.5rem;
+    color: hsl(41, 39%, 23%);
+    cursor:default;
+    font-size: 12px;
+  }
