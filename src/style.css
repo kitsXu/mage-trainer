@@ -36,6 +36,7 @@ header {
   color: #b9b591;
   text-align: center;
   margin: 2.5rem 0 2rem 0;
+  word-break: break-all;
 }
 
 .menuWrapper {
@@ -153,6 +154,7 @@ label {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
+  word-break: break-all;
 }
 
 .logo {

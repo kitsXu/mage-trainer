@@ -6,9 +6,34 @@
     max-height: 20rem;
     min-height: 10rem;
     height:50vw;
-    opacity: 45%;
-    margin-top: 6rem;
+    margin-top: 4rem;
     animation:fadeIn 6s;
+  }
+
+  .landingHeader {
+    margin-top:2rem;
+    font-size: 44px;
+  }
+
+  .landing-divider {
+    background: #e6e3cc;
+    width:100%;
+    color: #b9b591;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .foot-divider {
+    background: #e6e3cc;
+    display:flex;
+    word-wrap: break-word;
+    word-break: break-all;
+    justify-content: center;
+    color: #b9b591;
+    text-align: center;
+    font-size: 2rem;
   }
   
   @keyframes fadeIn {
@@ -16,7 +41,7 @@
       opacity: 0%;
     }
     to {
-      opacity: 45%;
+      opacity: 100%;
     }
   }
 
@@ -25,6 +50,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .logo-image {
+    background: #e6e3cc;
+    display:flex;
+    margin:auto;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 10rem;
+    min-height: 6rem;
+    height:500px;
+    opacity: 25%;
+    margin-top: 2vh;
+    animation: cutInImage 1.5s;
   }
 
   .playBtn {
@@ -45,7 +84,7 @@
 
   .playBtnTag {
     font-size: 14px;
-    margin-top: 2.5rem;
+    margin-top: 6rem;
     display:flex;
     opacity: 0%;
     animation: cutIn 1.5s infinite;
@@ -74,5 +113,14 @@
     }
     to {
       opacity: 100%;
+    }
+  }
+
+  @keyframes cutInImage {
+    from {
+      opacity: 0%;
+    }
+    to {
+      opacity: 25%;
     }
   }
