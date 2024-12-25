@@ -28,7 +28,6 @@
   .foot-divider {
     background: #e6e3cc;
     display:flex;
-    word-wrap: break-word;
     word-break: break-all;
     justify-content: center;
     color: #b9b591;
@@ -56,13 +55,14 @@
     background: #e6e3cc;
     display:flex;
     margin:auto;
+    width:70%;
     flex-direction: column;
     justify-content: center;
     max-height: 10rem;
     min-height: 6rem;
     height:500px;
     opacity: 25%;
-    margin-top: 2vh;
+    margin-top: 3vh;
     animation: cutInImage 1.5s;
   }
 
@@ -94,12 +94,11 @@
   .logo-tag-logo {
     background: #e6e3cc;
     text-decoration: none;
-    margin-top: 1rem;
     color: hsl(41, 39%, 23%);
     cursor:default;
     opacity: 45%;
     font-size: 12px;
-    animation: fadeIn 6s;
+    animation: cutInImage 1.5s;
   }
   
 
