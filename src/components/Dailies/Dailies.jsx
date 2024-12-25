@@ -69,7 +69,7 @@ export default function Dailies(props) {
 
   return (
     <div className="bodyWrapper">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="dailyHeader">{props.user.name}'s Daily Routine</h1>
       <p className="daily-info">
         &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Create
@@ -125,6 +125,9 @@ export default function Dailies(props) {
         COMPLETE YOUR DAILY QUESTS!
       </button>
       <div className="divider">_________</div>
+      <div className="logo">
+        <a className="logo-tag" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function Market(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="userHeader">Scales Haven Marketplace</h1>
       <div className="marketButtons">
         <button className="menuBtn" onClick={() => setView("eggs")}>
@@ -22,6 +22,9 @@ export default function Market(props) {
       <div>
         {view === "eggs" && <Eggs />}
         {view === "items" && <Items />}
+      </div>
+      <div className="logo">
+        <a className="logo-tag-market" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
       </div>
     </div>
   );

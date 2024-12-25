@@ -194,3 +194,12 @@ form.new-daily-form {
 .bodyWrapper {
   background:#e6e3cc;
 }
+
+.logo-tag {
+  background: #e6e3cc;
+  text-decoration: none;
+  margin-top: 11.5vh;
+  color: hsl(41, 39%, 23%);
+  cursor:default;
+  font-size: 12px;
+}
