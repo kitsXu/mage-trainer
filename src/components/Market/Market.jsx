@@ -23,6 +23,9 @@ export default function Market(props) {
         {view === "eggs" && <Eggs />}
         {view === "items" && <Items />}
       </div>
+      <div className="logo">
+        <a className="logo-tag-market" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+      </div>
     </div>
   );
 }

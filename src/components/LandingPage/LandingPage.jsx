@@ -4,7 +4,6 @@ import { LoadingIndicator } from "./LoadingIndicator";
 
 
 export default function LandingPage(props) {
-  const [refreshKey, setRefreshKey] = useState(0);
   const [newName, setNewName] = useState("");
 
   //-- submit name form on landing page.
@@ -28,7 +27,7 @@ export default function LandingPage(props) {
 
   return (
     <>
-      <div className="bodyWrap">
+      <div className="landingBodyWrap">
         <div className="welcome">Welcome, Adventurer!</div>
         <div className="intro">... to our little village of Scales Haven.</div>
         <div className="intro">

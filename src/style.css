@@ -6,20 +6,21 @@
   background-image: url("images/background15.jpg");
 }
 
-.bodywrapper {
-  background: #e6e3cc;
-}
-
 body {
   background: #e6e3cc;
   color: hsl(41, 39%, 23%);
   max-width: 600px;
+  min-height: 950px;
   border: 10px;
   border-style: double ridge;
   border-color: hsl(41, 39%, 23%);
   padding: 1rem;
   margin: 3rem auto;
   box-shadow: 10px 10px 8px black;
+}
+
+.bodywrapper {
+  background: #e6e3cc;
 }
 
 header {
@@ -30,19 +31,11 @@ header {
   margin: 10px 0 20px 0;
 }
 
-.divider {
-  background: #e6e3cc;
-  width:100%;
-  color: #b9b591;
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
 .headDivider {
   background: #e6e3cc;
   color: #b9b591;
   text-align: center;
+  margin: 2.5rem 0 2rem 0;
 }
 
 .menuWrapper {
@@ -50,21 +43,29 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.3rem;
+  gap: .3rem;
+  row-gap: 1px;
+  margin-left: 2rem;
+  margin-right: 2rem;
   margin-bottom: 1.5rem;
+
 }
 
 .menuBtn {
   display: flex;
+  flex: 3 3 20%;
+  height: 20px;
+  margin-top: 1rem;
   align-items: center;
-  height: 28px;
+  justify-content: center;
+  text-align: center;
   color: #e6e3cc;
   border: 2px ridge hsla(61, 34%, 50%, 0.781);
   background: hsla(61, 35%, 39%, 0.781);
-  font-size: 10px;
+  box-shadow: 1px 1px 1px hsl(29, 44%, 22%);
+  font-size: 12px;
   padding: 8px;
   cursor: pointer;
-  box-shadow: 1px 1px 1px hsl(29, 44%, 22%);;
 }
 
 .menuBtn:active {
@@ -145,29 +146,20 @@ label {
   margin: 2.5rem 0 2rem 0;
 }
 
-.logo {
+.divider {
   background: #e6e3cc;
-  margin:auto;
-  margin-bottom: 0.5rem;
-  margin-top: 3rem;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width:100%;
+  color: #b9b591;
   text-align: center;
-  height: 150px;
-  opacity: 45%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.logo-tag {
+.logo {
   background: #e6e3cc;
-  margin:auto;
-  margin-bottom: 4rem;
   display:flex;
-  justify-content: center;
+  flex-direction: column;
+  margin:auto;
   text-align: center;
-  text-decoration: none;
-  color: hsl(41, 39%, 23%);
-  cursor:default;
-  font-size: 12px;
+  height: 100px;
 }
