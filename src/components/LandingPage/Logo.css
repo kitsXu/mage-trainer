@@ -3,7 +3,9 @@
     display:flex;
     flex-direction: column;
     justify-content: center;
-    height: 300px;
+    max-height: 20rem;
+    min-height: 10rem;
+    height:50vw;
     opacity: 45%;
     margin-top: 6rem;
     animation:fadeIn 6s;
