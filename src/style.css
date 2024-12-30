@@ -46,15 +46,15 @@ header {
   justify-content: center;
   gap: .3rem;
   row-gap: 1px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   margin-bottom: 1.5rem;
 
 }
 
 .menuBtn {
   display: flex;
-  flex: 3 3 20%;
+  flex: 3 3 30%;
   height: 20px;
   margin-top: 1rem;
   align-items: center;
@@ -65,9 +65,13 @@ header {
   background: hsla(61, 35%, 39%, 0.781);
   box-shadow: 1px 1px 1px hsl(29, 44%, 22%);
   font-size: 12px;
-  padding: 8px;
+  padding: 8px 0 8px 0;
   cursor: pointer;
-}
+  & {
+    @media (width <= 450px) {
+      padding: 14px 5px 14px 5px;
+    }
+}}
 
 .menuBtn:active {
   color: #e6e3cc;

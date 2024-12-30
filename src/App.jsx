@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import Archives from "./components/Archives/Archives.jsx"
 import Quests from "./components/Quests/Quests.jsx";
-import BroodRecord from "./components/Brood/BroodRecord.jsx";
+import BroodRecord from "./components/Inventory/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies/Dailies.jsx";
 import Market from "./components/Market/Market.jsx";
@@ -170,9 +170,6 @@ export default function App() {
             <button className="menuBtn" onClick={() => setView("market")}>
               Market
             </button>
-            <button className="menuBtn" onClick={() => setView("brood")}>
-              Brood
-            </button>
             <button className="menuBtn" onClick={() => setView("inventory")}>
               Inventory
             </button>
@@ -182,6 +179,7 @@ export default function App() {
           </div>
           <div>
             {view === "archives" && !!user && <Archives user={user} />}
+            {view === "brood" && !!user && <BroodRecord user={user} />}
             {view === "market" && !!user && <Market user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
             {view === "quests" && !!user && (
@@ -208,7 +206,6 @@ export default function App() {
                 setRefreshKey={setRefreshKey}
               />
             )}
-            {view === "brood" && !!user && <BroodRecord user={user} />}
           </div>
         </>
       )}
