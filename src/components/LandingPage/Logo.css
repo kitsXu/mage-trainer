@@ -55,7 +55,7 @@
     background: #e6e3cc;
     display:flex;
     margin:auto;
-    width:70%;
+    width:0%;
     flex-direction: column;
     justify-content: center;
     max-height: 10rem;
@@ -94,6 +94,7 @@
   .logo-tag-logo {
     background: #e6e3cc;
     text-decoration: none;
+    margin-top: 0px;
     color: hsl(41, 39%, 23%);
     cursor:default;
     opacity: 45%;

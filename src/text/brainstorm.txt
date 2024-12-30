@@ -1,3 +1,15 @@
+NEXT TO DOS-
+-- [ ]  Build out the Market Place
+-- [ ]  Create Egg and Item Info/Set Costs
+-- [ ]  Set Abandoning Quests to Items becoming more expensive in Market
+-- [ ]  Connect Market Place to Inventory/Set up buying mechanism
+-- [ ]  Connect Eggs to Brood/ have a hatching mechanism
+-- [ ]  Create Dragon Information
+-- [ ]  
+
+
+
+
 Eggs into leveling ideas
 -Receive an egg on first level up?
 -Receive gold on level up?
@@ -12,3 +24,13 @@ Items
 -what kind of items should my dragons need?
 
 Eggs
+
+
+
+Future Ideas:
+-make mini window like poketech watch in pokemon that shows your brood and hp levels
+-if you abandon a quest, the items get higher priced.
+
+-tie in inner world quests to real world quests somehow...
+-quests in inner world could be stuff that contributes to getting eggs to sell/items for dragons
+-add in dragon affection- like if you abandon quests, you lose dragons affection

@@ -14,7 +14,7 @@ export default function Items(props) {
           <img src={healthPotion} className="earthEgg" />
           <p className="cost">50G Per</p>
           <input className="eggAmount" type="number" />
-          <button className="EggPurchase">Purchase?</button>
+          <button className="EggPurchase">Purchase</button>
         </div>
       </label>
       <div className="divider">_________</div>
@@ -24,18 +24,18 @@ export default function Items(props) {
         <img src={manaPotion} className="earthEgg" />
           <p className="cost">50G Per</p>
           <input className="eggAmount" type="number" />
-          <button className="EggPurchase">Purchase?</button>
+          <button className="EggPurchase">Purchase</button>
         </div>
         <hr />
       </label>
       <div className="divider">_________</div>
       <label>
-        Speed X
+        Speed Potion
         <div className="eggDiv">
         <img src={speedPotion} className="earthEgg" />
           <p className="cost">50G Per</p>
           <input className="eggAmount" type="number" />
-          <button className="EggPurchase">Purchase?</button>
+          <button className="EggPurchase">Purchase</button>
         </div>
         <hr />
         <div className="divider">_________</div>
