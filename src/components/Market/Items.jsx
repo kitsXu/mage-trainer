@@ -30,7 +30,7 @@ export default function Items(props) {
       </label>
       <div className="divider">_________</div>
       <label>
-        Speed X
+        Speed Potion
         <div className="eggDiv">
         <img src={speedPotion} className="earthEgg" />
           <p className="cost">50G Per</p>
