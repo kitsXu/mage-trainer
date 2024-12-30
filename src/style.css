@@ -65,9 +65,13 @@ header {
   background: hsla(61, 35%, 39%, 0.781);
   box-shadow: 1px 1px 1px hsl(29, 44%, 22%);
   font-size: 12px;
-  padding: 8px;
+  padding: 8px 0 8px 0;
   cursor: pointer;
-}
+  & {
+    @media (width <= 450px) {
+      padding: 14px 5px 14px 5px;
+    }
+}}
 
 .menuBtn:active {
   color: #e6e3cc;
