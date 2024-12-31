@@ -1,11 +1,7 @@
 export const purchaseEgg = (user) => {
-    if (user.experience >= user.nextLevelExperience) {
-      user.level++;
-
-      user.nextLevelExperience += 10;
-
-      user.gold += user.goldIncrease;
-
-      user.goldIncrease += 20
-    }
+  user.gold - 50;
   };
+
+//on click
+//user.gold - 50;
+//put correct egg into user's inventory... 

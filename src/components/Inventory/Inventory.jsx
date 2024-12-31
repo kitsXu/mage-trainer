@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import "./inventory.css";
 import BroodRecord from "./BroodRecord.jsx";
 import ItemInventory from "./ItemInventory.jsx";

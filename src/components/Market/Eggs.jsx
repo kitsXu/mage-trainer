@@ -2,6 +2,8 @@ import earthEgg from "./images/earthEgg.png";
 import lavaEgg from "./images/lavaEgg.png";
 import waterEgg from "./images/waterEgg.png";
 import poisonEgg from "./images/poisonEgg.png";
+import { purchaseEgg } from "../../funcs/purchaseEgg.js";
+
 
 export default function Eggs(props) {
   return (
@@ -13,7 +15,7 @@ export default function Eggs(props) {
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
-            <button className="EggPurchase">Purchase</button>
+            <button className="EggPurchase" onClick={purchaseEgg}>Purchase</button>
           </div>
         </div>
       </label>
