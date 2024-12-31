@@ -43,7 +43,7 @@ export default function App() {
     }
   }, [user]);
 
-  //-- set default 'view' to 'archives'
+  //-- set 'view' to local storage and default 'view' to 'archives'
   useEffect(() => {
     localStorage.setItem("view", view ?? "archives");
   }, [view]);
@@ -123,14 +123,14 @@ export default function App() {
     setIsLoading(false);
   }, [refreshKey]);
 
-  //-- function to check level/increment level & gold
+  //-- checks level and if requirements are met, increments level/gold
   useEffect(() => {
     if (!user || !user.experience) return;
 
     chkLevelUp(user);
   }, [user]);
 
-  //-- create new updated user object to update both local storage user record and local user object state.
+  //-- spreads over user object and conditional updates levels and experience
   useEffect(() => {
     if (!user) return;
     const updatedUser = {
@@ -146,7 +146,7 @@ export default function App() {
     setUser(updatedUser);
   }, [newDailyQuestsCompletedCount, newQuestCompletedCount]);
 
-  //-- spread over user object and conditionally update values
+  //-- spread over user object and conditionally updates questing information
   useEffect(() => {
     if (!user) return;
     localStorage.setItem(
