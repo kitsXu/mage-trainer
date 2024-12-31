@@ -1,8 +1,31 @@
+import { useState, useEffect } from "react";
 import './brood.css';
 
-export default function BroodRecord(props) {
+export default function BroodRecord() {
+    const [brood, setBrood] = useState();
+  
 
-  console.log("UserProfile -- props.user: ", props.user);
+  useEffect(() => {
+    const newBroodObject = localStorage.getItem("brood");
+
+    if (!newBroodObject) {
+      const newBroodObject = {
+        earthEgg: 0,
+        lavaEgg: 0,
+        acidEgg: 0,
+        waterEgg: 0,
+        plainEgg: 0,
+        healthPotion: 0,
+        manaPotion: 0,
+        speedPotion: 0,
+      };
+
+      localStorage.setItem("brood", JSON.stringify(newBroodObject));
+      setBrood(newBroodObject);
+      return;
+    }
+    [];
+  });
 
   return (
     <div className="profile">
