@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import Archives from "./components/Archives/Archives.jsx"
+import Archives from "./components/Archives/Archives.jsx";
 import Quests from "./components/Quests/Quests.jsx";
 import BroodRecord from "./components/Inventory/BroodRecord.jsx";
 import { chkLevelUp } from "./funcs/chkLevelUp.js";
@@ -33,13 +33,17 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+  const [brood, setBrood] = useState();
+  const [inventory, setInventory] = useState();
 
+  //-- if user type isnt an object, parse user.
   useEffect(() => {
     if (typeof user !== "object") {
       setUser(JSON.parse(user));
     }
   }, [user]);
 
+  //-- set default 'view' to 'archives'
   useEffect(() => {
     localStorage.setItem("view", view ?? "archives");
   }, [view]);
@@ -67,8 +71,35 @@ export default function App() {
         nxtLvl: 1,
       };
 
+      const newInventoryObject = {
+        earthEgg: 0,
+        lavaEgg: 0,
+        acidEgg: 0,
+        waterEgg: 0,
+        plainEgg: 0,
+        healthPotion: 0,
+        manaPotion: 0,
+        speedPotion: 0,
+      };
+
+      const newBroodObject = {
+        earthEgg: 0,
+        lavaEgg: 0,
+        acidEgg: 0,
+        waterEgg: 0,
+        plainEgg: 0,
+        healthPotion: 0,
+        manaPotion: 0,
+        speedPotion: 0,
+      };
+
       localStorage.setItem("user", JSON.stringify(newUserObject));
+      localStorage.setItem("brood", JSON.stringify(newBroodObject));
+      localStorage.setItem("inventory", JSON.stringify(newInventoryObject));
+
       setUser(newUserObject);
+      setInventory(newInventoryObject);
+      setBrood(newBroodObject);
 
       setIsLoading(false);
 
@@ -92,12 +123,12 @@ export default function App() {
     setIsLoading(false);
   }, [refreshKey]);
 
+  //-- function to check level/increment level & gold
   useEffect(() => {
     if (!user || !user.experience) return;
 
     chkLevelUp(user);
   }, [user]);
-
 
   //-- create new updated user object to update both local storage user record and local user object state.
   useEffect(() => {
@@ -110,20 +141,18 @@ export default function App() {
           : user.level,
 
       experience: user.questCompleted * 4 + user.dailyQuestsCompleted,
-
     };
     localStorage.setItem("user", JSON.stringify(updatedUser));
     setUser(updatedUser);
   }, [newDailyQuestsCompletedCount, newQuestCompletedCount]);
 
+  //-- spread over user object and conditionally update values
   useEffect(() => {
     if (!user) return;
     localStorage.setItem(
       "user",
       JSON.stringify({
-        ...user, //-- spread over our existing user object so we retain any unchanged values...
-
-        //-- ...conditionally update values if they've changed.
+        ...user,
         ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
           ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
           : {}),
@@ -148,14 +177,11 @@ export default function App() {
     currentDailyQuests,
   ]);
 
-
-
   if (isLoading) return <LoadingIndicator />;
 
   return (
     <div className="bodywrapper">
-
-      {!user || !user.name && !isLoading ? (
+      {!user || (!user.name && !isLoading) ? (
         <Logo user={user} isLoading={isLoading} setRefreshKey={setRefreshKey} />
       ) : (
         <>
