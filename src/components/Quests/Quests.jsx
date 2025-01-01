@@ -7,6 +7,7 @@ import "./Quests.css";
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [ruleVisibility, setRuleVisibility] = useState(false);
 
   console.log("Quests -- props.user: ", props.user);
 
@@ -39,13 +40,14 @@ export default function Quests(props) {
     <div className="questWrapper">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
-      <p className="daily-info">
+      <button className="questExplanation" onClick={setRuleVisibility}>❔</button>
+      {ruleVisibility && <p className="daily-info">
         &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add
         tasks to the log below to build out your Quest Log. These should be
         things you don't do everyday, as you won't be permited to enter the same
         task here more than once if they have been completed. Quests that are
         completed are worth 4xp.
-      </p>
+      </p>}
       <form onSubmit={handleSubmit} className="new-quest-form">
         <div className="form-row">
           <input

@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 10px;
   line-height: 25px;
@@ -140,16 +139,6 @@ form.new-daily-form {
 }
 
 
-.daily-header {
-  background: #e6e3cc;
-  font-size: 10px;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  gap: 10rem;
-  text-align: center;
-  text-decoration: underline;
-}
-
 #clearBtn {
   margin: 0;
   padding: 0.25em 0.5em;
@@ -166,10 +155,8 @@ form.new-daily-form {
   background: #e6e3cc;
   text-align: center;
   font-size: 1.2rem;
-  margin: 2rem 0 2rem 0;
+  margin: 2rem 0 .5rem 0;
 }
-
-
 
 #clearBtn:hover,
 #clearBtn:focus-visible {
@@ -202,4 +189,15 @@ form.new-daily-form {
   color: hsl(41, 39%, 23%);
   cursor:default;
   font-size: 12px;
+}
+
+.questExplanation {
+  background:hsl(40, 21%, 61%);
+  color:#e6e3cc;
+  outline-color: hsl(41, 39%, 23%);
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  margin:auto;
+  margin-bottom:40px;
 }
