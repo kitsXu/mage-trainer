@@ -7,6 +7,7 @@ import "./Dailies.css";
 export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
+  const [ruleVisibility, setRuleVisibility] = useState(false);
 
   useEffect(() => {
     // localStorage.setItem(
@@ -70,14 +71,20 @@ export default function Dailies(props) {
   return (
     <div className="bodyWrapper">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
-      <h1 className="dailyHeader">{props.user.name}'s Daily Routine</h1>
-      <p className="daily-info">
-        &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Create
-        your daily routine by adding tasks into the log below. Check tasks off
-        your list as you complete them, and then hit the 'COMPLETE YOUR DAILY
-        ROUTINE' button at the end of the day to turn in and gain your
-        experience (1xp per task)
-      </p>
+      <h1 className="dailyHeader">{props.user.name}'s Dailies</h1>
+      <button className="questExplanation" onClick={setRuleVisibility}>
+        ❔
+      </button>
+      {ruleVisibility && (
+        <p className="daily-info">
+          &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;
+          Dailies are the things that make up your every day routine! Create your
+          daily routine by adding tasks into the log below. Check tasks off your
+          list as you complete them, and then hit the 'COMPLETE YOUR DAILY
+          ROUTINE' button at the end of the day to turn in and gain your
+          experience (1xp per task)
+        </p>
+      )}
       <form onSubmit={handleDailySubmit} className="new-daily-form">
         <div className="daily-form-row">
           <input
@@ -126,7 +133,9 @@ export default function Dailies(props) {
       </button>
       <div className="divider">_________</div>
       <div className="logo">
-        <a className="logo-tag" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+        <a className="logo-tag" href="https://ko-fi.com/kitsxu">
+          -kitsXu-
+        </a>
       </div>
     </div>
   );
