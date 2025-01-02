@@ -5,6 +5,14 @@ import acidEgg from "./images/acidEgg.png";
 
 
 export default function Eggs(props) {
+
+  const purchaseEgg = () => {
+    props.user.gold - 75;
+    // inventory.earthEgg + 1;
+    console.log("PURCHASE COMPLETE-- Earth Egg")
+    };
+
+
   return (
     <div className="eggProfile">
       <label>

@@ -13,8 +13,8 @@ import Logo from "./components/LandingPage/Logo.jsx";
 //-- TODO:
 //  - [X] BUG!  Quests reappear whenever you press abandon and refresh
 // -- [X] set 'view' to local storage, when user refreshes so we return the page they were on
-//  - [ ] check that dailies are stored correctly, have to refresh for update rn
-//  - [ ] store user made quests locally
+//  - [ ] daily quests not saving/storing to local storage
+//  - [ ] regular quests reset when you refresh
 //  - [ ] check quests entered against local storage 'quests', if they are there you can't accept
 //  - [ ] make a maximum of daily quests??
 
