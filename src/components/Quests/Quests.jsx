@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Quests.css";
 
 //-- TO DO --
@@ -7,7 +7,7 @@ import "./Quests.css";
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [ruleVisibility, setRuleVisibility] = useState(false);
+  const [visibility, setVisibility] = useState(false);
 
   console.log("Quests -- props.user: ", props.user);
 
@@ -36,18 +36,31 @@ export default function Quests(props) {
     return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
 
+  function showHide ()  { 
+  if (visibility === false)
+    setVisibility(true);
+  else setVisibility(false);
+}
+  
+
   return (
     <div className="questWrapper">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
-      <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
-      <button className="questExplanation" onClick={setRuleVisibility}>❔</button>
-      {ruleVisibility && <p className="daily-info">
-        &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add
-        tasks to the log below to build out your Quest Log. These should be
-        things you don't do everyday, as you won't be permited to enter the same
-        task here more than once if they have been completed. Quests that are
-        completed are worth 4xp.
-      </p>}
+      <div className="questHeaderWrap">
+        <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
+        <button className="questExplanation" onClick={showHide}>
+          ?
+        </button>{" "}
+      </div>
+      {visibility && (
+        <p className="daily-info">
+          &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add
+          tasks to the log below to build out your Quest Log. These should be
+          things you don't do everyday, as you won't be permited to enter the
+          same task here more than once if they have been completed. Quests that
+          are completed are worth 4xp.
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="new-quest-form">
         <div className="form-row">
           <input
@@ -90,7 +103,9 @@ export default function Quests(props) {
       </ul>
       <div className="divider">_________</div>
       <div className="logo">
-        <a className="logo-tag-quest" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+        <a className="logo-tag-quest" href="https://ko-fi.com/kitsxu">
+          -kitsXu-
+        </a>
       </div>
     </div>
   );

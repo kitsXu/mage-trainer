@@ -3,9 +3,6 @@
   background: #e6e3cc;
   margin:auto;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
   padding-bottom: 1rem;
   font-size: 10px;
   line-height: 25px;
@@ -155,7 +152,7 @@ form.new-daily-form {
   background: #e6e3cc;
   text-align: center;
   font-size: 1.2rem;
-  margin: 2rem 0 .5rem 0;
+  margin-top: 2rem;
 }
 
 #clearBtn:hover,
@@ -192,12 +189,26 @@ form.new-daily-form {
 }
 
 .questExplanation {
-  background:hsl(40, 21%, 61%);
-  color:#e6e3cc;
-  outline-color: hsl(41, 39%, 23%);
-  text-align: center;
-  display:flex;
-  justify-content: center;
-  margin:auto;
-  margin-bottom:40px;
+  background: hsla(61, 35%, 39%, 0.781);
+  color: #e6e3cc;
+  border: 2px dotted hsl(29, 44%, 22%);
+  height: 26px;
+  width:26px;
+  font-size:10px;
+  text-shadow: 2px 1px 1px black;
+}
+
+.questExplanation:active {
+  color: #e6e3cc;
+  color: hsl(29, 44%, 22%);
+  -webkit-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(29, 44%, 22%);
+  text-shadow: none;
+  outline: none;
+}
+
+.questExplanation:hover,
+.menuBtn:focus-visible {
+  background: hsla(64, 32%, 53%, 0.842);
 }

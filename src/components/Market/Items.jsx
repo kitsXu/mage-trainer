@@ -10,32 +10,32 @@ export default function Items(props) {
     <div className="itemProfile">
       <label>
         Health Potion
-        <div className="eggDiv">
-          <img src={healthPotion} className="earthEgg" />
-          <p className="cost">50G Per</p>
-          <input className="eggAmount" type="number" />
-          <button className="EggPurchase">Purchase</button>
+        <div className="itemDiv">
+          <img src={healthPotion} className="itemIcons" />
+          <p className="cost">75G Per</p>
+          <input className="itemAmount" type="number" />
+          <button className="itemPurchase">Purchase</button>
         </div>
       </label>
       <div className="divider">_________</div>
       <label>
         Mana Potion
-        <div className="eggDiv">
-        <img src={manaPotion} className="earthEgg" />
-          <p className="cost">50G Per</p>
-          <input className="eggAmount" type="number" />
-          <button className="EggPurchase">Purchase</button>
+        <div className="itemDiv">
+        <img src={manaPotion} className="itemIcons" />
+          <p className="cost">75G Per</p>
+          <input className="itemAmount" type="number" />
+          <button className="itemPurchase">Purchase</button>
         </div>
         <hr />
       </label>
       <div className="divider">_________</div>
       <label>
         Speed Potion
-        <div className="eggDiv">
-        <img src={speedPotion} className="earthEgg" />
-          <p className="cost">50G Per</p>
-          <input className="eggAmount" type="number" />
-          <button className="EggPurchase">Purchase</button>
+        <div className="itemDiv">
+        <img src={speedPotion} className="itemIcons" />
+          <p className="cost">75G Per</p>
+          <input className="itemAmount" type="number" />
+          <button className="itemPurchase">Purchase</button>
         </div>
         <hr />
         <div className="divider">_________</div>

@@ -7,7 +7,7 @@ import "./Dailies.css";
 export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
-  const [ruleVisibility, setRuleVisibility] = useState(false);
+  const [visibility, setVisibility] = useState(false);
 
   useEffect(() => {
     // localStorage.setItem(
@@ -68,19 +68,27 @@ export default function Dailies(props) {
     setDailies(resetDailies);
   };
 
+  function showHide ()  { 
+    if (visibility === false)
+      setVisibility(true);
+    else setVisibility(false);
+  }
+
   return (
     <div className="bodyWrapper">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
-      <h1 className="dailyHeader">{props.user.name}'s Dailies</h1>
-      <button className="questExplanation" onClick={setRuleVisibility}>
-        ❔
-      </button>
-      {ruleVisibility && (
+      <div className="questHeaderWrap">
+        <h1 className="dailyHeader">{props.user.name}'s Dailies</h1>
+        <button className="questExplanation" onClick={showHide}>
+          ?
+        </button>
+      </div>
+      {visibility && (
         <p className="daily-info">
           &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;
-          Dailies are the things that make up your every day routine! Create your
-          daily routine by adding tasks into the log below. Check tasks off your
-          list as you complete them, and then hit the 'COMPLETE YOUR DAILY
+          Dailies are the things that make up your every day routine! Create
+          your daily routine by adding tasks into the log below. Check tasks off
+          your list as you complete them, and then hit the 'COMPLETE YOUR DAILY
           ROUTINE' button at the end of the day to turn in and gain your
           experience (1xp per task)
         </p>

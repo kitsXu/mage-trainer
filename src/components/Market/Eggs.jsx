@@ -1,15 +1,28 @@
-import earthEgg from "./images/earthEgg.png";
+import mountainEgg from "./images/mountainEgg.png";
 import lavaEgg from "./images/lavaEgg.png";
-import waterEgg from "./images/waterEgg.png";
-import poisonEgg from "./images/poisonEgg.png";
+import riverEgg from "./images/riverEgg.png";
+import acidEgg from "./images/acidEgg.png";
 
 export default function Eggs(props) {
   return (
     <div className="eggProfile">
       <label>
-        Earth Egg
+        Plain Egg
         <div className="eggDiv">
-          <img src={earthEgg} className="earthEgg" />
+          <img src={mountainEgg} className="mountainEgg" />
+          <p className="cost">50G Per</p>
+          <div className="purchaseWrap">
+            <input className="eggAmount" type="number" />
+            <button className="EggPurchase">Purchase</button>
+          </div>
+        </div>
+      </label>
+      <div className="divider">_________</div>
+      <label></label>
+      <label>
+        Mountain Egg
+        <div className="eggDiv">
+          <img src={mountainEgg} className="mountainEgg" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -32,9 +45,9 @@ export default function Eggs(props) {
       </label>
       <div className="divider">_________</div>
       <label>
-        Water Egg
+        River Egg
         <div className="eggDiv">
-          <img src={waterEgg} className="waterEgg" />
+          <img src={riverEgg} className="riverEgg" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -43,11 +56,11 @@ export default function Eggs(props) {
         </div>
         <hr />
         <div className="divider">_________</div>
-        </label>
-        <label>
-        Poison Egg
+      </label>
+      <label>
+        Acid Egg
         <div className="eggDiv">
-          <img src={poisonEgg} className="poisonEgg" />
+          <img src={acidEgg} className="acidEgg" />
           <p className="cost">150G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
