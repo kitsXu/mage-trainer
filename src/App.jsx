@@ -77,9 +77,6 @@ export default function App() {
         lavaEgg: 0,
         acidEgg: 0,
         riverEgg: 0,
-        healthPotion: 0,
-        manaPotion: 0,
-        speedPotion: 0,
       };
 
       const newBroodObject = {
@@ -88,6 +85,7 @@ export default function App() {
         fireDragon: 0,
         blackDragon: 0,
         waterDragon: 0,
+
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
