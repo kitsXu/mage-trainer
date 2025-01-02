@@ -195,6 +195,8 @@ form.new-daily-form {
   height: 26px;
   width:26px;
   font-size:10px;
+  margin-top: 12px;
+  margin-left:12px;
   text-shadow: 2px 1px 1px black;
 }
 

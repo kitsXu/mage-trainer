@@ -3,13 +3,16 @@ import "./Dailies.css";
 
 //-- TO DO --
 // - [X] make the explanation div appear on hover of a little box/question mark icon
+// - [ ] make a maximum of daily quests??
+// - [ ] create time stamp for daily quest turn in button stored locally? idk
+// - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
 
 export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
   const [visibility, setVisibility] = useState(false);
 
-  console.log("Daily Quests -- props.user: ", props.user);
+  console.log("DAILIES PAGE--", props.user);
 
   //--set current state of dailies to local storage.
   useEffect(() => {
@@ -35,7 +38,7 @@ export default function Dailies(props) {
   }
 
   //--check and uncheck daily quests
-  const toggleDaily = (id, completed) => {
+  function toggleDaily (id, completed) {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );

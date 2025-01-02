@@ -1,6 +1,6 @@
 import './inventory.css'
 
-export default function ItemInventory(props) {
+export default function ItemInventory() {
 
 
   return (
