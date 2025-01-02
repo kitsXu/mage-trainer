@@ -72,25 +72,20 @@ export default function App() {
       };
 
       const newInventoryObject = {
-        earthEgg: 0,
+        plainEgg: 0,
+        mountainEgg: 0,
         lavaEgg: 0,
         acidEgg: 0,
-        waterEgg: 0,
-        plainEgg: 0,
-        healthPotion: 0,
-        manaPotion: 0,
-        speedPotion: 0,
+        riverEgg: 0,
       };
 
       const newBroodObject = {
-        earthEgg: 0,
-        lavaEgg: 0,
-        acidEgg: 0,
-        waterEgg: 0,
-        plainEgg: 0,
-        healthPotion: 0,
-        manaPotion: 0,
-        speedPotion: 0,
+        commonDragon: 0,
+        earthDragon: 0,
+        fireDragon: 0,
+        blackDragon: 0,
+        waterDragon: 0,
+
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));

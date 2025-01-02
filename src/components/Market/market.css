@@ -1,14 +1,11 @@
+
+/*-- EGGS --*/
 .eggProfile {
     background: #e6e3cc;
     justify-items: center;
 }
 
-.itemProfile {
-    background: #e6e3cc;
-    justify-items: center;
-}
-
-img.earthEgg {
+img.mountainEgg {
     height: 100px;
     background: #e6e3cc;
 }
@@ -18,12 +15,12 @@ img.lavaEgg {
     background: #e6e3cc;
 }
 
-img.waterEgg {
+img.riverEgg {
     height:100px;
     background: #e6e3cc;
 }
 
-img.poisonEgg {
+img.acidEgg {
     height:100px;
     background: #e6e3cc;
 }
@@ -38,6 +35,47 @@ img.poisonEgg {
     padding-left: 2rem;
 }
 
+.eggAmount {
+    background: hsla(61, 35%, 39%, 0.781);
+    width: 75px;
+    height:35px;
+    font-size: 16px;
+    color:#e6e3cc;
+    margin-left: 2rem;
+}
+
+.EggPurchase {
+    background: #e6e3cc;
+    width:150px;
+    text-align: center;
+    height:30px;
+    margin:10px;
+}
+
+/*-- ITEMS --*/
+.itemProfile {
+    background: #e6e3cc;
+    justify-items: center;
+}
+
+.itemIcons {
+    height: 100px;
+    background: #e6e3cc;
+}
+
+
+.itemDiv {
+    background: #e6e3cc;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+/*-- BOTH --*/
+
 label {
     padding-left: 1rem;
 }
@@ -49,7 +87,8 @@ label {
     margin-left: .2rem;
 }
 
-.eggAmount {
+
+.itemAmount {
     background: hsla(61, 35%, 39%, 0.781);
     width: 75px;
     height:35px;
@@ -58,7 +97,7 @@ label {
     margin-left: 2rem;
 }
 
-.EggPurchase {
+.itemPurchase {
     background: #e6e3cc;
     width:150px;
     text-align: center;
