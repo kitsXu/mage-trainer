@@ -1,29 +1,25 @@
-import "./LandingPage.css"
+import "./LandingPage.css";
 import { useState } from "react";
 import { LoadingIndicator } from "./LoadingIndicator";
-
 
 export default function LandingPage(props) {
   const [newName, setNewName] = useState("");
 
-  //-- submit name form on landing page.
-  const handleSubmit = () => {
-    if (props.user === !props.user) return;
-    
-    localStorage.setItem("user", JSON.stringify({ ...props.user, name: newName }));
-
-    props.setRefreshKey((prev) => prev + 1);
-
-    console.log("User information updated!");
-  };
-
-  const handleOnChange = (value) => {
+  //-- set user's name
+  function handleOnChange(value) {
     setNewName(value);
-  };
+  }
 
-  //-- REMARK: do this better than i did. :)
-  if (props.isLoading || !props.user) return <LoadingIndicator />;
-  if (!!props.user.name) return null;
+  //-- updating user's name in local storage
+  function handleSubmit() {
+    if (props.user === !props.user) return;
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, name: newName })
+    );
+    props.setRefreshKey((prev) => prev + 1);
+  }
 
   return (
     <>
@@ -42,8 +38,7 @@ export default function LandingPage(props) {
         <div className="intro">
           ALL Brood Leaders, even seasoned ones, are expected to complete their
           daily routines, as well as a few additional quests to get and keep
-          their eggs. Be consistent enough and a dragon egg could be
-          yours!{" "}
+          their eggs. Be consistent enough and a dragon egg could be yours!{" "}
         </div>
         <div className="intro">
           Although, then you have to figure out what to do with it...
@@ -56,10 +51,7 @@ export default function LandingPage(props) {
         <form
           className="nameInput"
           onSubmit={(e) => {
-            //-- prevent default behavior of the event. in this case, stop the form submission
-            //-- from refreshing the page.
             e.preventDefault();
-
             handleSubmit(newName);
           }}
         >

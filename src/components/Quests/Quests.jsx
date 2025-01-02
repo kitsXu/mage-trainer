@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import "./Quests.css";
 
 //-- TO DO --
 // - [X] make the explanation div appear on hover of a little box/question mark icon
+// - [ ] regular quests reset when you refresh
+// - [ ] check quests entered against local storage 'quests', if they are there you can't accept
 
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [tasks, setTasks] = useState([]);
   const [visibility, setVisibility] = useState(false);
 
+  //-- enter a quest into the form
   function handleSubmit(e) {
     e.preventDefault();
     setTasks((currentTasks) => {
@@ -20,6 +24,7 @@ export default function Quests(props) {
     setNewQuest("");
   }
 
+  //-- clears the quest and increment quest completed count
   function completeTask(id) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
@@ -27,6 +32,7 @@ export default function Quests(props) {
     return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
+  //-- just clears quest
   function deleteTask(id) {
     setTasks((currentTasks) => {
       return currentTasks.filter((task) => task.id !== id);
@@ -34,12 +40,11 @@ export default function Quests(props) {
     return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
 
-  function showHide ()  { 
-  if (visibility === false)
-    setVisibility(true);
-  else setVisibility(false);
-}
-  
+  //--change visibility of an element
+  function showHide() {
+    if (visibility === false) setVisibility(true);
+    else setVisibility(false);
+  }
 
   return (
     <div className="questWrapper">
@@ -70,7 +75,6 @@ export default function Quests(props) {
         </div>
         <button className="btn">ACCEPT</button>
       </form>
-      {/* <div id="completeQuest">Completed- {props.newQuestCompletedCount} </div> */}
       <ul className="list">
         {tasks.length === 0 && "No quests available!  Better find some work!"}
         {tasks.map((task) => {

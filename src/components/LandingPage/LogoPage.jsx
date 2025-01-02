@@ -1,23 +1,24 @@
-import kitsXu2 from "./images/kitsXu2.png";
 import React from "react";
 import { useState } from "react";
 import LandingPage from "./LandingPage.jsx";
 import dragon from "./images/dragon4.png";
-import kit from "./images/kit1.png"
+import kit from "./images/kit1.png";
 import "./Logo.css";
-import { LoadingIndicator } from "./LoadingIndicator";
+import { LoadingIndicator } from "./LoadingIndicator.jsx";
 
-export default function Logo(props) {
+export default function LogoPage(props) {
   const [landingPageVisibility, setLandingPageVisibility] = useState(false);
   const [logoVisibility, setLogoVisibility] = useState(true);
 
-  if (props.isLoading || !props.user) return <LoadingIndicator />;
-  if (!!props.user.name) return null;
-
+  //-- change visibility on logo elements and 'landingPage'
   const handleClick = () => {
     setLandingPageVisibility(!landingPageVisibility);
     setLogoVisibility(!logoVisibility);
   };
+
+  //-- REMARK: do this better than i did. :)
+  if (props.isLoading || !props.user) return <LoadingIndicator />;
+  if (!!props.user.name) return null;
 
   return (
     <div className="bodyWrapper">
