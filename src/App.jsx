@@ -26,13 +26,16 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
-  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
-    useState();
+
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
+  
+  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
+    useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+
   const [brood, setBrood] = useState();
   const [inventory, setInventory] = useState();
 

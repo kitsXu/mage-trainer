@@ -2,22 +2,26 @@ import { useState, useEffect } from "react";
 import "./Dailies.css";
 
 //-- TO DO --
-// - [ ] make the explanation div appear on hover of a little box/question mark icon
+// - [X] make the explanation div appear on hover of a little box/question mark icon
 
 export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
   const [visibility, setVisibility] = useState(false);
 
+  console.log("Daily Quests -- props.user: ", props.user);
+
+  //--set current state of dailies to local storage.
   useEffect(() => {
-    // localStorage.setItem(
-    //   "user",
-    //   JSON.stringify({ ...props.user, currentDailyQuests: dailies })
-    // );
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, currentDailyQuests: dailies })
+    );
 
     props.setCurrentDailyQuests(dailies);
   }, [dailies]);
 
+  //--enter daily quest into the form and create daily quest object.
   function handleDailySubmit(e) {
     e.preventDefault();
 
@@ -30,47 +34,42 @@ export default function Dailies(props) {
     setNewDaily("");
   }
 
+  //--check and uncheck daily quests
   const toggleDaily = (id, completed) => {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
   };
 
+  //--remove daily quest from form
   function deleteDaily(id) {
     setDailies((currentDailies) => {
       return currentDailies.filter((daily) => daily.id !== id);
     });
-    // localStorage.removeItem(
-    //   "user",
-    //   JSON.stringify({
-    //     ...props.user,
-    //     dailyQuestsCompleted,
-    //   })
-    // );
+
     props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
 
     return;
   }
 
-  const resetAllDailies = (id, completed) => {
+  //--clears all checkmarks from daily quests, counts completed quests and puts in local storage.
+  function turnInDailyQuests(id, completed) {
     const completedDailies = dailies.filter((d) => d.completed);
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...props.user,
-        dailyQuestsCompleted: (props.user.dailyQuestsCompleted +=
-          completedDailies.length),
-      })
+
+    props.setNewDailyQuestsCompletedCount(
+      (props.user.dailyQuestsCompleted += completedDailies.length)
     );
+
     const resetDailies = dailies.map((d) =>
       d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
     );
-    setDailies(resetDailies);
-  };
 
-  function showHide ()  { 
-    if (visibility === false)
-      setVisibility(true);
+    setDailies(resetDailies);
+  }
+
+  //--change visibility of an element
+  function showHide() {
+    if (visibility === false) setVisibility(true);
     else setVisibility(false);
   }
 
@@ -104,10 +103,6 @@ export default function Dailies(props) {
         </div>
         <button className="btn dailyBtn">ACCEPT</button>
       </form>
-      {/* <div id="completeDaily">
-        Completed Daily- {props.user.dailyQuestsCompleted}
-        {""}
-      </div> */}
       <ul className="dailyList">
         {dailies.length === 0 && "No set routine, add some quests!"}
         {dailies.map((daily) => {
@@ -122,11 +117,9 @@ export default function Dailies(props) {
                 />
                 {daily.title}
               </label>
-
               <button
                 onClick={() => {
                   deleteDaily(daily.id);
-                  // props.user.abandonedDailyQuests++;
                 }}
                 className="btn btn-danger"
               >
@@ -136,7 +129,7 @@ export default function Dailies(props) {
           );
         })}
       </ul>
-      <button onClick={resetAllDailies} className="foot" id="clearBtn">
+      <button onClick={turnInDailyQuests} className="foot" id="clearBtn">
         COMPLETE YOUR DAILY QUESTS!
       </button>
       <div className="divider">_________</div>

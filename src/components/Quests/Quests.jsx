@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import "./Quests.css";
 
 //-- TO DO --
-// - [ ] make the explanation div appear on hover of a little box/question mark icon
+// - [X] make the explanation div appear on hover of a little box/question mark icon
 
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [tasks, setTasks] = useState([]);
   const [visibility, setVisibility] = useState(false);
-
-  console.log("Quests -- props.user: ", props.user);
 
   function handleSubmit(e) {
     e.preventDefault();
