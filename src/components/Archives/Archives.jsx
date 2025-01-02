@@ -4,7 +4,6 @@ import "./Archives.css";
 // - [ ] 
 
 export default function UserProfile(props) {
-  console.log("UserProfile -- props.user: ", props.user);
 
   return (
     <div className="profile">

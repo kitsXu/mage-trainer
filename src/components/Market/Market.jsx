@@ -20,7 +20,7 @@ export default function Market(props) {
         </button>
       </div>
       <div>
-        {view === "eggs" && <Eggs />}
+        {view === "eggs" && <Eggs user={props.user} />}
         {view === "items" && <Items />}
       </div>
       <div className="logo">

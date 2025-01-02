@@ -1,25 +1,20 @@
 import { useEffect, useState } from "react";
+import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
+import { chkLevelUp } from "./funcs/chkLevelUp.js";
+
 import "./style.css";
+
 import Archives from "./components/Archives/Archives.jsx";
 import Quests from "./components/Quests/Quests.jsx";
 import BroodRecord from "./components/Inventory/BroodRecord.jsx";
-import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import Dailies from "./components/Dailies/Dailies.jsx";
 import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
-import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
-import Logo from "./components/LandingPage/Logo.jsx";
+import LogoPage from "./components/LandingPage/LogoPage.jsx";
+import Eggs from "./components/Market/Eggs.jsx";
 
 //-- TODO:
-//  - [X] BUG!  Quests reappear whenever you press abandon and refresh
-// -- [X] set 'view' to local storage, when user refreshes so we return the page they were on
-//  - [ ] daily quests not saving/storing to local storage
-//  - [ ] regular quests reset when you refresh
-//  - [ ] check quests entered against local storage 'quests', if they are there you can't accept
-//  - [ ] make a maximum of daily quests??
-
-//  - [ ] create time stamp for daily quest turn in button stored locally? idk
-//  - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
+//  - [ ] BUG- when you hit next lvl, it keeps alerting and doesn't save to storage correctly
 
 export default function App() {
   const [view, setView] = useState(localStorage.getItem("view") ?? "archives");
@@ -29,7 +24,7 @@ export default function App() {
 
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
-  
+
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
     useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
@@ -39,21 +34,11 @@ export default function App() {
   const [brood, setBrood] = useState();
   const [inventory, setInventory] = useState();
 
-  //-- if user type isnt an object, parse user.
-  useEffect(() => {
-    if (typeof user !== "object") {
-      setUser(JSON.parse(user));
-    }
-  }, [user]);
-
-  //-- set 'view' to local storage and default 'view' to 'archives'
-  useEffect(() => {
-    localStorage.setItem("view", view ?? "archives");
-  }, [view]);
-
-  //-- user "auth". check if user exists in local storage. if it does, load it. if it doesn't, create one.
+  //-- user "auth". check if user exists in local storage, set if not (and inventory/brood/default view state).
   useEffect(() => {
     setIsLoading(true);
+
+    localStorage.setItem("view", view ?? "archives");
 
     const userExists = localStorage.getItem("user");
 
@@ -88,7 +73,6 @@ export default function App() {
         fireDragon: 0,
         blackDragon: 0,
         waterDragon: 0,
-
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
@@ -119,16 +103,20 @@ export default function App() {
     setView(savedView ?? "archives");
 
     setIsLoading(false);
-  }, [refreshKey]);
+  }, [refreshKey, view]);
 
-  //-- checks level and if requirements are met, increments level/gold
+  //-- checks level and if requirements are met, increments level/gold.. parse user if it's not an object, already.
   useEffect(() => {
     if (!user || !user.experience) return;
+
+    if (typeof user !== "object") {
+      setUser(JSON.parse(user));
+    }
 
     chkLevelUp(user);
   }, [user]);
 
-  //-- spreads over user object and conditional updates levels and experience
+  //-- spread over user object and conditionally updates information
   useEffect(() => {
     if (!user) return;
     const updatedUser = {
@@ -137,16 +125,11 @@ export default function App() {
         user.experience > user.nextLevelExperience
           ? user.level + 1
           : user.level,
-
       experience: user.questCompleted * 4 + user.dailyQuestsCompleted,
     };
     localStorage.setItem("user", JSON.stringify(updatedUser));
     setUser(updatedUser);
-  }, [newDailyQuestsCompletedCount, newQuestCompletedCount]);
 
-  //-- spread over user object and conditionally updates questing information
-  useEffect(() => {
-    if (!user) return;
     localStorage.setItem(
       "user",
       JSON.stringify({
@@ -163,7 +146,6 @@ export default function App() {
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
-        //-- i.e., currentDailyQuests: currentDailyQuests,
         currentDailyQuests,
       })
     );
@@ -180,7 +162,11 @@ export default function App() {
   return (
     <div className="bodywrapper">
       {!user || (!user.name && !isLoading) ? (
-        <Logo user={user} isLoading={isLoading} setRefreshKey={setRefreshKey} />
+        <LogoPage
+          user={user}
+          isLoading={isLoading}
+          setRefreshKey={setRefreshKey}
+        />
       ) : (
         <>
           <header>brood leader</header>

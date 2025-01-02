@@ -4,12 +4,15 @@ import riverEgg from "./images/riverEgg.png";
 import acidEgg from "./images/acidEgg.png";
 
 
+
 export default function Eggs(props) {
 
-  const purchaseEgg = () => {
-    props.user.gold - 75;
-    // inventory.earthEgg + 1;
-    console.log("PURCHASE COMPLETE-- Earth Egg")
+  console.log("EGGIES PAGE--", props.user)
+  
+  function purchaseEgg() {
+    if (props.user.gold > 50)
+      props.user.gold++;
+    console.log("PURCHASE COMPLETE--", props.user);
     };
 
 
@@ -22,7 +25,7 @@ export default function Eggs(props) {
           <p className="cost">50G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
-            <button className="EggPurchase">Purchase</button>
+            <button className="EggPurchase" onClick={purchaseEgg} >Purchase</button>
           </div>
         </div>
       </label>
@@ -35,7 +38,7 @@ export default function Eggs(props) {
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
-            <button className="EggPurchase" onClick={purchaseEgg}>Purchase</button>
+            <button className="EggPurchase">Purchase</button>
           </div>
         </div>
       </label>
