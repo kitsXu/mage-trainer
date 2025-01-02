@@ -1,7 +1,5 @@
 export const purchaseEgg = (user) => {
-  user.gold - 50;
+  user.gold - 75;
+  // inventory.earthEgg + 1;
+  console.log("PURCHASE COMPLETE-- Earth Egg")
   };
-
-//on click
-//user.gold - 50;
-//put correct egg into user's inventory... 
