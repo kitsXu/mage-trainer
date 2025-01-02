@@ -2,6 +2,7 @@ import './brood.css';
 
 export default function BroodRecord() {
 
+
   return (
     <div className="profile">
       <h1 className="item-brood-Header">Brood- ({0})</h1>

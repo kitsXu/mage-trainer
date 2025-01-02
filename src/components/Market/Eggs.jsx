@@ -3,7 +3,16 @@ import lavaEgg from "./images/lavaEgg.png";
 import riverEgg from "./images/riverEgg.png";
 import acidEgg from "./images/acidEgg.png";
 
+
 export default function Eggs(props) {
+
+  const purchaseEgg = () => {
+    props.user.gold - 75;
+    // inventory.earthEgg + 1;
+    console.log("PURCHASE COMPLETE-- Earth Egg")
+    };
+
+
   return (
     <div className="eggProfile">
       <label>
@@ -26,7 +35,7 @@ export default function Eggs(props) {
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
-            <button className="EggPurchase">Purchase</button>
+            <button className="EggPurchase" onClick={purchaseEgg}>Purchase</button>
           </div>
         </div>
       </label>

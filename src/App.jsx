@@ -13,8 +13,8 @@ import Logo from "./components/LandingPage/Logo.jsx";
 //-- TODO:
 //  - [X] BUG!  Quests reappear whenever you press abandon and refresh
 // -- [X] set 'view' to local storage, when user refreshes so we return the page they were on
-//  - [ ] check that dailies are stored correctly, have to refresh for update rn
-//  - [ ] store user made quests locally
+//  - [ ] daily quests not saving/storing to local storage
+//  - [ ] regular quests reset when you refresh
 //  - [ ] check quests entered against local storage 'quests', if they are there you can't accept
 //  - [ ] make a maximum of daily quests??
 
@@ -26,13 +26,16 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
-  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
-    useState();
+
   const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
   const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
+  
+  const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
+    useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+
   const [brood, setBrood] = useState();
   const [inventory, setInventory] = useState();
 
@@ -77,9 +80,6 @@ export default function App() {
         lavaEgg: 0,
         acidEgg: 0,
         riverEgg: 0,
-        healthPotion: 0,
-        manaPotion: 0,
-        speedPotion: 0,
       };
 
       const newBroodObject = {
@@ -88,6 +88,7 @@ export default function App() {
         fireDragon: 0,
         blackDragon: 0,
         waterDragon: 0,
+
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
