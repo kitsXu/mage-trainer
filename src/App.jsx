@@ -11,7 +11,6 @@ import Dailies from "./components/Dailies/Dailies.jsx";
 import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
 import LogoPage from "./components/LandingPage/LogoPage.jsx";
-import Eggs from "./components/Market/Eggs.jsx";
 
 //-- TODO:
 //  - [ ] BUG- when you hit next lvl, it keeps alerting and doesn't save to storage correctly
@@ -59,13 +58,13 @@ export default function App() {
         nxtLvl: 1,
       };
 
-      const newInventoryObject = {
-        plainEgg: 0,
-        mountainEgg: 0,
-        lavaEgg: 0,
-        acidEgg: 0,
-        riverEgg: 0,
-      };
+      // const newInventoryObject = {
+      //   plainEgg: 0,
+      //   mountainEgg: 0,
+      //   lavaEgg: 0,
+      //   acidEgg: 0,
+      //   riverEgg: 0,
+      // };
 
       const newBroodObject = {
         commonDragon: 0,
@@ -119,16 +118,6 @@ export default function App() {
   //-- spread over user object and conditionally updates information
   useEffect(() => {
     if (!user) return;
-    const updatedUser = {
-      ...user,
-      level:
-        user.experience > user.nextLevelExperience
-          ? user.level + 1
-          : user.level,
-      experience: user.questCompleted * 4 + user.dailyQuestsCompleted,
-    };
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    setUser(updatedUser);
 
     localStorage.setItem(
       "user",
@@ -149,6 +138,17 @@ export default function App() {
         currentDailyQuests,
       })
     );
+
+    const updatedUser = {
+      ...user,
+      level:
+        user.experience > user.nextLevelExperience
+          ? user.level + 1
+          : user.level,
+      experience: user.questCompleted * 4 + user.dailyQuestsCompleted,
+    };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    setUser(updatedUser);
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
