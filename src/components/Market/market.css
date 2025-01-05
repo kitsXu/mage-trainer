@@ -5,6 +5,11 @@
     justify-items: center;
 }
 
+img.plainEgg {
+    height: 100px;
+    background: #e6e3cc;
+}
+
 img.mountainEgg {
     height: 100px;
     background: #e6e3cc;
