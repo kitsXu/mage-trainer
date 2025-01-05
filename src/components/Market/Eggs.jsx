@@ -1,8 +1,8 @@
-import mountainEgg from "./images/mountainEgg.png";
-import lavaEgg from "./images/lavaEgg.png";
-import riverEgg from "./images/riverEgg.png";
-import acidEgg from "./images/acidEgg.png";
-
+import { mountainEggObj } from "../../funcs/myInventory";
+import { plainEggObj } from "../../funcs/myInventory";
+import { lavaEggObj } from "../../funcs/myInventory";
+import { riverEggObj } from "../../funcs/myInventory";
+import { acidEggObj } from "../../funcs/myInventory";
 
 
 export default function Eggs(props) {
@@ -10,8 +10,8 @@ export default function Eggs(props) {
   console.log("EGGIES PAGE--", props.user)
   
   function purchaseEgg() {
-    if (props.user.gold > 50)
-      props.user.gold++;
+    if (props.user.gold >= 50)
+      props.user.gold -= 50;
     console.log("PURCHASE COMPLETE--", props.user);
     };
 
@@ -21,7 +21,7 @@ export default function Eggs(props) {
       <label>
         Plain Egg
         <div className="eggDiv">
-          <img src={mountainEgg} className="mountainEgg" />
+          <img src={plainEggObj.image} className="plainEgg" />
           <p className="cost">50G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -34,7 +34,7 @@ export default function Eggs(props) {
       <label>
         Mountain Egg
         <div className="eggDiv">
-          <img src={mountainEgg} className="mountainEgg" />
+          <img src={mountainEggObj.image} className="mountainEgg" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -46,7 +46,7 @@ export default function Eggs(props) {
       <label>
         Lava Egg
         <div className="eggDiv">
-          <img src={lavaEgg} className="lavaEgg" />
+          <img src={lavaEggObj.image} className="lavaEgg" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -59,7 +59,7 @@ export default function Eggs(props) {
       <label>
         River Egg
         <div className="eggDiv">
-          <img src={riverEgg} className="riverEgg" />
+          <img src={riverEggObj.image} className="riverEgg" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -72,7 +72,7 @@ export default function Eggs(props) {
       <label>
         Acid Egg
         <div className="eggDiv">
-          <img src={acidEgg} className="acidEgg" />
+          <img src={acidEggObj.image} className="acidEgg" />
           <p className="cost">150G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
