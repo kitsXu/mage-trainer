@@ -6,12 +6,12 @@ export const chkLevelUp = (user) => {
 
       user.gold += user.goldIncrease;
 
-      user.goldIncrease += 20
+      user.goldIncrease += 20;
 
       alert(`
         Ding! Congrats, you're now level ${user.level}!\n
         Now... where the fuck are my eggs?!
-        `)
-    }
-  };
-  
+        `);
+      console.log("LEVEL UP");
+  }
+};
