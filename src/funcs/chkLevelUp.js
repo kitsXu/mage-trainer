@@ -1,17 +1,16 @@
 export const chkLevelUp = (user) => {
-    if (user.experience >= user.nextLevelExperience) {
-      user.level++;
+  if (user.experience >= user.nextLevelExperience) {
+    user.level++;
 
-      user.nextLevelExperience += 10;
+    user.nextLevelExperience += 10;
 
-      user.gold += user.goldIncrease;
+    user.gold += user.goldIncrease;
 
-      user.goldIncrease += 20
+    user.goldIncrease += 20
 
-      alert(`
-        Ding! Congrats, you're now level ${user.level}!\n
-        Now... where the fuck are my eggs?!
-        `)
-    }
-  };
-  
+    alert(`
+      Ding! Congrats, you're now level ${user.level}!\n
+      Now... where the fuck are my eggs?!
+      `)
+  }
+};

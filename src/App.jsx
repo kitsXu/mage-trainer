@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
-import { chkLevelUp } from "./funcs/chkLevelUp.js";
+import {chkLevelUp} from "./funcs/chkLevelUp.js";
 
 import "./style.css";
 
@@ -13,7 +13,7 @@ import Inventory from "./components/Inventory/Inventory.jsx";
 import LogoPage from "./components/LandingPage/LogoPage.jsx";
 
 //-- TODO:
-//  - [ ] BUG- when you hit next lvl, it keeps alerting and doesn't save to storage correctly
+//  - [ ] BUG- check level function not firing when you actually hit the level...
 
 export default function App() {
   const [view, setView] = useState(localStorage.getItem("view") ?? "archives");
@@ -29,11 +29,9 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+  const [updatedExp, setUpdatedExp] = useState();
 
-  const [brood, setBrood] = useState();
-  const [inventory, setInventory] = useState();
-
-  //-- user "auth". check if user exists in local storage, set if not (and inventory/brood/default view state).
+  //-- user "auth". check if user exists in local storage, set if not.  Set view state- 'archives' to local storage.
   useEffect(() => {
     setIsLoading(true);
 
@@ -55,32 +53,11 @@ export default function App() {
         currentDailyQuests: [],
         gold: 0,
         goldIncrease: 50,
-        nxtLvl: 1,
-      };
-
-      // const newInventoryObject = {
-      //   plainEgg: 0,
-      //   mountainEgg: 0,
-      //   lavaEgg: 0,
-      //   acidEgg: 0,
-      //   riverEgg: 0,
-      // };
-
-      const newBroodObject = {
-        commonDragon: 0,
-        earthDragon: 0,
-        fireDragon: 0,
-        blackDragon: 0,
-        waterDragon: 0,
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
-      localStorage.setItem("brood", JSON.stringify(newBroodObject));
-      localStorage.setItem("inventory", JSON.stringify(newInventoryObject));
 
       setUser(newUserObject);
-      setInventory(newInventoryObject);
-      setBrood(newBroodObject);
 
       setIsLoading(false);
 
@@ -89,35 +66,20 @@ export default function App() {
 
     setUser(JSON.parse(userExists));
 
-    const user = JSON.parse(userExists);
-
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
-    setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
-    setCurrentDailyQuests(user.currentDailyQuests);
-
     const savedView = localStorage.getItem("view");
 
     setView(savedView ?? "archives");
 
     setIsLoading(false);
-  }, [refreshKey, view]);
+  }, [view]);
 
-  //-- checks level and if requirements are met, increments level/gold.. parse user if it's not an object, already.
+  //-- spread over user object and conditionally update values... set state variables to user object values.
   useEffect(() => {
-    if (!user || !user.experience) return;
+    if (!user) return;
 
     if (typeof user !== "object") {
       setUser(JSON.parse(user));
     }
-
-    chkLevelUp(user);
-  }, [user]);
-
-  //-- spread over user object and conditionally updates information
-  useEffect(() => {
-    if (!user) return;
 
     localStorage.setItem(
       "user",
@@ -135,26 +97,24 @@ export default function App() {
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
+        ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
       })
     );
-
-    const updatedUser = {
-      ...user,
-      level:
-        user.experience > user.nextLevelExperience
-          ? user.level + 1
-          : user.level,
-      experience: user.questCompleted * 4 + user.dailyQuestsCompleted,
-    };
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    setUser(updatedUser);
+    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+    setNewQuestCompletedCount(user.questCompleted);
+    setNewAbandonedQuestCount(user.abandonedQuests);
+    setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
+    setCurrentDailyQuests(user.currentDailyQuests);
+    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
+    chkLevelUp();
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
     currentDailyQuests,
+    updatedExp,
   ]);
 
   if (isLoading) return <LoadingIndicator />;
@@ -199,7 +159,6 @@ export default function App() {
                 setNewQuestCompletedCount={setNewQuestCompletedCount}
                 newAbandonedQuestCount={newAbandonedQuestCount}
                 setNewAbandonedQuestCount={setNewAbandonedQuestCount}
-                setRefreshKey={setRefreshKey}
               />
             )}
             {view === "dailies" && !!user && (
@@ -213,7 +172,6 @@ export default function App() {
                 setNewAbandonedDailyQuestCount={setNewAbandonedDailyQuestCount}
                 setCurrentDailyQuests={setCurrentDailyQuests}
                 currentDailyQuests={user.currentDailyQuests}
-                setRefreshKey={setRefreshKey}
               />
             )}
           </div>
