@@ -1,6 +1,5 @@
 import "./LandingPage.css";
 import { useState } from "react";
-import { LoadingIndicator } from "./LoadingIndicator";
 
 export default function LandingPage(props) {
   const [newName, setNewName] = useState("");
