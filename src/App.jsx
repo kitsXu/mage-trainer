@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LoadingIndicator } from "./components/LandingPage/LoadingIndicator.jsx";
-import {chkLevelUp} from "./funcs/chkLevelUp.js";
+import { chkLevelUp } from "./funcs/chkLevelUp.js";
 
 import "./style.css";
 
@@ -71,7 +71,7 @@ export default function App() {
     setView(savedView ?? "archives");
 
     setIsLoading(false);
-  }, [view]);
+  }, [refreshKey, view]);
 
   //-- spread over user object and conditionally update values... set state variables to user object values.
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function App() {
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
     setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
-    chkLevelUp();
+    chkLevelUp(user);
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
