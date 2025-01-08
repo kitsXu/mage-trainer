@@ -8,6 +8,8 @@ export const chkLevelUp = (user) => {
 
       user.goldIncrease += 20;
 
+      
+
       alert(`
         Ding! Congrats, you're now level ${user.level}!\n
         Now... where the fuck are my eggs?!

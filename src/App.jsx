@@ -29,6 +29,8 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
+  const [currentQuests, setCurrentQuests] = useState([]);
+
   const [updatedExp, setUpdatedExp] = useState();
 
   //-- user "auth". check if user exists in local storage, set if not.  Set view state- 'archives' to local storage.
@@ -51,6 +53,7 @@ export default function App() {
         dailyQuestsCompleted: 0,
         abandonedDailyQuests: 0,
         currentDailyQuests: [],
+        currentQuests: [],
         gold: 0,
         goldIncrease: 50,
       };
@@ -67,6 +70,14 @@ export default function App() {
     setUser(JSON.parse(userExists));
 
     const savedView = localStorage.getItem("view");
+
+    // const user = localStorage.getItem("user");
+    // setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+    // setNewQuestCompletedCount(user.questCompleted);
+    // setNewAbandonedQuestCount(user.abandonedQuests);
+    // setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
+    // setCurrentDailyQuests(user.currentDailyQuests);
+    // setCurrentQuests(user.currentQuests);
 
     setView(savedView ?? "archives");
 
@@ -89,7 +100,8 @@ export default function App() {
           ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
           : {}),
         ...(user.questCompleted !== newQuestCompletedCount
-          ? { questCompleted: newQuestCompletedCount }
+          ? { questCompleted: newQuestCompletedCount
+          }
           : {}),
         ...(user.abandonedQuests !== newAbandonedQuestCount
           ? { abandonedQuests: newAbandonedQuestCount }
@@ -99,6 +111,7 @@ export default function App() {
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
+        currentQuests
       })
     );
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
@@ -106,6 +119,8 @@ export default function App() {
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
+    setCurrentQuests(user.currentQuests);
+
     setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
     chkLevelUp(user);
   }, [
@@ -113,9 +128,10 @@ export default function App() {
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
-    currentDailyQuests,
     updatedExp,
   ]);
+
+
 
   if (isLoading) return <LoadingIndicator />;
 
@@ -159,6 +175,8 @@ export default function App() {
                 setNewQuestCompletedCount={setNewQuestCompletedCount}
                 newAbandonedQuestCount={newAbandonedQuestCount}
                 setNewAbandonedQuestCount={setNewAbandonedQuestCount}
+                currentQuests={currentQuests}
+                setCurrentQuests={setCurrentQuests}
               />
             )}
             {view === "dailies" && !!user && (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./Quests.css";
 
@@ -9,33 +9,43 @@ import "./Quests.css";
 
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [quests, setQuests] = useState([]);
   const [visibility, setVisibility] = useState(false);
 
   //-- enter a quest into the form
   function handleSubmit(e) {
     e.preventDefault();
-    setTasks((currentTasks) => {
+    setQuests((currentQuests) => {
       return [
-        ...currentTasks,
-        { id: crypto.randomUUID(), title: newQuest, completed: false },
+        ...currentQuests,
+        { id: crypto.randomUUID(), title: newQuest },
       ];
     });
     setNewQuest("");
   }
 
+  //--set current state of quests to local storage.
+  useEffect(() => {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, currentQuests: quests })
+    );
+
+    props.setCurrentQuests(quests);
+  }, [quests]);
+
   //-- clears the quest and increment quest completed count
   function completeTask(id) {
-    setTasks((currentTasks) => {
-      return currentTasks.filter((task) => task.id !== id);
+    setQuests((currentQuests) => {
+      return currentQuests.filter((task) => task.id !== id);
     });
     return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
   //-- just clears quest
   function deleteTask(id) {
-    setTasks((currentTasks) => {
-      return currentTasks.filter((task) => task.id !== id);
+    setQuests((currentQuests) => {
+      return currentQuests.filter((task) => task.id !== id);
     });
     return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
@@ -58,7 +68,7 @@ export default function Quests(props) {
       {visibility && (
         <p className="daily-info">
           &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add
-          tasks to the log below to build out your Quest Log. These should be
+          quests to the log below to build out your Quest Log. These should be
           things you don't do everyday, as you won't be permited to enter the
           same task here more than once if they have been completed. Quests that
           are completed are worth 4xp.
@@ -76,8 +86,8 @@ export default function Quests(props) {
         <button className="btn">ACCEPT</button>
       </form>
       <ul className="list">
-        {tasks.length === 0 && "No quests available!  Better find some work!"}
-        {tasks.map((task) => {
+        {quests.length === 0 && "No quests available!  Better find some work!"}
+        {quests.map((task) => {
           return (
             <li key={task.id}>
               <label>{task.title}</label>
