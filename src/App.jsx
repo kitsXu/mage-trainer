@@ -124,12 +124,15 @@ export default function App() {
     setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
     chkLevelUp(user);
   }, [
+    view,
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
     updatedExp,
   ]);
+
+  
 
 
 

@@ -22,7 +22,7 @@ export default function Dailies(props) {
     );
 
     props.setCurrentDailyQuests(dailies);
-  }, [dailies]);
+  }, [dailies, newDaily]);
 
   //--enter daily quest into the form and create daily quest object.
   function handleDailySubmit(e) {
