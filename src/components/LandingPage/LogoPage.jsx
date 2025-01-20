@@ -24,7 +24,7 @@ export default function LogoPage(props) {
     <div className="bodyWrapper">
       {logoVisibility && <div className="landing-divider">_________</div>}
       {logoVisibility && (
-        <header className="landingHeader">brood leader</header>
+        <header className="landingHeader">mage trainer</header>
       )}
       <div className="logoPage">
         {logoVisibility && <img className="fox" src={dragon}></img>}

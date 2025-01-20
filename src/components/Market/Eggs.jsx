@@ -1,8 +1,4 @@
-import { mountainEggObj } from "../../funcs/myInventory";
-import { plainEggObj } from "../../funcs/myInventory";
-import { lavaEggObj } from "../../funcs/myInventory";
-import { riverEggObj } from "../../funcs/myInventory";
-import { acidEggObj } from "../../funcs/myInventory";
+import scroll from './images/scroll.png';
 
 
 export default function Eggs(props) {
@@ -19,10 +15,10 @@ export default function Eggs(props) {
   return (
     <div className="eggProfile">
       <label>
-        Plain Egg
+        Blank Scroll
         <div className="eggDiv">
-          <img src={plainEggObj.image} className="plainEgg" />
-          <p className="cost">50G Per</p>
+          <img src={scroll} className="scroll" />
+          <p className="cost">10G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
             <button className="EggPurchase" onClick={purchaseEgg} >Purchase</button>
@@ -32,9 +28,9 @@ export default function Eggs(props) {
       <div className="divider">_________</div>
       <label></label>
       <label>
-        Mountain Egg
+        Scroll of Odin
         <div className="eggDiv">
-          <img src={mountainEggObj.image} className="mountainEgg" />
+          <img src={scroll} className="scroll" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -44,9 +40,9 @@ export default function Eggs(props) {
       </label>
       <div className="divider">_________</div>
       <label>
-        Lava Egg
+        Scroll of Ifrit
         <div className="eggDiv">
-          <img src={lavaEggObj.image} className="lavaEgg" />
+          <img src={scroll} className="scroll" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -57,9 +53,9 @@ export default function Eggs(props) {
       </label>
       <div className="divider">_________</div>
       <label>
-        River Egg
+        Scroll of Wisdom
         <div className="eggDiv">
-          <img src={riverEggObj.image} className="riverEgg" />
+          <img src={scroll} className="scroll" />
           <p className="cost">75G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />
@@ -70,9 +66,9 @@ export default function Eggs(props) {
         <div className="divider">_________</div>
       </label>
       <label>
-        Acid Egg
+        Scroll of Shiva
         <div className="eggDiv">
-          <img src={acidEggObj.image} className="acidEgg" />
+          <img src={scroll} className="scroll" />
           <p className="cost">150G Per</p>
           <div className="purchaseWrap">
             <input className="eggAmount" type="number" />

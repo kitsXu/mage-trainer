@@ -10,10 +10,10 @@ export default function Market(props) {
   return (
     <div className="profile">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
-      <h1 className="userHeader">Scales Haven Marketplace</h1>
+      <h1 className="userHeader">Eldergrove Apothecary</h1>
       <div className="marketButtons">
         <button className="menuBtn" onClick={() => setView("eggs")}>
-          Egg Vendor
+          Scroll Vendor
         </button>
         <button className="menuBtn" onClick={() => setView("items")}>
           Item Vendor

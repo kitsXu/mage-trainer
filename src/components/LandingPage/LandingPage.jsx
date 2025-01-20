@@ -23,28 +23,25 @@ export default function LandingPage(props) {
   return (
     <>
       <div className="landingBodyWrap">
-        <div className="welcome">Welcome, Adventurer!</div>
-        <div className="intro">... to our little village of Scales Haven.</div>
+        <div className="welcome">Greetings new pupil! </div>
         <div className="intro">
-          SO, you've heard about the dragon eggs? And you expect to collect as
-          many as you can to raise a dragon army? Dangerous, dumb, but
-          understandable!
+          Welcome to the Eldergrove Tower of Advanced Sorcery.
         </div>
         <div className="intro">
-          Not so fast, though! You have to earn your keep before the dragons
-          will let you have even one of their precious eggs!
+          I must preface your journey with the knowledge that this is no mere
+          school. The Eldergrove Tower is a living entity, older than the
+          kingdoms that surround it. Here, we do not merely study magic; we
+          commune with it. We become part of it.
         </div>
         <div className="intro">
-          ALL Brood Leaders, even seasoned ones, are expected to complete their
-          daily routines, as well as a few additional quests to get and keep
-          their eggs. Be consistent enough and a dragon egg could be yours!{" "}
+          But beware—magic is no tame beast. It rewards those who respect it and
+          devours those who do not. You will be tested, and the Eldergrove will
+          watch. Prove yourself worthy, and it will reveal secrets few dare to
+          dream of
         </div>
         <div className="intro">
-          Although, then you have to figure out what to do with it...
-        </div>
-        <div className="foot">
-          If you are ready to accept the risks, go ahead and enter your name
-          below!
+          Now, step forward. Speak your name so that the tower may know you and
+          you may begin your journey.
         </div>
 
         <form

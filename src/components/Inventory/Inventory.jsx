@@ -16,7 +16,7 @@ export default function Inventory(props) {
           Item Inventory{" "}
         </button>
         <button className="menuBtn" onClick={() => setView("brood")}>
-          Brood
+          Spells
         </button>
       </div>
       <div className="totalGold">Total Gold: {props.user.gold}</div>

@@ -5,27 +5,7 @@
     justify-items: center;
 }
 
-img.plainEgg {
-    height: 100px;
-    background: #e6e3cc;
-}
-
-img.mountainEgg {
-    height: 100px;
-    background: #e6e3cc;
-}
-
-img.lavaEgg {
-    height:100px;
-    background: #e6e3cc;
-}
-
-img.riverEgg {
-    height:100px;
-    background: #e6e3cc;
-}
-
-img.acidEgg {
+img.scroll {
     height:100px;
     background: #e6e3cc;
 }
