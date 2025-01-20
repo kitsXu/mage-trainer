@@ -148,7 +148,7 @@ export default function App() {
         />
       ) : (
         <>
-          <header>brood leader</header>
+          <header>mage trainer</header>
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("dailies")}>
               Dailies
