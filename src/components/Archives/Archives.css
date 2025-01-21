@@ -1,6 +1,7 @@
 /*--RECORDS PAGE--*/
 .profileInfo {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,14 +12,16 @@
 }
 
 .profile {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
 }
 
 .logo-tag-archive {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   text-decoration: none;
   margin-top: 7.8vh;
-  color: hsl(41, 39%, 23%);
+  color: hsl(246, 41%, 31%);
   cursor:default;
   font-size: 12px;
 }

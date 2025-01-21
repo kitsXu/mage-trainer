@@ -1,6 +1,6 @@
 /*DAILY QUEST LISTS*/
 .daily-info {
-  background: #e6e3cc;
+  background: #ccd7e6;
   margin:auto;
   text-align: center;
   padding-bottom: 1rem;
@@ -9,7 +9,7 @@
 }
 
 .dailyList {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -26,13 +26,14 @@
 }
 
 .dailyList li {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   gap: 1rem;
 }
 
 .dailyList li label {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   display: flex;
   gap: 1rem;
   cursor: pointer;
@@ -76,7 +77,7 @@
 }
 
 .nameInput {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -86,13 +87,14 @@
 }
 
 #nameInputBar {
-  background: hsl(58, 33%, 56%);
-  color:#e6e3cc;
+  background: hsl(216, 33%, 56%);
+  color:#ccd7e6;
   height: 25px;
 }
 
 .nameSubmitBtn {
-  background:  #e6e3cc;
+  background:  #ccd7e6;
+
 }
 
 .nameSubmitBtn:hover {
@@ -100,7 +102,7 @@
 }
 
 .nameSubmitBtn:active {
-  background:  #e6e3cc;
+  background:  #ccd7e6;
   -webkit-box-shadow: inset 0px 0px 5px #a8a8a8;
   -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
   box-shadow: inset 0px 0px 5px #c1c1c1;
@@ -108,26 +110,28 @@
 }
 
 #completeDaily {
-  background: #e6e3cc;
+  background: #ccd7e6;
   text-align: right;
   font-size: 10px;
   padding: 20px 0px 40px 0px;
 }
 
 .daily-form-row {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
 
 form.new-daily-form {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
 }
 
 .btn.dailyBtn {
-  border: 2px ridge hsl(40, 21%, 61%);
-  color: hsl(29, 44%, 22%);
+  border: 2px ridge hsl(181, 21%, 61%);
+  color: #e3edfc;
+  text-shadow: 1px 1px 1px black;
   padding: 0.25em 0.5em;
   width: 100%;
   margin-top: 0.5rem;
@@ -143,13 +147,14 @@ form.new-daily-form {
   font-size: 10px;
   cursor: pointer;
   outline: none;
-  background-color: #b9b591;
-  color: hsl(29, 44%, 22%);
-  border-color: #b9b591;
+  background-color: hsla(61, 24%, 53%, 0.781);
+  color: #e3edfc;
+  text-shadow: 1px 1px 1px black;
+  border-color: #9291b9;
 }
 
 .dailyHeader {
-  background: #e6e3cc;
+  background: #ccd7e6;
   text-align: center;
   font-size: 1.2rem;
   margin-top: 2rem;
@@ -157,41 +162,42 @@ form.new-daily-form {
 
 #clearBtn:hover,
 #clearBtn:focus-visible {
-  background: hsla(63, 53%, 80%, 0.842);
+  background:hsla(56, 42%, 60%, 0.842);
 }
 
 .new-daily-form input {
   outline: none;
-  border: 3px double hsl(29, 44%, 22%);
-  background: hsla(61, 35%, 39%, 0.781);
+  border: 3px double hsl(236, 45%, 22%);
+  background: hsla(212, 35%, 39%, 0.781);
   padding: 0.25em 1em;
-  color: hsl(60, 59%, 85%);
+  color: hsl(197, 58%, 85%);
   font-size: 20px;
   font-family: "Courier New", Courier, monospace;
   height: 35px;
 }
 
 .new-daily-form input:focus {
-  border: 3px ridge hsla(61, 35%, 39%, 0.781);
+  border: 3px ridge hsla(202, 35%, 39%, 0.781);
 }
 
 .bodyWrapper {
-  background:#e6e3cc;
+  background:#ccd7e6;
+
 }
 
 .logo-tag {
-  background: #e6e3cc;
+  background: #ccd7e6;
   text-decoration: none;
   margin-top: 11.5vh;
-  color: hsl(41, 39%, 23%);
+  color: hsl(233, 39%, 23%);
   cursor:default;
   font-size: 12px;
 }
 
 .questExplanation {
-  background: hsla(61, 35%, 39%, 0.781);
-  color: #e6e3cc;
-  border: 2px dotted hsl(29, 44%, 22%);
+  background:  hsla(61, 24%, 53%, 0.781);
+  color: #ccd7e6;
+  border: 2px dotted hsl(244, 45%, 22%);
   height: 26px;
   width:26px;
   font-size:10px;
@@ -201,16 +207,16 @@ form.new-daily-form {
 }
 
 .questExplanation:active {
-  color: #e6e3cc;
-  color: hsl(29, 44%, 22%);
-  -webkit-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);
-  -moz-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);
-  box-shadow: inset 0px 0px 5px hsl(29, 44%, 22%);
+  color: #ccd7e6;
+  color: hsl(244, 45%, 22%);
+  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px  hsl(244, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
   text-shadow: none;
   outline: none;
 }
 
 .questExplanation:hover,
 .menuBtn:focus-visible {
-  background: hsla(64, 32%, 53%, 0.842);
+  background: hsla(56, 42%, 60%, 0.842);
 }

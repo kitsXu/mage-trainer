@@ -1,5 +1,6 @@
 .fox {
-    background: #e6e3cc;
+    background: #ccd7e6;
+
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -16,9 +17,9 @@
   }
 
   .landing-divider {
-    background: #e6e3cc;
+    background: #ccd7e6;
     width:100%;
-    color: #b9b591;
+    color: #9192b9;
     text-align: center;
     font-size: 2rem;
     margin-top: 1rem;
@@ -26,11 +27,11 @@
   }
 
   .foot-divider {
-    background: #e6e3cc;
+    background: #ccd7e6;
     display:flex;
     word-break: break-all;
     justify-content: center;
-    color: #b9b591;
+    color: #9192b9;
     text-align: center;
     font-size: 2rem;
   }
@@ -45,14 +46,14 @@
   }
 
   .logoPage {
-    background: #e6e3cc;
+    background: #ccd7e6;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .logo-image {
-    background: #e6e3cc;
+    background: #ccd7e6;
     display:flex;
     margin:auto;
     width:0%;
@@ -67,13 +68,13 @@
   }
 
   .playBtn {
-    background: #e6e3cc;
+    background: #ccd7e6;
     margin:auto;
     margin-top: 2rem;
     height: 50px;
     width: 100px;
     font-size: 18px;
-    color: hsl(41, 39%, 23%);
+    color: hsl(247, 39%, 23%);
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -92,10 +93,11 @@
   
 
   .logo-tag-logo {
-    background: #e6e3cc;
+    background: #ccd7e6;
+
     text-decoration: none;
     margin-top: 0px;
-    color: hsl(41, 39%, 23%);
+    color:  hsl(247, 39%, 23%);
     cursor:default;
     opacity: 45%;
     font-size: 12px;
@@ -104,7 +106,8 @@
   
 
   .btnWrapper {
-    background: #e6e3cc;
+    background: #ccd7e6;
+
   }
 
   @keyframes cutIn {

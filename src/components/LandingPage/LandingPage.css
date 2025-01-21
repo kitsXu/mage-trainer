@@ -1,17 +1,17 @@
 .landingBodyWrap {
-  background: #e6e3cc;
+  background: #ccd7e6;
 }
 
 .welcome {
   margin-top: 1.5rem;
   margin-bottom: 3rem;
-  background: #e6e3cc;
+  background: #ccd7e6;
   text-align: center;
   font-size: 20px;
 }
 
 .intro {
-  background: #e6e3cc;
+  background: #ccd7e6;
   margin-bottom: 2rem;
   text-align: center;
   line-height: 1.5rem;
@@ -19,7 +19,7 @@
 }
 
 .foot {
-  background: #e6e3cc;
+  background: #ccd7e6;
   margin-bottom: 2rem;
   margin-top: 2rem;
   text-align: center;
@@ -29,7 +29,7 @@
 }
 
 .nameInput {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -39,9 +39,9 @@
 }
 
 #nameInputBar {
-  background:  hsl(56, 76%, 35%);
+  background:  hsla(61, 35%, 39%, 0.781);
   padding-left: 50px;
-  color: #e6e3cc;
+  color: #ccd7e6;
   height: 1.5rem;
   width: 60%;
   font-size: 16px;

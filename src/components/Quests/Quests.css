@@ -1,13 +1,15 @@
 /*--QUEST PAGE--*/
 .questHeader {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   text-align: center;
   font-size: 1.2rem;
   margin-top: 2rem;
 }
 
 .questHeaderWrap {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   display:flex;
   flex-direction: row;
   margin-bottom: 10px;
@@ -18,25 +20,29 @@
 
 
 .questWrapper {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
 }
 
 #completeQuest {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   text-align: right;
   font-size: 10px;
   margin: 20px 0px 40px 0px;
 }
 
 .new-quest-form {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
 .form-row {
-  background: #e6e3cc;
+  background: #ccd7e6;
+
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
@@ -44,10 +50,10 @@
 
 .new-quest-form input {
   outline: none;
-  border: 3px double hsl(29, 44%, 22%);
-  background: hsla(61, 35%, 39%, 0.781);
+  border: 3px double hsl(236, 45%, 22%);
+  background: hsla(212, 35%, 39%, 0.781);
   padding: 0.25em 1em;
-  color: hsl(60, 59%, 85%);
+  color: hsl(197, 58%, 85%);
   font-size: 20px;
   font-family: "Courier New", Courier, monospace;
   height: 35px;
@@ -58,7 +64,7 @@
 }
 
 .quest-header {
-  background: #e6e3cc;
+  background: #ccd7e6;
   font-size: 10px;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -67,7 +73,7 @@
 }
 
 .list {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
@@ -79,26 +85,26 @@
 }
 
 .list li {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
 .list li label {
-  background: #e6e3cc;
+  background: #ccd7e6;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
 .list li:has(input:focus-visible) label {
-  background: #e6e3cc;
+  background: #ccd7e6;
   outline: 1px solid hsl(54, 98%, 21%);
 }
 
 .list li label::before {
-  background: #e6e3cc;
+  background: #ccd7e6;
   content: "";
   display: block;
   width: 0.5rem;
@@ -112,10 +118,10 @@
 }
 
 .logo-tag-quest {
-  background: #e6e3cc;
+  background: #ccd7e6;
   text-decoration: none;
   margin-top: 11.5vh;
-  color: hsl(41, 39%, 23%);
+  color: hsl(246, 41%, 31%);
   cursor:default;
   font-size: 12px;
 }

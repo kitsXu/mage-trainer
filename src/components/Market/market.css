@@ -1,17 +1,16 @@
-
 /*-- EGGS --*/
 .eggProfile {
-    background: #e6e3cc;
+    background: #ccd7e6;
     justify-items: center;
 }
 
 img.scroll {
     height:100px;
-    background: #e6e3cc;
+    background: #ccd7e6;
 }
 
 .eggDiv {
-    background: #e6e3cc;
+    background: #ccd7e6;
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -21,16 +20,16 @@ img.scroll {
 }
 
 .eggAmount {
-    background: hsla(61, 35%, 39%, 0.781);
+    background: hsla(212, 35%, 39%, 0.781);
     width: 75px;
     height:35px;
     font-size: 16px;
-    color:#e6e3cc;
+    color:#ccd7e6;
     margin-left: 2rem;
 }
 
 .EggPurchase {
-    background: #e6e3cc;
+    background: #ccd7e6;
     width:150px;
     text-align: center;
     height:30px;
@@ -39,18 +38,18 @@ img.scroll {
 
 /*-- ITEMS --*/
 .itemProfile {
-    background: #e6e3cc;
+    background: #ccd7e6;
     justify-items: center;
 }
 
 .itemIcons {
     height: 100px;
-    background: #e6e3cc;
+    background: #ccd7e6;
 }
 
 
 .itemDiv {
-    background: #e6e3cc;
+    background: #ccd7e6;
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -66,7 +65,7 @@ label {
 }
 
 .cost {
-    background: #e6e3cc;
+    background: #ccd7e6;
     display:flex;
     align-items: center;
     margin-left: .2rem;
@@ -78,12 +77,12 @@ label {
     width: 75px;
     height:35px;
     font-size: 16px;
-    color:#e6e3cc;
+    color:#ccd7e6;
     margin-left: 2rem;
 }
 
 .itemPurchase {
-    background: #e6e3cc;
+    background: #ccd7e6;
     width:150px;
     text-align: center;
     height:30px;
@@ -91,7 +90,7 @@ label {
 }
 
 .marketButtons {
-    background: #e6e3cc;
+    background: #ccd7e6;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -100,14 +99,14 @@ label {
 }
 
 .purchaseWrap {
-    background:#e6e3cc;
+    background:#ccd7e6;
 }
 
 .logo-tag-market {
-    background: #e6e3cc;
+    background: #ccd7e6;
     text-decoration: none;
     margin-top: 7.8vh;
-    color: hsl(41, 39%, 23%);
+    color:hsl(246, 41%, 31%);
     cursor:default;
     font-size: 12px;
   }

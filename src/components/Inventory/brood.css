@@ -1,14 +1,14 @@
 .logo-tag-brood {
-    background: #e6e3cc;
+    background: #ccd7e6;
     text-decoration: none;
     margin-top: 46.8vh;
-    color: hsl(41, 39%, 23%);
+    color: hsl(246, 41%, 31%);
     cursor:default;
     font-size: 12px;
   }
 
   .item-brood-Header {
-    background: #e6e3cc;
+    background: #ccd7e6;
     text-align: center;
     font-size: .9rem;
     margin: 2.5rem 0 2rem 0;
