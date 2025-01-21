@@ -13,7 +13,7 @@ body {
   min-height: 950px;
   border: 10px;
   border-style: double ridge;
-  border-color:hsl(154, 40%, 23%);
+  border-color:hsl(241, 40%, 23%);
   padding: 1rem;
   margin: 3rem auto;
   box-shadow: 10px 10px 8px black;
@@ -61,7 +61,7 @@ header {
   justify-content: center;
   text-align: center;
   color: #e3edfc;
-  border: 2px ridge hsla(128, 34%, 50%, 0.781);
+  border: 2px ridge hsla(246, 34%, 50%, 0.781);
   background: hsla(61, 24%, 53%, 0.781);
   box-shadow: 1px 1px 1px hsl(283, 45%, 22%);
   font-size: 12px;
