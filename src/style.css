@@ -3,7 +3,11 @@
   font-weight: 200;
   font-style: normal;
   box-sizing: border-box;
-  background-image: url("images/background15.jpg");
+  /* background: #697a91; */
+  background-image: url("images/background20.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
 }
 
 body {
