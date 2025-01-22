@@ -5,7 +5,7 @@
 }
 
 img.scroll {
-    height:100px;
+    height:50px;
     background: #ccd7e6;
 }
 
@@ -16,16 +16,16 @@ img.scroll {
     flex-wrap: wrap;
     gap:15px;
     align-items: center;
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
 }
 
 .eggAmount {
-    background: hsla(212, 35%, 39%, 0.781);
+    background: hsla(61, 35%, 39%, 0.781);
     width: 75px;
     height:35px;
     font-size: 16px;
     color:#ccd7e6;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
 }
 
 .EggPurchase {
@@ -55,7 +55,7 @@ img.scroll {
     flex-wrap: wrap;
     gap:15px;
     align-items: center;
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
 }
 
 /*-- BOTH --*/
@@ -78,7 +78,7 @@ label {
     height:35px;
     font-size: 16px;
     color:#ccd7e6;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
 }
 
 .itemPurchase {
