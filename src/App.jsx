@@ -80,16 +80,29 @@ export default function App() {
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
-    setCurrentDailyQuests(user.currentDailyQuests);
-    setCurrentQuestList(user.currentQuestList);
-    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
-    chkLevelUp(user);
+    console.log("Quest state variable set to user object")
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
   ]);
+
+  useEffect(() => {
+    if (!user) return;
+    setCurrentDailyQuests(user.currentDailyQuests);
+    setCurrentQuestList(user.currentQuestList);
+    console.log("Current Quest var set to object")
+
+  }, [currentDailyQuests, currentQuestList]);
+
+  useEffect(() => {
+    if (!user) return;
+    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
+    chkLevelUp(user);
+    console.log("Updated Exp, updated lvl")
+
+  }, [updatedExp]);
 
   //-- spread over user object and conditionally update values.
   useEffect(() => {
@@ -118,7 +131,7 @@ export default function App() {
         currentDailyQuests,
         currentQuestList,
       })
-    ); 
+    );
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
