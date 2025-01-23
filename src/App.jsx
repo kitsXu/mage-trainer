@@ -59,11 +59,8 @@ export default function App() {
       };
 
       localStorage.setItem("user", JSON.stringify(newUserObject));
-
       setUser(newUserObject);
-
       setIsLoading(false);
-
       return;
     }
 
@@ -71,23 +68,36 @@ export default function App() {
 
     const savedView = localStorage.getItem("view");
 
-    // const user = localStorage.getItem("user");
-    // setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    // setNewQuestCompletedCount(user.questCompleted);
-    // setNewAbandonedQuestCount(user.abandonedQuests);
-    // setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
-    // setCurrentDailyQuests(user.currentDailyQuests);
-    // setCurrentQuests(user.currentQuests);
-
+    
     setView(savedView ?? "archives");
 
     setIsLoading(false);
   }, [refreshKey, view]);
 
-  //-- spread over user object and conditionally update values... set state variables to user object values.
+
+
+  //set state variables to user object values.
   useEffect(() => {
     if (!user) return;
+    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+    setNewQuestCompletedCount(user.questCompleted);
+    setNewAbandonedQuestCount(user.abandonedQuests);
+    setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
+    setCurrentDailyQuests(user.currentDailyQuests);
+    setCurrentQuests(user.currentQuests);
+    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
+    chkLevelUp(user);
 
+  }, [
+    newDailyQuestsCompletedCount,
+    newQuestCompletedCount,
+    newAbandonedQuestCount,
+    newAbandonedDailyQuestCount,
+  ]);
+
+  //-- spread over user object and conditionally update values.
+  useEffect(() => {
+    if (!user) return;
     if (typeof user !== "object") {
       setUser(JSON.parse(user));
     }
@@ -100,8 +110,7 @@ export default function App() {
           ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
           : {}),
         ...(user.questCompleted !== newQuestCompletedCount
-          ? { questCompleted: newQuestCompletedCount
-          }
+          ? { questCompleted: newQuestCompletedCount }
           : {}),
         ...(user.abandonedQuests !== newAbandonedQuestCount
           ? { abandonedQuests: newAbandonedQuestCount }
@@ -111,30 +120,15 @@ export default function App() {
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
-        currentQuests
+        currentQuests,
       })
     );
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
-    setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
-    setCurrentDailyQuests(user.currentDailyQuests);
-    setCurrentQuests(user.currentQuests);
-
-    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
-    chkLevelUp(user);
   }, [
-    view,
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
-    updatedExp,
   ]);
-
-  
-
-
 
   if (isLoading) return <LoadingIndicator />;
 
