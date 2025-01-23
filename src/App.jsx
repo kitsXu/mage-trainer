@@ -29,7 +29,7 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
-  const [currentQuests, setCurrentQuests] = useState([]);
+  const [currentQuestList, setCurrentQuestList] = useState([]);
 
   const [updatedExp, setUpdatedExp] = useState();
 
@@ -53,7 +53,7 @@ export default function App() {
         dailyQuestsCompleted: 0,
         abandonedDailyQuests: 0,
         currentDailyQuests: [],
-        currentQuests: [],
+        currentQuestList: [],
         gold: 0,
         goldIncrease: 50,
       };
@@ -68,13 +68,10 @@ export default function App() {
 
     const savedView = localStorage.getItem("view");
 
-    
     setView(savedView ?? "archives");
 
     setIsLoading(false);
   }, [refreshKey, view]);
-
-
 
   //set state variables to user object values.
   useEffect(() => {
@@ -84,10 +81,9 @@ export default function App() {
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
-    setCurrentQuests(user.currentQuests);
+    setCurrentQuestList(user.currentQuestList);
     setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
     chkLevelUp(user);
-
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
@@ -120,9 +116,9 @@ export default function App() {
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
-        currentQuests,
+        currentQuestList,
       })
-    );
+    ); 
   }, [
     newDailyQuestsCompletedCount,
     newQuestCompletedCount,
@@ -172,8 +168,8 @@ export default function App() {
                 setNewQuestCompletedCount={setNewQuestCompletedCount}
                 newAbandonedQuestCount={newAbandonedQuestCount}
                 setNewAbandonedQuestCount={setNewAbandonedQuestCount}
-                currentQuests={currentQuests}
-                setCurrentQuests={setCurrentQuests}
+                currentQuestList={currentQuestList}
+                setCurrentQuestList={setCurrentQuestList}
               />
             )}
             {view === "dailies" && !!user && (

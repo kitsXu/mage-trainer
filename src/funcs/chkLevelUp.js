@@ -11,8 +11,7 @@ export const chkLevelUp = (user) => {
       
 
       alert(`
-        Ding! Congrats, you're now level ${user.level}!\n
-        Now... where the fuck are my eggs?!
+        Level UP! ${user.level}!\n
         `);
       console.log("LEVEL UP");
   }

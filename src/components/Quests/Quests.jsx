@@ -9,17 +9,9 @@ import "./Quests.css";
 
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
-  const [quests, setQuests] = useState(props.currentQuests ?? []);
+  const [quests, setQuests] = useState(props.currentQuestList ?? []);
   const [visibility, setVisibility] = useState(false);
 
-  //--set current state of quests to local storage.
-  useEffect(() => {
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ ...props.user, currentQuests: quests })
-    );
-    props.setCurrentQuests(quests);
-  }, [quests, newQuest]);
 
   //-- enter a quest into the form
   function handleSubmit(e) {
@@ -32,6 +24,15 @@ export default function Quests(props) {
     });
     setNewQuest("");
   }
+
+    //--set current state of quests to local storage.
+    useEffect(() => {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...props.user, currentQuestList: quests })
+      );
+      props.setCurrentQuestList(quests);
+    }, [quests]);
 
   //-- clears the quest and increment quest completed count
   function completeTask(id) {

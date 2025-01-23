@@ -12,18 +12,6 @@ export default function Dailies(props) {
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
   const [visibility, setVisibility] = useState(false);
 
-  console.log("DAILIES PAGE--", props.user);
-
-  //--set current state of dailies to local storage.
-  useEffect(() => {
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ ...props.user, currentDailyQuests: dailies })
-    );
-
-    props.setCurrentDailyQuests(dailies);
-  }, [dailies, newDaily]);
-
   //--enter daily quest into the form and create daily quest object.
   function handleDailySubmit(e) {
     e.preventDefault();
@@ -37,6 +25,16 @@ export default function Dailies(props) {
     setNewDaily("");
   }
 
+    //--set current state of dailies to local storage.
+    useEffect(() => {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...props.user, currentDailyQuests: dailies })
+      );
+  
+      props.setCurrentDailyQuests(dailies);
+    }, [dailies]);
+
   //--check and uncheck daily quests
   function toggleDaily (id, completed) {
     setDailies((prev) =>
@@ -49,13 +47,12 @@ export default function Dailies(props) {
     setDailies((currentDailies) => {
       return currentDailies.filter((daily) => daily.id !== id);
     });
-
     props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
 
     return;
   }
 
-  //--clears all checkmarks from daily quests, counts completed quests and puts in local storage.
+  //--clears all checkmarks from daily quests, counts completed quests and updates count in local storage
   function turnInDailyQuests(id, completed) {
     const completedDailies = dailies.filter((d) => d.completed);
 
