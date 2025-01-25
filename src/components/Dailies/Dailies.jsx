@@ -106,7 +106,6 @@ export default function Dailies(props) {
       <ul className="dailyList">
         {dailies.length === 0 && "No set routine, add some quests!"}
         {dailies.map((daily) => {
-          console.log("daily id: ", daily.id);
           return (
             <li key={daily.id}>
               <label>
