@@ -2,8 +2,6 @@ import scroll from './images/scroll.png';
 
 
 export default function Eggs(props) {
-
-  console.log("EGGIES PAGE--", props.user)
   
   function purchaseEgg() {
     if (props.user.gold >= 50)

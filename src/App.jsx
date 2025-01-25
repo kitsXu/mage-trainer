@@ -68,41 +68,28 @@ export default function App() {
     setUser(parsedUser);
     setView(localStorage.getItem("view") ?? "archives");
 
-    setIsLoading(false);}
-  }, [refreshKey,view]);
-
-  //set state variables to user object values.
-  useEffect(() => {
-    if (!user) return;
+    const user = JSON.parse(userExists);
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
-    console.log("Quest state variable set to user object")
-  }, [
-    newDailyQuestsCompletedCount,
-    newQuestCompletedCount,
-    newAbandonedQuestCount,
-    newAbandonedDailyQuestCount,
-  ]);
+    setCurrentDailyQuests(user.currentDailyQuests);
+    setCurrentQuestList(user.currentQuestList);
+    setUpdatedExp(user.experience);
+    setUser(user);
+
+    setIsLoading(false);}
+  }, [view, refreshKey]);
+
 
   useEffect(() => {
     if (!user) return;
-    setCurrentDailyQuests(user.currentDailyQuests);
-    setCurrentQuestList(user.currentQuestList);
+    
     setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
     chkLevelUp(user);
     console.log("Current Quest var set to object")
 
   }, [currentDailyQuests, currentQuestList]);
-
-  // useEffect(() => {
-  //   if (!user) return;
-  //   setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
-  //   chkLevelUp(user);
-  //   console.log("Updated Exp, updated lvl")
-
-  // }, [updatedExp]);
 
   //-- spread over user object and conditionally update values.
   useEffect(() => {
@@ -129,25 +116,11 @@ export default function App() {
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
-      })
-    );
-  }, [
-    newDailyQuestsCompletedCount,
-    newQuestCompletedCount,
-    newAbandonedQuestCount,
-    newAbandonedDailyQuestCount,
-  ]);
-
-  useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user,
         currentQuestList,
       })
-    )
-  }, [user, currentQuestList])
+    );
+  }, [user, updatedExp
+  ]);
 
   if (isLoading) return <LoadingIndicator />;
 

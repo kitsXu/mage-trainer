@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import "./Quests.css";
 
 //-- TO DO --
-// - [X] make the explanation div appear on hover of a little box/question mark icon
-// - [ ] regular quests reset when you refresh
 // - [ ] check quests entered against local storage 'quests', if they are there you can't accept
 
 export default function Quests(props) {
