@@ -64,27 +64,35 @@ export default function App() {
       return;
     } else {
 
+
     const parsedUser = JSON.parse(userExists);
     setUser(parsedUser);
     setView(localStorage.getItem("view") ?? "archives");
 
-    setIsLoading(false);}
-  }, [refreshKey,view]);
-
-  //set state variables to user object values.
-  useEffect(() => {
-    if (!user) return;
+    const user = JSON.parse(userExists);
     setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
     setNewQuestCompletedCount(user.questCompleted);
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
-    console.log("Quest state variable set to user object")
-  }, [
-    newDailyQuestsCompletedCount,
-    newQuestCompletedCount,
-    newAbandonedQuestCount,
-    newAbandonedDailyQuestCount,
-  ]);
+    setCurrentDailyQuests(user.currentDailyQuests);
+
+    setIsLoading(false);}
+  }, [view, refreshKey]);
+
+  //set state variables to user object values.
+  // useEffect(() => {
+  //   if (!user) return;
+  //   setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+  //   setNewQuestCompletedCount(user.questCompleted);
+  //   setNewAbandonedQuestCount(user.abandonedQuests);
+  //   setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
+  //   console.log("Quest state variable set to user object")
+  // }, [
+  //   newDailyQuestsCompletedCount,
+  //   newQuestCompletedCount,
+  //   newAbandonedQuestCount,
+  //   newAbandonedDailyQuestCount,
+  // ]);
 
   useEffect(() => {
     if (!user) return;
@@ -129,25 +137,11 @@ export default function App() {
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
-      })
-    );
-  }, [
-    newDailyQuestsCompletedCount,
-    newQuestCompletedCount,
-    newAbandonedQuestCount,
-    newAbandonedDailyQuestCount,
-  ]);
-
-  useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user,
         currentQuestList,
       })
-    )
-  }, [user, currentQuestList])
+    );
+  }, [user
+  ]);
 
   if (isLoading) return <LoadingIndicator />;
 
