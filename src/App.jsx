@@ -64,7 +64,6 @@ export default function App() {
       return;
     } else {
 
-
     const parsedUser = JSON.parse(userExists);
     setUser(parsedUser);
     setView(localStorage.getItem("view") ?? "archives");
@@ -85,8 +84,7 @@ export default function App() {
 
   useEffect(() => {
     if (!user) return;
-    setCurrentDailyQuests(user.currentDailyQuests);
-    setCurrentQuestList(user.currentQuestList);
+    
     setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
     chkLevelUp(user);
     console.log("Current Quest var set to object")
