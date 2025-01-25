@@ -62,16 +62,14 @@ export default function App() {
       setUser(newUserObject);
       setIsLoading(false);
       return;
-    }
+    } else {
 
-    setUser(JSON.parse(userExists));
+    const parsedUser = JSON.parse(userExists);
+    setUser(parsedUser);
+    setView(localStorage.getItem("view") ?? "archives");
 
-    const savedView = localStorage.getItem("view");
-
-    setView(savedView ?? "archives");
-
-    setIsLoading(false);
-  }, [refreshKey, view]);
+    setIsLoading(false);}
+  }, [refreshKey,view]);
 
   //set state variables to user object values.
   useEffect(() => {
@@ -92,17 +90,19 @@ export default function App() {
     if (!user) return;
     setCurrentDailyQuests(user.currentDailyQuests);
     setCurrentQuestList(user.currentQuestList);
+    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
+    chkLevelUp(user);
     console.log("Current Quest var set to object")
 
   }, [currentDailyQuests, currentQuestList]);
 
-  useEffect(() => {
-    if (!user) return;
-    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
-    chkLevelUp(user);
-    console.log("Updated Exp, updated lvl")
+  // useEffect(() => {
+  //   if (!user) return;
+  //   setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
+  //   chkLevelUp(user);
+  //   console.log("Updated Exp, updated lvl")
 
-  }, [updatedExp]);
+  // }, [updatedExp]);
 
   //-- spread over user object and conditionally update values.
   useEffect(() => {
@@ -129,7 +129,6 @@ export default function App() {
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
-        currentQuestList,
       })
     );
   }, [
@@ -138,6 +137,17 @@ export default function App() {
     newAbandonedQuestCount,
     newAbandonedDailyQuestCount,
   ]);
+
+  useEffect(() => {
+    if (!user) return;
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user,
+        currentQuestList,
+      })
+    )
+  }, [user, currentQuestList])
 
   if (isLoading) return <LoadingIndicator />;
 

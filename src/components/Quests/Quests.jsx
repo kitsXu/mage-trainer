@@ -12,32 +12,28 @@ export default function Quests(props) {
   const [quests, setQuests] = useState(props.currentQuestList ?? []);
   const [visibility, setVisibility] = useState(false);
 
-
   //-- enter a quest into the form
   function handleSubmit(e) {
     e.preventDefault();
     setQuests((currentQuests) => {
-      return [
-        ...currentQuests,
-        { id: crypto.randomUUID(), title: newQuest },
-      ];
+      return [...currentQuests, { id: crypto.randomUUID(), title: newQuest }];
     });
     setNewQuest("");
   }
 
-    //--set current state of quests to local storage.
-    useEffect(() => {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ ...props.user, currentQuestList: quests })
-      );
-      props.setCurrentQuestList(quests);
-    }, [quests]);
+  //--set current state of quests to local storage.
+  useEffect(() => {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, currentQuestList: quests })
+    );
+    props.setCurrentQuestList(quests);
+  }, [quests, props.user]);
 
   //-- clears the quest and increment quest completed count
   function completeTask(id) {
     setQuests((currentQuests) => {
-      return currentQuests.filter((task) => task.id !== id);
+      return currentQuests.filter((quests) => quests.id !== id);
     });
     return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
@@ -45,7 +41,7 @@ export default function Quests(props) {
   //-- just clears quest
   function deleteTask(id) {
     setQuests((currentQuests) => {
-      return currentQuests.filter((task) => task.id !== id);
+      return currentQuests.filter((quests) => quests.id !== id);
     });
     return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
@@ -70,7 +66,7 @@ export default function Quests(props) {
           &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add
           quests to the log below to build out your Quest Log. These should be
           things you don't do everyday, as you won't be permited to enter the
-          same task here more than once if they have been completed. Quests that
+          same quests here more than once if they have been completed. Quests that
           are completed are worth 4xp.
         </p>
       )}
@@ -87,13 +83,13 @@ export default function Quests(props) {
       </form>
       <ul className="list">
         {quests.length === 0 && "No quests available!  Better find some work!"}
-        {quests.map((task) => {
+        {quests.map((quests) => {
           return (
-            <li key={task.id}>
-              <label>{task.title}</label>
+            <li key={quests.id}>
+              <label>{quests.title}</label>
               <button
                 onClick={() => {
-                  completeTask(task.id);
+                  completeTask(quests.id);
                   props.user.questCompleted++;
                 }}
                 className="btn btn-yay"
@@ -102,7 +98,7 @@ export default function Quests(props) {
               </button>
               <button
                 onClick={() => {
-                  deleteTask(task.id);
+                  deleteTask(quests.id);
                   props.user.abandonedQuests++;
                 }}
                 className="btn btn-danger"
