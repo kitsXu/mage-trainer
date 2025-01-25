@@ -75,6 +75,8 @@ export default function App() {
     setNewAbandonedQuestCount(user.abandonedQuests);
     setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
     setCurrentDailyQuests(user.currentDailyQuests);
+    setCurrentQuestList(user.currentQuestList);
+    setUser(user);
 
     setIsLoading(false);}
   }, [view, refreshKey]);
