@@ -11,11 +11,16 @@ export default function Dailies(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
   const [visibility, setVisibility] = useState(false);
+  const [formError, setFormError] = useState("");
+
 
   //--enter daily quest into the form and create daily quest object.
   function handleDailySubmit(e) {
     e.preventDefault();
-
+    if (newDaily.trim() === "") {
+      setFormError("Please enter a quest to submit!");
+    } else {
+      setFormError("")
     setDailies((currentDailies) => {
       return [
         ...currentDailies,
@@ -23,7 +28,7 @@ export default function Dailies(props) {
       ];
     });
     setNewDaily("");
-  }
+  }}
 
     //--set current state of dailies to local storage.
     useEffect(() => {
@@ -103,6 +108,7 @@ export default function Dailies(props) {
         </div>
         <button className="btn dailyBtn">ACCEPT</button>
       </form>
+      {formError && <p className="formError">{formError}</p>}
       <ul className="dailyList">
         {dailies.length === 0 && "No set routine, add some quests!"}
         {dailies.map((daily) => {
