@@ -84,7 +84,7 @@ export default function App() {
 
   useEffect(() => {
     if (!user) return;
-    
+
     setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
     chkLevelUp(user);
     console.log("Current Quest var set to object")

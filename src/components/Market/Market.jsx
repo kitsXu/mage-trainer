@@ -1,18 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import "./market.css";
-import Eggs from "./Eggs.jsx";
+import Scrolls from "./Scrolls.jsx";
 import Items from "./Items.jsx";
 
 export default function Market(props) {
-  const [view, setView] = useState("eggs");
+  const [view, setView] = useState("scrolls");
 
   return (
     <div className="profile">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
-      <h1 className="userHeader">Eldergrove Apothecary</h1>
       <div className="marketButtons">
-        <button className="menuBtn" onClick={() => setView("eggs")}>
+        <button className="menuBtn" onClick={() => setView("scrolls")}>
           Scroll Vendor
         </button>
         <button className="menuBtn" onClick={() => setView("items")}>
@@ -20,7 +19,7 @@ export default function Market(props) {
         </button>
       </div>
       <div>
-        {view === "eggs" && <Eggs user={props.user} />}
+        {view === "scrolls" && <Scrolls user={props.user} />}
         {view === "items" && <Items />}
       </div>
       <div className="logo">
