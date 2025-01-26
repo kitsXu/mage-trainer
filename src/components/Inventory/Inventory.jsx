@@ -19,7 +19,6 @@ export default function Inventory(props) {
           Spells
         </button>
       </div>
-      <div className="totalGold">Total Gold: {props.user.gold}</div>
       <div>
         {view === "itemInventory" && <ItemInventory user={props.user} />}
         {view === "brood" && <BroodRecord user={props.user} />}
