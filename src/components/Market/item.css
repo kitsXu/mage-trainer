@@ -2,3 +2,7 @@
     background: #ccd7e6;
     justify-items: center;
 }
+
+.item {
+    height:100px;
+}
