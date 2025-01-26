@@ -27,7 +27,10 @@ export default function Scrolls(props) {
     const amount = scrollQtys[scrollId];
 
     if (props.user.gold >= scrollCost * amount) {
-      props.user.gold -= scrollCost * amount;
+      localStorage.setItem(
+        props.user,
+        (props.user.gold -= scrollCost * amount)
+      );
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
 
       const uniqueId = crypto.randomUUID();
@@ -44,6 +47,7 @@ export default function Scrolls(props) {
       console.log("scrolls saved to localStorage:", scrollData);
     } else {
       console.log("Not enough gold!");
+      alert("Not enough gold!")
     }
   };
 
