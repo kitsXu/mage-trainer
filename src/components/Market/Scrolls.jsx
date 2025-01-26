@@ -19,18 +19,15 @@ export default function Scrolls(props) {
     }));
   };
 
-  //--handle the purchase- dedect gold from user, set new gold amount to local storage,
+  //--handle the purchase- dedect gold from user, set new gold amount to local storage, 
   //--create unique id for scroll, store bought scroll to local storage.
-  //--handle not having enough gold
+  //--handle not having
   const purchaseScroll = (e, scrollId, scrollCost) => {
     e.preventDefault();
     const amount = scrollQtys[scrollId];
 
     if (props.user.gold >= scrollCost * amount) {
-      localStorage.setItem(
-        props.user,
-        (props.user.gold -= scrollCost * amount)
-      );
+      props.user.gold -= scrollCost * amount;
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
 
       const uniqueId = crypto.randomUUID();
@@ -47,7 +44,7 @@ export default function Scrolls(props) {
       console.log("scrolls saved to localStorage:", scrollData);
     } else {
       console.log("Not enough gold!");
-      alert("Not enough gold!")
+      alert("Not Enough Gold!")
     }
   };
 

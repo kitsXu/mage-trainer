@@ -9,21 +9,21 @@ export const scrolls = [
   },
 
   {
-    id: crypto.randomUUI,
+    id: "odinScroll",
     name: "Scroll of Odin",
     cost: 50,
     image: scroll,
   },
 
   {
-    id: crypto.randomUUID,
+    id: "ifritScroll",
     name: "Scroll of Ifrit",
     cost: 50,
     image: scroll,
   },
 
   {
-    id: crypto.randomUUID,
+    id: "shivaScroll",
     name: "Scroll of Shiva",
     cost: 50,
     image: scroll,
