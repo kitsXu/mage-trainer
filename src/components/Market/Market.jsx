@@ -21,7 +21,7 @@ export default function Market(props) {
       </div>
       <div>
         {view === "scrolls" && <Scrolls user={props.user} />}
-        {view === "items" && <Items />}
+        {view === "items" && <Items user={props.user} />}
       </div>
       <div className="logo">
         <a className="logo-tag-market" href="https://ko-fi.com/kitsxu">-kitsXu-</a>

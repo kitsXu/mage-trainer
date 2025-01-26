@@ -1,6 +1,6 @@
 import "./item.css";
 import "./market.css";
-import { items } from "./itemData.js";
+import { items } from "./Data/itemData.js";
 import { useState } from "react";
 
 export default function Items(props) {

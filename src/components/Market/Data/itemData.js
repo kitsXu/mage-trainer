@@ -1,6 +1,6 @@
-import healthPotion from '../Market/images/healthPotion.png'
-import manaPotion from '../Market/images/manaPotion.png';
-import speedPotion from '../Market/images/speedPotion.png';
+import healthPotion from '../images/healthPotion.png'
+import manaPotion from '../images/manaPotion.png';
+import speedPotion from '../images/speedPotion.png';
 
 export const items = [
   {

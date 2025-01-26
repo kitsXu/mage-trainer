@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { scrolls } from "./scrollsData.js";
+import { scrolls } from "./Data/scrollsData.js";
 import "./market.css";
 
 export default function Scrolls(props) {
@@ -19,7 +19,7 @@ export default function Scrolls(props) {
     }));
   };
 
-  //--handle the purchase- dedect gold from user, set new gold amount to local storage, 
+  //--handle the purchase- dedect gold from user, set new gold amount to local storage,
   //--create unique id for scroll, store bought scroll to local storage.
   //--handle not having enough gold
   const purchaseScroll = (e, scrollId, scrollCost) => {
