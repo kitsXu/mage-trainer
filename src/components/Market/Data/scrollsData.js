@@ -1,4 +1,4 @@
-import scroll from "./images/scroll.png";
+import scroll from "../images/scroll.png";
 
 export const scrolls = [
   {
