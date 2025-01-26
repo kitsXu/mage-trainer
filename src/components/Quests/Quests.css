@@ -125,3 +125,10 @@
   cursor:default;
   font-size: 12px;
 }
+
+.formError {
+  background: #ccd7e6;
+  text-align: center;
+  color:rgb(206, 68, 68);
+  font-size: 12px;
+}

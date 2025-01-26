@@ -9,14 +9,20 @@ export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [quests, setQuests] = useState(props.currentQuestList ?? []);
   const [visibility, setVisibility] = useState(false);
+  const [formError, setFormError] = useState("");
 
   //-- enter a quest into the form
   function handleSubmit(e) {
     e.preventDefault();
-    setQuests((currentQuests) => {
-      return [...currentQuests, { id: crypto.randomUUID(), title: newQuest }];
-    });
-    setNewQuest("");
+    if (newQuest.trim() === "") {
+      setFormError("Please enter a quest to submit!");
+    } else {
+      setFormError("");
+      setQuests((currentQuests) => {
+        return [...currentQuests, { id: crypto.randomUUID(), title: newQuest }];
+      });
+      setNewQuest("");
+    }
   }
 
   //--set current state of quests to local storage.
@@ -64,8 +70,8 @@ export default function Quests(props) {
           &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add
           quests to the log below to build out your Quest Log. These should be
           things you don't do everyday, as you won't be permited to enter the
-          same quests here more than once if they have been completed. Quests that
-          are completed are worth 4xp.
+          same quests here more than once if they have been completed. Quests
+          that are completed are worth 4xp.
         </p>
       )}
       <form onSubmit={handleSubmit} className="new-quest-form">
@@ -79,6 +85,7 @@ export default function Quests(props) {
         </div>
         <button className="btn">ACCEPT</button>
       </form>
+      {formError && <p className="formError">{formError}</p>}
       <ul className="list">
         {quests.length === 0 && "No quests available!  Better find some work!"}
         {quests.map((quests) => {

@@ -1,5 +1,5 @@
 /*-- EGGS --*/
-.eggProfile {
+.scrollProfile {
     background: #ccd7e6;
     justify-items: center;
 }
@@ -9,7 +9,7 @@ img.scroll {
     background: #ccd7e6;
 }
 
-.eggDiv {
+.scrollDiv {
     background: #ccd7e6;
     margin-top: 1rem;
     display: flex;
@@ -19,7 +19,7 @@ img.scroll {
     /* padding-left: 2rem; */
 }
 
-.eggAmount {
+.scrollAmount {
     background: hsla(61, 35%, 39%, 0.781);
     width: 75px;
     height:35px;
@@ -28,7 +28,7 @@ img.scroll {
     /* margin-left: 2rem; */
 }
 
-.EggPurchase {
+.scrollPurchase {
     background: #ccd7e6;
     width:150px;
     text-align: center;

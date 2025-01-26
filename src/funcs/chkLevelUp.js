@@ -1,5 +1,6 @@
 export const chkLevelUp = (user) => {
     if (user.experience >= user.nextLevelExperience) {
+
       user.level++;
 
       user.nextLevelExperience += 10;

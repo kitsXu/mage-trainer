@@ -1,13 +1,14 @@
 import "./item.css";
 import "./market.css";
-import healthPotion from "./images/healthPotion.png"
-import manaPotion from "./images/manaPotion.png"
-import speedPotion from "./images/speedPotion.png"
-
+import healthPotion from "./images/healthPotion.png";
+import manaPotion from "./images/manaPotion.png";
+import speedPotion from "./images/speedPotion.png";
 
 export default function Items(props) {
   return (
     <div className="itemProfile">
+      <h1 className="userHeader">Verdant Vial Apothecary</h1>
+
       <label>
         Health Potion
         <div className="itemDiv">
@@ -21,7 +22,7 @@ export default function Items(props) {
       <label>
         Mana Potion
         <div className="itemDiv">
-        <img src={manaPotion} className="itemIcons" />
+          <img src={manaPotion} className="itemIcons" />
           <p className="cost">75G Per</p>
           <input className="itemAmount" type="number" />
           <button className="itemPurchase">Purchase</button>
@@ -32,7 +33,7 @@ export default function Items(props) {
       <label>
         Speed Potion
         <div className="itemDiv">
-        <img src={speedPotion} className="itemIcons" />
+          <img src={speedPotion} className="itemIcons" />
           <p className="cost">75G Per</p>
           <input className="itemAmount" type="number" />
           <button className="itemPurchase">Purchase</button>
