@@ -4,21 +4,21 @@ import speedPotion from '../Market/images/speedPotion.png';
 
 export const items = [
   {
-    id: crypto.randomUUID,
+    id: "healthPotion",
     name: "Health Potion",
     cost: 50,
     image: healthPotion,
   },
 
   {
-    id: crypto.randomUUID,
+    id: "speedPotion",
     name: "Speed Potion",
     cost: 75,
     image: speedPotion,
   },
 
   {
-    id: crypto.randomUUID,
+    id: "manaPotion",
     name: "Mana Potion",
     cost: 50,
     image: manaPotion,
