@@ -1,15 +1,15 @@
 /*DAILY QUEST LISTS*/
 .daily-info {
-  background: #ccd7e6;
+  background: #e3e6cc;
   margin:auto;
   text-align: center;
   padding-bottom: 1rem;
-  font-size: 10px;
-  line-height: 25px;
+  font-size: 1.5rem;
+  line-height: 45px;
 }
 
 .dailyList {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -17,7 +17,7 @@
   padding-bottom: 5.5rem;
   list-style: none;
   gap: 0.6rem;
-  font-size: 10px;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -26,13 +26,13 @@
 }
 
 .dailyList li {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   gap: 1rem;
 }
 
 .dailyList li label {
-  background: #ccd7e6;
+  background: #e3e6cc;
 
   display: flex;
   gap: 1rem;
@@ -77,23 +77,23 @@
 }
 
 .nameInput {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   gap: 1rem;
   justify-content: center;
   align-items: baseline;
   margin-bottom: 0.5rem;
-  font-size: 12px;
+  font-size: 2rem;
 }
 
 #nameInputBar {
   background: hsl(216, 33%, 56%);
-  color:#ccd7e6;
+  color:#e3e6cc;
   height: 25px;
 }
 
 .nameSubmitBtn {
-  background:  #ccd7e6;
+  background:  #e3e6cc;
 
 }
 
@@ -102,7 +102,7 @@
 }
 
 .nameSubmitBtn:active {
-  background:  #ccd7e6;
+  background:  #e3e6cc;
   -webkit-box-shadow: inset 0px 0px 5px #a8a8a8;
   -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
   box-shadow: inset 0px 0px 5px #c1c1c1;
@@ -110,21 +110,21 @@
 }
 
 #completeDaily {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: right;
-  font-size: 10px;
+  font-size: 4rem;
   padding: 20px 0px 40px 0px;
 }
 
 .daily-form-row {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
 
 form.new-daily-form {
-  background: #ccd7e6;
+  background: #e3e6cc;
 
 }
 
@@ -144,7 +144,7 @@ form.new-daily-form {
   margin: 0;
   padding: 0.25em 0.5em;
   width: 100%;
-  font-size: 10px;
+  font-size: 1.5rem;
   cursor: pointer;
   outline: none;
   background-color: hsla(61, 24%, 53%, 0.781);
@@ -154,9 +154,9 @@ form.new-daily-form {
 }
 
 .dailyHeader {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   margin-top: 2rem;
 }
 
@@ -171,8 +171,7 @@ form.new-daily-form {
   background: hsla(212, 35%, 39%, 0.781);
   padding: 0.25em 1em;
   color: hsl(197, 58%, 85%);
-  font-size: 20px;
-  font-family: "Courier New", Courier, monospace;
+  font-size: 2rem;
   height: 35px;
 }
 
@@ -181,12 +180,12 @@ form.new-daily-form {
 }
 
 .bodyWrapper {
-  background:#ccd7e6;
+  background:#e3e6cc;
 
 }
 
 .logo-tag {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-decoration: none;
   margin-top: 11.5vh;
   color: hsl(233, 39%, 23%);
@@ -195,19 +194,15 @@ form.new-daily-form {
 }
 
 .questExplanation {
-  background:  hsla(61, 24%, 53%, 0.781);
-  color: #ccd7e6;
-  border: 2px dotted hsl(244, 45%, 22%);
-  height: 26px;
-  width:26px;
-  font-size:10px;
-  margin-top: 12px;
+  background:transparent;
+  color: #e3e6cc;
+  border: none;
+  font-size: 3rem;
   margin-left:12px;
-  text-shadow: 2px 1px 1px black;
+  text-shadow: 4px 1px 1px black;
 }
 
 .questExplanation:active {
-  color: #ccd7e6;
   color: hsl(244, 45%, 22%);
   -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
   -moz-box-shadow: inset 0px 0px 5px  hsl(244, 45%, 22%);
@@ -218,5 +213,7 @@ form.new-daily-form {
 
 .questExplanation:hover,
 .menuBtn:focus-visible {
-  background: hsla(56, 42%, 60%, 0.842);
+  color:rgb(247, 105, 23);
+  text-shadow: 0px 0px 1px rgb(0, 0, 0);
+
 }

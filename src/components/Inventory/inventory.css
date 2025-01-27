@@ -1,5 +1,5 @@
 .logo-tag-item {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-decoration: none;
   margin-top: 27vh;
   color: hsl(246, 41%, 31%);
@@ -8,20 +8,20 @@
 }
 
 .inventoryHeader {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: center;
   font-size: 1.2rem;
   margin: 2.5rem 0 2rem 0;
 }
 
 .totalGold {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: center;
   margin-top: 30px;
 }
 
 .inventoryButtons {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -29,7 +29,7 @@
 }
 
 .item-brood-Header {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: center;
   font-size: .9rem;
   margin: 2.5rem 0 2rem 0;

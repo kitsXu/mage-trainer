@@ -134,7 +134,7 @@ export default function App() {
         />
       ) : (
         <>
-          <header>mage trainer</header>
+          <header>Mage Trainer</header>
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("dailies")}>
               Dailies

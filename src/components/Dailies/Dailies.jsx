@@ -80,7 +80,7 @@ export default function Dailies(props) {
 
   return (
     <div className="bodyWrapper">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <div className="questHeaderWrap">
         <h1 className="dailyHeader">{props.user.name}'s Dailies</h1>
         <button className="questExplanation" onClick={showHide}>
@@ -122,7 +122,11 @@ export default function Dailies(props) {
                 />
                 {daily.title}
               </label>
-              <button
+            </li>
+          );
+        })}
+      </ul>
+      <button
                 onClick={() => {
                   deleteDaily(daily.id);
                 }}
@@ -130,10 +134,6 @@ export default function Dailies(props) {
               >
                 Abandon
               </button>
-            </li>
-          );
-        })}
-      </ul>
       <button onClick={turnInDailyQuests} className="foot" id="clearBtn">
         COMPLETE YOUR DAILY QUESTS!
       </button>

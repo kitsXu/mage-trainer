@@ -9,7 +9,7 @@ export default function Market(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <div className="totalGold">Total Gold: {props.user.gold}</div>
       <div className="marketButtons">
         <button className="menuBtn" onClick={() => setView("scrolls")}>

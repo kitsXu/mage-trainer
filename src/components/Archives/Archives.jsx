@@ -7,7 +7,7 @@ export default function UserProfile(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="userHeader">Pupil Name: {props.user.name}</h1>
       <h1 className="userHeader">Pupil Rank: novice mage</h1>      
       <div className="divider">_________</div>

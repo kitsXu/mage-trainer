@@ -1,6 +1,6 @@
 /*--RECORDS PAGE--*/
 .profileInfo {
-  background: #ccd7e6;
+  background: #e3e6cc;
 
   display: flex;
   flex-direction: column;
@@ -12,12 +12,12 @@
 }
 
 .profile {
-  background: #ccd7e6;
+  background: #e3e6cc;
 
 }
 
 .logo-tag-archive {
-  background: #ccd7e6;
+  background: #e3e6cc;
 
   text-decoration: none;
   margin-top: 7.8vh;

@@ -19,7 +19,7 @@ export default function Quests(props) {
     } else {
       setFormError("");
       setQuests((currentQuests) => {
-        return [...currentQuests, { id: crypto.randomUUID(), title: newQuest }];
+        return [...currentQuests, { id: crypto.randomUUID(), title: newQuest, completed: false }];
       });
       setNewQuest("");
     }
@@ -42,6 +42,13 @@ export default function Quests(props) {
     return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
+    //--check and uncheck daily quests
+    function toggleQuest (id, completed) {
+      setQuests((prev) =>
+        prev.map((q) => (q.id === id ? { ...q, completed: completed } : q))
+      );
+    };
+
   //-- just clears quest
   function deleteTask(id) {
     setQuests((currentQuests) => {
@@ -58,7 +65,7 @@ export default function Quests(props) {
 
   return (
     <div className="questWrapper">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <div className="questHeaderWrap">
         <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
         <button className="questExplanation" onClick={showHide}>
@@ -90,30 +97,35 @@ export default function Quests(props) {
         {quests.length === 0 && "No quests available!  Better find some work!"}
         {quests.map((quests) => {
           return (
-            <li key={quests.id}>
-              <label>{quests.title}</label>
-              <button
-                onClick={() => {
-                  completeTask(quests.id);
-                  props.user.questCompleted++;
-                }}
-                className="btn btn-yay"
-              >
-                Complete
-              </button>
-              <button
-                onClick={() => {
-                  deleteTask(quests.id);
-                  props.user.abandonedQuests++;
-                }}
-                className="btn btn-danger"
-              >
-                Abandon
-              </button>
-            </li>
+            <label>
+            <input
+              type="checkbox"
+              checked={quests.completed}
+              onChange={(e) => toggleQuest(quests.id, e.target.checked)}
+            />
+            {quests.title}
+          </label>
           );
         })}
       </ul>
+      <button
+        onClick={() => {
+          completeTask(quests.id);
+          props.user.questCompleted++;
+        }}
+        className="btn btn-yay"
+      >
+        Complete
+      </button>
+      <button
+        onClick={() => {
+          deleteTask(quests.id);
+          props.user.abandonedQuests++;
+        }}
+        className="btn btn-danger"
+      >
+        Abandon
+      </button>
       <div className="divider">_________</div>
       <div className="logo">
         <a className="logo-tag-quest" href="https://ko-fi.com/kitsxu">
