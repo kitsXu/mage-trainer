@@ -31,8 +31,8 @@ export default function Items(props) {
       props.user.gold -= itemCost * amount;
       console.log(`PURCHASE COMPLETE for ${amount} ${itemId} --`, props.user);
 
-      const uniqueId = crypto.randomUUID();
-      const itemKey = `${itemId}-${uniqueId}`;
+      const uniqueItemId = crypto.randomUUID();
+      const itemKey = `${itemId}-${uniqueItemId}`;
 
       const itemData = {
         id: itemKey,
@@ -45,6 +45,7 @@ export default function Items(props) {
       console.log("scrolls saved to localStorage:", itemData);
     } else {
       console.log("Not enough gold!");
+      alert("Not Enough Gold!")
     }
   };
 

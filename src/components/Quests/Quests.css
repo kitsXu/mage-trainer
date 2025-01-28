@@ -1,48 +1,33 @@
 /*--QUEST PAGE--*/
 .questHeader {
-  background: #ccd7e6;
-
+  background: #e3e6cc;
   text-align: center;
   font-size: 1.2rem;
   margin-top: 2rem;
 }
 
-.questHeaderWrap {
-  background: #ccd7e6;
 
+.questHeaderWrap {
+  background: #e3e6cc;
   display:flex;
   flex-direction: row;
-  margin-bottom: 10px;
   justify-content: center;
-  gap:12px;
   align-items: center;
 }
 
-
 .questWrapper {
-  background: #ccd7e6;
-
-}
-
-#completeQuest {
-  background: #ccd7e6;
-
-  text-align: right;
-  font-size: 10px;
-  margin: 20px 0px 40px 0px;
+  background: #e3e6cc;
 }
 
 .new-quest-form {
-  background: #ccd7e6;
-
+  background: #e3e6cc;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
 .form-row {
-  background: #ccd7e6;
-
+  background: #e3e6cc;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
@@ -63,17 +48,8 @@
   border: 3px ridge hsla(61, 35%, 39%, 0.781);
 }
 
-.quest-header {
-  background: #ccd7e6;
-  font-size: 10px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  text-decoration: underline;
-}
-
 .list {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
@@ -85,26 +61,26 @@
 }
 
 .list li {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
 .list li label {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
 .list li:has(input:focus-visible) label {
-  background: #ccd7e6;
+  background: #e3e6cc;
   outline: 1px solid hsl(54, 98%, 21%);
 }
 
 .list li label::before {
-  background: #ccd7e6;
+  background: #e3e6cc;
   content: "";
   display: block;
   width: 0.5rem;
@@ -117,8 +93,29 @@
   align-items: center;
 }
 
+.btn.btn-yay {
+  background: hsla(177, 100%, 40%, 0.192);
+  border: 1px ridge hsl(157, 99%, 36%);
+  color: hsl(182, 98%, 23%);
+  height: 20px;
+  font-size: 8px;
+  margin-top: 15px;
+}
+
+.btn.btn-yay:hover,
+.btn.btn-yay:focus-visible {
+  background: hsla(209, 100%, 40%, 0.2);
+}
+
+#completeQuest {
+  background: #e3e6cc;
+  text-align: right;
+  font-size: 10px;
+  margin: 20px 0px 40px 0px;
+}
+
 .logo-tag-quest {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-decoration: none;
   margin-top: 11.5vh;
   color: hsl(246, 41%, 31%);
@@ -127,7 +124,7 @@
 }
 
 .formError {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: center;
   color:rgb(206, 68, 68);
   font-size: 12px;

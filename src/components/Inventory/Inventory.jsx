@@ -9,7 +9,7 @@ export default function Inventory(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="inventoryHeader">{props.user.name}'s Inventory</h1>
       <div className="inventoryButtons">
         <button className="menuBtn" onClick={() => setView("itemInventory")}>

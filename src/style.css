@@ -1,59 +1,82 @@
 * {
-  font-family: "Press Start 2P", system-ui;
-  font-weight: 200;
-  font-style: normal;
+  font-family: "Tangerine";
   box-sizing: border-box;
-  /* background: #697a91; */
-  background-image: url("images/background20.png");
+  background-image: url("images/background15.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size:cover;
+  background-size: cover;
+}
+
+.monsieur-la-doulaise-regular {
+  font-family: "Monsieur La Doulaise", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tangerine-regular {
+  font-family: "Tangerine", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tangerine-bold {
+  font-family: "Tangerine", serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 body {
-  background: #ccd7e6;
+  background: #aeb19d;
+  font-family: "Tangerine";
+  font-size: 2rem;
   color: hsl(246, 41%, 31%);
   max-width: 600px;
   min-height: 950px;
   border: 10px;
   border-style: double ridge;
-  border-color:hsl(241, 40%, 23%);
+  border-color: hsl(29, 40%, 23%);
   padding: 1rem;
   margin: 3rem auto;
   box-shadow: 10px 10px 8px black;
 }
 
 .bodywrapper {
-  background: #ccd7e6;
+  background: #e3e6cc;
+  font-size: 2rem;
+  padding: 20px;
+  box-shadow: 5px 5px 30px #e3e6cc;
 }
 
 header {
-  background: #ccd7e6;
+  font-family: "Monsieur La Doulaise";
+  color: hsl(216, 33%, 56%);
+  background: #e3e6cc 35%;  
   text-align: center;
-  text-decoration: overline;
-  font-size: 2rem;
+  font-size: 5rem;
   margin: 10px 0 20px 0;
+  font-weight: 1000;
+  text-shadow: 2px 2px 4px black;
 }
 
 .headDivider {
-  background: #ccd7e6;
-  color:  hsl(246, 41%, 31%);
+  background: #e3e6cc;
+  color: hsl(246, 41%, 31%);
   text-align: center;
   margin: 2.5rem 0 2rem 0;
   word-break: break-all;
+  font-size: 1.5rem;
 }
 
 .menuWrapper {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: .3rem;
+  gap: 0.3rem;
   row-gap: 1px;
   margin-left: 3rem;
   margin-right: 3rem;
   margin-bottom: 1.5rem;
-
 }
 
 .menuBtn {
@@ -64,49 +87,48 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #e3edfc;
-  border: 2px ridge hsla(246, 34%, 50%, 0.781);
-  background: hsla(61, 24%, 53%, 0.781);
-  box-shadow: 1px 1px 1px hsl(283, 45%, 22%);
-  font-size: 12px;
+  background: transparent;
+  color: hsl(246, 41%, 31%);
+  border: none;
+  font-size: 2.5rem;
   padding: 8px 0 8px 0;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 1px rgb(46, 46, 54);
   cursor: pointer;
   & {
     @media (width <= 450px) {
       padding: 14px 5px 14px 5px;
     }
-}}
+  }
+}
 
 .menuBtn:active {
-  color:  #e3edfc;
-  -webkit-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);;
-  -moz-box-shadow: inset 0px 0px 5px  hsl(29, 44%, 22%);;
-  box-shadow: inset 0px 0px 5px hsl(29, 44%, 22%);;
+  color: #e3edfc;
   outline: none;
 }
 
 .menuBtn:hover,
 .menuBtn:focus-visible {
-  background: hsla(56, 42%, 60%, 0.842);
+  color: rgb(247, 105, 23);
+  text-shadow: 0px 0px 1px rgb(0, 0, 0);
 }
 
 label {
-  background: #ccd7e6;
-  font-size: 10px;
+  background: #e3e6cc;
   margin-top: 20px;
+  font-size: 2.5rem;
+  align-items: center;
 }
 
 .btn {
   background: hsla(61, 24%, 53%, 0.781);
   border: 2px ridge hsl(241, 21%, 61%);
   color: #e3edfc;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 0px rgb(119, 36, 3);
   padding: 0.25em 0.5em;
   cursor: pointer;
-  font-size: 14px;
-  height: 40px;
-  box-shadow: 2px 1px 2px hsla(54, 85%, 13%, 0.678);
+  font-size: 1.5rem;
+  font-weight: 1000;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
 }
 
 .btn:hover,
@@ -123,55 +145,48 @@ label {
 }
 
 .btn.btn-danger {
+  display:flex;
   background: hsla(27, 100%, 40%, 0.192);
-  border: 1px ridge hsl(24, 98%, 46%);
-  color: hsl(24, 99%, 36%);
-  height: 20px;
-  font-size: 8px;
-  margin-top: 15px;
+  border: 1px ridge hsl(24, 84%, 48%);
+  color:hsl(12, 84%, 48%);
+  font-size: 1.5rem;
+  text-align: center;
+  padding:2px 40px;
+  width: 60%;
+  margin:auto;
+  margin-top: 30px;
+  justify-content: center;
+
+  
 }
 
 .btn.btn-danger:hover,
 .btn.btn-danger:focus-visible {
-  background: hsla(253, 100%, 40%, 0.2);
+  background:  hsla(27, 86%, 60%, 0.466);
 }
 
-.btn.btn-yay {
-  background: hsla(177, 100%, 40%, 0.192);
-  border: 1px ridge hsl(157, 99%, 36%);
-  color: hsl(182, 98%, 23%);
-  height: 20px;
-  font-size: 8px;
-  margin-top: 15px;
-}
-
-.btn.btn-yay:hover,
-.btn.btn-yay:focus-visible {
-  background: hsla(209, 100%, 40%, 0.2);
-}
 
 .userHeader {
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin: 2.5rem 0 2rem 0;
 }
 
 .divider {
-  background: #ccd7e6;
-  width:100%;
+  background: #e3e6cc;
+  width: 100%;
   color: #9791b9;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 6rem;
   word-break: break-all;
 }
 
 .logo {
-  background: #ccd7e6;
-  display:flex;
+  background: #e3e6cc;
+  display: flex;
   flex-direction: column;
-  margin:auto;
+  margin: auto;
   text-align: center;
-  height: 100px;
+  height: 150px;
 }

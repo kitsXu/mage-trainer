@@ -1,17 +1,17 @@
 .landingBodyWrap {
-  background: #ccd7e6;
+  background: #e3e6cc;
 }
 
 .welcome {
   margin-top: 1.5rem;
   margin-bottom: 3rem;
-  background: #ccd7e6;
+  background: #e3e6cc;
   text-align: center;
   font-size: 20px;
 }
 
 .intro {
-  background: #ccd7e6;
+  background: #e3e6cc;
   margin-bottom: 2rem;
   text-align: center;
   line-height: 1.5rem;
@@ -19,7 +19,7 @@
 }
 
 .foot {
-  background: #ccd7e6;
+  background: #e3e6cc;
   margin-bottom: 2rem;
   margin-top: 2rem;
   text-align: center;
@@ -29,21 +29,43 @@
 }
 
 .nameInput {
-  background: #ccd7e6;
+  background: #e3e6cc;
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   align-items: baseline;
   margin-bottom: 0.5rem;
+  font-size: 2rem;
 }
 
 #nameInputBar {
   background:  hsla(61, 35%, 39%, 0.781);
   padding-left: 50px;
-  color: #ccd7e6;
+  color: #e3e6cc;
   height: 1.5rem;
   width: 60%;
   font-size: 16px;
 }
 
+#nameInputBar {
+  background: hsl(216, 33%, 56%);
+  color:#e3e6cc;
+  height: 25px;
+}
+
+.nameSubmitBtn {
+  background:  #e3e6cc;
+
+}
+
+.nameSubmitBtn:hover {
+  background:  #f8f6e3;
+}
+
+.nameSubmitBtn:active {
+  background:  #e3e6cc;
+  -webkit-box-shadow: inset 0px 0px 5px #a8a8a8;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
