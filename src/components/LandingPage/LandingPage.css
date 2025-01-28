@@ -31,11 +31,11 @@
 .nameInput {
   background: #e3e6cc;
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   align-items: baseline;
   margin-bottom: 0.5rem;
+  font-size: 2rem;
 }
 
 #nameInputBar {
@@ -47,3 +47,25 @@
   font-size: 16px;
 }
 
+#nameInputBar {
+  background: hsl(216, 33%, 56%);
+  color:#e3e6cc;
+  height: 25px;
+}
+
+.nameSubmitBtn {
+  background:  #e3e6cc;
+
+}
+
+.nameSubmitBtn:hover {
+  background:  #f8f6e3;
+}
+
+.nameSubmitBtn:active {
+  background:  #e3e6cc;
+  -webkit-box-shadow: inset 0px 0px 5px #a8a8a8;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}

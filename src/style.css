@@ -43,12 +43,14 @@ body {
 .bodywrapper {
   background: #e3e6cc;
   font-size: 2rem;
+  padding: 20px;
+  box-shadow: 5px 5px 30px #e3e6cc;
 }
 
 header {
   font-family: "Monsieur La Doulaise";
-  color:  hsl(216, 33%, 56%);
-  background: #e3e6cc;
+  color: hsl(216, 33%, 56%);
+  background: #e3e6cc 35%;  
   text-align: center;
   font-size: 5rem;
   margin: 10px 0 20px 0;
@@ -87,8 +89,8 @@ header {
   text-align: center;
   background: transparent;
   color: hsl(246, 41%, 31%);
-  border:none;
-  font-size: 2rem;
+  border: none;
+  font-size: 2.5rem;
   padding: 8px 0 8px 0;
   text-shadow: 1px 1px 1px rgb(46, 46, 54);
   cursor: pointer;
@@ -106,7 +108,7 @@ header {
 
 .menuBtn:hover,
 .menuBtn:focus-visible {
-  color:rgb(247, 105, 23);
+  color: rgb(247, 105, 23);
   text-shadow: 0px 0px 1px rgb(0, 0, 0);
 }
 
@@ -121,12 +123,12 @@ label {
   background: hsla(61, 24%, 53%, 0.781);
   border: 2px ridge hsl(241, 21%, 61%);
   color: #e3edfc;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 0px rgb(119, 36, 3);
   padding: 0.25em 0.5em;
   cursor: pointer;
   font-size: 1.5rem;
-  height: 40px;
-  box-shadow: 2px 1px 2px hsla(54, 85%, 13%, 0.678);
+  font-weight: 1000;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
 }
 
 .btn:hover,
@@ -143,32 +145,26 @@ label {
 }
 
 .btn.btn-danger {
+  display:flex;
   background: hsla(27, 100%, 40%, 0.192);
-  border: 1px ridge hsl(24, 98%, 46%);
-  color: hsl(24, 99%, 36%);
-  height: 20px;
-  font-size: 8px;
-  margin-top: 15px;
+  border: 1px ridge hsl(24, 84%, 48%);
+  color:hsl(12, 84%, 48%);
+  font-size: 1.5rem;
+  text-align: center;
+  padding:2px 40px;
+  width: 60%;
+  margin:auto;
+  margin-top: 30px;
+  justify-content: center;
+
+  
 }
 
 .btn.btn-danger:hover,
 .btn.btn-danger:focus-visible {
-  background: hsla(253, 100%, 40%, 0.2);
+  background:  hsla(27, 86%, 60%, 0.466);
 }
 
-.btn.btn-yay {
-  background: hsla(177, 100%, 40%, 0.192);
-  border: 1px ridge hsl(157, 99%, 36%);
-  color: hsl(182, 98%, 23%);
-  height: 20px;
-  font-size: 8px;
-  margin-top: 15px;
-}
-
-.btn.btn-yay:hover,
-.btn.btn-yay:focus-visible {
-  background: hsla(209, 100%, 40%, 0.2);
-}
 
 .userHeader {
   background: #e3e6cc;
@@ -182,8 +178,7 @@ label {
   width: 100%;
   color: #9791b9;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 6rem;
   word-break: break-all;
 }
 
@@ -193,5 +188,5 @@ label {
   flex-direction: column;
   margin: auto;
   text-align: center;
-  height: 100px;
+  height: 150px;
 }

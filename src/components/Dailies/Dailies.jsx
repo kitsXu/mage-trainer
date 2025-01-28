@@ -13,39 +13,39 @@ export default function Dailies(props) {
   const [visibility, setVisibility] = useState(false);
   const [formError, setFormError] = useState("");
 
-
   //--enter daily quest into the form and create daily quest object.
   function handleDailySubmit(e) {
     e.preventDefault();
     if (newDaily.trim() === "") {
       setFormError("Please enter a quest to submit!");
     } else {
-      setFormError("")
-    setDailies((currentDailies) => {
-      return [
-        ...currentDailies,
-        { id: crypto.randomUUID(), title: newDaily, completed: false },
-      ];
-    });
-    setNewDaily("");
-  }}
+      setFormError("");
+      setDailies((currentDailies) => {
+        return [
+          ...currentDailies,
+          { id: crypto.randomUUID(), title: newDaily, completed: false },
+        ];
+      });
+      setNewDaily("");
+    }
+  }
 
-    //--set current state of dailies to local storage.
-    useEffect(() => {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ ...props.user, currentDailyQuests: dailies })
-      );
-  
-      props.setCurrentDailyQuests(dailies);
-    }, [dailies]);
+  //--set current state of dailies to local storage.
+  useEffect(() => {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, currentDailyQuests: dailies })
+    );
+
+    props.setCurrentDailyQuests(dailies);
+  }, [dailies]);
 
   //--check and uncheck daily quests
-  function toggleDaily (id, completed) {
+  function toggleDaily(id, completed) {
     setDailies((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
-  };
+  }
 
   //--remove daily quest from form
   function deleteDaily(id) {
@@ -80,7 +80,9 @@ export default function Dailies(props) {
 
   return (
     <div className="bodyWrapper">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">
+        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+      </div>
       <div className="questHeaderWrap">
         <h1 className="dailyHeader">{props.user.name}'s Dailies</h1>
         <button className="questExplanation" onClick={showHide}>
@@ -89,12 +91,13 @@ export default function Dailies(props) {
       </div>
       {visibility && (
         <p className="daily-info">
-          &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;
-          Dailies are the things that make up your every day routine! Create
-          your daily routine by adding tasks into the log below. Check tasks off
-          your list as you complete them, and then hit the 'COMPLETE YOUR DAILY
-          ROUTINE' button at the end of the day to turn in and gain your
-          experience (1xp per task)
+          Think of your daily quests as the things that make up your everyday
+          routine- the day to day chores you need to remember to do so you can
+          turn them into healthy habits! Add your "quests" into the input, check
+          tasks off your list as you complete them, and then press 'Submit Your
+          Daily Quests' at the end of the day to gain your experience (Quest
+          turn in button an ONLY be used 1x per day, each Daily Quest is worth
+          1px)
         </p>
       )}
       <form onSubmit={handleDailySubmit} className="new-daily-form">
@@ -106,7 +109,7 @@ export default function Dailies(props) {
             id="daily"
           ></input>
         </div>
-        <button className="btn dailyBtn">ACCEPT</button>
+        <button className="btn dailyBtn">Add to Daily Quest List</button>
       </form>
       {formError && <p className="formError">{formError}</p>}
       <ul className="dailyList">
@@ -126,16 +129,16 @@ export default function Dailies(props) {
           );
         })}
       </ul>
-      <button
-                onClick={() => {
-                  deleteDaily(daily.id);
-                }}
-                className="btn btn-danger"
-              >
-                Abandon
-              </button>
       <button onClick={turnInDailyQuests} className="foot" id="clearBtn">
-        COMPLETE YOUR DAILY QUESTS!
+        Submit Your Daily Quests!
+      </button>
+      <button
+        onClick={() => {
+          deleteDaily(daily.id);
+        }}
+        className="btn btn-danger"
+      >
+        Abandon Selected Quests
       </button>
       <div className="divider">_________</div>
       <div className="logo">

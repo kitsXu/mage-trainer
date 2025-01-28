@@ -1,18 +1,56 @@
 /*DAILY QUEST LISTS*/
+.bodyWrapper {
+  background: #e3e6cc;
+}
+
+.dailyHeader {
+  background: #e3e6cc;
+  text-align: center;
+  font-size: 3.5rem;
+  margin-top: .5rem;
+  margin-bottom: 0;
+}
+
 .daily-info {
   background: #e3e6cc;
-  margin:auto;
+  margin: auto;
   text-align: center;
   padding-bottom: 1rem;
-  font-size: 1.5rem;
-  line-height: 45px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  line-height: 30px;
+}
+
+.questExplanation {
+  background: transparent;
+  color: #e3e6cc;
+  border: none;
+  font-size: 3rem;
+  margin-left: 12px;
+  text-shadow: 4px 1px 1px black;
+}
+
+.questExplanation:active {
+  color: hsl(244, 45%, 22%);
+  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  text-shadow: none;
+  outline: none;
+}
+
+.questExplanation:hover,
+.menuBtn:focus-visible {
+  color: rgb(247, 105, 23);
+  text-shadow: 0px 0px 1px rgb(0, 0, 0);
+  cursor: pointer;
 }
 
 .dailyList {
   background: #e3e6cc;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: auto;
   padding-top: 4rem;
   padding-bottom: 5.5rem;
   list-style: none;
@@ -33,7 +71,6 @@
 
 .dailyList li label {
   background: #e3e6cc;
-
   display: flex;
   gap: 1rem;
   cursor: pointer;
@@ -76,36 +113,41 @@
   background: hsl(56, 76%, 23%);
 }
 
-.nameInput {
+.daily-form-row {
   background: #e3e6cc;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: baseline;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+form.new-daily-form {
+  background: #e3e6cc;
+}
+
+.new-daily-form input {
+  outline: none;
+  border: 3px double hsl(236, 45%, 22%);
+  background: hsla(212, 35%, 39%, 0.781);
+  padding: 0.25em 1em;
+  margin-top: 10px;
+  color: hsl(197, 58%, 85%);
   font-size: 2rem;
+  height: 35px;
 }
 
-#nameInputBar {
-  background: hsl(216, 33%, 56%);
-  color:#e3e6cc;
-  height: 25px;
+.new-daily-form input:focus {
+  border: 3px ridge hsla(202, 35%, 39%, 0.781);
 }
 
-.nameSubmitBtn {
-  background:  #e3e6cc;
-
-}
-
-.nameSubmitBtn:hover {
-  background:  #f8f6e3;
-}
-
-.nameSubmitBtn:active {
-  background:  #e3e6cc;
-  -webkit-box-shadow: inset 0px 0px 5px #a8a8a8;
-  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-  box-shadow: inset 0px 0px 5px #c1c1c1;
+.btn.dailyBtn {
+  border: 2px ridge hsla(62, 20%, 35%, 0.781);
+  color: #e3edfc;
+  text-shadow: 2px 2px 1px black;
+  padding: 0.25em 0.5em;
+  width: 100%;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
   outline: none;
 }
 
@@ -116,104 +158,28 @@
   padding: 20px 0px 40px 0px;
 }
 
-.daily-form-row {
-  background: #e3e6cc;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-form.new-daily-form {
-  background: #e3e6cc;
-
-}
-
-.btn.dailyBtn {
-  border: 2px ridge hsl(234, 21%, 61%);
-  color: #e3edfc;
-  text-shadow: 1px 1px 1px black;
-  padding: 0.25em 0.5em;
-  width: 100%;
-  margin-top: 0.5rem;
-  cursor: pointer;
-  outline: none;
-}
-
-
 #clearBtn {
   margin: 0;
   padding: 0.25em 0.5em;
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   outline: none;
   background-color: hsla(61, 24%, 53%, 0.781);
   color: #e3edfc;
-  text-shadow: 1px 1px 1px black;
-  border-color: #9291b9;
-}
-
-.dailyHeader {
-  background: #e3e6cc;
-  text-align: center;
-  font-size: 2.5rem;
-  margin-top: 2rem;
+  text-shadow: 2px 2px 1px black;
+  border: 2px ridge hsla(62, 20%, 35%, 0.781);
 }
 
 #clearBtn:hover,
 #clearBtn:focus-visible {
-  background:hsla(56, 42%, 60%, 0.842);
-}
-
-.new-daily-form input {
-  outline: none;
-  border: 3px double hsl(236, 45%, 22%);
-  background: hsla(212, 35%, 39%, 0.781);
-  padding: 0.25em 1em;
-  color: hsl(197, 58%, 85%);
-  font-size: 2rem;
-  height: 35px;
-}
-
-.new-daily-form input:focus {
-  border: 3px ridge hsla(202, 35%, 39%, 0.781);
-}
-
-.bodyWrapper {
-  background:#e3e6cc;
-
+  background: hsla(56, 42%, 60%, 0.842);
 }
 
 .logo-tag {
   background: #e3e6cc;
   text-decoration: none;
-  margin-top: 11.5vh;
   color: hsl(233, 39%, 23%);
-  cursor:default;
-  font-size: 12px;
-}
-
-.questExplanation {
-  background:transparent;
-  color: #e3e6cc;
-  border: none;
-  font-size: 3rem;
-  margin-left:12px;
-  text-shadow: 4px 1px 1px black;
-}
-
-.questExplanation:active {
-  color: hsl(244, 45%, 22%);
-  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  -moz-box-shadow: inset 0px 0px 5px  hsl(244, 45%, 22%);
-  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  text-shadow: none;
-  outline: none;
-}
-
-.questExplanation:hover,
-.menuBtn:focus-visible {
-  color:rgb(247, 105, 23);
-  text-shadow: 0px 0px 1px rgb(0, 0, 0);
-
+  cursor: default;
+  font-size: 2rem;
 }
