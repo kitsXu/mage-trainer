@@ -115,7 +115,7 @@ export default function Quests(props) {
         }}
         className="btn btn-yay"
       >
-        Complete
+        Complete Selected Quests
       </button>
       <button
         onClick={() => {
@@ -124,7 +124,7 @@ export default function Quests(props) {
         }}
         className="btn btn-danger"
       >
-        Abandon
+        Abandon Selected Quests
       </button>
       <div className="divider">_________</div>
       <div className="logo">
