@@ -18,16 +18,6 @@
   letter-spacing: 0.2px;
 }
 
-.foot {
-  background: #e3e6cc;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  text-align: center;
-  line-height: 1.2rem;
-  letter-spacing: 1px;
-  font-size: medium;
-}
-
 .nameInput {
   background: #e3e6cc;
   display: flex;

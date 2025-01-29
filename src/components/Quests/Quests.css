@@ -3,14 +3,13 @@
   background: #e3e6cc;
   text-align: center;
   font-size: 3.5rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 0;
 }
 
-
 .questHeaderWrap {
   background: #e3e6cc;
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -41,7 +40,9 @@
   padding: 0.25em 1em;
   color: hsl(197, 58%, 85%);
   font-size: 20px;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  height: 35px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  height: 35px;
 }
 
 .new-quest-form input:focus {
@@ -69,10 +70,9 @@
   flex-direction: column;
   margin-bottom: 4rem;
   list-style: none;
-  gap: 0.6rem;
   font-size: 2rem;
   text-align: center;
-  padding-top:50px;
+  padding-top: 50px;
 }
 
 .list li:has(input:checked) label {
@@ -119,6 +119,8 @@
 
 .list li:has(input:checked) label::before {
   content: "x";
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background: hsl(56, 76%, 35%);
   color: hsl(66, 100%, 90%);
   font-size: 0.5rem;
@@ -165,9 +167,10 @@
 }
 
 .formError {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background: #e3e6cc;
   text-align: center;
-  color:rgb(206, 68, 68);
+  color: rgb(206, 68, 68);
   font-size: 1rem;
 }

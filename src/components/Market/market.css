@@ -1,112 +1,129 @@
-/*-- EGGS --*/
+/*-- SCROLLS --*/
 .scrollProfile {
-    background: #ccd7e6;
-    justify-items: center;
+  background: #e3e6cc;
+  justify-items: center;
+  padding-top: 10px;
 }
 
+input.scrollQtys {
+    background: hsla(61, 35%, 39%, 0.781);
+    font-size: 3rem;
+    height: 50px;
+    width: 50px;
+  }
+
 img.scroll {
-    height:50px;
-    background: #ccd7e6;
+  height: 50px;
+  background: #e3e6cc;
 }
 
 .scrollDiv {
-    background: #ccd7e6;
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap:15px;
-    align-items: center;
-    /* padding-left: 2rem; */
+  background: #e3e6cc;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  padding-bottom: 75px;
 }
 
 .scrollAmount {
-    background: hsla(61, 35%, 39%, 0.781);
-    width: 75px;
-    height:35px;
-    font-size: 16px;
-    color:#ccd7e6;
-    /* margin-left: 2rem; */
+  background: hsla(61, 35%, 39%, 0.781);
+  width: 75px;
+  height: 35px;
+  font-size: 16px;
+  color: #e3e6cc;
 }
 
 .scrollPurchase {
-    background: #ccd7e6;
-    width:150px;
-    text-align: center;
-    height:30px;
-    margin:10px;
+  background: #e3e6cc;
+  width: 150px;
+  text-align: center;
+  height: 30px;
+  margin: 10px;
 }
 
 /*-- ITEMS --*/
 .itemProfile {
-    background: #ccd7e6;
-    justify-items: center;
+  background: #e3e6cc;
+  justify-items: center;
+  padding-top: 10px;
 }
 
 .itemIcons {
-    height: 100px;
-    background: #ccd7e6;
+  height: 100px;
+  background: #e3e6cc;
 }
 
-
 .itemDiv {
-    background: #ccd7e6;
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap:15px;
-    align-items: center;
-    /* padding-left: 2rem; */
+  background: #e3e6cc;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  padding-bottom: 75px;
 }
 
 /*-- BOTH --*/
-
 label {
-    padding-left: 1rem;
+  padding-left: 1rem;
+  font-size: 2rem;
 }
 
 .cost {
-    background: #ccd7e6;
-    display:flex;
-    align-items: center;
-    margin-left: .2rem;
+  background: #e3e6cc;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 0.2rem;
 }
 
-
 .itemAmount {
-    background: hsla(61, 35%, 39%, 0.781);
-    width: 75px;
-    height:35px;
-    font-size: 16px;
-    color:#ccd7e6;
-    /* margin-left: 2rem; */
+  background: hsla(61, 35%, 39%, 0.781);
+  width: 75px;
+  height: 35px;
+  font-size: 16px;
+  color: #e3e6cc;
 }
 
 .itemPurchase {
-    background: #ccd7e6;
-    width:150px;
-    text-align: center;
-    height:30px;
-    margin:10px;
+  background: #e3e6cc;
+  width: 150px;
+  text-align: center;
+  height: 30px;
+  margin: 10px;
 }
 
 .marketButtons {
-    background: #ccd7e6;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px 0px 30px 0;
-    gap: 30px;
+  background: #e3e6cc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0px 30px 0;
+  gap: 30px;
 }
 
 .purchaseWrap {
-    background:#ccd7e6;
+  background: #e3e6cc;
 }
 
+img.item {
+  background: #e3e6cc;
+}
+
+input.itemQtys {
+    background: hsla(61, 35%, 39%, 0.781);
+    font-size: 3rem;
+    height: 50px;
+    width: 50px;}
+
 .logo-tag-market {
-    background: #ccd7e6;
-    text-decoration: none;
-    margin-top: 7.8vh;
-    color:hsl(246, 41%, 31%);
-    cursor:default;
-    font-size: 12px;
-  }
+  background: #e3e6cc;
+  text-decoration: none;
+  margin-top: 5vh;
+  color: hsl(246, 41%, 31%);
+  cursor: default;
+  font-size: 2rem;
+}
