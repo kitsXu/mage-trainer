@@ -19,7 +19,10 @@ export default function Quests(props) {
     } else {
       setFormError("");
       setQuests((currentQuests) => {
-        return [...currentQuests, { id: crypto.randomUUID(), title: newQuest, completed: false }];
+        return [
+          ...currentQuests,
+          { id: crypto.randomUUID(), title: newQuest, completed: false },
+        ];
       });
       setNewQuest("");
     }
@@ -42,12 +45,12 @@ export default function Quests(props) {
     return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
-    //--check and uncheck daily quests
-    function toggleQuest (id, completed) {
-      setQuests((prev) =>
-        prev.map((q) => (q.id === id ? { ...q, completed: completed } : q))
-      );
-    };
+  //--check and uncheck daily quests
+  function toggleQuest(id, completed) {
+    setQuests((prev) =>
+      prev.map((q) => (q.id === id ? { ...q, completed: completed } : q))
+    );
+  }
 
   //-- just clears quest
   function deleteTask(id) {
@@ -65,7 +68,9 @@ export default function Quests(props) {
 
   return (
     <div className="questWrapper">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
+      <div className="headDivider">
+        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+      </div>
       <div className="questHeaderWrap">
         <h1 className="questHeader">{props.user.name}'s Quest Log</h1>
         <button className="questExplanation" onClick={showHide}>
@@ -74,9 +79,8 @@ export default function Quests(props) {
       </div>
       {visibility && (
         <p className="daily-info">
-          &#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;&#8287;Add
-          quests to the log below to build out your Quest Log. These should be
-          things you don't do everyday, as you won't be permited to enter the
+          Add quests to the log below to build out your Quest Log. These should
+          be things you don't do everyday, as you won't be permited to enter the
           same quests here more than once if they have been completed. Quests
           that are completed are worth 4xp.
         </p>
@@ -90,21 +94,23 @@ export default function Quests(props) {
             id="quest"
           ></input>
         </div>
-        <button className="btn">ACCEPT</button>
+        <button className="add-quest">Add To Quest List</button>
       </form>
       {formError && <p className="formError">{formError}</p>}
       <ul className="list">
         {quests.length === 0 && "No quests available!  Better find some work!"}
         {quests.map((quests) => {
           return (
-            <label>
-            <input
-              type="checkbox"
-              checked={quests.completed}
-              onChange={(e) => toggleQuest(quests.id, e.target.checked)}
-            />
-            {quests.title}
-          </label>
+            <li key={quest.id}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={quests.completed}
+                  onChange={(e) => toggleQuest(quests.id, e.target.checked)}
+                />
+                {quests.title}
+              </label>
+            </li>
           );
         })}
       </ul>
@@ -113,7 +119,7 @@ export default function Quests(props) {
           completeTask(quests.id);
           props.user.questCompleted++;
         }}
-        className="btn btn-yay"
+        className="complete-quest"
       >
         Complete Selected Quests
       </button>
