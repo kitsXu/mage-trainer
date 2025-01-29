@@ -55,7 +55,6 @@
   padding-top: 4rem;
   padding-bottom: 5.5rem;
   list-style: none;
-  gap: 0.6rem;
   font-size: 2rem;
   text-align: center;
 }
@@ -106,7 +105,8 @@
   content: "x";
   background: hsl(56, 76%, 35%);
   color: hsl(66, 100%, 90%);
-  font-size: 0.5rem;
+  font-size: .5rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: bold;
 }
 
@@ -118,7 +118,6 @@
   background: #e3e6cc;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
 }
 
 form.new-daily-form {
@@ -167,8 +166,8 @@ form.new-daily-form {
   border: 2px ridge hsl(241, 21%, 61%);
   color: #e3edfc;
   text-shadow: 2px 2px 1px black;
-  padding: 1rem 0;
   width: 100%;
+  padding: 0.25em 0.5em;
   font-size: 2rem;
   cursor: pointer;
   outline: none;

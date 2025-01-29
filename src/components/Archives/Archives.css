@@ -1,27 +1,40 @@
 /*--RECORDS PAGE--*/
+.userHeader {
+  font-size: 2.5rem;
+}
+
+.profile-divider {
+  background: #e3e6cc;
+  width: 100%;
+  color: #9791b9;
+  text-align: center;
+  font-size: 6rem;
+  word-break: break-all;
+}
+
 .profileInfo {
   background: #e3e6cc;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 10px;
   padding-bottom: 40px;
   padding-left: 60px;
-  row-gap: 40px;
+  row-gap: 30px;
+  font-size: 2rem;
 }
 
 .profile {
   background: #e3e6cc;
+  font-size: 2.5rem;
 
 }
 
 .logo-tag-archive {
   background: #e3e6cc;
-
   text-decoration: none;
-  margin-top: 7.8vh;
+  margin-top: 5vh;
   color: hsl(246, 41%, 31%);
-  cursor:default;
-  font-size: 12px;
+  cursor: default;
+  font-size: 2rem;
 }

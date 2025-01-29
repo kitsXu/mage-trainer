@@ -10,7 +10,7 @@ export default function UserProfile(props) {
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <h1 className="userHeader">Pupil Name: {props.user.name}</h1>
       <h1 className="userHeader">Pupil Rank: novice mage</h1>      
-      <div className="divider">_________</div>
+      <div className="profile-divider">_________</div>
       <div className="profileInfo">
         <div className="profile">Level: {props.user.level}</div>
         <div className="profile">Experience: {props.user.experience}xp</div>

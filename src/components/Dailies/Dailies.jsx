@@ -96,7 +96,7 @@ export default function Dailies(props) {
           turn them into healthy habits! Add your "quests" into the input, check
           tasks off your list as you complete them, and then press 'Submit Your
           Daily Quests' at the end of the day to gain your experience (Quest
-          turn in button an ONLY be used 1x per day, each Daily Quest is worth
+          turn in button can ONLY be used 1x per day, each Daily Quest is worth
           1px)
         </p>
       )}
