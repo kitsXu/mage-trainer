@@ -7,7 +7,7 @@
   background: #e3e6cc;
   text-align: center;
   font-size: 3.5rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 0;
 }
 
@@ -16,7 +16,8 @@
   margin: auto;
   text-align: center;
   padding-bottom: 1rem;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1rem;
   line-height: 30px;
 }
@@ -126,12 +127,13 @@ form.new-daily-form {
 
 .new-daily-form input {
   outline: none;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border: 3px double hsl(236, 45%, 22%);
   background: hsla(212, 35%, 39%, 0.781);
   padding: 0.25em 1em;
   margin-top: 10px;
   color: hsl(197, 58%, 85%);
-  font-size: 2rem;
+  font-size: 1rem;
   height: 35px;
 }
 
@@ -149,6 +151,8 @@ form.new-daily-form {
   margin-top: 0.5rem;
   cursor: pointer;
   outline: none;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+
 }
 
 #completeDaily {
@@ -159,16 +163,17 @@ form.new-daily-form {
 }
 
 #clearBtn {
-  margin: 0;
-  padding: 0.25em 0.5em;
+  background: hsla(61, 24%, 53%, 0.781);
+  border: 2px ridge hsl(241, 21%, 61%);
+  color: #e3edfc;
+  text-shadow: 2px 2px 1px black;
+  padding: 1rem 0;
   width: 100%;
   font-size: 2rem;
   cursor: pointer;
   outline: none;
-  background-color: hsla(61, 24%, 53%, 0.781);
-  color: #e3edfc;
-  text-shadow: 2px 2px 1px black;
-  border: 2px ridge hsla(62, 20%, 35%, 0.781);
+  font-weight: 1000;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
 }
 
 #clearBtn:hover,
