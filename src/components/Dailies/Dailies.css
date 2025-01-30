@@ -22,30 +22,6 @@
   line-height: 30px;
 }
 
-.questExplanation {
-  background: transparent;
-  color: #e3e6cc;
-  border: none;
-  font-size: 3rem;
-  margin-left: 12px;
-  text-shadow: 4px 1px 1px black;
-}
-
-.questExplanation:active {
-  color: hsl(244, 45%, 22%);
-  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  text-shadow: none;
-  outline: none;
-}
-
-.questExplanation:hover,
-.menuBtn:focus-visible {
-  color: rgb(247, 105, 23);
-  text-shadow: 0px 0px 1px rgb(0, 0, 0);
-  cursor: pointer;
-}
 
 .dailyList {
   background: #e3e6cc;
@@ -143,7 +119,7 @@ form.new-daily-form {
 .btn.dailyBtn {
   border: 2px ridge hsla(62, 20%, 35%, 0.781);
   color: #e3edfc;
-  text-shadow: 2px 2px 1px black;
+  text-shadow: 2px 2px 5px black;
   padding: 0.25em 0.5em;
   width: 100%;
   font-size: 2rem;
@@ -163,9 +139,9 @@ form.new-daily-form {
 
 #clearBtn {
   background: hsla(61, 24%, 53%, 0.781);
-  border: 2px ridge hsl(241, 21%, 61%);
+  border: 2px ridge hsla(60, 21%, 38%, 0.781);
   color: #e3edfc;
-  text-shadow: 2px 2px 1px black;
+  text-shadow: 2px 2px 5px black;
   width: 100%;
   padding: 0.25em 0.5em;
   font-size: 2rem;

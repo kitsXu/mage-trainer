@@ -40,6 +40,8 @@ img.scroll {
   text-align: center;
   height: 30px;
   margin: 10px;
+  font-size: 1.5rem;
+
 }
 
 /*-- ITEMS --*/
@@ -94,6 +96,7 @@ label {
   text-align: center;
   height: 30px;
   margin: 10px;
+  font-size: 1.5rem;
 }
 
 .marketButtons {

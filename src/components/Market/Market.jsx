@@ -19,6 +19,7 @@ export default function Market(props) {
           Item Vendor
         </button>
       </div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <div>
         {view === "scrolls" && <Scrolls user={props.user} />}
         {view === "items" && <Items user={props.user} />}

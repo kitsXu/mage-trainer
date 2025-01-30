@@ -22,12 +22,17 @@ export default function LogoPage(props) {
 
   return (
     <div className="bodyWrapper">
-      {logoVisibility && <div className="landing-divider">_________</div>}
-      {logoVisibility && (
-        <header className="landingHeader">mage trainer</header>
-      )}
       <div className="logoPage">
-        {logoVisibility && <img className="fox" src={dragon}></img>}
+        {logoVisibility && <img className="fox" src={kit}></img>}
+
+        {logoVisibility && (
+          <a className="logo-tag-logo" href="https://ko-fi.com/kitsxu">
+            -kitsXu apps presents-
+          </a>
+        )}
+        {logoVisibility && (
+          <header className="landingHeader">Mage Trainer</header>
+        )}
         {logoVisibility && (
           <div className="btnWrapper">
             <label className="playBtnTag">Press 'Play' to start</label>
@@ -36,16 +41,8 @@ export default function LogoPage(props) {
             </button>
           </div>
         )}
-        {logoVisibility && <div className="foot-divider">______________</div>}
+        {logoVisibility && <div className="landing-divider-bottom">______________</div>}
 
-        {logoVisibility && (
-          <div className="logo">
-            <img className="logo-image" src={kit}></img>
-            <a className="logo-tag-logo" href="https://ko-fi.com/kitsxu">
-              -kitsXu apps-
-            </a>
-          </div>
-        )}
         {landingPageVisibility && (
           <LandingPage
             user={props.user}

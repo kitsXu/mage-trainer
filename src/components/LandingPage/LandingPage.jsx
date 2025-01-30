@@ -51,7 +51,7 @@ export default function LandingPage(props) {
             handleSubmit(newName);
           }}
         >
-          <label htmlFor="nameInputBar">NAME</label>
+          <label htmlFor="nameInputBar">Scream Name Into The Void --</label>
           <input
             value={newName}
             type="text"
