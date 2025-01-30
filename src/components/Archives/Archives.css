@@ -1,13 +1,17 @@
 /*--RECORDS PAGE--*/
 .userHeader {
   font-size: 2.5rem;
+  padding:0;
+  margin:5px;
 }
 
 .profile-divider {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
   background: #e3e6cc;
   width: 100%;
   color: #9791b9;
-  text-align: center;
   font-size: 6rem;
   word-break: break-all;
 }
