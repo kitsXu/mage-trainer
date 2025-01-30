@@ -5,6 +5,11 @@
   font-size: 3.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0;
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
 }
 
 .questHeaderWrap {
@@ -43,6 +48,11 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   height: 35px;
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 .new-quest-form input:focus {
@@ -62,6 +72,11 @@
   outline: none;
   font-weight: 1000;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 .list {
@@ -73,6 +88,11 @@
   font-size: 2rem;
   text-align: center;
   padding-top: 50px;
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 .list li:has(input:checked) label {
@@ -144,6 +164,11 @@
   outline: none;
   font-weight: 1000;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 .btn.btn-yay:hover,
@@ -156,6 +181,11 @@
   text-align: right;
   font-size: 10px;
   margin: 20px 0px 40px 0px;
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 .logo-tag-quest {
