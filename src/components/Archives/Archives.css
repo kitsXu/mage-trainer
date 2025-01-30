@@ -1,13 +1,13 @@
 /*--RECORDS PAGE--*/
 .userHeader {
   font-size: 2.5rem;
-  padding:0;
-  margin:5px;
+  padding: 0;
+  margin: 5px;
 }
 
 .profile-divider {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
   background: #e3e6cc;
   width: 100%;
@@ -26,12 +26,21 @@
   padding-left: 60px;
   row-gap: 30px;
   font-size: 2rem;
+  & {
+    @media (width <= 540px) {
+      padding-left: 20px;
+    }
+  }
 }
 
 .profile {
   background: #e3e6cc;
   font-size: 2.5rem;
-
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
 }
 
 .logo-tag-archive {

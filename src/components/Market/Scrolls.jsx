@@ -10,6 +10,7 @@ export default function Scrolls(props) {
       return acc;
     }, {})
   );
+  const [visibility, setVisibility] = useState(false);
 
   //-- handle changing the quantity input.
   const handleChange = (e, scrollId) => {
@@ -19,7 +20,7 @@ export default function Scrolls(props) {
     }));
   };
 
-  //--handle the purchase- dedect gold from user, set new gold amount to local storage, 
+  //--handle the purchase- dedect gold from user, set new gold amount to local storage,
   //--create unique id for scroll, store bought scroll to local storage.
   //--handle not having
   const purchaseScroll = (e, scrollId, scrollCost) => {
@@ -44,13 +45,32 @@ export default function Scrolls(props) {
       console.log("scrolls saved to localStorage:", scrollData);
     } else {
       console.log("Not enough gold!");
-      alert("Not Enough Gold!")
+      alert("Not Enough Gold!");
     }
   };
 
+  //--change visibility of an element
+  function showHide() {
+    if (visibility === false) setVisibility(true);
+    else setVisibility(false);
+  }
+
   return (
     <div className="scrollProfile">
-      <h1 className="userHeader">The Inked Eldergrove</h1>
+      <div className="questHeaderWrap">
+        <h1 className="userHeader">The Inked Eldergrove</h1>
+        <button className="questExplanation" onClick={showHide}>
+          ?
+        </button>
+      </div>
+      {visibility && (
+        <p className="scroll-info">
+          Welcome to The Inked Eldergrove! In the future there is going to be
+          more instruction here for buying, selling, and creating your own spell
+          scrolls... we'll even have a Shop keeper for you to meet! Come back
+          once renvations are complete!
+        </p>
+      )}
       {scrolls.map((scroll) => (
         <div className="scrollProfile" key={scroll.id}>
           <label>

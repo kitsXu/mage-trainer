@@ -3,12 +3,21 @@
     display:flex;
     flex-direction: column;
     justify-content: center;
-    max-height: 20rem;
-    min-height: 10rem;
+    max-height: 10rem;
+    min-height: 5rem;
     animation:fadeIn 6s;
     padding:0;
     margin-top:50px;
     opacity: 50%;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0%;
+    }
+    to {
+      opacity: 50%;
+    }
   }
 
   .landingHeader {
@@ -19,9 +28,17 @@
     font-size: 5rem;
     margin: 10px 0 20px 0;
     font-weight: 1000;
-    text-shadow: 2px 2px 5px  hsl(60, 19%, 23%);;
+    text-shadow: 1px 1px 1px  black;
     animation: cutInImage 1.5s;
+  }
 
+  @keyframes cutInImage {
+    from {
+      opacity: 0%;
+    }
+    to {
+      opacity: 25%;
+    }
   }
 
   .landing-divider {
@@ -44,14 +61,6 @@
     font-size: 2rem;
   }
   
-  @keyframes fadeIn {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
-  }
 
   .logoPage {
     background: #e3e6cc;
@@ -77,9 +86,10 @@
   .playBtn {
     background: hsla(61, 24%, 53%, 0.781);
     margin:auto;
-    height: 50px;
-    width: 100px;
+    height: 3rem;
+    width: 10rem;
     font-size: 2rem;
+    font-weight: 1000;
     color:#e3e6cc;
     display:flex;
     flex-direction: column;
@@ -90,30 +100,13 @@
   }
 
   .playBtnTag {
-    font-size: 2rem;
+    font-size: 3rem;
+    font-weight: 1000;
     margin: 6rem 0 2rem 0;
     display:flex;
     opacity: 0%;
     animation: cutIn 1.5s infinite;
     padding-right: 20px;
-  }
-  
-
-  .logo-tag-logo {
-    background: #e3e6cc;
-    text-decoration: none;
-    margin: 20px 0 50px 0;
-    color:  hsl(247, 39%, 23%);
-    cursor:default;
-    opacity: 45%;
-    font-size: 3rem;
-    animation: cutInImage 1.5s;
-  }
-  
-
-  .btnWrapper {
-    background: #e3e6cc;
-
   }
 
   @keyframes cutIn {
@@ -124,14 +117,22 @@
       opacity: 75%;
     }
   }
+  
 
-  @keyframes cutInImage {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 25%;
-    }
+  .logo-tag-logo {
+    background: #e3e6cc;
+    text-decoration: none;
+    margin: 20px 0 80px 0;
+    color:  hsl(247, 39%, 23%);
+    cursor:default;
+    opacity: 45%;
+    font-size: 3rem;
+    animation: cutInImage 1.5s;
+  }
+  
+  .btnWrapper {
+    background: #e3e6cc;
+
   }
 
   .landing-divider-bottom {

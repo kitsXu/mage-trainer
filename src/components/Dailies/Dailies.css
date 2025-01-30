@@ -9,6 +9,11 @@
   font-size: 3.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0;
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
 }
 
 .daily-info {
@@ -20,6 +25,12 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1rem;
   line-height: 30px;
+  & {
+    @media (width <= 540px) {
+      font-size: .7rem;
+      line-height: 20px;
+    }
+  }
 }
 
 
@@ -33,6 +44,11 @@
   list-style: none;
   font-size: 2rem;
   text-align: center;
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 .dailyList li:has(input:checked) label {
@@ -127,7 +143,11 @@ form.new-daily-form {
   cursor: pointer;
   outline: none;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
-
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 #completeDaily {
@@ -135,6 +155,7 @@ form.new-daily-form {
   text-align: right;
   font-size: 4rem;
   padding: 20px 0px 40px 0px;
+  
 }
 
 #clearBtn {
@@ -149,6 +170,11 @@ form.new-daily-form {
   outline: none;
   font-weight: 1000;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 #clearBtn:hover,

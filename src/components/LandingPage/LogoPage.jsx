@@ -27,7 +27,7 @@ export default function LogoPage(props) {
 
         {logoVisibility && (
           <a className="logo-tag-logo" href="https://ko-fi.com/kitsxu">
-            -kitsXu apps presents-
+            -kitsXu apps-
           </a>
         )}
         {logoVisibility && (
@@ -35,7 +35,7 @@ export default function LogoPage(props) {
         )}
         {logoVisibility && (
           <div className="btnWrapper">
-            <label className="playBtnTag">Press 'Play' to start</label>
+            <label className="playBtnTag">Press 'Play' to begin</label>
             <button className="playBtn" onClick={handleClick}>
               Play
             </button>

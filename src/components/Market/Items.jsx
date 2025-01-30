@@ -11,6 +11,7 @@ export default function Items(props) {
       return acc;
     }, {})
   );
+  const [visibility, setVisibility] = useState(false);
 
   //-- handle changing the quantity input.
   const handleChange = (e, itemId) => {
@@ -45,13 +46,30 @@ export default function Items(props) {
       console.log("scrolls saved to localStorage:", itemData);
     } else {
       console.log("Not enough gold!");
-      alert("Not Enough Gold!")
+      alert("Not Enough Gold!");
     }
   };
 
+  function showHide() {
+    if (visibility === false) setVisibility(true);
+    else setVisibility(false);
+  }
+
   return (
     <div className="itemProfile">
-      <h1 className="userHeader">Verdant Vial Apothecary</h1>
+      <div className="questHeaderWrap">
+        <h1 className="userHeader">Verdant Vial Apothecary</h1>
+        <button className="questExplanation" onClick={showHide}>
+          ?
+        </button>
+      </div>
+      {visibility && (
+        <p className="scroll-info">
+          Welcome to Verdant Vial Apothecary! In the future there is going to be
+          more instruction here for buying and selling potions. We'll even have
+          a Shop keeper for you to meet! Come back once renvations are complete!
+        </p>
+      )}
       {items.map((item) => (
         <div className="itemProfile" key={item.id}>
           <label>

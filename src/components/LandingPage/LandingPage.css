@@ -21,9 +21,8 @@
 .nameInput {
   background: #e3e6cc;
   display: flex;
+  align-items:last baseline;
   gap: 1rem;
-  justify-content: center;
-  align-items: baseline;
   margin-bottom: 0.5rem;
   font-size: 2rem;
 }
@@ -41,8 +40,9 @@
 .nameSubmitBtn {
   background:  #e3e6cc;
   font-size: 2rem;
-
+  height:3rem;
 }
+
 
 .nameSubmitBtn:hover {
   background:  #f8f6e3;
