@@ -48,7 +48,7 @@ export default function Dailies(props) {
   }
 
 //--deletes toggled daily quests and increments abandoned quest counter.
-  function deleteDailies(id) {
+  function deleteDailies() {
     const deleteDailies = dailies.filter((d) => d.completed);
 
     props.setNewAbandonedDailyQuestCount(
