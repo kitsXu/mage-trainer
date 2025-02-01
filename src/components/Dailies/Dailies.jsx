@@ -47,14 +47,17 @@ export default function Dailies(props) {
     );
   }
 
-  //--remove daily quest from form
-  function deleteDaily(id) {
-    setDailies((currentDailies) => {
-      return currentDailies.filter((daily) => daily.id !== id);
-    });
-    props.setNewAbandonedDailyQuestCount((prev) => prev + 1);
+//--deletes toggled daily quests and increments abandoned quest counter.
+  function deleteDailies(id) {
+    const deleteDailies = dailies.filter((d) => d.completed);
 
-    return;
+    props.setNewAbandonedDailyQuestCount(
+      (props.user.abandonedDailyQuests += deleteDailies.length)
+    );
+
+    setDailies((currentDailies) => {
+      return currentDailies.filter((d) => d.completed === false );
+    });
   }
 
   //--clears all checkmarks from daily quests, counts completed quests and updates count in local storage
@@ -133,9 +136,7 @@ export default function Dailies(props) {
         Submit Your Daily Quests!
       </button>
       <button
-        onClick={() => {
-          deleteDaily(daily.id);
-        }}
+        onClick={deleteDailies}
         className="btn btn-danger"
       >
         Abandon Selected Quests

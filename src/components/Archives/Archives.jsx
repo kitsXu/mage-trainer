@@ -12,17 +12,17 @@ export default function UserProfile(props) {
       <h1 className="userHeader">Rank: Novice Mage</h1>      
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <div className="profileInfo">
-        <div className="profile">Level: {props.user.level}</div>
-        <div className="profile">Experience: {props.user.experience}xp</div>
+        <div className="profile">Level: ... {props.user.level}</div>
+        <div className="profile">Experience: ... {props.user.experience}xp</div>
         <div className="profile">
-          Completed Quests: {props.user.questCompleted}
+          Completed Quests: ... {props.user.questCompleted}
         </div>
         <div className="profile">
-          Completed Daily Quests: {props.user.dailyQuestsCompleted}
+          Completed Daily Quests: ... {props.user.dailyQuestsCompleted}
         </div>
 
         <div className="profile">
-          Total Quests Abandoned:{" "}
+          Total Quests Abandoned: ... {" "}
           {props.user.abandonedQuests + props.user.abandonedDailyQuests}
         </div>
       </div>
