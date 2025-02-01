@@ -6,7 +6,7 @@ import "./style.css";
 
 import Archives from "./components/Archives/Archives.jsx";
 import Quests from "./components/Quests/Quests.jsx";
-import BroodRecord from "./components/Inventory/BroodRecord.jsx";
+import Spells from "./components/Inventory/Spells.jsx";
 import Dailies from "./components/Dailies/Dailies.jsx";
 import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
@@ -154,7 +154,7 @@ export default function App() {
           </div>
           <div>
             {view === "archives" && !!user && <Archives user={user} />}
-            {view === "brood" && !!user && <BroodRecord user={user} />}
+            {view === "Spells" && !!user && <Spells user={user} />}
             {view === "market" && !!user && <Market user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
             {view === "quests" && !!user && (

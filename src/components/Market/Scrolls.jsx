@@ -11,6 +11,7 @@ export default function Scrolls(props) {
     }, {})
   );
   const [visibility, setVisibility] = useState(false);
+  const [ownedScrolls, setOwnedScrolls] = useState([]);
 
   //-- handle changing the quantity input.
   const handleChange = (e, scrollId) => {
@@ -40,7 +41,9 @@ export default function Scrolls(props) {
         amount: amount,
         cost: scrollCost,
       };
-      localStorage.setItem(scrollKey, JSON.stringify(scrollData));
+      localStorage.setItem("scrollData", JSON.stringify(scrollData));
+
+      setOwnedScrolls(scrollData);
 
       console.log("scrolls saved to localStorage:", scrollData);
     } else {
