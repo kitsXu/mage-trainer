@@ -37,12 +37,17 @@ export default function Quests(props) {
     props.setCurrentQuestList(quests);
   }, [quests, props.user]);
 
-  //-- clears the quest and increment quest completed count
+  //-- clears the quest and increment quest completed count for selected quests.
   function completeTask(id) {
+    const completeQuests = quests.filter((q) => q.completed);
+
+    props.setNewQuestCompletedCount(
+      (props.user.completeQuests += completeQuests.length)
+    );
+
     setQuests((currentQuests) => {
-      return currentQuests.filter((quests) => quests.id !== id);
+      return currentQuests.filter((q) => q.completed === false );
     });
-    return props.setNewQuestCompletedCount((prev) => prev + 1);
   }
 
   //--check and uncheck daily quests
@@ -52,12 +57,18 @@ export default function Quests(props) {
     );
   }
 
-  //-- just clears quest
+  //-- clears the quest for selected quests.
   function deleteTask(id) {
+
+    const deleteQuests = quests.filter((q) => q.completed);
+
+    props.setNewAbandonedQuestCount(
+      (props.user.abandonedQuests += deleteQuests.length)
+    );
+
     setQuests((currentQuests) => {
-      return currentQuests.filter((quests) => quests.id !== id);
+      return currentQuests.filter((q) => q.completed === false );
     });
-    return props.setNewAbandonedQuestCount((prev) => prev + 1);
   }
 
   //--change visibility of an element
@@ -101,7 +112,7 @@ export default function Quests(props) {
         {quests.length === 0 && "No quests available!  Better find some work!"}
         {quests.map((quests) => {
           return (
-            <li key={quest.id}>
+            <li key={quests.id}>
               <label>
                 <input
                   type="checkbox"
@@ -125,9 +136,7 @@ export default function Quests(props) {
       </button>
       <button
         onClick={() => {
-          deleteTask(quests.id);
-          props.user.abandonedQuests++;
-        }}
+          deleteTask(quests.id)}}
         className="btn btn-danger"
       >
         Abandon Selected Quests
