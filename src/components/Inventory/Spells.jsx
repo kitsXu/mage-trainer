@@ -1,4 +1,4 @@
-import './brood.css';
+import './spells.css';
 
 export default function BroodRecord() {
 

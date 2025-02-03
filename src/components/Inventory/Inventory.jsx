@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./inventory.css";
-import BroodRecord from "./BroodRecord.jsx";
+import BroodRecord from "./Spells.jsx";
 import ItemInventory from "./ItemInventory.jsx";
 
 export default function Inventory(props) {
