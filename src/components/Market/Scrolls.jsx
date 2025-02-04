@@ -11,7 +11,6 @@ export default function Scrolls(props) {
     }, {})
   );
   const [visibility, setVisibility] = useState(false);
-  const [ownedScrolls, setOwnedScrolls] = useState([]);
 
   //-- handle changing the quantity input.
   const handleChange = (e, scrollId) => {
@@ -30,31 +29,34 @@ export default function Scrolls(props) {
     if (props.user.gold >= scrollCost * amount) {
       props.user.gold -= scrollCost * amount;
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
-      
-      const scrollData = localStorage.getItem("scrollData");
 
-      if (!scrollData) {
-      //--creates the items in local storage
+      //-- get stored inventory array from local storage
+      //-- create new object from scrollData
+      //-- add new object to array
+      //-- again set to local storage
+
+      let scrollInv = JSON.parse(localStorage.getItem('scrollInv')) || [];
+
       const uniqueId = crypto.randomUUID();
       const scrollKey = `${scrollId}-${uniqueId}`;
 
-      const scrollData = {
+      const newScroll = {
+      //--creates the items in local storag
         id: scrollKey,
         name: scrollId,
         amount: amount,
         cost: scrollCost,
-      };
-      localStorage.setItem("scrollData", JSON.stringify(scrollData));
+   }
+      scrollInv.push(newScroll);
 
-      setOwnedScrolls(scrollData);} else {
+      localStorage.setItem('scrollInv', JSON.stringify(scrollInv));
 
-        let scrollObjectArr = [];
-
-      }
 
       //--logs results... handle not having enough gold
-      console.log("scrolls saved to localStorage:", ownedScrolls);
-    } else {
+      console.log("scrolls saved to localStorage:", scrollInv);
+    } 
+    else
+     {
       console.log("Not enough gold!");
       alert("Not Enough Gold!");
     }
