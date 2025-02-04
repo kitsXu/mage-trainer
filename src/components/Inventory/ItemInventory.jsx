@@ -4,12 +4,13 @@ import scrollData from '../Market/Scrolls.jsx'
 
 export default function ItemInventory() {
 
-//   useEffect(() => {
-//       if (!user) return;
-//     //-- Retrieve the array from localStorage.
-// const scrollInv = JSON.parse(localStorage.getItem(scrollData));
+ 
+    //-- Retrieve the array from localStorage.
+const scrollInv = JSON.parse(localStorage.getItem(scrollData));
 
-// //-- Count occurrences of each name.
+console.log('ITEM INVENTORY:', scrollData);
+
+//-- Count occurrences of each name.
 // const nameCount = scrollInv.reduce((acc, obj) => {
 
 //   acc[obj.name] = (acc[obj.name] || 0) + 1;
@@ -17,7 +18,6 @@ export default function ItemInventory() {
 // }, {});
 // console.log(nameCount);
 
-//     }, []);
 
 
 
