@@ -32,16 +32,21 @@ export default function Items(props) {
       props.user.gold -= itemCost * amount;
       console.log(`PURCHASE COMPLETE for ${amount} ${itemId} --`, props.user);
 
+      
+      let itemInv = JSON.parse(localStorage.getItem('itemInv')) || [];
+
       const uniqueItemId = crypto.randomUUID();
       const itemKey = `${itemId}-${uniqueItemId}`;
 
-      const itemData = {
+      const newItem = {
         id: itemKey,
         name: itemId,
         amount: amount,
         cost: itemCost,
       };
-      localStorage.setItem(itemKey, JSON.stringify(itemData));
+      itemInv.push(newItem);
+
+      localStorage.setItem('itemInv', JSON.stringify(itemInv));
 
       console.log("scrolls saved to localStorage:", itemData);
     } else {
