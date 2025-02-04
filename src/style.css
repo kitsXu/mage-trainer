@@ -114,8 +114,7 @@ header {
 
 .menuBtn:hover,
 .menuBtn:focus-visible {
-  color: rgb(202, 96, 55);
-  text-shadow: 0px 0px 3px rgb(100, 2, 2);
+  color:hsla(56, 42%, 60%, 0.842);
 }
 
 .questExplanation {
@@ -137,8 +136,7 @@ header {
 
 .questExplanation:hover,
 .menuBtn:focus-visible {
-  color: rgb(202, 72, 20);
-  text-shadow: 0px 0px 3px rgb(100, 2, 2);
+  color:hsla(56, 42%, 60%, 0.842);
   cursor: pointer;
 }
 
