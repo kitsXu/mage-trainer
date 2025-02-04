@@ -11,7 +11,6 @@ export default function Scrolls(props) {
     }, {})
   );
   const [visibility, setVisibility] = useState(false);
-  const [ownedScrolls, setOwnedScrolls] = useState([]);
 
   //-- handle changing the quantity input.
   const handleChange = (e, scrollId) => {
@@ -32,9 +31,9 @@ export default function Scrolls(props) {
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
 
       //-- get stored inventory array from local storage
-      //-- update state to array
+      //-- create new object from scrollData
       //-- add new object to array
-      //-- again set to local storage and update state
+      //-- again set to local storage
 
       let scrollInv = JSON.parse(localStorage.getItem('scrollInv')) || [];
 
@@ -54,7 +53,7 @@ export default function Scrolls(props) {
 
 
       //--logs results... handle not having enough gold
-      console.log("scrolls saved to localStorage:", ownedScrolls);
+      console.log("scrolls saved to localStorage:", scrollInv);
     } 
     else
      {
