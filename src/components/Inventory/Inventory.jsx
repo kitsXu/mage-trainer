@@ -23,7 +23,6 @@ export default function Inventory(props) {
         {view === "itemInventory" && <ItemInventory user={props.user} />}
         {view === "brood" && <BroodRecord user={props.user} />}
       </div>
-      <div className="divider">_________</div>
     </div>
   );
 }
