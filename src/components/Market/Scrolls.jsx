@@ -51,7 +51,6 @@ export default function Scrolls(props) {
 
       localStorage.setItem('scrollInv', JSON.stringify(scrollInv));
 
-
       //--logs results... handle not having enough gold
       console.log("scrolls saved to localStorage:", scrollInv);
     } 

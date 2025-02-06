@@ -48,7 +48,7 @@ export default function Items(props) {
 
       localStorage.setItem('itemInv', JSON.stringify(itemInv));
 
-      console.log("scrolls saved to localStorage:", itemData);
+      console.log("scrolls saved to localStorage:", itemInv);
     } else {
       console.log("Not enough gold!");
       alert("Not Enough Gold!");

@@ -79,6 +79,12 @@
   }
 }
 
+.add-quest:active {
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+-moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+}
+
 .list {
   background: #e3e6cc;
   display: flex;
@@ -169,6 +175,12 @@
       font-size: 1rem;
     }
   }
+}
+
+.complete-quest:active {
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+-moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
 }
 
 .btn.btn-yay:hover,
