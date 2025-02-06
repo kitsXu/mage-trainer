@@ -4,13 +4,14 @@ import { chkLevelUp } from "./funcs/chkLevelUp.js";
 
 import "./style.css";
 
-import Archives from "./components/Archives/Archives.jsx";
-import Quests from "./components/Quests/Quests.jsx";
-import Spells from "./components/Inventory/Spells.jsx";
-import Dailies from "./components/Dailies/Dailies.jsx";
-import Market from "./components/Market/Market.jsx";
-import Inventory from "./components/Inventory/Inventory.jsx";
-import LogoPage from "./components/LandingPage/LogoPage.jsx";
+// import Archives from "./components/Archives/Archives.jsx";
+// import Quests from "./components/Quests/Quests.jsx";
+// import Spells from "./components/Inventory/Spells.jsx";
+// import Dailies from "./components/Dailies/Dailies.jsx";
+// import Market from "./components/Market/Market.jsx";
+// import Inventory from "./components/Inventory/Inventory.jsx";
+// import LogoPage from "./components/LandingPage/LogoPage.jsx";
+// import ItemInventory from "./components/Inventory/ItemInventory.jsx";
 
 //-- TODO:
 //  - [ ] BUG- check level function not firing when you actually hit the level...
@@ -153,6 +154,7 @@ export default function App() {
             </button>
           </div>
           <div>
+          {view === "itemInventory" && !!user && <ItemInventory user={user} />}
             {view === "archives" && !!user && <Archives user={user} />}
             {view === "Spells" && !!user && <Spells user={user} />}
             {view === "market" && !!user && <Market user={user} />}
