@@ -12,10 +12,10 @@ export default function Market(props) {
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <div className="totalGold">Total Gold: {props.user.gold}</div>
       <div className="marketButtons">
-        <button className="menuBtn" onClick={() => setView("scrolls")}>
+        <button className="menuBtn-market" onClick={() => setView("scrolls")}>
           Scroll Vendor
         </button>
-        <button className="menuBtn" onClick={() => setView("items")}>
+        <button className="menuBtn-market" onClick={() => setView("items")}>
           Item Vendor
         </button>
       </div>

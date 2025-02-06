@@ -150,6 +150,13 @@ form.new-daily-form {
   }
 }
 
+.btn.dailyBtn:active {
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+-moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+}
+
+
 #completeDaily {
   background: #e3e6cc;
   text-align: right;
@@ -180,6 +187,12 @@ form.new-daily-form {
 #clearBtn:hover,
 #clearBtn:focus-visible {
   background: hsla(56, 42%, 60%, 0.842);
+}
+
+#clearBtn:active {
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+-moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
 }
 
 .logo-tag {

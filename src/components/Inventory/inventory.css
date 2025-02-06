@@ -1,10 +1,41 @@
-.logo-tag-item {
-  background: #e3e6cc;
-  text-decoration: none;
-  margin-top: 5vh;
-  color: hsl(246, 41%, 31%);
-  cursor: default;
-  font-size: 2rem;
+.menuBtn-inventory {
+  display: flex;
+  flex: 3 3 30%;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  background: hsla(61, 24%, 53%, 0.781);
+  color: #e3e6cc;
+  border: none;
+  font-size: 2.5rem;
+  font-weight: 1000;
+  cursor: pointer;
+  outline:#e3edfc;
+  border: 2px ridge hsla(60, 21%, 38%, 0.781);
+  text-shadow: 2px 2px 5px black;
+  outline: none;
+  font-weight: 1000;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  & {
+    @media (width <= 540px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.menuBtn-inventory:active {
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  text-shadow: none;
+  outline: none;
+}
+
+.menuBtn-inventory:hover,
+.menuBtn-inventory:focus-visible {
+  color: #e3edfc;
+  background:hsla(56, 33%, 60%, 0.842);
 }
 
 .inventoryHeader {
@@ -12,6 +43,21 @@
   text-align: center;
   font-size: 3rem;
   margin: 2.5rem 0 2rem 0;
+}
+
+.divider-inventoryHead{
+  background: #e3e6cc;
+  width: 100%;
+  margin-bottom:50px;
+  display: flex;
+  justify-content: center;
+  color: #9791b9;
+  word-break: break-all;
+  & {
+    @media (width <= 540px) {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .totalGold {
@@ -31,14 +77,26 @@
 .item-brood-Header {
   background: #e3e6cc;
   text-align: center;
-  font-size: 2.5rem;
-  margin: 2.5rem 0 2rem 0;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 0;
 }
 
 .scrollInventory {
   background: #e3e6cc;
   display:flex;
-  margin:auto;
-  justify-content: center;
-  margin: 40px 0 30px;
+  flex-direction: column;
+  gap:10px;
+  margin:0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.logo-tag-item {
+  background: #e3e6cc;
+  text-decoration: none;
+  margin-top: 5vh;
+  color: hsl(246, 41%, 31%);
+  cursor: default;
+  font-size: 2rem;
 }
