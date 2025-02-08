@@ -1,145 +1,104 @@
 .fox {
-    background: #e3e6cc;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    max-height: 10rem;
-    min-height: 5rem;
-    animation:fadeIn 6s;
-    padding:0;
-    margin-top:50px;
+  background: #e3e6cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  max-height: 8rem;
+  min-height: 5rem;
+  animation: fadeIn 6s;
+  opacity: 50%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+  }
+  to {
     opacity: 50%;
   }
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 50%;
-    }
-  }
+.logo-tag-logo {
+  background: #e3e6cc;
+  color: hsl(247, 39%, 23%);
+  margin: 10px 0 120px 0;
+  opacity: 45%;
+  font-size: 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  cursor: default;
+  animation: cutInImage 1.5s;
+}
 
-  .landingHeader {
-    font-family: "Monsieur La Doulaise";
-    color: hsl(216, 33%, 56%);
-    background: #e3e6cc 35%;  
-    text-align: center;
-    font-size: 5rem;
-    margin: 10px 0 20px 0;
-    font-weight: 1000;
-    text-shadow: 1px 1px 1px  black;
-    animation: cutInImage 1.5s;
-  }
+.logoPage {
+  background: #e3e6cc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  @keyframes cutInImage {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 25%;
-    }
-  }
+.playBtn {
+  background: hsla(61, 24%, 53%, 0.781);
+  color: #e3e6cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 3rem;
+  width: 10rem;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px 5px black;
+  font-weight: 1000;
+  border: 2px ridge hsla(60, 21%, 38%, 0.781);
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  cursor: pointer;
+  outline: none;
+  animation: cutIn 1.5s;
+}
 
-  .landing-divider {
-    background: #e3e6cc;
-    width:100%;
-    color: #9192b9;
-    text-align: center;
-    font-size: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
+.playBtn:hover {
+  background: hsla(56, 42%, 60%, 0.842);
+}
 
-  .foot-divider {
-    background: #e3e6cc;
-    display:flex;
-    word-break: break-all;
-    justify-content: center;
-    color: #9192b9;
-    text-align: center;
-    font-size: 2rem;
-  }
-  
+.playBtn:active {
+  color: #f3f7db;
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  -moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+}
 
-  .logoPage {
-    background: #e3e6cc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.playBtnTag {
+  display: flex;
+  margin: 8rem 0 2rem 0;
+  padding-right: 20px;
+  font-size: 3rem;
+  font-weight: 1000;
+  opacity: 0%;
+  animation: cutIn 1.5s infinite;
+}
 
-  .logo-image {
-    background: #e3e6cc;
-    display:flex;
-    margin:auto;
-    width:0%;
-    flex-direction: column;
-    justify-content: center;
-    max-height: 10rem;
-    min-height: 6rem;
-    opacity: 25%;
-    margin-top: 3vh;
-    animation: cutInImage 1.5s;
-  }
-
-  .playBtn {
-    background: hsla(61, 24%, 53%, 0.781);
-    margin:auto;
-    height: 3rem;
-    width: 10rem;
-    font-size: 2rem;
-    font-weight: 1000;
-    color:#e3e6cc;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    animation: cutIn 1.5s;
-  }
-
-  .playBtnTag {
-    font-size: 3rem;
-    font-weight: 1000;
-    margin: 6rem 0 2rem 0;
-    display:flex;
+@keyframes cutIn {
+  from {
     opacity: 0%;
-    animation: cutIn 1.5s infinite;
-    padding-right: 20px;
   }
+  to {
+    opacity: 75%;
+  }
+}
 
-  @keyframes cutIn {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 75%;
-    }
-  }
-  
+.btnWrapper {
+  background: #e3e6cc;
+}
 
-  .logo-tag-logo {
-    background: #e3e6cc;
-    text-decoration: none;
-    margin: 20px 0 80px 0;
-    color:  hsl(247, 39%, 23%);
-    cursor:default;
-    opacity: 45%;
-    font-size: 3rem;
-    animation: cutInImage 1.5s;
-  }
-  
-  .btnWrapper {
-    background: #e3e6cc;
-
-  }
-
-  .landing-divider-bottom {
-    background: #e3e6cc;
-    width:100%;
-    color: #9192b9;
-    text-align: center;
-    font-size: 2rem;
-    margin: 2rem 0 4rem 0;
-  }
+.landing-divider-bottom {
+  background: #e3e6cc;
+  color: #9192b9;
+  margin: 2rem 0 4rem 0;
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
+}

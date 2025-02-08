@@ -38,20 +38,33 @@
 }
 
 .nameSubmitBtn {
-  background:  #e3e6cc;
+  background: hsla(61, 24%, 53%, 0.781);
+  border: 2px ridge hsla(60, 21%, 38%, 0.781);
+  color: #e3edfc;
+  text-shadow: 2px 2px 5px black;
+  width: 40%;
   font-size: 2rem;
-  height:3rem;
+  cursor: pointer;
+  outline: none;
+  font-weight: 1000;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
 }
 
 
 .nameSubmitBtn:hover {
-  background:  #f8f6e3;
+  background: hsla(56, 42%, 60%, 0.842);
 }
 
 .nameSubmitBtn:active {
-  background:  #e3e6cc;
-  -webkit-box-shadow: inset 0px 0px 5px #a8a8a8;
-  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-  box-shadow: inset 0px 0px 5px #c1c1c1;
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  -moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
   outline: none;
 }
+
+

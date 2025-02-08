@@ -151,18 +151,26 @@ form.new-daily-form {
 }
 
 .btn.dailyBtn:active {
-  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
--moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  color: hsl(246, 41%, 31%);
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  text-shadow: none;
+  outline: none;
 }
 
+.btn.dailyBtn:hover,
+.m.btn.dailyBtn:focus-visible {
+  color: #e3edfc;
+  background:hsla(56, 33%, 60%, 0.842);
+}
 
 #completeDaily {
   background: #e3e6cc;
   text-align: right;
   font-size: 4rem;
   padding: 20px 0px 40px 0px;
-  
 }
 
 #clearBtn {
@@ -184,15 +192,20 @@ box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
   }
 }
 
-#clearBtn:hover,
-#clearBtn:focus-visible {
-  background: hsla(56, 42%, 60%, 0.842);
+#clearBtn:active {
+  color: hsl(246, 41%, 31%);
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  text-shadow: none;
+  outline: none;
 }
 
-#clearBtn:active {
-  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
--moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+#clearBtn:hover,
+#clearBtn:focus-visible {
+  color: #e3edfc;
+  background:hsla(56, 33%, 60%, 0.842);
 }
 
 .logo-tag {
@@ -200,5 +213,7 @@ box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
   text-decoration: none;
   color: hsl(233, 39%, 23%);
   cursor: default;
-  font-size: 2rem;
+  font-size: 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

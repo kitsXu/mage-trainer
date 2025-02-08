@@ -1,11 +1,11 @@
 .menuBtn-market {
+  background: hsla(61, 24%, 53%, 0.781);
+  color: #e3e6cc;
   display: flex;
   flex: 3 3 30%;
   height: 4rem;
   align-items: center;
   justify-content: center;
-  background: hsla(61, 24%, 53%, 0.781);
-  color: #e3e6cc;
   border: none;
   font-size: 2.5rem;
   font-weight: 1000;
@@ -95,8 +95,13 @@ img.scroll {
   height: 30px;
   margin: 10px;
   font-size: 1.5rem;
-  
+}
 
+.scrollPurchase:active {
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  -moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  outline: none;
 }
 
 .scroll-info {
@@ -175,6 +180,13 @@ label {
   font-size: 1.5rem;
 }
 
+.itemPurchase:active {
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  -moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  outline: none;
+}
+
 .marketButtons {
   background: #e3e6cc;
   display: flex;
@@ -217,7 +229,9 @@ input.itemQtys {
   margin-top: 5vh;
   color: hsl(246, 41%, 31%);
   cursor: default;
-  font-size: 2rem;
+  font-size: 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .userHeader {
