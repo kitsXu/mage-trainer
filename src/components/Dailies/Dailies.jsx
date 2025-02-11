@@ -94,7 +94,7 @@ export default function Dailies(props) {
       </div>
       {visibility && (
         <p className="daily-info">
-          Think of your daily quests as the things that make up your everyday
+          Think of your quests as the things that make up your everyday
           routine- the day to day chores you need to remember to do so you can
           turn them into healthy habits! Add your "quests" into the input, check
           tasks off your list as you complete them, and then press 'Submit Your

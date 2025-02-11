@@ -5,7 +5,7 @@ import { chkLevelUp } from "./funcs/chkLevelUp.js";
 import "./style.css";
 
 import Archives from "./components/Archives/Archives.jsx";
-import Quests from "./components/Quests/Quests.jsx";
+import Maps from "./components/Maps/Maps.jsx";
 import Spells from "./components/Inventory/Spells.jsx";
 import Dailies from "./components/Dailies/Dailies.jsx";
 import Market from "./components/Market/Market.jsx";
@@ -22,15 +22,11 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
-  const [newQuestCompletedCount, setNewQuestCompletedCount] = useState();
-  const [newAbandonedQuestCount, setNewAbandonedQuestCount] = useState();
-
   const [newDailyQuestsCompletedCount, setNewDailyQuestsCompletedCount] =
     useState();
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
-  const [currentQuestList, setCurrentQuestList] = useState([]);
 
   const [updatedExp, setUpdatedExp] = useState();
 
@@ -49,12 +45,9 @@ export default function App() {
         level: 1,
         experience: 0,
         nextLevelExperience: 10,
-        questCompleted: 0,
-        abandonedQuests: 0,
         dailyQuestsCompleted: 0,
         abandonedDailyQuests: 0,
         currentDailyQuests: [],
-        currentQuestList: [],
         gold: 0,
         goldIncrease: 50,
       };
@@ -64,33 +57,28 @@ export default function App() {
       setIsLoading(false);
       return;
     } else {
+      const parsedUser = JSON.parse(userExists);
+      setUser(parsedUser);
+      setView(localStorage.getItem("view") ?? "archives");
 
-    const parsedUser = JSON.parse(userExists);
-    setUser(parsedUser);
-    setView(localStorage.getItem("view") ?? "archives");
+      const user = JSON.parse(userExists);
+      setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
+      setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
+      setCurrentDailyQuests(user.currentDailyQuests);
+      setUpdatedExp(user.experience);
+      setUser(user);
 
-    const user = JSON.parse(userExists);
-    setNewDailyQuestsCompletedCount(user.dailyQuestsCompleted);
-    setNewQuestCompletedCount(user.questCompleted);
-    setNewAbandonedQuestCount(user.abandonedQuests);
-    setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
-    setCurrentDailyQuests(user.currentDailyQuests);
-    setCurrentQuestList(user.currentQuestList);
-    setUpdatedExp(user.experience);
-    setUser(user);
-
-    setIsLoading(false);}
+      setIsLoading(false);
+    }
   }, [view, refreshKey]);
-
 
   useEffect(() => {
     if (!user) return;
 
-    setUpdatedExp(user.questCompleted * 4 + user.dailyQuestsCompleted);
+    setUpdatedExp(user.dailyQuestsCompleted);
     chkLevelUp(user);
-    console.log("Current Quest var set to object")
-
-  }, [currentDailyQuests, currentQuestList]);
+    console.log("Current Quest var set to object");
+  }, [currentDailyQuests]);
 
   //-- spread over user object and conditionally update values.
   useEffect(() => {
@@ -106,22 +94,14 @@ export default function App() {
         ...(user.dailyQuestsCompleted !== newDailyQuestsCompletedCount
           ? { dailyQuestsCompleted: newDailyQuestsCompletedCount }
           : {}),
-        ...(user.questCompleted !== newQuestCompletedCount
-          ? { questCompleted: newQuestCompletedCount }
-          : {}),
-        ...(user.abandonedQuests !== newAbandonedQuestCount
-          ? { abandonedQuests: newAbandonedQuestCount }
-          : {}),
         ...(user.abandonedDailyQuests !== newAbandonedDailyQuestCount
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
         currentDailyQuests,
-        currentQuestList,
       })
     );
-  }, [user, updatedExp
-  ]);
+  }, [user, updatedExp]);
 
   if (isLoading) return <LoadingIndicator />;
 
@@ -138,10 +118,10 @@ export default function App() {
           <header>Mage Trainer</header>
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("dailies")}>
-              Dailies
-            </button>
-            <button className="menuBtn" onClick={() => setView("quests")}>
               Quests
+            </button>
+            <button className="menuBtn" onClick={() => setView("Maps")}>
+              Maps
             </button>
             <button className="menuBtn" onClick={() => setView("market")}>
               Market
@@ -154,20 +134,16 @@ export default function App() {
             </button>
           </div>
           <div>
-          {view === "itemInventory" && !!user && <ItemInventory user={user} />}
+            {view === "itemInventory" && !!user && (
+              <ItemInventory user={user} />
+            )}
             {view === "archives" && !!user && <Archives user={user} />}
             {view === "Spells" && !!user && <Spells user={user} />}
             {view === "market" && !!user && <Market user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
-            {view === "quests" && !!user && (
-              <Quests
+            {view === "Maps" && !!user && (
+              <Maps
                 user={user}
-                newQuestCompletedCount={newQuestCompletedCount}
-                setNewQuestCompletedCount={setNewQuestCompletedCount}
-                newAbandonedQuestCount={newAbandonedQuestCount}
-                setNewAbandonedQuestCount={setNewAbandonedQuestCount}
-                currentQuestList={currentQuestList}
-                setCurrentQuestList={setCurrentQuestList}
               />
             )}
             {view === "dailies" && !!user && (
