@@ -112,6 +112,7 @@ header {
   color: #e3edfc;
   outline: none;
   border: none;
+  text-shadow: 1px 1px 1px hsla(62, 21%, 35%, 0.781);
 }
 
 .menuBtn:hover,
