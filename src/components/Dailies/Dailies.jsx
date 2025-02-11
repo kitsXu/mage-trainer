@@ -87,7 +87,7 @@ export default function Dailies(props) {
         §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
       </div>
       <div className="questHeaderWrap">
-        <h1 className="dailyHeader">{props.user.name}'s Dailies</h1>
+        <h1 className="dailyHeader">{props.user.name}'s Quests</h1>
         <button className="questExplanation" onClick={showHide}>
           ?
         </button>
@@ -112,7 +112,7 @@ export default function Dailies(props) {
             id="daily"
           ></input>
         </div>
-        <button className="btn dailyBtn">Add to Daily Quest List</button>
+        <button className="btn dailyBtn">Add Quest</button>
       </form>
       {formError && <p className="formError">{formError}</p>}
       <ul className="dailyList">
@@ -133,13 +133,13 @@ export default function Dailies(props) {
         })}
       </ul>
       <button onClick={turnInDailyQuests} className="foot" id="clearBtn">
-        Submit Your Daily Quests!
+        Submit Quests!
       </button>
       <button
         onClick={deleteDailies}
         className="btn btn-danger"
       >
-        Abandon Selected Quests
+        Abandon Quests
       </button>
       <div className="divider">_________</div>
       <div className="logo">
