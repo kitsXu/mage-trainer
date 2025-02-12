@@ -31,7 +31,7 @@ export default function LogoPage(props) {
           </a>
         )}
         {logoVisibility && (
-          <header className="landingHeader">Mage Trainer</header>
+          <header className="landingHeader">Echoes of the Eldergrove</header>
         )}
         {logoVisibility && (
           <div className="btnWrapper">
