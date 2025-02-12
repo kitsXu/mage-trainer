@@ -17,7 +17,7 @@ export default function Dailies(props) {
   function handleDailySubmit(e) {
     e.preventDefault();
     if (newDaily.trim() === "") {
-      setFormError("Please enter a quest to submit!");
+      setFormError("Please type Quest inside input bar to add!");
     } else {
       setFormError("");
       setDailies((currentDailies) => {
