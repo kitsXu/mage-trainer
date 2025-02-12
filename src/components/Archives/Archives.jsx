@@ -15,15 +15,12 @@ export default function UserProfile(props) {
         <div className="profile">Level: ... {props.user.level}</div>
         <div className="profile">Experience: ... {props.user.experience}xp</div>
         <div className="profile">
-          Completed Quests: ... {props.user.questCompleted}
-        </div>
-        <div className="profile">
-          Completed Daily Quests: ... {props.user.dailyQuestsCompleted}
+          Completed Quests: ... {props.user.dailyQuestsCompleted}
         </div>
 
         <div className="profile">
-          Total Quests Abandoned: ... {" "}
-          {props.user.abandonedQuests + props.user.abandonedDailyQuests}
+          Quests Abandoned: ... {" "}
+          {props.user.abandonedDailyQuests}
         </div>
       </div>
       <div className="divider">_________</div>
