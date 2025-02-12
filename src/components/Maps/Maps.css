@@ -232,3 +232,36 @@
   color: rgb(206, 68, 68);
   font-size: 1rem;
 }
+
+.profile-maps {
+  background: #e3e6cc;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 3.5rem;
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
+}
+.profile-maps-info {
+  background: #e3e6cc;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.mapsWrapper {
+  background: #e3e6cc;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+
+}
