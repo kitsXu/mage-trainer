@@ -15,7 +15,7 @@ export default function Inventory(props) {
           Item Inventory{" "}
         </button>
         <button className="menuBtn-inventory" onClick={() => setView("brood")}>
-          Spells
+          Spellbook
         </button>
       </div>
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>

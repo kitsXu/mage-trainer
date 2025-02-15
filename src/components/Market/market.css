@@ -42,7 +42,9 @@
 /*-- SCROLLS --*/
 .scrollProfile {
   background: #e3e6cc;
+  display: flex;
   justify-items: center;
+  justify-content: center;
   padding-top: 10px;
 }
 
@@ -115,34 +117,6 @@ img.scroll {
   line-height: 30px;
 }
 
-/*-- ITEMS --*/
-.itemProfile {
-  background: #e3e6cc;
-  justify-items: center;
-  padding-top: 10px;
-}
-
-.itemIcons {
-  height: 100px;
-  background: #e3e6cc;
-}
-
-.itemDiv {
-  background: #e3e6cc;
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-  padding-bottom: 75px;
-  & {
-    @media (width <= 540px) {
-      justify-content: center;
-    }
-  }
-}
-
-/*-- BOTH --*/
 label {
   padding-left: 1rem;
   font-size: 2rem;

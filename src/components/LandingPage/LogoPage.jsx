@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import LandingPage from "./LandingPage.jsx";
-import dragon from "./images/dragon4.png";
+import { LoadingIndicator } from "./LoadingIndicator.jsx";
+import SetUsername from "./SetUsername.jsx";
 import kit from "./images/kit1.png";
 import "./Logo.css";
-import { LoadingIndicator } from "./LoadingIndicator.jsx";
 
 export default function LogoPage(props) {
   const [landingPageVisibility, setLandingPageVisibility] = useState(false);
@@ -44,7 +43,7 @@ export default function LogoPage(props) {
         {logoVisibility && <div className="landing-divider-bottom">______________</div>}
 
         {landingPageVisibility && (
-          <LandingPage
+          <SetUsername
             user={props.user}
             isLoading={props.isLoading}
             setRefreshKey={props.setRefreshKey}
