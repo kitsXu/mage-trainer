@@ -26,13 +26,8 @@ export default function Market(props) {
     e.preventDefault();
     const amount = scrollQtys[scrollId];
 
-    if (scrollQtys === 0) {
-      console.log("SCROLL QTY");
-      alert("Please select Quantity");
-    }
-
     //--handles the gold in local storage
-    if (props.user.gold >= scrollCost * amount && scrollQtys > 0) {
+    if (props.user.gold >= scrollCost * amount && amount > 0) {
       props.user.gold -= scrollCost * amount;
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
 
