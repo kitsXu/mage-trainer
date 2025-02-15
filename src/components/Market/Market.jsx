@@ -26,8 +26,13 @@ export default function Market(props) {
     e.preventDefault();
     const amount = scrollQtys[scrollId];
 
+    if (scrollQtys === 0) {
+      console.log("SCROLL QTY");
+      alert("Please select Quantity");
+    }
+
     //--handles the gold in local storage
-    if (props.user.gold >= scrollCost * amount) {
+    if (props.user.gold >= scrollCost * amount && scrollQtys > 0) {
       props.user.gold -= scrollCost * amount;
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
 
@@ -55,8 +60,13 @@ export default function Market(props) {
       //--logs results... handle not having enough gold
       console.log("scrolls saved to localStorage:", scrollInv);
     } else {
-      console.log("Not enough gold!");
-      alert("Not Enough Gold!");
+      if (props.user.gold === 0) {
+        console.log("Not enough gold!");
+        alert("Not Enough Gold!");
+      } else {
+        console.log("SCROLL QTY");
+        alert("Please select Quantity");
+      }
     }
   };
 
@@ -115,7 +125,6 @@ export default function Market(props) {
           </label>
         </div>
       ))}
-
       <div className="headDivider">
         §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
       </div>
