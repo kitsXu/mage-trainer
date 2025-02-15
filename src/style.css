@@ -45,15 +45,14 @@ body {
 }
 
 header {
-  font-family: "Monsieur La Doulaise";
+  font-family: "Tangerine";
   color: hsl(216, 33%, 56%);
   background: #e3e6cc 35%;  
   text-align: center;
   font-size: 5rem;
   margin: 10px 0 20px 0;
   font-weight: 1000;
-  text-shadow: 1px 1px 1px  black;
-
+  
   @media (max-width: 540px) {
     font-size: 3rem;
   }
