@@ -29,6 +29,7 @@ export default function Market(props) {
     //--handles the gold in local storage
     if (props.user.gold >= scrollCost * amount && amount > 0) {
       props.user.gold -= scrollCost * amount;
+      alert("Purchase complete!  Go check your inventory!");
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
 
       //-- get stored inventory array from local storage
@@ -54,6 +55,7 @@ export default function Market(props) {
 
       //--logs results... handle not having enough gold
       console.log("scrolls saved to localStorage:", scrollInv);
+
     } else {
       if (props.user.gold === 0) {
         console.log("Not enough gold!");
