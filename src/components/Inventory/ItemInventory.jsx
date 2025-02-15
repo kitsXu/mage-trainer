@@ -16,11 +16,14 @@ export default function ItemInventory() {
       setStoredScrolls(JSON.parse(scrollInv));
     }
     console.log("ITEM INVENTORY:", scrollInv);
+
   }, []);
+
+
 
   return (
     <div className="profile">
-      <h1 className="item-brood-Header">Items- (0)</h1>
+      <h1 className="item-brood-Header">Items- ({storedScrolls.length})</h1>
       <div className="divider-inventoryHead">
         ______________________________
       </div>
