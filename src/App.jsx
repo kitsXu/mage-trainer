@@ -115,7 +115,7 @@ export default function App() {
         />
       ) : (
         <>
-          <header>Mage Trainer</header>
+          <header>Echoes of the Eldergrove</header>
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("dailies")}>
               Quests
