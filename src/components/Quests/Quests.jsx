@@ -10,7 +10,7 @@ export default function Quests(props) {
   const [visibility, setVisibility] = useState(false);
   const [formError, setFormError] = useState("");
 
-  //--enter quest quest into the form and create quest quest object.
+  //--Enter quest quest into the form and create quest quest object.
   function handleDailySubmit(e) {
     e.preventDefault();
     if (newQuest.trim() === "") {
@@ -49,7 +49,7 @@ export default function Quests(props) {
     );
   }
 
-  //--deletes toggled quests and increments abandoned quest counter.
+  //--Deletes toggled quests and increments abandoned quest counter.
   function deleteQuests() {
     const deleteQuests = quests.filter((d) => d.completed);
 
@@ -66,14 +66,14 @@ export default function Quests(props) {
     });
   }
 
-  //-- clears all checkmarks from quest quests,
-  //-- counts completed quests and updates count in local storage,
-  //-- stops user from turning in before 10 minute time limit is up.
+  //-- Clears all checkmarks from quest quests,
+  //-- Counts completed quests and updates count in local storage,
+  //-- Stops user from turning in before 10 minute time limit is up.
   function turnInQuests(id, completed) {
     const quest = quests.find((d) => d.id === d.id);
 
     if (!quest || !quest.timestamp) {
-      alert("Quest not found or missing timestamp!");
+      alert("Quest not found!");
       return;
     }
 
@@ -100,7 +100,7 @@ export default function Quests(props) {
     }
   }
 
-  //--change visibility of an element
+  //--Change visibility of an element.
   function showHide() {
     if (visibility === false) setVisibility(true);
     else setVisibility(false);
@@ -113,6 +113,7 @@ export default function Quests(props) {
       </div>
       <div className="questHeaderWrap">
         <h1 className="dailyHeader">{props.user.name}'s Quests</h1>
+        {/* Show/hide the Quest Explanation */}
         <button className="questExplanation" onClick={showHide}>
           ?
         </button>
@@ -127,6 +128,7 @@ export default function Quests(props) {
           minimum of 10 minutes
         </p>
       )}
+      {/* Form/input for quests*/}
       <form onSubmit={handleDailySubmit} className="new-quest-form">
         <div className="quest-form-row">
           <input
@@ -136,11 +138,15 @@ export default function Quests(props) {
             id="quest"
           ></input>
         </div>
+        {/* ADD QUEST */}
         <button className="btn dailyBtn">Add Quest</button>
       </form>
+      {/*IF nothing is in the input, return form error alert */}
       {formError && <p className="formError">{formError}</p>}
       <ul className="dailyList">
+        {/*If there are no quests, display following string*/}
         {quests.length === 0 && "No set routine, add some quests!"}
+        {/*render stored quests*/}
         {quests.map((quest) => {
           return (
             <li key={quest.id}>
@@ -156,9 +162,11 @@ export default function Quests(props) {
           );
         })}
       </ul>
+      {/* TURN IN QUEST */}
       <button onClick={turnInQuests} className="foot" id="clearBtn">
         Submit Quests!
       </button>
+      {/* DELETE QUEST */}
       <button onClick={deleteQuests} className="btn btn-danger">
         Abandon Quests
       </button>

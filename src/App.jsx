@@ -14,7 +14,7 @@ import LogoPage from "./components/LandingPage/LogoPage.jsx";
 import ItemInventory from "./components/Inventory/ItemInventory.jsx";
 
 //-- TODO:
-//  - [ ] BUG- check level function not firing when you actually hit the level...
+//-- [ ]
 
 export default function App() {
   const [view, setView] = useState(localStorage.getItem("view") ?? "archives");
@@ -30,7 +30,8 @@ export default function App() {
 
   const [updatedExp, setUpdatedExp] = useState();
 
-  //-- user "auth". check if user exists in local storage, set if not.  Set view state- 'archives' to local storage.
+  //-- Check if user exists in local storage, set if not.  
+  //-- Set view state- 'archives' to local storage.
   useEffect(() => {
     setIsLoading(true);
 
@@ -72,6 +73,7 @@ export default function App() {
     }
   }, [view, refreshKey]);
 
+  //-- SetUpdatedExp set to user object and check if level needs increased.
   useEffect(() => {
     if (!user) return;
 
@@ -80,7 +82,7 @@ export default function App() {
     console.log("Current Quest var set to object");
   }, [currentDailyQuests]);
 
-  //-- spread over user object and conditionally update values.
+  //-- Spread over user object and conditionally update values.
   useEffect(() => {
     if (!user) return;
     if (typeof user !== "object") {
@@ -107,6 +109,8 @@ export default function App() {
 
   return (
     <div className="bodywrapper">
+      {/* If there is no user, load the Logo/Landing Page first, otherwise hide
+      visability and run the rest of the app */}
       {!user || (!user.name && !isLoading) ? (
         <LogoPage
           user={user}
@@ -116,6 +120,7 @@ export default function App() {
       ) : (
         <>
           <header>Echoes of the Eldergrove</header>
+          {/* Menu buttons to navigate components */}
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("quests")}>
               Quests
@@ -134,6 +139,7 @@ export default function App() {
             </button>
           </div>
           <div>
+            {/* Attaching 'view state' to components*/}
             {view === "itemInventory" && !!user && (
               <ItemInventory user={user} />
             )}
@@ -141,11 +147,7 @@ export default function App() {
             {view === "Spells" && !!user && <Spells user={user} />}
             {view === "market" && !!user && <Market user={user} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
-            {view === "Maps" && !!user && (
-              <Maps
-                user={user}
-              />
-            )}
+            {view === "Maps" && !!user && <Maps user={user} />}
             {view === "quests" && !!user && (
               <Quests
                 user={user}

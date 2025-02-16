@@ -1,3 +1,15 @@
+.userHeader {
+  background: #e3e6cc;
+  text-align: center;
+  font-size: 2rem;
+  margin: 2.5rem 0 2rem 0;
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
+}
+
 .menuBtn-market {
   background: hsla(61, 24%, 53%, 0.781);
   color: #e3e6cc;
@@ -206,16 +218,9 @@ input.itemQtys {
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.userHeader {
-  background: #e3e6cc;
-  text-align: center;
-  font-size: 2rem;
-  margin: 2.5rem 0 2rem 0;
   & {
     @media (width <= 540px) {
-      font-size: 2rem;
+      font-size: .8rem;
     }
   }
 }
