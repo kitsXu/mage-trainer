@@ -23,7 +23,12 @@ export default function Dailies(props) {
       setDailies((currentDailies) => {
         return [
           ...currentDailies,
-          { id: crypto.randomUUID(), title: newDaily, completed: false },
+          {
+            id: crypto.randomUUID(),
+            title: newDaily,
+            completed: false,
+            timestamp: new Date().toISOString(),
+          },
         ];
       });
       setNewDaily("");
@@ -47,7 +52,7 @@ export default function Dailies(props) {
     );
   }
 
-//--deletes toggled daily quests and increments abandoned quest counter.
+  //--deletes toggled daily quests and increments abandoned quest counter.
   function deleteDailies() {
     const deleteDailies = dailies.filter((d) => d.completed);
 
@@ -56,7 +61,7 @@ export default function Dailies(props) {
     );
 
     setDailies((currentDailies) => {
-      return currentDailies.filter((d) => d.completed === false );
+      return currentDailies.filter((d) => d.completed === false);
     });
   }
 
@@ -94,13 +99,12 @@ export default function Dailies(props) {
       </div>
       {visibility && (
         <p className="daily-info">
-          Think of your quests as the things that make up your everyday
-          routine- the day to day chores you need to remember to do so you can
-          turn them into healthy habits! Add your "quests" into the input, check
-          tasks off your list as you complete them, and then press 'Submit Your
-          Daily Quests' at the end of the day to gain your experience (Quest
-          turn in button can ONLY be used 1x per day, each Daily Quest is worth
-          1px)
+          Think of your quests as the things that make up your everyday routine-
+          the day to day chores you need to remember to do so you can turn them
+          into healthy habits! Add your "quests" into the input, check tasks off
+          your list as you complete them, and then press 'Submit Quests' at the
+          end of the day to gain your experience (Quest turn in button can ONLY
+          be used 1x per day, each Daily Quest is worth 1px)
         </p>
       )}
       <form onSubmit={handleDailySubmit} className="new-daily-form">
@@ -135,10 +139,7 @@ export default function Dailies(props) {
       <button onClick={turnInDailyQuests} className="foot" id="clearBtn">
         Submit Quests!
       </button>
-      <button
-        onClick={deleteDailies}
-        className="btn btn-danger"
-      >
+      <button onClick={deleteDailies} className="btn btn-danger">
         Abandon Quests
       </button>
       <div className="divider">_________</div>
