@@ -7,15 +7,30 @@
   margin-bottom: 3rem;
   background: #e3e6cc;
   text-align: center;
-  font-size: 3rem;
+  font-size: 3.5rem;
+  font-weight: 1000;
+  & {
+    @media (width <= 540px) {
+      font-size: 3rem;
+      line-height: 2.5rem;
+    }
+  }
 }
 
 .intro {
   background: #e3e6cc;
   margin-bottom: 2rem;
+  font-size: 2.8rem;
   text-align: center;
-  line-height: 2.5rem;
+  line-height: 4rem;
   letter-spacing: 0.2px;
+  & {
+    @media (width <= 540px) {
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+    }
+  }
+
 }
 
 .nameInput {
@@ -29,12 +44,24 @@
 
 #nameInputBar {
   background: hsl(216, 33%, 56%);
-  padding-left: 50px;
   color: #e3e6cc;
-  height: 2rem;
-  width: 60%;
+  height: 3rem;
+  width: 100%;
   font-size: 2rem;
-  margin: 70px 0 70px 0;
+  margin: 10px 0 70px 0;
+  padding-left: 15px;
+}
+
+.inputBarInstruct {
+  background: #e3e6cc;
+  margin:60px 0 10px 0;
+  text-align: center;
+  font-size: 2.8rem;
+  & {
+    @media (width <= 540px) {
+      font-size: 1.8rem;
+    }
+  }
 }
 
 .nameSubmitBtn {
@@ -50,7 +77,8 @@
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
   & {
     @media (width <= 540px) {
-      font-size: 1rem;
+      height:2.5rem;
+      font-size: 2rem;
     }
   }
 }
