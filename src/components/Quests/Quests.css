@@ -16,7 +16,7 @@
   }
 }
 
-.daily-info {
+.quest-info {
   background: #e3e6cc;
   margin: auto;
   text-align: center;
@@ -106,17 +106,17 @@
   background: hsl(56, 76%, 23%);
 }
 
-.daily-form-row {
+.quest-form-row {
   background: #e3e6cc;
   display: flex;
   flex-direction: column;
 }
 
-form.new-daily-form {
+form.new-quest-form {
   background: #e3e6cc;
 }
 
-.new-daily-form input {
+.new-quest-form input {
   outline: none;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border: 3px double hsl(236, 45%, 22%);
@@ -128,7 +128,7 @@ form.new-daily-form {
   height: 35px;
 }
 
-.new-daily-form input:focus {
+.new-quest-form input:focus {
   border: 3px ridge hsla(202, 35%, 39%, 0.781);
 }
 
