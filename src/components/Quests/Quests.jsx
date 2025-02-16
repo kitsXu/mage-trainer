@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Dailies.css";
+import "./Quests.css";
 
 //-- TO DO --
 // - [X] make the explanation div appear on hover of a little box/question mark icon
@@ -7,7 +7,7 @@ import "./Dailies.css";
 // - [ ] create time stamp for daily quest turn in button stored locally? idk
 // - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
 
-export default function Dailies(props) {
+export default function Quests(props) {
   const [newDaily, setNewDaily] = useState("");
   const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
   const [visibility, setVisibility] = useState(false);
@@ -67,8 +67,15 @@ export default function Dailies(props) {
 
   //--clears all checkmarks from daily quests, counts completed quests and updates count in local storage
   function turnInDailyQuests(id, completed) {
+    const quest = dailies.find((d) => d.id === d.id);
+
+    if (!quest || !quest.timestamp) {
+      alert("Quest not found or missing timestamp!");
+      return;
+    }
+
     const questsTenMinutesLater =
-      new Date(dailies.timestamp).getTime() + 10 * 60 * 1000;
+      new Date(quest.timestamp).getTime() + 10 * 60 * 1000;
     const questsCurrentTime = Date.now();
 
     if (questsCurrentTime >= questsTenMinutesLater) {
@@ -113,8 +120,8 @@ export default function Dailies(props) {
           the day to day chores you need to remember to do so you can turn them
           into healthy habits! Add your "quests" into the input, check tasks off
           your list as you complete them, and then press 'Submit Quests' to turn
-          in quest! Quests are each worth 1xp and can be turned in 10
-          mintues after you've added them.
+          in quest! Quests are each worth 1xp and can be turned in 10 mintues
+          after you've added them.
         </p>
       )}
       <form onSubmit={handleDailySubmit} className="new-daily-form">
