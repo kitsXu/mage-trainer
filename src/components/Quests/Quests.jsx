@@ -1,0 +1,173 @@
+import { useState, useEffect } from "react";
+import "./Quests.css";
+
+//-- TO DO --
+// - []
+
+export default function Quests(props) {
+  const [newQuest, setNewQuest] = useState("");
+  const [quests, setQuests] = useState(props.currentDailyQuests ?? []);
+  const [visibility, setVisibility] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  //--enter quest quest into the form and create quest quest object.
+  function handleDailySubmit(e) {
+    e.preventDefault();
+    if (newQuest.trim() === "") {
+      setFormError("Please type Quest inside input bar to add to list!");
+    } else {
+      setFormError("");
+      setQuests((currentQuests) => {
+        return [
+          ...currentQuests,
+          {
+            id: crypto.randomUUID(),
+            title: newQuest,
+            completed: false,
+            timestamp: new Date().toISOString(),
+          },
+        ];
+      });
+      setNewQuest("");
+    }
+  }
+
+  //--Set current state of quests to local storage.
+  useEffect(() => {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, currentDailyQuests: quests })
+    );
+
+    props.setCurrentDailyQuests(quests);
+  }, [quests]);
+
+  //--Add and remove checkmark from quests.
+  function toggleQuest(id, completed) {
+    setQuests((prev) =>
+      prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
+    );
+  }
+
+  //--deletes toggled quests and increments abandoned quest counter.
+  function deleteQuests() {
+    const deleteQuests = quests.filter((d) => d.completed);
+
+    // if (!deleteQuests.completed) {
+    //   alert("No Quests Selected!")
+    // }
+
+    props.setNewAbandonedDailyQuestCount(
+      (props.user.abandonedDailyQuests += deleteQuests.length)
+    );
+
+    setQuests((currentQuests) => {
+      return currentQuests.filter((d) => d.completed === false);
+    });
+  }
+
+  //-- clears all checkmarks from quest quests,
+  //-- counts completed quests and updates count in local storage,
+  //-- stops user from turning in before 10 minute time limit is up.
+  function turnInQuests(id, completed) {
+    const quest = quests.find((d) => d.id === d.id);
+
+    if (!quest || !quest.timestamp) {
+      alert("Quest not found or missing timestamp!");
+      return;
+    }
+
+    const questsTenMinutesLater =
+      new Date(quest.timestamp).getTime() + 10 * 60 * 1000;
+    const questsCurrentTime = Date.now();
+
+    if (questsCurrentTime >= questsTenMinutesLater) {
+      const completedDailies = quests.filter((d) => d.completed);
+
+      props.setNewDailyQuestsCompletedCount(
+        (props.user.dailyQuestsCompleted += completedDailies.length)
+      );
+
+      const resetQuests = quests.map((d) =>
+        d.id === id
+          ? { ...d, completed: completed }
+          : { ...d, completed: false }
+      );
+
+      setQuests(resetQuests);
+    } else {
+      alert("Not enough time has passed!");
+    }
+  }
+
+  //--change visibility of an element
+  function showHide() {
+    if (visibility === false) setVisibility(true);
+    else setVisibility(false);
+  }
+
+  return (
+    <div className="bodyWrapper">
+      <div className="headDivider">
+        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+      </div>
+      <div className="questHeaderWrap">
+        <h1 className="dailyHeader">{props.user.name}'s Quests</h1>
+        <button className="questExplanation" onClick={showHide}>
+          ?
+        </button>
+      </div>
+      {visibility && (
+        <p className="quest-info">
+          Think of your quests as the things that make up your everyday routine-
+          the day to day chores you need to remember to do so you can turn them
+          into healthy habits! Add your "quests" into the input, check tasks off
+          your list as you complete them, and then press 'Submit Quests' to turn
+          them in! Quests are each worth 1xp and cannot be turned in for a
+          minimum of 10 minutes
+        </p>
+      )}
+      <form onSubmit={handleDailySubmit} className="new-quest-form">
+        <div className="quest-form-row">
+          <input
+            value={newQuest}
+            onChange={(e) => setNewQuest(e.target.value)}
+            type="text"
+            id="quest"
+          ></input>
+        </div>
+        <button className="btn dailyBtn">Add Quest</button>
+      </form>
+      {formError && <p className="formError">{formError}</p>}
+      <ul className="dailyList">
+        {quests.length === 0 && "No set routine, add some quests!"}
+        {quests.map((quest) => {
+          return (
+            <li key={quest.id}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={quest.completed}
+                  onChange={(e) => toggleQuest(quest.id, e.target.checked)}
+                />
+                {quest.title}
+              </label>
+            </li>
+          );
+        })}
+      </ul>
+      <button onClick={turnInQuests} className="foot" id="clearBtn">
+        Submit Quests!
+      </button>
+      <button onClick={deleteQuests} className="btn btn-danger">
+        Abandon Quests
+      </button>
+      <div className="divider">_________</div>
+      <div className="logo">
+        <a className="logo-tag" href="https://ko-fi.com/kitsxu">
+          -kitsXu-
+        </a>
+      </div>
+    </div>
+  );
+}
