@@ -3,6 +3,14 @@
   background: #e3e6cc;
 }
 
+.questHeaderWrap {
+  background: #e3e6cc;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .dailyHeader {
   background: #e3e6cc;
   text-align: center;
@@ -11,7 +19,7 @@
   margin-bottom: 0;
   & {
     @media (width <= 540px) {
-      font-size: 2rem;
+      font-size: 2.8rem;
     }
   }
 }
@@ -27,10 +35,19 @@
   line-height: 30px;
   & {
     @media (width <= 540px) {
-      font-size: .7rem;
+      font-size: .85rem;
       line-height: 20px;
     }
   }
+}
+
+.formError {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #e3e6cc;
+  text-align: center;
+  color: rgb(206, 68, 68);
+  font-size: 1rem;
 }
 
 
@@ -59,13 +76,21 @@
   background: #e3e6cc;
   display: flex;
   gap: 1rem;
+  
 }
 
 .dailyList li label {
   background: #e3e6cc;
   display: flex;
+  flex-direction: row;
   gap: 1rem;
+  font-size: 3rem;
   cursor: pointer;
+  & {
+    @media (width <= 540px) {
+      font-size: 2.6rem;
+    }
+  }
 }
 
 .dailyList li:has(input:focus-visible) label {
@@ -126,26 +151,32 @@ form.new-quest-form {
   color: hsl(197, 58%, 85%);
   font-size: 1rem;
   height: 35px;
+  @media (max-width: 540px) {
+    font-size: .8rem;
+  }
 }
 
 .new-quest-form input:focus {
   border: 3px ridge hsla(202, 35%, 39%, 0.781);
 }
 
+
+
 .btn.dailyBtn {
+  background: hsla(61, 24%, 53%, 0.781);
   border: 2px ridge hsla(62, 20%, 35%, 0.781);
   color: #e3edfc;
   text-shadow: 2px 2px 5px black;
   padding: 0.25em 0.5em;
   width: 100%;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-top: 0.5rem;
   cursor: pointer;
   outline: none;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
   & {
     @media (width <= 540px) {
-      font-size: 1rem;
+      font-size: 1.8rem;
     }
   }
 }
@@ -171,6 +202,7 @@ form.new-quest-form {
   text-align: right;
   font-size: 4rem;
   padding: 20px 0px 40px 0px;
+  
 }
 
 #clearBtn {
@@ -180,14 +212,14 @@ form.new-quest-form {
   text-shadow: 2px 2px 5px black;
   width: 100%;
   padding: 0.25em 0.5em;
-  font-size: 2rem;
+  font-size: 2.5rem;
   cursor: pointer;
   outline: none;
   font-weight: 1000;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
   & {
     @media (width <= 540px) {
-      font-size: 1rem;
+      font-size: 1.8rem;
     }
   }
 }
@@ -208,6 +240,42 @@ form.new-quest-form {
   background:hsla(56, 33%, 60%, 0.842);
 }
 
+.btn.btn-danger {
+  background: hsla(18, 31%, 53%, 0.781);
+  border: 2px ridge hsla(5, 21%, 38%, 0.781);
+  color: #f8e9e2;
+  text-shadow: 2px 2px 5px rgb(22, 1, 1);
+  width: 100%;
+  margin-top: 10px;
+  padding: 0.25em 0.5em;
+  font-size: 2.5rem;
+  cursor: pointer;
+  outline: none;
+  font-weight: 1000;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  & {
+    @media (width <= 540px) {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.btn.btn-danger:active {
+  color: hsl(0, 41%, 31%);
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 5px hsl(0, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px hsl(0, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(0, 45%, 22%);
+  text-shadow: none;
+  outline: none;
+}
+
+.btn.btn-danger:hover,
+.btn.btn-danger:focus-visible {
+  background:  hsla(14, 86%, 60%, 0.466);
+  color: #e3edfc;
+}
+
 .logo-tag {
   background: #e3e6cc;
   text-decoration: none;
@@ -216,4 +284,9 @@ form.new-quest-form {
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  & {
+    @media (width <= 540px) {
+      font-size: .8rem;
+    }
+  }
 }

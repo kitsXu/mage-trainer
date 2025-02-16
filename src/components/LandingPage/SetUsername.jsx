@@ -40,10 +40,12 @@ export default function SetUsername(props) {
           few dare to dream of await, if you are able to prove yourself worthy.
         </div>
         <div className="intro">
-          Now, step forward. Speak your name so that the Eldergrove may know you and
-          you may begin your journey.
+          Now, step forward. Speak your name so that the Eldergrove may know you
+          and you may begin your journey.
         </div>
-
+        <div className="inputBarInstruct">
+          Give Your Name to the ElderGrove...
+        </div>
         <form
           className="nameInput"
           onSubmit={(e) => {
@@ -51,7 +53,6 @@ export default function SetUsername(props) {
             handleSubmit(newName);
           }}
         >
-          <label htmlFor="nameInputBar">Give the Eldergrove your name...</label>
           <input
             value={newName}
             type="text"

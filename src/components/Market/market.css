@@ -1,3 +1,27 @@
+.userHeader {
+  background: #e3e6cc;
+  text-align: center;
+  font-size: 3rem;
+  margin: 3rem 0 2rem 0;
+  & {
+    @media (width <= 540px) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.totalGold {
+  background: #e3e6cc;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2.5rem;
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
+}
+
 .menuBtn-market {
   background: hsla(61, 24%, 53%, 0.781);
   color: #e3e6cc;
@@ -10,7 +34,7 @@
   font-size: 2.5rem;
   font-weight: 1000;
   cursor: pointer;
-  outline:#e3edfc;
+  outline: #e3edfc;
   border: 2px ridge hsla(60, 21%, 38%, 0.781);
   text-shadow: 2px 2px 5px black;
   outline: none;
@@ -36,49 +60,40 @@
 .menuBtn-market:hover,
 .menuBtn-market:focus-visible {
   color: #e3edfc;
-  background:hsla(56, 33%, 60%, 0.842);
+  background: hsla(56, 33%, 60%, 0.842);
 }
 
 /*-- SCROLLS --*/
-.scrollProfile {
-  background: #e3e6cc;
-  display: flex;
-  justify-items: center;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-input.scrollQtys {
-    background: hsla(61, 35%, 39%, 0.781);
-    font-size: 3rem;
-    height: 50px;
-    width: 50px;
-    & {
-      @media (width <= 540px) {
-        height: 25px;
-        width: 25x;
-        font-size: 2rem;
-      }
-    }
-  }
-
-img.scroll {
-  height: 50px;
-  background: #e3e6cc;
-}
-
 .scrollDiv {
   background: #e3e6cc;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   align-items: center;
-  padding-bottom: 75px;
+  padding-bottom: 30px;
   & {
     @media (width <= 540px) {
       justify-content: center;
     }
   }
+}
+
+input.scrollQtys {
+  background: hsla(61, 35%, 39%, 0.781);
+  font-size: 3rem;
+  height: 50px;
+  width: 50px;
+  & {
+    @media (width <= 540px) {
+      height: 40px;
+      font-size: 2rem;
+    }
+  }
+}
+
+img.scroll {
+  height: 50px;
+  background: #e3e6cc;
 }
 
 .scrollAmount {
@@ -87,16 +102,21 @@ img.scroll {
   height: 35px;
   font-size: 16px;
   color: #e3e6cc;
-  
 }
 
 .scrollPurchase {
   background: #e3e6cc;
   width: 150px;
   text-align: center;
-  height: 30px;
+  height: 50px;
   margin: 10px;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  & {
+    @media (width <= 540px) {
+      height: 2.5rem;
+      font-size: 2rem;
+    }
+  }
 }
 
 .scrollPurchase:active {
@@ -118,21 +138,28 @@ img.scroll {
 }
 
 label {
-  padding-left: 1rem;
-  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2.5rem;
+  & {
+    @media (width <= 540px) {
+      padding: 0;
+    }
+  }
 }
 
 .cost {
   background: #e3e6cc;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    font-size: 1rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   margin-left: 0.2rem;
   & {
     @media (width <= 540px) {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 }
@@ -178,24 +205,29 @@ img.item {
   background: #e3e6cc;
   & {
     @media (width <= 540px) {
-      height:75px;
+      height: 75px;
     }
   }
 }
 
 input.itemQtys {
-    background: hsla(61, 35%, 39%, 0.781);
-    font-size: 3rem;
-    height: 50px;
-    width: 50px;
-    & {
-      @media (width <= 540px) {
-        height: 25px;
-        width: 25x;
-        font-size: 2rem;
-      }
+  background: hsla(61, 35%, 39%, 0.781);
+  font-size: 3rem;
+  height: 50px;
+  width: 50px;
+  & {
+    @media (width <= 540px) {
+      height: 25px;
+      width: 25x;
+      font-size: 2rem;
     }
   }
+}
+
+.market-divider {
+  background: #e3e6cc;
+
+}
 
 .logo-tag-market {
   background: #e3e6cc;
@@ -205,17 +237,10 @@ input.itemQtys {
   cursor: default;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.userHeader {
-  background: #e3e6cc;
-  text-align: center;
-  font-size: 2rem;
-  margin: 2.5rem 0 2rem 0;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   & {
     @media (width <= 540px) {
-      font-size: 2rem;
+      font-size: 0.8rem;
     }
   }
 }
