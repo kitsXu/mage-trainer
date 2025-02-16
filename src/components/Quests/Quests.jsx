@@ -2,75 +2,76 @@ import { useState, useEffect } from "react";
 import "./Quests.css";
 
 //-- TO DO --
-// - [X] make the explanation div appear on hover of a little box/question mark icon
-// - [ ] make a maximum of daily quests??
-// - [ ] create time stamp for daily quest turn in button stored locally? idk
-// - [ ] daily quest turn in button timer can't be pressed again for 24hrs?
+// - []
 
 export default function Quests(props) {
-  const [newDaily, setNewDaily] = useState("");
-  const [dailies, setDailies] = useState(props.currentDailyQuests ?? []);
+  const [newQuest, setNewQuest] = useState("");
+  const [quests, setQuests] = useState(props.currentDailyQuests ?? []);
   const [visibility, setVisibility] = useState(false);
   const [formError, setFormError] = useState("");
 
-  //--enter daily quest into the form and create daily quest object.
+  //--enter quest quest into the form and create quest quest object.
   function handleDailySubmit(e) {
     e.preventDefault();
-    if (newDaily.trim() === "") {
+    if (newQuest.trim() === "") {
       setFormError("Please type Quest inside input bar to add to list!");
     } else {
       setFormError("");
-      setDailies((currentDailies) => {
+      setQuests((currentQuests) => {
         return [
-          ...currentDailies,
+          ...currentQuests,
           {
             id: crypto.randomUUID(),
-            title: newDaily,
+            title: newQuest,
             completed: false,
             timestamp: new Date().toISOString(),
           },
         ];
       });
-      setNewDaily("");
+      setNewQuest("");
     }
   }
 
-  //--set current state of dailies to local storage.
+  //--Set current state of quests to local storage.
   useEffect(() => {
     localStorage.setItem(
       "user",
-      JSON.stringify({ ...props.user, currentDailyQuests: dailies })
+      JSON.stringify({ ...props.user, currentDailyQuests: quests })
     );
 
-    props.setCurrentDailyQuests(dailies);
-  }, [dailies]);
+    props.setCurrentDailyQuests(quests);
+  }, [quests]);
 
-  //--check and uncheck daily quests
-  function toggleDaily(id, completed) {
-    setDailies((prev) =>
+  //--Add and remove checkmark from quests.
+  function toggleQuest(id, completed) {
+    setQuests((prev) =>
       prev.map((d) => (d.id === id ? { ...d, completed: completed } : d))
     );
   }
 
-  //--deletes toggled daily quests and increments abandoned quest counter.
-  function deleteDailies() {
-    const deleteDailies = dailies.filter((d) => d.completed);
-
+  //--deletes toggled quests and increments abandoned quest counter.
+  function deleteQuests() {
+    const deleteQuests = quests.filter((d) => d.completed);
+    if (!deleteQuests.completed) {
+      alert("No quests selected!");
+    }
     props.setNewAbandonedDailyQuestCount(
-      (props.user.abandonedDailyQuests += deleteDailies.length)
+      (props.user.abandonedDailyQuests += deleteQuests.length)
     );
 
-    setDailies((currentDailies) => {
-      return currentDailies.filter((d) => d.completed === false);
+    setQuests((currentQuests) => {
+      return currentQuests.filter((d) => d.completed === false);
     });
   }
 
-  //--clears all checkmarks from daily quests, counts completed quests and updates count in local storage
-  function turnInDailyQuests(id, completed) {
-    const quest = dailies.find((d) => d.id === d.id);
+  //-- clears all checkmarks from quest quests,
+  //-- counts completed quests and updates count in local storage,
+  //-- stops user from turning in before 10 minute time limit is up.
+  function turnInQuests(id, completed) {
+    const quest = quests.find((d) => d.id === d.id);
 
-    if (!quest || !quest.timestamp) {
-      alert("Quest not found or missing timestamp!");
+    if (!quest || !quest.timestamp || !quest.completed) {
+      alert("Quest not found!");
       return;
     }
 
@@ -79,19 +80,19 @@ export default function Quests(props) {
     const questsCurrentTime = Date.now();
 
     if (questsCurrentTime >= questsTenMinutesLater) {
-      const completedDailies = dailies.filter((d) => d.completed);
+      const completedDailies = quests.filter((d) => d.completed);
 
       props.setNewDailyQuestsCompletedCount(
         (props.user.dailyQuestsCompleted += completedDailies.length)
       );
 
-      const resetDailies = dailies.map((d) =>
+      const resetQuests = quests.map((d) =>
         d.id === id
           ? { ...d, completed: completed }
           : { ...d, completed: false }
       );
 
-      setDailies(resetDailies);
+      setQuests(resetQuests);
     } else {
       alert("Not enough time has passed!");
     }
@@ -115,48 +116,48 @@ export default function Quests(props) {
         </button>
       </div>
       {visibility && (
-        <p className="daily-info">
+        <p className="quest-info">
           Think of your quests as the things that make up your everyday routine-
           the day to day chores you need to remember to do so you can turn them
           into healthy habits! Add your "quests" into the input, check tasks off
           your list as you complete them, and then press 'Submit Quests' to turn
-          in quest! Quests are each worth 1xp and can be turned in 10 mintues
-          after you've added them.
+          them in! Quests are each worth 1xp and cannot be turned in for a
+          minimum of 10 minutes.
         </p>
       )}
-      <form onSubmit={handleDailySubmit} className="new-daily-form">
-        <div className="daily-form-row">
+      <form onSubmit={handleDailySubmit} className="new-quest-form">
+        <div className="quest-form-row">
           <input
-            value={newDaily}
-            onChange={(e) => setNewDaily(e.target.value)}
+            value={newQuest}
+            onChange={(e) => setNewQuest(e.target.value)}
             type="text"
-            id="daily"
+            id="quest"
           ></input>
         </div>
         <button className="btn dailyBtn">Add Quest</button>
       </form>
       {formError && <p className="formError">{formError}</p>}
       <ul className="dailyList">
-        {dailies.length === 0 && "No set routine, add some quests!"}
-        {dailies.map((daily) => {
+        {quests.length === 0 && "No set routine, add some quests!"}
+        {quests.map((quest) => {
           return (
-            <li key={daily.id}>
+            <li key={quest.id}>
               <label>
                 <input
                   type="checkbox"
-                  checked={daily.completed}
-                  onChange={(e) => toggleDaily(daily.id, e.target.checked)}
+                  checked={quest.completed}
+                  onChange={(e) => toggleQuest(quest.id, e.target.checked)}
                 />
-                {daily.title}
+                {quest.title}
               </label>
             </li>
           );
         })}
       </ul>
-      <button onClick={turnInDailyQuests} className="foot" id="clearBtn">
+      <button onClick={turnInQuests} className="foot" id="clearBtn">
         Submit Quests!
       </button>
-      <button onClick={deleteDailies} className="btn btn-danger">
+      <button onClick={deleteQuests} className="btn btn-danger">
         Abandon Quests
       </button>
       <div className="divider">_________</div>
