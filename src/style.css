@@ -55,6 +55,7 @@ header {
   
   @media (max-width: 540px) {
     font-size: 4rem;
+    margin-bottom: 40px;
   }
 }
 
@@ -95,14 +96,14 @@ header {
 .menuBtn {
   display: flex;
   flex: 3 3 30%;
-  height: 20px;
+  height: 40px;
   margin-top: 1rem;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: transparent;
   color: hsl(246, 41%, 31%);
-  font-size: 2.5rem;
+  font-size: 3.2rem;
   padding: 8px 0 8px 0;
   font-weight: 1000;
   cursor: pointer;

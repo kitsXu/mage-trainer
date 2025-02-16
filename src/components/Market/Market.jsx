@@ -78,7 +78,7 @@ export default function Market(props) {
       <div className="headDivider">
         §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
       </div>
-      <div className="totalGold">Total Gold: {props.user.gold}</div>
+      <div className="totalGold">Gold: {props.user.gold}</div>
 
       <div className="questHeaderWrap">
         <h1 className="userHeader">The Inked Eldergrove</h1>
@@ -119,9 +119,11 @@ export default function Market(props) {
                 </button>
               </form>
             </div>
+            <div className="market-divider">_______</div>
           </label>
         </div>
       ))}
+      
       <div className="headDivider">
         §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
       </div>
