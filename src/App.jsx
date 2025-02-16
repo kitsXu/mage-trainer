@@ -7,7 +7,7 @@ import "./style.css";
 import Archives from "./components/Archives/Archives.jsx";
 import Maps from "./components/Maps/Maps.jsx";
 import Spells from "./components/Inventory/Spells.jsx";
-import Dailies from "./components/Dailies/Dailies.jsx";
+import Quests from "./components/Quests/Quests.jsx";
 import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
 import LogoPage from "./components/LandingPage/LogoPage.jsx";
@@ -117,7 +117,7 @@ export default function App() {
         <>
           <header>Echoes of the Eldergrove</header>
           <div className="menuWrapper">
-            <button className="menuBtn" onClick={() => setView("dailies")}>
+            <button className="menuBtn" onClick={() => setView("quests")}>
               Quests
             </button>
             <button className="menuBtn" onClick={() => setView("Maps")}>
@@ -146,8 +146,8 @@ export default function App() {
                 user={user}
               />
             )}
-            {view === "dailies" && !!user && (
-              <Dailies
+            {view === "quests" && !!user && (
+              <Quests
                 user={user}
                 newDailyQuestsCompletedCount={newDailyQuestsCompletedCount}
                 setNewDailyQuestsCompletedCount={
