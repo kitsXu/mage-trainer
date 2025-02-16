@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./inventory.css";
 
 export default function ItemInventory() {
-  const [storedScrolls, setStoredScrolls] = useState();
+  const [storedScrolls, setStoredScrolls] = useState([]);
 
   //-- Retrieve the array from localStorage.
   // const scrollsInv = JSON.parse(localStorage.getItem('scrollInv'));

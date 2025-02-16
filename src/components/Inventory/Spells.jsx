@@ -1,23 +1,27 @@
-import './spells.css';
+import "./spells.css";
 
 export default function BroodRecord() {
-
-
   return (
     <div className="profile">
       <h1 className="item-brood-Header">Spells- ({0})</h1>
-      <div className="divider-inventoryHead">______________________________</div>
+      <div className="divider-inventoryHead">
+        ______________________________
+      </div>
       <div className="scrollInventory">
-          <p className="scrollInventory">
-            Bags look empty!
-          </p>
-          <p className="scrollInventory">
-            Try to purchase a scroll to learn a spell.
-          </p>
-        </div>
-        <div className="divider">_________</div>
+        {/* <p className="scrollInventory">Bags look empty!</p> */}
+        <p className="spellbook-update">
+          Spells will be learned from purchased scrolls and fixed into the pages
+          of your spellbook. The school is currently still working on binding
+          the magical books from resources found in the Eldergrove. This process
+          can be timeconsuming, but we will send out notice when the books are ready for use!
+        </p>
+        <div className="profile-maps">Please be patient while we work!</div>
+      </div>
+      <div className="divider">_________</div>
       <div className="logo">
-        <a className="logo-tag-brood" href="https://ko-fi.com/kitsxu">-kitsXu-</a>
+        <a className="logo-tag-brood" href="https://ko-fi.com/kitsxu">
+          -kitsXu-
+        </a>
       </div>
     </div>
   );
