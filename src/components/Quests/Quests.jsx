@@ -52,9 +52,11 @@ export default function Quests(props) {
   //--deletes toggled quests and increments abandoned quest counter.
   function deleteQuests() {
     const deleteQuests = quests.filter((d) => d.completed);
-    if (!deleteQuests.completed) {
-      alert("No quests selected!");
-    }
+
+    // if (!deleteQuests.completed) {
+    //   alert("No Quests Selected!")
+    // }
+
     props.setNewAbandonedDailyQuestCount(
       (props.user.abandonedDailyQuests += deleteQuests.length)
     );
@@ -70,8 +72,8 @@ export default function Quests(props) {
   function turnInQuests(id, completed) {
     const quest = quests.find((d) => d.id === d.id);
 
-    if (!quest || !quest.timestamp || !quest.completed) {
-      alert("Quest not found!");
+    if (!quest || !quest.timestamp) {
+      alert("Quest not found or missing timestamp!");
       return;
     }
 
@@ -122,7 +124,7 @@ export default function Quests(props) {
           into healthy habits! Add your "quests" into the input, check tasks off
           your list as you complete them, and then press 'Submit Quests' to turn
           them in! Quests are each worth 1xp and cannot be turned in for a
-          minimum of 10 minutes.
+          minimum of 10 minutes
         </p>
       )}
       <form onSubmit={handleDailySubmit} className="new-quest-form">
