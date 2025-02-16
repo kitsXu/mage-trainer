@@ -17,7 +17,7 @@ export default function Dailies(props) {
   function handleDailySubmit(e) {
     e.preventDefault();
     if (newDaily.trim() === "") {
-      setFormError("Please type Quest inside input bar to add!");
+      setFormError("Please type Quest inside input bar to add to list!");
     } else {
       setFormError("");
       setDailies((currentDailies) => {
@@ -67,17 +67,27 @@ export default function Dailies(props) {
 
   //--clears all checkmarks from daily quests, counts completed quests and updates count in local storage
   function turnInDailyQuests(id, completed) {
-    const completedDailies = dailies.filter((d) => d.completed);
+    const questsTenMinutesLater =
+      new Date(dailies.timestamp).getTime() + 10 * 60 * 1000;
+    const questsCurrentTime = Date.now();
 
-    props.setNewDailyQuestsCompletedCount(
-      (props.user.dailyQuestsCompleted += completedDailies.length)
-    );
+    if (questsCurrentTime >= questsTenMinutesLater) {
+      const completedDailies = dailies.filter((d) => d.completed);
 
-    const resetDailies = dailies.map((d) =>
-      d.id === id ? { ...d, completed: completed } : { ...d, completed: false }
-    );
+      props.setNewDailyQuestsCompletedCount(
+        (props.user.dailyQuestsCompleted += completedDailies.length)
+      );
 
-    setDailies(resetDailies);
+      const resetDailies = dailies.map((d) =>
+        d.id === id
+          ? { ...d, completed: completed }
+          : { ...d, completed: false }
+      );
+
+      setDailies(resetDailies);
+    } else {
+      alert("Not enough time has passed!");
+    }
   }
 
   //--change visibility of an element
@@ -102,9 +112,9 @@ export default function Dailies(props) {
           Think of your quests as the things that make up your everyday routine-
           the day to day chores you need to remember to do so you can turn them
           into healthy habits! Add your "quests" into the input, check tasks off
-          your list as you complete them, and then press 'Submit Quests' at the
-          end of the day to gain your experience (Quest turn in button can ONLY
-          be used 1x per day, each Daily Quest is worth 1px)
+          your list as you complete them, and then press 'Submit Quests' to turn
+          in quest! Quests are each worth 1xp and can be turned in 10
+          mintues after you've added them.
         </p>
       )}
       <form onSubmit={handleDailySubmit} className="new-daily-form">
