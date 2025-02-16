@@ -29,6 +29,7 @@
   & {
     @media (width <= 540px) {
       padding-left: 20px;
+
     }
   }
 }
@@ -36,11 +37,6 @@
 .profile {
   background: #e3e6cc;
   font-size: 2.5rem;
-  & {
-    @media (width <= 540px) {
-      font-size: 2rem;
-    }
-  }
 }
 
 .logo-tag-archive {
@@ -52,4 +48,9 @@
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  & {
+    @media (width <= 540px) {
+      font-size: 0.8rem;
+    }
+  }
 }
