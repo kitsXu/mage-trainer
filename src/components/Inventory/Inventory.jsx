@@ -12,10 +12,10 @@ export default function Inventory(props) {
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
       <div className="inventoryButtons">
         <button className="menuBtn-inventory" onClick={() => setView("itemInventory")}>
-          Item Inventory{" "}
+          Items{" "}
         </button>
         <button className="menuBtn-inventory" onClick={() => setView("brood")}>
-          Spellbook
+          Spells
         </button>
       </div>
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>
