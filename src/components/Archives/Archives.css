@@ -5,10 +5,12 @@
   text-align: center;
   color: hsl(120, 41%, 31%);
   font-size: 2rem;
-  margin: 3rem 0 2rem 0;
+  margin: 1rem 0 2rem 0;  
   & {
     @media (width <= 540px) {
-      font-size: 2.5rem;
+      font-size: 1.5rem;
+      margin: .5rem 0 1rem 0;
+
     }
   }
 }
@@ -33,11 +35,10 @@
   padding-bottom: 40px;
   padding-left: 60px;
   row-gap: 30px;
-  font-size: 2rem;
   & {
     @media (width <= 540px) {
       padding-left: 20px;
-
+      row-gap: 20px;
     }
   }
 }
@@ -45,6 +46,12 @@
 .profile {
   background: #e3e6cc;
   font-size: 2rem;
+  & {
+    @media (width <= 540px) {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .logo-tag-archive {

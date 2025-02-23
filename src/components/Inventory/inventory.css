@@ -16,7 +16,8 @@
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
   & {
     @media (width <= 540px) {
-      font-size: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.5rem;
     }
   }
 }
@@ -36,13 +37,6 @@
   background:hsla(56, 33%, 60%, 0.842);
 }
 
-.inventoryHeader {
-  background: #e3e6cc;
-  text-align: center;
-  font-size: 2rem;
-  margin: 2.5rem 0 2rem 0;
-}
-
 .inventoryButtons {
   background: #e3e6cc;
   display: flex;
@@ -52,12 +46,17 @@
 
 }
 
-.item-brood-Header {
+.itemsHeader {
   background: #e3e6cc;
   text-align: center;
   font-size: 2rem;
   margin-top: 2rem;
   margin-bottom: 0;
+  & {
+    @media (width <= 540px) {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .scrollInventory {
@@ -70,7 +69,7 @@
   text-align: center;
 }
 
-.logo-tag-item {
+.logo-tag-inv {
   background: #e3e6cc;
   text-decoration: none;
   margin-top: 5vh;

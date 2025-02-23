@@ -15,16 +15,46 @@
   background: #e3e6cc;
   color: hsl(120, 41%, 31%);
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-top: 0.5rem;
   margin-bottom: 0;
   & {
     @media (width <= 540px) {
-      font-size: 2.8rem;
+      font-size: 1.8rem;
     }
   }
 }
 
+/*'?' button next to the header*/
+.questExplanation {
+  background: transparent;
+  color: hsla(62, 21%, 35%, 0.781);
+  border: none;
+  font-size: 3rem;
+  margin-left: 12px;
+  & {
+    @media (width <= 540px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.questExplanation:active {
+  color: hsl(108, 40%, 15%);
+  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  text-shadow: none;
+  outline: none;
+}
+
+.questExplanation:hover,
+.menuBtn:focus-visible {
+  color: hsla(56, 42%, 60%, 0.842);
+  cursor: pointer;
+}
+
+/*Dialogue that pops up when you press '?' button*/
 .quest-info {
   background: #e3e6cc;
   margin: auto;
@@ -37,12 +67,69 @@
   line-height: 30px;
   & {
     @media (width <= 540px) {
-      font-size: .85rem;
+      font-size: .80rem;
       line-height: 20px;
     }
   }
 }
 
+/*Input bar for quests*/
+.new-quest-form input {
+  outline: none;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border: 3px double hsl(106, 45%, 17%);
+  background: hsla(116, 35%, 34%, 0.781);
+  padding: 0.25em 1em;
+  margin-top: 10px;
+  color: hsl(125, 58%, 85%);
+  font-size: 1.3rem;
+  height: 35px;
+  @media (max-width: 540px) {
+    font-size: .8rem;
+  }
+}
+
+.new-quest-form input:focus {
+  border: 3px ridge hsla(130, 35%, 39%, 0.781);
+}
+
+/*Add Quest Button*/
+.btn.dailyBtn {
+  background: hsla(61, 24%, 53%, 0.781);
+  border: 2px ridge hsla(62, 20%, 35%, 0.781);
+  color: #e3edfc;
+  text-shadow: 2px 2px 5px black;
+  padding: 0.25em 0.5em;
+  width: 100%;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  & {
+    @media (width <= 540px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.btn.dailyBtn:active {
+  color: hsl(246, 41%, 31%);
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
+  text-shadow: none;
+  outline: none;
+}
+
+.btn.dailyBtn:hover,
+.m.btn.dailyBtn:focus-visible {
+  color: #e3edfc;
+  background:hsla(56, 33%, 60%, 0.842);
+}
+
+/*Error message if input doesn't contain text when Add Quest btn pressed*/
 .formError {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -50,9 +137,19 @@
   text-align: center;
   color: rgb(206, 68, 68);
   font-size: 1rem;
+  text-align: center;
+  & {
+    @media (width <= 540px) {
+      font-size: .80rem;
+      display:center;
+      margin:auto;
+      padding-top: 10px;
+      width: 80%;
+    }
+  }
 }
 
-
+/*Form List*/
 .dailyList {
   background: #e3e6cc;
   display: flex;
@@ -136,7 +233,7 @@
 }
 
 ul.dailyList {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .quest-form-row {
@@ -149,61 +246,6 @@ form.new-quest-form {
   background: #e3e6cc;
 }
 
-.new-quest-form input {
-  outline: none;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  border: 3px double hsl(106, 45%, 17%);
-  background: hsla(115, 35%, 39%, 0.781);
-  padding: 0.25em 1em;
-  margin-top: 10px;
-  color: hsl(125, 58%, 85%);
-  font-size: 1.3rem;
-  height: 35px;
-  @media (max-width: 540px) {
-    font-size: .8rem;
-  }
-}
-
-.new-quest-form input:focus {
-  border: 3px ridge hsla(202, 35%, 39%, 0.781);
-}
-
-
-
-.btn.dailyBtn {
-  background: hsla(61, 24%, 53%, 0.781);
-  border: 2px ridge hsla(62, 20%, 35%, 0.781);
-  color: #e3edfc;
-  text-shadow: 2px 2px 5px black;
-  padding: 0.25em 0.5em;
-  width: 100%;
-  font-size: 2rem;
-  margin-top: 0.5rem;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
-  & {
-    @media (width <= 540px) {
-      font-size: 1rem;
-    }
-  }
-}
-
-.btn.dailyBtn:active {
-  color: hsl(246, 41%, 31%);
-  outline: none;
-  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  text-shadow: none;
-  outline: none;
-}
-
-.btn.dailyBtn:hover,
-.m.btn.dailyBtn:focus-visible {
-  color: #e3edfc;
-  background:hsla(56, 33%, 60%, 0.842);
-}
 
 
 #clearBtn {
@@ -254,7 +296,7 @@ form.new-quest-form {
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
   & {
     @media (width <= 540px) {
-      font-size: 1.8rem;
+      font-size: 1rem;
     }
   }
 }
