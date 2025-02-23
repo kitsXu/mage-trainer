@@ -119,7 +119,7 @@ export default function App() {
         />
       ) : (
         <>
-          <header>Echoes of the Eldergrove</header>
+          <header>Eldergrove</header>
           {/* Menu buttons to navigate components */}
           <div className="menuWrapper">
             <button className="menuBtn" onClick={() => setView("quests")}>

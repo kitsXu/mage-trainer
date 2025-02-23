@@ -21,7 +21,7 @@
 
 .logo-tag-logo {
   background: #e3e6cc;
-  color: hsl(247, 39%, 23%);
+  color: hsl(0, 39%, 23%);
   margin: 10px 0 120px 0;
   opacity: 45%;
   font-size: 1rem;
@@ -52,7 +52,6 @@
   font-size: 2rem;
   text-align: center;
   text-shadow: 2px 2px 5px black;
-  font-weight: 1000;
   border: 2px ridge hsla(60, 21%, 38%, 0.781);
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
   cursor: pointer;
@@ -74,10 +73,9 @@
 .playBtnTag {
   display: flex;
   text-align: center;
-  margin: 8rem 0 2rem 0;
+  margin: 6rem 0 2rem 0;
   padding-right: 20px;
-  font-size: 3rem;
-  font-weight: 1000;
+  font-size: 2rem;
   opacity: 0%;
   animation: cutIn 1.5s infinite;
 }

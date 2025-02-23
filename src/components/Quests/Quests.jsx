@@ -109,7 +109,7 @@ export default function Quests(props) {
   return (
     <div className="bodyWrapper">
       <div className="headDivider">
-        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
       </div>
       <div className="questHeaderWrap">
         <h1 className="dailyHeader">{props.user.name}'s Quests</h1>

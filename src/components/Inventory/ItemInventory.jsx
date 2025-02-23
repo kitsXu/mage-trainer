@@ -24,9 +24,8 @@ export default function ItemInventory() {
   return (
     <div className="profile">
       <h1 className="item-brood-Header">Items- ({storedScrolls.length})</h1>
-      <div className="divider-inventoryHead">
-        ______________________________
-      </div>
+      <div className="divider">_____________</div>
+
       {storedScrolls ? (
         <div>
           <ul className="scrollInventory">
