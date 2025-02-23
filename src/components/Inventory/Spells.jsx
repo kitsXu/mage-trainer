@@ -4,9 +4,7 @@ export default function BroodRecord() {
   return (
     <div className="profile">
       <h1 className="item-brood-Header">Spells- ({0})</h1>
-      <div className="divider-inventoryHead">
-        ______________________________
-      </div>
+      <div className="divider">_____________</div>
       <div className="scrollInventory">
         {/* <p className="scrollInventory">Bags look empty!</p> */}
         <p className="spellbook-update">

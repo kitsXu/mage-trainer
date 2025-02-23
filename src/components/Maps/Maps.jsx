@@ -16,9 +16,8 @@ export default function Quests() {
 
   return (
     <div className="questWrapper">
-      <div className="headDivider">
-        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
-      </div>{" "}
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
+
       <div className="mapsWrapper">
         <div className="profile-maps-info">
           Maps are being meticulously drawn up to keep track of your adventures.
