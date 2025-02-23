@@ -46,13 +46,16 @@ body {
 
 header {
   font-family: "Tangerine";
-  color: hsl(216, 33%, 56%);
-  background: #e3e6cc 35%;  
+  border-radius: 5%;
+  background: hsl(213, 5%, 37%);
+  color: #e3e6cc;
+  height: 6rem;
   text-align: center;
+  align-content: center;
   font-size: 5rem;
   margin: 10px 0 20px 0;
   font-weight: 1000;
-  
+
   @media (max-width: 540px) {
     font-size: 4rem;
     margin-bottom: 40px;
@@ -73,12 +76,12 @@ header {
   }
   & {
     @media (340px <= width <= 400px) {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
   & {
     @media (width <= 340px) {
-      font-size: .7rem;
+      font-size: 0.7rem;
     }
   }
 }
@@ -126,7 +129,7 @@ header {
 
 .menuBtn:hover,
 .menuBtn:focus-visible {
-  color:hsla(56, 42%, 60%, 0.842);
+  color: hsla(56, 42%, 60%, 0.842);
 }
 
 .questExplanation {
@@ -148,7 +151,7 @@ header {
 
 .questExplanation:hover,
 .menuBtn:focus-visible {
-  color:hsla(56, 42%, 60%, 0.842);
+  color: hsla(56, 42%, 60%, 0.842);
   cursor: pointer;
 }
 
