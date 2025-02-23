@@ -3,9 +3,19 @@
 }
 
 header.landingHeader {
-  height: 16rem;
   margin-top: 0;
-  margin-bottom: 0;
+  font-family: "Macondo Swash Caps";
+  border-radius: 5%;
+  text-shadow: 5px 5px 2px black;
+  text-decoration: overline;
+  height: 13rem;
+  text-align: center;
+  align-content:end;
+
+  @media (max-width: 540px) {
+    font-size: 4rem;
+    margin-bottom: 40px;
+  }
 }
 
 .welcome {
@@ -49,7 +59,7 @@ header.landingHeader {
 }
 
 #nameInputBar {
-  background: hsl(123, 33%, 56%);
+  background: hsl(121, 25%, 40%);
   color: #e3e6cc;
   height: 2.5rem;
   width: 100%;
