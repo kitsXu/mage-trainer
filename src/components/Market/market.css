@@ -1,31 +1,29 @@
-.userHeader {
-  background: #e3e6cc;
-  text-align: center;
-  color: hsl(120, 41%, 31%);
-  font-size: 3rem;
-  margin: 3rem 0 2rem 0;
-  & {
-    @media (width <= 540px) {
-      font-size: 2.5rem;
-    }
-  }
-}
-
 .totalGold {
   background: #e3e6cc;
   color: hsl(120, 41%, 31%);
-
   text-align: center;
   margin-top: 30px;
   font-size: 2rem;
   & {
     @media (width <= 540px) {
-      font-size: 2rem;
+      font-size: 1.2rem;
     }
   }
 }
 
-/*-- SCROLLS --*/
+.userHeader {
+  background: #e3e6cc;
+  text-align: center;
+  color: hsl(120, 41%, 31%);
+  font-size: 2.5rem;
+  & {
+    @media (width <= 540px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/*wrappers for item divs, Items and their labels*/
 .scrollDiv {
   background: #e3e6cc;
   display: flex;
@@ -40,15 +38,16 @@
   }
 }
 
-input.scrollQtys {
-  background: hsla(61, 35%, 39%, 0.781);
-  font-size: 2rem;
-  height: 50px;
-  width: 50px;
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: hsl(120, 41%, 31%);
+  font-size: 1.8rem;
   & {
     @media (width <= 540px) {
-      height: 40px;
-      font-size: 1rem;
+      padding: 0;
+      font-size: 1.2rem;
     }
   }
 }
@@ -56,59 +55,9 @@ input.scrollQtys {
 img.scroll {
   height: 50px;
   background: #e3e6cc;
-}
-
-.scrollAmount {
-  background: hsla(61, 35%, 39%, 0.781);
-  width: 75px;
-  height: 35px;
-  font-size: 16px;
-  color: #e3e6cc;
-}
-
-.scrollPurchase {
-  background: #e3e6cc;
-  width: 150px;
-  color: hsl(108, 40%, 15%);
-  text-align: center;
-  height: 50px;
-  margin: 10px;
-  font-size: 1.5rem;
   & {
     @media (width <= 540px) {
-      height: 2.5rem;
-      font-size: 2rem;
-    }
-  }
-}
-
-.scrollPurchase:active {
-  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
-  -moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
-  box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
-  outline: none;
-}
-
-.scroll-info {
-  background: #e3e6cc;
-  margin: auto;
-  text-align: center;
-  padding-bottom: 1rem;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 1rem;
-  line-height: 30px;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: hsl(120, 41%, 31%);
-  font-size: 2rem;
-  & {
-    @media (width <= 540px) {
-      padding: 0;
+      height: 40px;
     }
   }
 }
@@ -129,23 +78,54 @@ label {
 }
 
 
-
-.marketButtons {
-  background: #e3e6cc;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 0px 30px 0;
-  gap: 30px;
-}
-
+/*Purchase Btn, Qty Input, and div wrapper around it*/
 .purchaseWrap {
   background: #e3e6cc;
 }
 
+input.scrollQtys {
+  background: hsla(61, 35%, 39%, 0.781);
+  font-size: 2rem;
+  padding-left: 8px;
+  height: 40px;
+  width: 60px;
+  & {
+    @media (width <= 540px) {
+      height: 30px;
+      width: 40px;
+      font-size: 1rem;
+    }
+  }
+}
+
+.scrollPurchase {
+  background: #e3e6cc;
+  width: 150px;
+  color: hsl(108, 40%, 15%);
+  text-align: center;
+  height: 50px;
+  margin: 10px;
+  font-size: 1.5rem;
+  & {
+    @media (width <= 540px) {
+      margin-top: 0;
+      height: 2rem;
+      width: 100px;
+      font-size: 1rem;
+    }
+  }
+}
+
+.scrollPurchase:active {
+  -webkit-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  -moz-box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
+  outline: none;
+}
+
+
 .market-divider {
   background: #e3e6cc;
-
 }
 
 .logo-tag-market {
