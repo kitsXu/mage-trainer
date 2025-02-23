@@ -38,9 +38,9 @@ header {
   color: #e3e6cc;
   text-shadow: 5px 5px 2px black;
   text-decoration: overline;
-  height: 8rem;
+  height: 7rem;
   text-align: center;
-  align-content: center;
+  align-content:end;
   font-size: 5rem;
   margin: 10px 0 20px 0;
 
