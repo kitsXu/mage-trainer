@@ -7,7 +7,9 @@
   background: #e3e6cc;
   margin-top: 50px;
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
+  color: hsl(120, 41%, 31%);
+
   & {
     @media (width <= 540px) {
       font-size: 2.5rem;
@@ -16,7 +18,7 @@
 }
 .profile-maps-info {
   background: #e3e6cc;
-  margin-top: 100px;
+  margin-top: 40px;
   text-align: center;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -39,7 +41,7 @@
 .logo-tag-quest {
   background: #e3e6cc;
   text-decoration: none;
-  color: hsl(233, 39%, 23%);
+  color: hsl(0, 39%, 23%);
   cursor: default;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",

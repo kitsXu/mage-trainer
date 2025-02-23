@@ -1,32 +1,19 @@
 * {
-  font-family: "Tangerine";
+  font-family: "Macondo Swash Caps";
   box-sizing: border-box;
   background-image: url("images/background15.jpg");
 }
 
-.monsieur-la-doulaise-regular {
-  font-family: "Monsieur La Doulaise", serif;
+.macondo-swash-caps-regular {
+  font-family: "Macondo Swash Caps", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.tangerine-regular {
-  font-family: "Tangerine", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.tangerine-bold {
-  font-family: "Tangerine", serif;
-  font-weight: 700;
-  font-style: normal;
-}
 
 body {
   background: #aeb19d;
-  font-family: "Tangerine";
   font-size: 2rem;
-  color: hsl(246, 41%, 31%);
   max-width: 600px;
   min-height: 950px;
   border: 10px;
@@ -45,16 +32,17 @@ body {
 }
 
 header {
-  font-family: "Tangerine";
+  font-family: "Macondo Swash Caps";
   border-radius: 5%;
-  background: hsl(213, 5%, 37%);
+  background: hsl(116, 13%, 22%);
   color: #e3e6cc;
-  height: 6rem;
+  text-shadow: 5px 5px 2px black;
+  text-decoration: overline;
+  height: 8rem;
   text-align: center;
   align-content: center;
   font-size: 5rem;
   margin: 10px 0 20px 0;
-  font-weight: 1000;
 
   @media (max-width: 540px) {
     font-size: 4rem;
@@ -64,7 +52,7 @@ header {
 
 .headDivider {
   background: #e3e6cc;
-  color: hsl(246, 41%, 31%);
+  color: hsl(108, 40%, 15%);
   text-align: center;
   margin: 2.5rem 0 2rem 0;
   word-break: break-all;
@@ -105,8 +93,8 @@ header {
   justify-content: center;
   text-align: center;
   background: transparent;
-  color: hsl(246, 41%, 31%);
-  font-size: 3.2rem;
+  color: hsl(120, 41%, 31%);
+  font-size: 2.2rem;
   padding: 8px 0 8px 0;
   font-weight: 1000;
   cursor: pointer;
@@ -141,7 +129,7 @@ header {
 }
 
 .questExplanation:active {
-  color: hsl(244, 45%, 22%);
+  color: hsl(108, 40%, 15%);
   -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
   -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
   box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
@@ -162,24 +150,13 @@ label {
   align-items: center;
 }
 
-.userHeader {
-  background: #e3e6cc;
-  text-align: center;
-  font-size: 2rem;
-  margin: 2.5rem 0 2rem 0;
-  & {
-    @media (width <= 540px) {
-      font-size: 1.5rem;
-    }
-  }
-}
-
 .divider {
   background: #e3e6cc;
   width: 100%;
-  color: #9791b9;
+  color: hsl(108, 40%, 15%);
   text-align: center;
-  font-size: 6rem;
+  font-size: 4rem;
+  margin-bottom: 40px;
   word-break: break-all;
   & {
     @media (width <= 540px) {
