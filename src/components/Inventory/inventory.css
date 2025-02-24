@@ -10,7 +10,7 @@
   font-size: 2rem;
   cursor: pointer;
   outline:#e3edfc;
-  border: 2px ridge hsla(60, 21%, 38%, 0.781);
+  border: 2px  hsla(60, 21%, 38%, 0.781);
   text-shadow: 2px 2px 5px black;
   outline: none;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
