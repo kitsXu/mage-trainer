@@ -48,8 +48,7 @@
   outline: none;
 }
 
-.questExplanation:hover,
-.menuBtn:focus-visible {
+.questExplanation:hover {
   color: hsla(56, 42%, 60%, 0.842);
   cursor: pointer;
 }
