@@ -19,15 +19,12 @@ export default function ItemInventory() {
 
   }, []);
 
-
-
   return (
-    <div className="profile">
+    <div className="itemProfile">
       <h1 className="itemsHeader">Items- ({storedScrolls.length})</h1>
       <div className="divider">_____________</div>
-
       {storedScrolls ? (
-        <div>
+        <div className="scrollInventory">
           <ul className="scrollInventory">
             {storedScrolls.map((scrollInv) => (
               <li className="scrollInventory" key={scrollInv.name}>

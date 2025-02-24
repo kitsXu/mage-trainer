@@ -20,9 +20,6 @@ export default function Inventory(props) {
         <button className="menuBtn-inventory" onClick={() => setView("spells")}>
           Spells
         </button>
-      </div>
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
-      <div>
         {view === "itemInventory" && <ItemInventory user={props.user} />}
         {view === "spells" && <BroodRecord user={props.user} />}
       </div>
