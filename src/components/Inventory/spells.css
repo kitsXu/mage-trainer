@@ -1,24 +1,7 @@
-.item-brood-Header {
-  background: #e3e6cc;
-  text-align: center;
-  font-size: 0.9rem;
-  margin: 2.5rem 0 2rem 0;
-}
-
-.logo-tag-brood {
-  background: #e3e6cc;
-  text-decoration: none;
-  margin-top: 5vh;
-  color: hsl(0, 41%, 31%);
-  cursor: default;
-  font-size: 1rem;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
 .spellbook-update {
   background: #e3e6cc;
   font-size: 1rem;
+  line-height: 35px;
   text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;

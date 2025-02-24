@@ -10,7 +10,6 @@
   font-style: normal;
 }
 
-
 body {
   background: #aeb19d;
   font-size: 2rem;
@@ -34,19 +33,33 @@ body {
 header {
   font-family: "Macondo Swash Caps";
   border-radius: 5%;
-  background: hsl(116, 13%, 22%);
+  background: hsl(117, 21%, 35%);
   color: #e3e6cc;
   text-shadow: 5px 5px 2px black;
   text-decoration: overline;
-  height: 8rem;
+  height: 7rem;
   text-align: center;
-  align-content: center;
+  align-content: end;
   font-size: 5rem;
   margin: 10px 0 20px 0;
 
   @media (max-width: 540px) {
-    font-size: 4rem;
+    height: 6rem;
+    font-size: 3.8rem;
     margin-bottom: 40px;
+  }
+  @media (max-width: 375px) {
+    font-size: 3.2rem;
+    align-content: center;
+  }
+  @media (max-width: 340px) {
+    font-size: 3rem;
+    align-content: center;
+  }
+
+  @media (max-width: 310px) {
+    font-size: 2.5rem;
+    align-content: center;
   }
 }
 
@@ -75,10 +88,15 @@ header {
 }
 
 .menuWrapper {
-  background: #e3e6cc;
+  background: hsla(61, 24%, 53%, 0.781);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  border-radius: 10%;
+  border-style: double;
+  border-width: 4px;
+  border-top-left-radius: 15%;
+  border-bottom-right-radius: 10%;
   gap: 0.3rem;
   row-gap: 1px;
   margin: 0, 3rem, 1.5rem, 3rem;
@@ -89,58 +107,34 @@ header {
   flex: 3 3 30%;
   height: 40px;
   margin-top: 1rem;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   text-align: center;
   background: transparent;
-  color: hsl(120, 41%, 31%);
-  font-size: 2.2rem;
+  text-shadow: 2px 2px 2px black;
+  color: #e3e6cc;
+  font-size: 2rem;
   padding: 8px 0 8px 0;
-  font-weight: 1000;
   cursor: pointer;
   border: none;
   outline: none;
   & {
     @media (width <= 540px) {
       height: 2.5rem;
-      font-size: 2.8rem;
+      font-size: 1.5rem;
     }
   }
 }
 
 .menuBtn:active {
-  color: #e3edfc;
-  outline: none;
-  border: none;
-  text-shadow: 1px 1px 1px hsla(62, 21%, 35%, 0.781);
+  outline: black;
+  color: hsl(108, 40%, 15%);
+  text-shadow: 1px 1px 5px hsl(10, 44%, 16%);
 }
 
 .menuBtn:hover,
 .menuBtn:focus-visible {
-  color: hsla(56, 42%, 60%, 0.842);
-}
-
-.questExplanation {
-  background: transparent;
-  color: hsla(62, 21%, 35%, 0.781);
-  border: none;
-  font-size: 3rem;
-  margin-left: 12px;
-}
-
-.questExplanation:active {
-  color: hsl(108, 40%, 15%);
-  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  text-shadow: none;
-  outline: none;
-}
-
-.questExplanation:hover,
-.menuBtn:focus-visible {
-  color: hsla(56, 42%, 60%, 0.842);
-  cursor: pointer;
+  color: #fdffeb;
 }
 
 label {

@@ -12,21 +12,24 @@
 
   & {
     @media (width <= 540px) {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
     }
   }
 }
 .profile-maps-info {
   background: #e3e6cc;
+  color:hsl(117, 21%, 35%);
   margin-top: 40px;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  line-height: 35px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   & {
     @media (width <= 540px) {
-      margin-top: 50px;
-      font-size: 1rem;
+      margin-top: 10px;
+      font-size: .85rem;
+      line-height: 30px;
     }
   }
 }

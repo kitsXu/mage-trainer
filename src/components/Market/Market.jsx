@@ -55,7 +55,6 @@ export default function Market(props) {
 
       //--logs results... handle not having enough gold
       console.log("scrolls saved to localStorage:", scrollInv);
-
     } else {
       if (props.user.gold === 0) {
         console.log("Not enough gold!");
@@ -75,10 +74,8 @@ export default function Market(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
-
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
       <div className="totalGold">Gold: {props.user.gold}</div>
-
       <div className="questHeaderWrap">
         <h1 className="userHeader">The Inked Eldergrove</h1>
         <button className="questExplanation" onClick={showHide}>
@@ -87,10 +84,10 @@ export default function Market(props) {
       </div>
       {visibility && (
         <p className="scroll-info">
-          Welcome to The Inked Eldergrove! In the future there is going to be
-          more instruction here for buying, selling, and creating your own spell
-          scrolls... we'll even have a Shop keeper for you to meet! Come back
-          once renvations are complete!
+          Welcome to The Inked Eldergrove! We're in the business of selling
+          magical scrolls that guide you through your chosen discipline. We give
+          a HUGE discount to first time buyers, so make sure to choose your first
+          scroll wisely!
         </p>
       )}
       {scrolls.map((scroll) => (
@@ -122,10 +119,7 @@ export default function Market(props) {
           </label>
         </div>
       ))}
-      
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
-
-
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
       <div className="logo">
         <a className="logo-tag-market" href="https://ko-fi.com/kitsxu">
           -kitsXu-

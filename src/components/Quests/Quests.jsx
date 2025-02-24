@@ -108,9 +108,7 @@ export default function Quests(props) {
 
   return (
     <div className="bodyWrapper">
-      <div className="headDivider">
-        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
-      </div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
       <div className="questHeaderWrap">
         <h1 className="dailyHeader">{props.user.name}'s Quests</h1>
         {/* Show/hide the Quest Explanation */}
@@ -163,7 +161,7 @@ export default function Quests(props) {
         })}
       </ul>
       {/* TURN IN QUEST */}
-      <button onClick={turnInQuests} className="foot" id="clearBtn">
+      <button onClick={turnInQuests} className="foot" id="submitBtn">
         Submit Quests!
       </button>
       {/* DELETE QUEST */}

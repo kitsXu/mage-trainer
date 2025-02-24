@@ -6,12 +6,12 @@ import "./Archives.css";
 export default function UserProfile(props) {
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
-      <div className="user-Header">Name: {props.user.name}</div>
-      <div className="user-Header">Rank: Novice Mage</div>
-      <div className="headDivider">
-        §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
-      </div>{" "}
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
+      <div className="user-Header">
+        <div className="name-rank">Name: {props.user.name}</div>
+        <div className="name-rank"> Rank: Novice Mage</div>
+      </div>
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
       <div className="profileInfo">
         <div className="profile">Level: ... {props.user.level}</div>
         <div className="profile">Experience: ... {props.user.experience}xp</div>
