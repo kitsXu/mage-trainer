@@ -25,25 +25,20 @@ export default function SetUsername(props) {
       <div className="landingBodyWrap">
         <div className="welcome">Welcome! </div>
         <div className="intro">
-          ...to the Eldergrove Tower of Advanced Sorcery.
+          You stand at the threshold of the Eldergrove- a nature-based school of
+          mystics and magic.
         </div>
         <div className="intro">
-          The Eldergrove Tower is a living entity that is a part of the grove
-          that surrounds it. Here, we do not merely study magic; we combine it
-          with nature and become a part of it.
+          It is my assumption, by seeing you here, that you wish to study at our
+          school?
         </div>
         <div className="intro">
-          If you join the ranks of the Eldergrove, you will be tested. You will
-          be required to be consistnt and disciplined, and the Eldergrove will
-          watch. Secrets few dare to dream of await, if you are able to prove
-          yourself worthy.
-        </div>
-        <div className="intro">
-          If you are ready to take on the challenge, step forward and speak your
-          name to begin!
+          Few are worthy of the secrets that live inside the grove, but I am not
+          one to deny opportunities.
         </div>
         <div className="inputBarInstruct">
-          Give Your Name to the Eldergrove...
+          If you are ready to take on the challenge, give the Eldergrove your
+          name!
         </div>
         <form
           className="nameInput"
