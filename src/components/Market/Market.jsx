@@ -75,7 +75,7 @@ export default function Market(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
 
       <div className="totalGold">Gold: {props.user.gold}</div>
 
@@ -123,7 +123,7 @@ export default function Market(props) {
         </div>
       ))}
       
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
 
 
       <div className="logo">

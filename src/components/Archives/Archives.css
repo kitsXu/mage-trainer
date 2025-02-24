@@ -1,18 +1,31 @@
 /*--RECORDS PAGE--*/
 
 .user-Header {
-  background: #e3e6cc;
+  background:hsl(116, 13%, 22%);
   text-align: center;
-  color: hsl(120, 41%, 31%);
+  color: hsl(120, 55%, 96%);
   font-size: 2rem;
-  margin: 1rem 0 2rem 0;  
+  margin: auto;
+  width: 80%;
+  line-height: 50px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-width: 4px;
+  border-color:hsla(61, 24%, 53%, 0.781);
+  border-style:double;
+  border-width: 10px;
   & {
     @media (width <= 540px) {
       font-size: 1.5rem;
-      margin: .5rem 0 1rem 0;
-
     }
   }
+}
+
+.name-rank {
+  background: hsla(61, 24%, 53%, 0.781);
+  box-shadow: inset 3px 3px 6px black;
+
 }
 
 .profile-divider {
@@ -61,7 +74,7 @@
   cursor: default;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   & {
     @media (width <= 540px) {
       font-size: 0.8rem;
