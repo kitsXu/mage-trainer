@@ -1,6 +1,6 @@
 .totalGold {
   background: #e3e6cc;
-  color: hsl(120, 41%, 31%);
+  color:hsl(117, 21%, 35%);
   text-align: center;
   margin-top: 30px;
   font-size: 2rem;
@@ -14,7 +14,7 @@
 .userHeader {
   background: #e3e6cc;
   text-align: center;
-  color: hsl(120, 41%, 31%);
+  color:hsl(117, 21%, 35%);
   font-size: 2.5rem;
   & {
     @media (width <= 540px) {
@@ -58,7 +58,7 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: hsl(120, 41%, 31%);
+  color:hsl(117, 21%, 35%);
   font-size: 1.8rem;
   & {
     @media (width <= 540px) {

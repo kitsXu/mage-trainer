@@ -33,7 +33,7 @@ body {
 header {
   font-family: "Macondo Swash Caps";
   border-radius: 5%;
-  background: hsl(116, 13%, 22%);
+  background: hsl(117, 21%, 35%);
   color: #e3e6cc;
   text-shadow: 5px 5px 2px black;
   text-decoration: overline;
@@ -47,6 +47,10 @@ header {
     height: 6rem;
     font-size: 3.8rem;
     margin-bottom: 40px;
+  }
+  @media (max-width: 375px) {
+    font-size: 2.5rem;
+    align-content: center;
   }
 }
 

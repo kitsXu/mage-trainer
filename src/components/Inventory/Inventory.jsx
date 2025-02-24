@@ -9,7 +9,7 @@ export default function Inventory(props) {
 
   return (
     <div className="profile">
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
       <div className="inventoryButtons">
         <button
           className="menuBtn-inventory"
@@ -21,7 +21,7 @@ export default function Inventory(props) {
           Spells
         </button>
       </div>
-      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
+      <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
       <div>
         {view === "itemInventory" && <ItemInventory user={props.user} />}
         {view === "spells" && <BroodRecord user={props.user} />}
