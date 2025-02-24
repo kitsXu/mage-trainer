@@ -76,10 +76,15 @@ header {
 }
 
 .menuWrapper {
-  background: #e3e6cc;
+  background: hsla(61, 24%, 53%, 0.781);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  border-radius: 10%;
+  border-style:double;
+  border-width: 4px;
+  border-top-left-radius: 15%;
+  border-bottom-right-radius: 10%;
   gap: 0.3rem;
   row-gap: 1px;
   margin: 0, 3rem, 1.5rem, 3rem;
@@ -90,14 +95,14 @@ header {
   flex: 3 3 30%;
   height: 40px;
   margin-top: 1rem;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   text-align: center;
   background: transparent;
-  color: hsl(120, 41%, 31%);
+  text-shadow: 2px 2px 2px black;
+  color:  #e3e6cc;
   font-size: 2rem;
   padding: 8px 0 8px 0;
-  font-weight: 1000;
   cursor: pointer;
   border: none;
   outline: none;
@@ -113,35 +118,11 @@ header {
   color: #e3edfc;
   outline: none;
   border: none;
-  text-shadow: 1px 1px 1px hsla(62, 21%, 35%, 0.781);
 }
 
 .menuBtn:hover,
 .menuBtn:focus-visible {
-  color: hsla(56, 42%, 60%, 0.842);
-}
-
-.questExplanation {
-  background: transparent;
-  color: hsla(62, 21%, 35%, 0.781);
-  border: none;
-  font-size: 3rem;
-  margin-left: 12px;
-}
-
-.questExplanation:active {
-  color: hsl(108, 40%, 15%);
-  -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
-  text-shadow: none;
-  outline: none;
-}
-
-.questExplanation:hover,
-.menuBtn:focus-visible {
-  color: hsla(56, 42%, 60%, 0.842);
-  cursor: pointer;
+  color: #f5f8df;
 }
 
 label {

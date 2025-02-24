@@ -163,7 +163,7 @@ export default function Quests(props) {
         })}
       </ul>
       {/* TURN IN QUEST */}
-      <button onClick={turnInQuests} className="foot" id="clearBtn">
+      <button onClick={turnInQuests} className="foot" id="submitBtn">
         Submit Quests!
       </button>
       {/* DELETE QUEST */}

@@ -23,6 +23,22 @@
   }
 }
 
+/*explanation for shop when you click on '?'*/
+.scroll-info {
+  background: #e3e6cc;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 30px;
+  & {
+    @media (width <= 540px) {
+      font-size: 0.8rem;
+      line-height: 20px;
+    }
+  }
+}
+
 /*wrappers for item divs, Items and their labels*/
 .scrollDiv {
   background: #e3e6cc;
@@ -77,7 +93,6 @@ img.scroll {
   }
 }
 
-
 /*Purchase Btn, Qty Input, and div wrapper around it*/
 .purchaseWrap {
   background: #e3e6cc;
@@ -122,7 +137,6 @@ input.scrollQtys {
   box-shadow: inset 0px 0px 5px hsla(57, 21%, 21%, 0.842);
   outline: none;
 }
-
 
 .market-divider {
   background: #e3e6cc;

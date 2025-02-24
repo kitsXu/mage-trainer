@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 10px;
+  padding-top: 25px;
   padding-bottom: 40px;
   padding-left: 60px;
   row-gap: 30px;
@@ -48,7 +48,6 @@
   font-size: 2rem;
   & {
     @media (width <= 540px) {
-      margin-top: 10px;
       font-size: 1.2rem;
     }
   }

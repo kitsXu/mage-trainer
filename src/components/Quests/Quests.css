@@ -97,7 +97,7 @@
 .btn.dailyBtn {
   background: hsla(61, 24%, 53%, 0.781);
   border: 2px ridge hsla(62, 20%, 35%, 0.781);
-  color: #e3edfc;
+  color: #e3e6cc;
   text-shadow: 2px 2px 5px black;
   padding: 0.25em 0.5em;
   width: 100%;
@@ -114,7 +114,6 @@
 }
 
 .btn.dailyBtn:active {
-  color: hsl(246, 41%, 31%);
   outline: none;
   -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
   -moz-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
@@ -247,11 +246,11 @@ form.new-quest-form {
 }
 
 
-
-#clearBtn {
+/*Turn in Quests Btn*/
+#submitBtn {
   background: hsla(61, 24%, 53%, 0.781);
   border: 2px ridge hsla(60, 21%, 38%, 0.781);
-  color: #e3edfc;
+  color: #e3e6cc;
   text-shadow: 2px 2px 5px black;
   width: 100%;
   padding: 0.25em 0.5em;
@@ -266,7 +265,7 @@ form.new-quest-form {
   }
 }
 
-#clearBtn:active {
+#submitBtn:active {
   color: hsl(246, 41%, 31%);
   outline: none;
   -webkit-box-shadow: inset 0px 0px 5px hsl(244, 45%, 22%);
@@ -276,14 +275,14 @@ form.new-quest-form {
   outline: none;
 }
 
-#clearBtn:hover,
-#clearBtn:focus-visible {
+#submitBtn:hover,
+#submitBtn:focus-visible {
   color: #e3edfc;
   background:hsla(56, 33%, 60%, 0.842);
 }
 
 .btn.btn-danger {
-  background: hsla(18, 31%, 53%, 0.781);
+  background: hsla(12, 31%, 53%, 0.781);
   border: 2px ridge hsla(5, 21%, 38%, 0.781);
   color: #f8e9e2;
   text-shadow: 2px 2px 5px rgb(22, 1, 1);
@@ -313,7 +312,7 @@ form.new-quest-form {
 
 .btn.btn-danger:hover,
 .btn.btn-danger:focus-visible {
-  background:  hsla(14, 86%, 60%, 0.466);
+  background:  hsla(4, 56%, 46%, 0.575);
   color: #e3edfc;
 }
 
