@@ -49,6 +49,15 @@ header {
     margin-bottom: 40px;
   }
   @media (max-width: 375px) {
+    font-size: 3.2rem;
+    align-content: center;
+  }
+  @media (max-width: 340px) {
+    font-size: 3rem;
+    align-content: center;
+  }
+
+  @media (max-width: 310px) {
     font-size: 2.5rem;
     align-content: center;
   }

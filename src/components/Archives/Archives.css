@@ -41,6 +41,7 @@
 
 .profileInfo {
   background: #e3e6cc;
+  color: hsl(117, 21%, 35%);
   display: flex;
   flex-direction: column;
   justify-content: center;
