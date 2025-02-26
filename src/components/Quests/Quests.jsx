@@ -14,7 +14,7 @@ export default function Quests(props) {
   function handleDailySubmit(e) {
     e.preventDefault();
     if (newQuest.trim() === "") {
-      setFormError("Please type Quest inside input bar to add to list!");
+      setFormError("Please type Quest inside the input bar!");
     } else {
       setFormError("");
       setQuests((currentQuests) => {
