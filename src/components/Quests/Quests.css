@@ -274,13 +274,13 @@ form.new-quest-form {
 
 #submitBtn:hover,
 #submitBtn:focus-visible {
-  color: #fce7e3;
+  color: #fafce3;
   background:hsla(56, 33%, 60%, 0.842);
 }
 
 .btn.btn-danger {
   background: hsla(61, 24%, 53%, 0.781);
-  border: 2px  hsla(27, 21%, 38%, 0.781);
+  border: 2px hsla(60, 21%, 38%, 0.781);
   color: #f8e9e2;
   text-shadow: 2px 2px 5px rgb(22, 15, 1);
   width: 100%;
