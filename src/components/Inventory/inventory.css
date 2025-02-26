@@ -41,7 +41,7 @@
 
 .menuBtn-inventory:hover,
 .menuBtn-inventory:focus-visible {
-  color: #e3edfc;
+  color: #fafce3;
   background:hsla(56, 33%, 60%, 0.842);
 }
 

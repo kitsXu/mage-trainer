@@ -274,7 +274,7 @@ form.new-quest-form {
 
 #submitBtn:hover,
 #submitBtn:focus-visible {
-  color: #fce7e3;
+  color: #fafce3;
   background:hsla(56, 33%, 60%, 0.842);
 }
 
