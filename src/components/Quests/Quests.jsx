@@ -78,7 +78,7 @@ export default function Quests(props) {
     }
 
     const questsTenMinutesLater =
-      new Date(quest.timestamp).getTime() + 10 * 60 * 1000;
+      new Date(quest.timestamp).getTime() + 1;
     const questsCurrentTime = Date.now();
 
     if (questsCurrentTime >= questsTenMinutesLater) {

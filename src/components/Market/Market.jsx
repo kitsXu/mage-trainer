@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { scrolls } from "./Data/scrollsData.js";
 import "./market.css";
 
@@ -12,6 +12,19 @@ export default function Market(props) {
     }, {})
   );
   const [visibility, setVisibility] = useState(false);
+  const [marketMoney, setMarketMoney] = useState(props.user.gold);
+
+console.log(marketMoney);
+
+    //--Set current state of market money or gold to local storage.
+    useEffect(() => {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...props.user, gold: marketMoney })
+      );
+  
+      props.setGold(marketMoney);
+    }, [marketMoney]);
 
   //-- handle changing the quantity input.
   const handleChange = (e, scrollId) => {
@@ -26,11 +39,14 @@ export default function Market(props) {
     e.preventDefault();
     const amount = scrollQtys[scrollId];
 
+    var currentMoney = marketMoney;
+
     //--handles the gold in local storage
-    if (props.user.gold >= scrollCost * amount && amount > 0) {
-      props.user.gold -= scrollCost * amount;
+    if (currentMoney >= scrollCost * amount && amount > 0) {
+      currentMoney -= scrollCost * amount;
       alert("Purchase complete!  Go check your inventory!");
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
+      setMarketMoney(currentMoney);
 
       //-- get stored inventory array from local storage
       //-- create new object from scrollData
