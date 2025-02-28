@@ -77,14 +77,14 @@ export default function Quests(props) {
       return;
     }
 
-    const tenMinutes = 1;
+    const tenMinutes = 10 * 60 * 1000;
     // const tenMinutes = 1;
     const questsTenMinutesLater = new Date(quest.timestamp).getTime() + tenMinutes;
     const currentTime = Date.now();
 
     console.log("QUESTS-quest turn in", {questsTenMinutesLater})
 
-    const isReadyToSubmit = quests.some((d, index) => currentTime >= questsTenMinutesLater[index]);
+    const isReadyToSubmit = quests.some((index) => currentTime >= questsTenMinutesLater[index]);
   
 
     if (isReadyToSubmit) {
