@@ -81,7 +81,7 @@ export default function App() {
     setUpdatedExp(user.dailyQuestsCompleted);
     chkLevelUp(user);
     console.log("Current Quest var set to object");
-  }, [currentDailyQuests]);
+  }, [currentDailyQuests, newDailyQuestsCompletedCount]);
 
   //-- Spread over user object and conditionally update values.
   useEffect(() => {
@@ -101,25 +101,13 @@ export default function App() {
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
-        currentDailyQuests,
-      })
-    );
-  }, [user, updatedExp]);
-
-  // updates gold
-  useEffect(() => {
-    if (!user) return;
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        ...user,
         ...(user.gold !== gold
           ? { gold: gold } :{}
         ),
+        currentDailyQuests,
       })
     );
-  }, [user, gold]);
+  }, [user, updatedExp, gold]);
 
   if (isLoading) return <LoadingIndicator />;
 

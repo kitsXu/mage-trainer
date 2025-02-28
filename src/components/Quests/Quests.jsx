@@ -77,12 +77,19 @@ export default function Quests(props) {
       return;
     }
 
-    const questsTenMinutesLater =
-      new Date(quest.timestamp).getTime() + 1;
-    const questsCurrentTime = Date.now();
+    const tenMinutes = 1;
+    // const tenMinutes = 1;
+    const questsTenMinutesLater = new Date(quest.timestamp).getTime() + tenMinutes;
+    const currentTime = Date.now();
 
-    if (questsCurrentTime >= questsTenMinutesLater) {
-      const completedDailies = quests.filter((d) => d.completed);
+    console.log("QUESTS-quest turn in", {questsTenMinutesLater})
+
+    const isReadyToSubmit = quests.some((d, index) => currentTime >= questsTenMinutesLater[index]);
+  
+
+    if (isReadyToSubmit) {
+      const timeLimitUp = currentTime >= questsTenMinutesLater;
+      const completedDailies = quests.filter((d) => d.completed && timeLimitUp );
 
       props.setNewDailyQuestsCompletedCount(
         (props.user.dailyQuestsCompleted += completedDailies.length)
@@ -94,7 +101,12 @@ export default function Quests(props) {
           : { ...d, completed: false }
       );
 
+      alert("Quests completed: ..." + completedDailies.length);
+
+
       setQuests(resetQuests);
+
+          
     } else {
       alert("Not enough time has passed!");
     }

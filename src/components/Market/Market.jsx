@@ -59,7 +59,6 @@ console.log(marketMoney);
       const scrollKey = `${scrollId}-${uniqueId}`;
 
       const newScroll = {
-        //--creates the items in local storag
         id: scrollKey,
         name: scrollId,
         amount: amount,
@@ -69,8 +68,6 @@ console.log(marketMoney);
 
       localStorage.setItem("scrollInv", JSON.stringify(scrollInv));
 
-      //--logs results... handle not having enough gold
-      console.log("scrolls saved to localStorage:", scrollInv);
     } else {
       if (props.user.gold === 0) {
         console.log("Not enough gold!");

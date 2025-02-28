@@ -32,6 +32,8 @@
   color: hsl(117, 21%, 35%);
   text-align: center;
   line-height: 30px;
+  margin-bottom: 55px;
+
   & {
     @media (width <= 540px) {
       font-size: 0.8rem;
