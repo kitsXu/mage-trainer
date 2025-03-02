@@ -14,17 +14,17 @@ export default function Market(props) {
   const [visibility, setVisibility] = useState(false);
   const [marketMoney, setMarketMoney] = useState(props.user.gold);
 
-console.log(marketMoney);
+  console.log(marketMoney);
 
-    //--Set current state of market money or gold to local storage.
-    useEffect(() => {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ ...props.user, gold: marketMoney })
-      );
-  
-      props.setGold(marketMoney);
-    }, [marketMoney]);
+  //--Set current state of market money or gold to local storage.
+  useEffect(() => {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...props.user, gold: marketMoney })
+    );
+
+    props.setGold(marketMoney);
+  }, [marketMoney]);
 
   //-- handle changing the quantity input.
   const handleChange = (e, scrollId) => {
@@ -38,50 +38,46 @@ console.log(marketMoney);
   const purchaseScroll = (e, scrollId, scrollCost) => {
     e.preventDefault();
     const amount = scrollQtys[scrollId];
-
     var currentMoney = marketMoney;
 
     if (amount === 0) {
-      alert("Please Select Quantity")
+      alert("Please Select Quantity");
     } else {
+      //--handles the gold in local storage.
+      if (currentMoney >= scrollCost * amount && amount > 0) {
+        currentMoney -= scrollCost * amount;
+        alert("Purchase complete!  Go check your inventory!");
+        console.log(
+          `PURCHASE COMPLETE for ${amount} ${scrollId} --`,
+          props.user
+        );
+        setMarketMoney(currentMoney);
 
-    //--handles the gold in local storage.
-    if (currentMoney >= scrollCost * amount && amount > 0) {
-      currentMoney -= scrollCost * amount;
-      alert("Purchase complete!  Go check your inventory!");
-      console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
-      setMarketMoney(currentMoney);
+        //-- get stored inventory array from local storage.
+        //-- create new object from scrollData.
+        //-- add new object to array.
+        //-- again set to local storage.
 
-      //-- get stored inventory array from local storage.
-      //-- create new object from scrollData.
-      //-- add new object to array.
-      //-- again set to local storage.
+        let scrollInv = JSON.parse(localStorage.getItem("scrollInv")) || [];
 
-      let scrollInv = JSON.parse(localStorage.getItem("scrollInv")) || [];
+        const uniqueId = crypto.randomUUID();
+        const scrollKey = `${scrollId}-${uniqueId}`;
 
-      const uniqueId = crypto.randomUUID();
-      const scrollKey = `${scrollId}-${uniqueId}`;
+        const newScroll = {
+          id: scrollKey,
+          name: scrollId,
+          amount: amount,
+          cost: scrollCost,
+        };
+        scrollInv.push(newScroll);
 
-      const newScroll = {
-        id: scrollKey,
-        name: scrollId,
-        amount: amount,
-        cost: scrollCost,
-      };
-      scrollInv.push(newScroll);
-
-      localStorage.setItem("scrollInv", JSON.stringify(scrollInv));
-
-    } else {
-      if (props.user.gold === 0) {
-        console.log("Not enough gold!");
-        alert("Not Enough Gold!");
+        localStorage.setItem("scrollInv", JSON.stringify(scrollInv));
       } else {
         console.log("SCROLL QTY");
-        alert("Please select Quantity");
+        alert("Not Enough Gold!");
       }
     }
-  }};
+  };
 
   //--change visibility of an element
   function showHide() {
@@ -103,8 +99,8 @@ console.log(marketMoney);
         <p className="scroll-info">
           Welcome to The Inked Eldergrove! We're in the business of selling
           magical scrolls that guide you through your chosen discipline. We give
-          a HUGE discount to first time buyers, so make sure to choose your first
-          scroll wisely!
+          a HUGE discount to first time buyers, so make sure to choose your
+          first scroll wisely!
         </p>
       )}
       {scrolls.map((scroll) => (
