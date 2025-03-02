@@ -34,24 +34,28 @@ console.log(marketMoney);
     }));
   };
 
-  //--handle the purchase
+  //--handle the purchase.
   const purchaseScroll = (e, scrollId, scrollCost) => {
     e.preventDefault();
     const amount = scrollQtys[scrollId];
 
     var currentMoney = marketMoney;
 
-    //--handles the gold in local storage
+    if (amount === 0) {
+      alert("Please Select Quantity")
+    } else {
+
+    //--handles the gold in local storage.
     if (currentMoney >= scrollCost * amount && amount > 0) {
       currentMoney -= scrollCost * amount;
       alert("Purchase complete!  Go check your inventory!");
       console.log(`PURCHASE COMPLETE for ${amount} ${scrollId} --`, props.user);
       setMarketMoney(currentMoney);
 
-      //-- get stored inventory array from local storage
-      //-- create new object from scrollData
-      //-- add new object to array
-      //-- again set to local storage
+      //-- get stored inventory array from local storage.
+      //-- create new object from scrollData.
+      //-- add new object to array.
+      //-- again set to local storage.
 
       let scrollInv = JSON.parse(localStorage.getItem("scrollInv")) || [];
 
@@ -77,7 +81,7 @@ console.log(marketMoney);
         alert("Please select Quantity");
       }
     }
-  };
+  }};
 
   //--change visibility of an element
   function showHide() {

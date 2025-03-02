@@ -51,64 +51,56 @@ export default function Quests(props) {
 
   //--Deletes toggled quests and increments abandoned quest counter.
   function deleteQuests() {
-    const deleteQuests = quests.filter((d) => d.completed);
+    const quest = quests.find((d) => d.id === d.id);
 
-    // if (!deleteQuests.completed) {
-    //   alert("No Quests Selected!")
-    // }
+    if (!quest || !quest.completed === true) {
+      alert("No quests selected!");
+    } else {
+      const deleteQuests = quests.filter((d) => d.completed);
+      props.setNewAbandonedDailyQuestCount(
+        (props.user.abandonedDailyQuests += deleteQuests.length)
+      );
 
-    props.setNewAbandonedDailyQuestCount(
-      (props.user.abandonedDailyQuests += deleteQuests.length)
-    );
-
-    setQuests((currentQuests) => {
-      return currentQuests.filter((d) => d.completed === false);
-    });
+      setQuests((currentQuests) => {
+        return currentQuests.filter((d) => d.completed === false);
+      });
+    }
   }
 
   //-- Clears all checkmarks from quest quests,
   //-- Counts completed quests and updates count in local storage,
   //-- Stops user from turning in before 10 minute time limit is up.
-  function turnInQuests(id, completed) {
+  function turnInQuests() {
     const quest = quests.find((d) => d.id === d.id);
 
     if (!quest || !quest.timestamp) {
-      alert("Quest not found!");
-      return;
-    }
-
-    const tenMinutes = 10 * 60 * 1000;
-    // const tenMinutes = 1;
-    const questsTenMinutesLater = new Date(quest.timestamp).getTime() + tenMinutes;
-    const currentTime = Date.now();
-
-    console.log("QUESTS-quest turn in", {questsTenMinutesLater})
-
-    const isReadyToSubmit = quests.some((index) => currentTime >= questsTenMinutesLater[index]);
-  
-
-    if (isReadyToSubmit) {
-      const timeLimitUp = currentTime >= questsTenMinutesLater;
-      const completedDailies = quests.filter((d) => d.completed && timeLimitUp );
-
-      props.setNewDailyQuestsCompletedCount(
-        (props.user.dailyQuestsCompleted += completedDailies.length)
-      );
-
-      const resetQuests = quests.map((d) =>
-        d.id === id
-          ? { ...d, completed: completed }
-          : { ...d, completed: false }
-      );
-
-      alert("Quests completed: ..." + completedDailies.length);
-
-
-      setQuests(resetQuests);
-
-          
+      alert("No quests in log!");
     } else {
-      alert("Not enough time has passed!");
+      if (!quest || !quest.completed === true) {
+        alert("No quests selected!");
+      } else {
+        const tenMinutes = 10 * 60 * 1000;
+        const questTurnInTime =
+          new Date(quest.timestamp).getTime() + tenMinutes;
+        const currentTime = Date.now();
+        const isReadyToSubmit = currentTime >= questTurnInTime;
+        //TODO-- fix... if one quest is "ready to submit" all will go through.. 
+        if (quest.completed === isReadyToSubmit) {
+          const completedDailies = quests.filter((d) => d.completed);
+
+          props.setNewDailyQuestsCompletedCount(
+            (props.user.dailyQuestsCompleted += completedDailies.length)
+          );
+
+          alert("Quests completed: ..." + completedDailies.length);
+
+          setQuests((currentQuests) => {
+            return currentQuests.filter((d) => d.completed === false);
+          });
+        } else {
+          alert("Not enough time has passed!");
+        }
+      }
     }
   }
 
