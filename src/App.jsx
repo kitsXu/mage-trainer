@@ -27,8 +27,8 @@ export default function App() {
   const [newAbandonedDailyQuestCount, setNewAbandonedDailyQuestCount] =
     useState();
   const [currentDailyQuests, setCurrentDailyQuests] = useState([]);
-
   const [updatedExp, setUpdatedExp] = useState();
+  const [gold, setGold] = useState();
 
   //-- Check if user exists in local storage, set if not.  
   //-- Set view state- 'archives' to local storage.
@@ -67,6 +67,7 @@ export default function App() {
       setNewAbandonedDailyQuestCount(user.abandonedDailyQuests);
       setCurrentDailyQuests(user.currentDailyQuests);
       setUpdatedExp(user.experience);
+      setGold(user.gold);
       setUser(user);
 
       setIsLoading(false);
@@ -80,7 +81,7 @@ export default function App() {
     setUpdatedExp(user.dailyQuestsCompleted);
     chkLevelUp(user);
     console.log("Current Quest var set to object");
-  }, [currentDailyQuests]);
+  }, [currentDailyQuests, newDailyQuestsCompletedCount]);
 
   //-- Spread over user object and conditionally update values.
   useEffect(() => {
@@ -100,10 +101,13 @@ export default function App() {
           ? { abandonedDailyQuests: newAbandonedDailyQuestCount }
           : {}),
         ...(user.experience !== updatedExp ? { experience: updatedExp } : {}),
+        ...(user.gold !== gold
+          ? { gold: gold } :{}
+        ),
         currentDailyQuests,
       })
     );
-  }, [user, updatedExp]);
+  }, [user, updatedExp, gold]);
 
   if (isLoading) return <LoadingIndicator />;
 
@@ -145,7 +149,9 @@ export default function App() {
             )}
             {view === "archives" && !!user && <Archives user={user} />}
             {view === "Spells" && !!user && <Spells user={user} />}
-            {view === "market" && !!user && <Market user={user} />}
+            {view === "market" && !!user && <Market user={user}
+            gold={gold}
+            setGold={setGold} />}
             {view === "inventory" && !!user && <Inventory user={user} />}
             {view === "Maps" && !!user && <Maps user={user} />}
             {view === "quests" && !!user && (
