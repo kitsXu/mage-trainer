@@ -1,0 +1,10 @@
+.entry {
+    background: #e3e6cc;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 2rem;
+    color: hsl(120, 41%, 31%);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
