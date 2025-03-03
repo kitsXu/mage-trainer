@@ -49,6 +49,7 @@
   flex-wrap: wrap;
   gap: 15px;
   align-items: center;
+  padding-top: 20px;
   padding-bottom: 30px;
   & {
     @media (width <= 540px) {
@@ -56,6 +57,7 @@
     }
   }
 }
+
 
 label {
   display: flex;
@@ -101,23 +103,8 @@ img.scroll {
   background: #e3e6cc;
 }
 
-input.scrollQtys {
-  background: hsla(61, 35%, 39%, 0.781);
-  font-size: 2rem;
-  padding-left: 8px;
-  height: 40px;
-  width: 60px;
-  & {
-    @media (width <= 540px) {
-      height: 30px;
-      width: 40px;
-      font-size: 1rem;
-    }
-  }
-}
-
 .scrollPurchase {
-  background: #e3e6cc;
+  background: hsla(61, 24%, 53%, 0.781);
   width: 150px;
   color: hsl(108, 40%, 15%);
   text-align: center;
