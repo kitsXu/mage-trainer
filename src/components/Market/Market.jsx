@@ -72,6 +72,8 @@ export default function Market(props) {
         scrollInv.push(newScroll);
 
         localStorage.setItem("scrollInv", JSON.stringify(scrollInv));
+        console.log(scrollCost);
+
       } else {
         console.log("SCROLL QTY");
         alert("Not Enough Gold!");
