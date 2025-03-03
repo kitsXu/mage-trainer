@@ -3,6 +3,8 @@ import "./Quests.css";
 
 //-- TO DO --
 // -- []  fix... if one quest is "ready to submit" all will go through..
+// -- []  fix... Abandon Quest "quest not selected" alert
+
 
 
 export default function Quests(props) {
@@ -54,9 +56,9 @@ export default function Quests(props) {
   function deleteQuests() {
     const quest = quests.find((d) => d.id === d.id);
 
-    if (!quest || !quest.completed === true) {
-      alert("No quests selected!");
-    } else {
+    // if (!quest.completed === true) {
+    //   alert("No quests selected!");
+    // } else {
       const deleteQuests = quests.filter((d) => d.completed);
       props.setNewAbandonedDailyQuestCount(
         (props.user.abandonedDailyQuests += deleteQuests.length)
@@ -65,7 +67,7 @@ export default function Quests(props) {
       setQuests((currentQuests) => {
         return currentQuests.filter((d) => d.completed === false);
       });
-    }
+    
   }
 
   //-- Clears all checkmarks from quests,
