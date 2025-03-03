@@ -7,17 +7,16 @@ export default function About(props) {
   return (
     <div className="profile">
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
-      <div className="entry">Hey Friends!</div>
       <div className="entry">
-        TLDR; if you see a '?', press it for an explanation! Have fun getting
-        started :D
+        <i className="entry">"Aint nobody got time for that..."</i>
+        <br /> Go to Quests to get started! Press the '?' for an explanation!
       </div>
       <div className="headDivider">§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§</div>{" "}
       <div className="entry">ABOUT US & UPDATES</div>
       <div className="entry">-03.02.25-</div>
       <div className="entry">
-        This lil app started as a one page To-Do list app (which it mainly still is), but
-        is slowly developing into something a little more.
+        This lil app started as a one page To-Do list app (which it mainly still
+        is), but is slowly developing into something a little more.
       </div>
       <div className="entry">
         As of right now, functionally the only thing you can really do here is
