@@ -12,12 +12,13 @@ import Market from "./components/Market/Market.jsx";
 import Inventory from "./components/Inventory/Inventory.jsx";
 import LogoPage from "./components/LandingPage/LogoPage.jsx";
 import ItemInventory from "./components/Inventory/ItemInventory.jsx";
+import About from "./components/About/About.jsx";
 
 //-- TODO:
 //-- [ ]
 
 export default function App() {
-  const [view, setView] = useState(localStorage.getItem("view") ?? "archives");
+  const [view, setView] = useState(localStorage.getItem("view") ?? "about");
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -35,7 +36,7 @@ export default function App() {
   useEffect(() => {
     setIsLoading(true);
 
-    localStorage.setItem("view", view ?? "archives");
+    localStorage.setItem("view", view ?? "about");
 
     const userExists = localStorage.getItem("user");
 
@@ -81,7 +82,7 @@ export default function App() {
     setUpdatedExp(user.dailyQuestsCompleted);
     chkLevelUp(user);
     console.log("Current Quest var set to object");
-  }, [currentDailyQuests, newDailyQuestsCompletedCount]);
+  }, [currentDailyQuests]);
 
   //-- Spread over user object and conditionally update values.
   useEffect(() => {
@@ -138,6 +139,9 @@ export default function App() {
             <button className="menuBtn" onClick={() => setView("inventory")}>
               Inventory
             </button>
+            <button className="menuBtn" onClick={() => setView("about")}>
+              About
+            </button>
             <button className="menuBtn" onClick={() => setView("archives")}>
               Archives
             </button>
@@ -148,6 +152,7 @@ export default function App() {
               <ItemInventory user={user} />
             )}
             {view === "archives" && !!user && <Archives user={user} />}
+            {view === "about" && !!user && <About user={user} />}
             {view === "Spells" && !!user && <Spells user={user} />}
             {view === "market" && !!user && <Market user={user}
             gold={gold}
