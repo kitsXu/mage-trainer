@@ -7,4 +7,9 @@
     color: hsl(120, 41%, 31%);
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    & {
+        @media (width <= 540px) {
+          font-size: 1rem;
+        }
+      }
   }

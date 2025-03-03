@@ -23,14 +23,6 @@ export default function Market(props) {
     props.setGold(marketMoney);
   }, [marketMoney]);
 
-  // const updatedScrollCost = () => {
-  //   setNewCost((prevNewCost) => prevNewCost.map((newCost) => ({
-  //     ...newCost,
-  //     cost: scrolls.cost + 10000,
-
-  //   })) )
-  // }
-
   //--handle the purchase.
   const purchaseScroll = (e, scrollId, currentScrollCost) => {
     e.preventDefault();
@@ -108,6 +100,7 @@ export default function Market(props) {
         <div className="scrollProfile" key={scroll.id}>
           <label>
             {scroll.name}
+            <div className="scroll-explanation">{scroll.info}</div>
             <div className="scrollDiv">
               <img src={scroll.image} className="scroll" />
               <p key={scroll.id} className="cost">{newCost[0]?.cost}G Per</p>
