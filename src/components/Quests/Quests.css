@@ -235,7 +235,9 @@
 }
 
 ul.dailyList {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .quest-form-row {
