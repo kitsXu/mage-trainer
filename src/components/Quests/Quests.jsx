@@ -53,10 +53,9 @@ export default function Quests(props) {
   //--Deletes toggled quests and increments abandoned quest counter.
   function deleteQuests() {
     const quest = quests.find((d) => d.id === d.id);
-
-    // if (!quest.completed === true) {
-    //   alert("No quests selected!");
-    // } else {
+    if (!quest || !quest.completed === true) {
+      alert("No quests selected!");
+    } else {
     const deleteQuests = quests.filter((d) => d.completed);
     props.setNewAbandonedDailyQuestCount(
       (props.user.abandonedDailyQuests += deleteQuests.length)
@@ -65,7 +64,7 @@ export default function Quests(props) {
     setQuests((currentQuests) => {
       return currentQuests.filter((d) => d.completed === false);
     });
-  }
+  }}
 
   //-- Clears all checkmarks from quests,
   //-- Counts completed quests and updates count in local storage,
