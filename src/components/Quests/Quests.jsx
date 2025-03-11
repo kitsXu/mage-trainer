@@ -52,8 +52,8 @@ export default function Quests(props) {
 
   //--Deletes toggled quests and increments abandoned quest counter.
   function deleteQuests() {
-    const quest = quests.find((d) => d.id === d.id);
-    if (!quest || !quest.completed === true) {
+    const questToDelete = quests.find((d) => d.id === d.id);
+    if (!questToDelete || !questToDelete.completed === true) {
       alert("No quests selected!");
     } else {
     const deleteQuests = quests.filter((d) => d.completed);
