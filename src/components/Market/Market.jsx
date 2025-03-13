@@ -23,58 +23,60 @@ export default function Market(props) {
     props.setGold(marketMoney);
   }, [marketMoney]);
 
-  // const updatedScrollCost = () => {
-  //   setNewCost((prevNewCost) => prevNewCost.map((newCost) => ({
-  //     ...newCost,
-  //     cost: scrolls.cost + 10000,
-
-  //   })) )
-  // }
-
   //--handle the purchase.
   const purchaseScroll = (e, scrollId, currentScrollCost) => {
     e.preventDefault();
     var currentMoney = marketMoney;
+    console.log("scroll cost", currentScrollCost);
+    
 
     //--handles the gold in local storage.
     if (currentMoney >= currentScrollCost > 0) {
       currentMoney -= currentScrollCost;
       alert("Purchase complete!  Go check your inventory!");
-      console.log(
-        `PURCHASE COMPLETE for ${currentScrollCost} ${scrollId} --`,
-        props.user
-      );
       setMarketMoney(currentMoney);
+
 
       //-- get stored inventory array from local storage.
       //-- create new object from scrollData.
-      //-- add new object to array.
-      //-- again set to local storage.
-
+      //-- add new object to scroll inven array.
+      //-- set to local storage.
       let scrollInv = JSON.parse(localStorage.getItem("scrollInv")) || [];
-
       const uniqueId = crypto.randomUUID();
       const scrollKey = `${scrollId}-${uniqueId}`;
-
       const newScroll = {
         id: scrollKey,
         name: scrollId,
         cost: currentScrollCost,
       };
       scrollInv.push(newScroll);
-
       localStorage.setItem("scrollInv", JSON.stringify(scrollInv));
 
-      const updatedCost = newCost.map((scrolls) => ({
+
+
+      setNewCost((prevCost) => {
+        const updatedCost = prevCost.map((scrolls) => ({
           ...scrolls,
           cost: scrolls.cost + 9950,
-        }))
-      setNewCost(updatedCost);
-  
+        })) 
+        localStorage.setItem("scrolls", JSON.stringify(updatedCost));
+        return(updatedCost);
+      })
 
-      localStorage.setItem("scrolls", JSON.stringify(updatedCost));
 
-      console.log("new cost", newCost);
+
+
+
+      //--update cost of the scroll
+      // const updatedCost = newCost.map((scrolls) => ({
+      //     ...scrolls,
+      //     cost: scrolls.cost + 9950,
+      //   }))  
+
+      // localStorage.setItem("scrolls", JSON.stringify(updatedCost));
+      // setNewCost(updatedCost);
+      console.log('newcost',newCost);
+
     } else {
       alert("Not Enough Gold!");
     }
@@ -108,6 +110,7 @@ export default function Market(props) {
         <div className="scrollProfile" key={scroll.id}>
           <label>
             {scroll.name}
+            <div className="scroll-explanation">{scroll.info}</div>
             <div className="scrollDiv">
               <img src={scroll.image} className="scroll" />
               <p key={scroll.id} className="cost">{newCost[0]?.cost}G Per</p>

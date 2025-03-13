@@ -5,8 +5,6 @@ import "./Quests.css";
 // -- []  fix... if one quest is "ready to submit" all will go through..
 // -- []  fix... Abandon Quest "quest not selected" alert
 
-
-
 export default function Quests(props) {
   const [newQuest, setNewQuest] = useState("");
   const [quests, setQuests] = useState(props.currentDailyQuests ?? []);
@@ -54,21 +52,19 @@ export default function Quests(props) {
 
   //--Deletes toggled quests and increments abandoned quest counter.
   function deleteQuests() {
-    const quest = quests.find((d) => d.id === d.id);
+    const questToDelete = quests.find((d) => d.id === d.id);
+    if (!questToDelete || !questToDelete.completed === true) {
+      alert("No quests selected!");
+    } else {
+    const deleteQuests = quests.filter((d) => d.completed);
+    props.setNewAbandonedDailyQuestCount(
+      (props.user.abandonedDailyQuests += deleteQuests.length)
+    );
 
-    // if (!quest.completed === true) {
-    //   alert("No quests selected!");
-    // } else {
-      const deleteQuests = quests.filter((d) => d.completed);
-      props.setNewAbandonedDailyQuestCount(
-        (props.user.abandonedDailyQuests += deleteQuests.length)
-      );
-
-      setQuests((currentQuests) => {
-        return currentQuests.filter((d) => d.completed === false);
-      });
-    
-  }
+    setQuests((currentQuests) => {
+      return currentQuests.filter((d) => d.completed === false);
+    });
+  }}
 
   //-- Clears all checkmarks from quests,
   //-- Counts completed quests and updates count in local storage,
@@ -124,12 +120,13 @@ export default function Quests(props) {
       </div>
       {visibility && (
         <p className="quest-info">
-          Think of your quests as the things that make up your everyday routine-
-          the day to day chores you need to remember to do so you can turn them
-          into healthy habits! Add your "quests" into the input, check tasks off
-          your list as you complete them, and then press 'Submit Quests' to turn
-          them in! Quests are each worth 1xp and cannot be turned in for a
-          minimum of 10 minutes
+          Quests can be anything in your daily life you need to remember to do!
+          Type a quest into the input, press 'Add Quest', check tasks off your
+          list as you complete them, and then press 'Submit Quests' to turn in,
+          or Abandon Quests to delete them without completing.
+          <br />
+          Each quest is worth 1xp and cannot be turned in for a minimum of 10
+          minutes
         </p>
       )}
       {/* Form/input for quests*/}

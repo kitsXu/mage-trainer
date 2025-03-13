@@ -28,7 +28,7 @@
 /*'?' button next to the header*/
 .questExplanation {
   background: transparent;
-  color:hsla(61, 24%, 53%, 0.781);
+  color: hsla(61, 24%, 53%, 0.781);
   border: none;
   font-size: 3rem;
   margin-left: 12px;
@@ -57,15 +57,17 @@
   margin: auto;
   color: hsl(108, 40%, 15%);
   text-align: center;
-  padding: .5rem 0 1rem 0;
+  padding: 0.5rem 0 1rem 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 30px;
+  font-weight: 100;
+
   & {
     @media (width <= 540px) {
-      font-size: .80rem;
-      line-height: 20px;
+      font-size: 1rem;
+      line-height: 25px;
     }
   }
 }
@@ -73,16 +75,18 @@
 /*Input bar for quests*/
 .new-quest-form input {
   outline: none;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   border: 3px double hsl(106, 45%, 17%);
   background: hsl(117, 21%, 35%);
   padding: 0.25em 1em;
   margin-top: 10px;
   color: hsl(125, 58%, 85%);
   font-size: 1.3rem;
+  border-radius: 5%;
   height: 35px;
   @media (max-width: 540px) {
-    font-size: .8rem;
+    font-size: 1rem;
   }
 }
 
@@ -95,17 +99,20 @@
   background: hsla(61, 24%, 53%, 0.781);
   border: 2px hsla(62, 20%, 35%, 0.781);
   color: #e3e6cc;
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 1px 1px 2px black;
   padding: 0.25em 0.5em;
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   margin-top: 0.5rem;
   cursor: pointer;
   outline: none;
+  border-radius: 5%;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   & {
     @media (width <= 540px) {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   }
 }
@@ -122,7 +129,7 @@
 .btn.dailyBtn:hover,
 .m.btn.dailyBtn:focus-visible {
   color: #e3edfc;
-  background:hsla(56, 33%, 60%, 0.842);
+  background: hsla(56, 33%, 60%, 0.842);
 }
 
 /*Error message if input doesn't contain text when Add Quest btn pressed*/
@@ -136,9 +143,9 @@
   text-align: center;
   & {
     @media (width <= 540px) {
-      font-size: .80rem;
-      display:center;
-      margin:auto;
+      font-size: 0.8rem;
+      display: center;
+      margin: auto;
       padding-top: 10px;
       width: 80%;
     }
@@ -159,7 +166,6 @@
   text-align: center;
   & {
     @media (width <= 540px) {
-      font-size: 2rem;
       padding-right: 50px;
     }
   }
@@ -173,7 +179,6 @@
   background: #e3e6cc;
   display: flex;
   gap: 1rem;
-  
 }
 
 .dailyList li label {
@@ -185,7 +190,7 @@
   cursor: pointer;
   & {
     @media (width <= 540px) {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
   }
 }
@@ -219,8 +224,9 @@
   content: "x";
   background: hsl(56, 76%, 35%);
   color: hsl(66, 100%, 90%);
-  font-size: .5rem;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 0.5rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: bold;
 }
 
@@ -229,7 +235,9 @@
 }
 
 ul.dailyList {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .quest-form-row {
@@ -242,22 +250,25 @@ form.new-quest-form {
   background: #e3e6cc;
 }
 
-
 /*Turn in Quests Btn*/
 #submitBtn {
   background: hsla(61, 24%, 53%, 0.781);
   border: 2px hsla(60, 21%, 38%, 0.781);
   color: #e3e6cc;
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 1px 1px 2px black;
   width: 100%;
   padding: 0.25em 0.5em;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   cursor: pointer;
   outline: none;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 5%;
+
   & {
     @media (width <= 540px) {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   }
 }
@@ -275,25 +286,28 @@ form.new-quest-form {
 #submitBtn:hover,
 #submitBtn:focus-visible {
   color: #fafce3;
-  background:hsla(56, 33%, 60%, 0.842);
+  background: hsla(56, 33%, 60%, 0.842);
 }
 
 .btn.btn-danger {
   background: hsla(61, 24%, 53%, 0.781);
   border: 2px hsla(60, 21%, 38%, 0.781);
   color: #e3e6cc;
-  text-shadow: 2px 2px 5px rgb(22, 15, 1);
+  text-shadow: 1px 1px 2px black;
   width: 100%;
   margin-top: 10px;
   padding: 0.25em 0.5em;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   cursor: pointer;
   outline: none;
   box-shadow: 2px 2px 2px hsla(54, 85%, 13%, 0.678);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 5%;
   & {
     @media (width <= 540px) {
       background: hsla(13, 24%, 53%, 0.781);
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   }
 }
@@ -310,7 +324,7 @@ form.new-quest-form {
 
 .btn.btn-danger:hover,
 .btn.btn-danger:focus-visible {
-  background:  hsla(4, 56%, 46%, 0.575);
+  background: hsla(4, 56%, 46%, 0.575);
   color: #e3edfc;
 }
 
@@ -321,10 +335,10 @@ form.new-quest-form {
   cursor: default;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   & {
     @media (width <= 540px) {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 }
