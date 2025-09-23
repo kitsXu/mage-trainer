@@ -78,7 +78,7 @@ export default function Quests(props) {
       if (!quest || !quest.completed === true) {
         alert("No quests selected!");
       } else {
-        const tenMinutes = 10 * 60 * 1000;
+        const tenMinutes = 1;
         const questTurnInTime =
           new Date(quest.timestamp).getTime() + tenMinutes;
         const currentTime = Date.now();
